@@ -14,6 +14,9 @@ const config: Config = {
           DEFAULT: '#E8580C',
           foreground: '#FFFFFF',
         },
+        // Explicitly define the accent color values for direct use
+        'accent-fixed': '#E8580C',
+        'accent-text': '#FFFFFF',
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
@@ -22,6 +25,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
 };
 export default config; 

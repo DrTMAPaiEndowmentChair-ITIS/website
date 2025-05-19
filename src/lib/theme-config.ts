@@ -9,7 +9,7 @@ export const themeConfig = {
   },
   dark: {
     background: '#0a0a0a',
-    foreground: '#ededed',
+    foreground: '#CDCDCD',
   },
 } as const;
 
