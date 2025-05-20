@@ -294,7 +294,7 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl font-bold mb-12 text-center text-black">
-              Our Industry Partners
+              Industry Partners
               <span className="block text-base text-center mt-3 text-neutral-600">
                 Collaborating with leading companies across multiple sectors
               </span>

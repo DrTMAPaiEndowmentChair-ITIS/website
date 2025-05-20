@@ -152,24 +152,8 @@ export default async function ResearchProjectPage({ params }: { params: Params }
       <main className="flex-grow pt-24 pb-12"> {/* Added padding top for fixed nav */}
         <div className="container mx-auto px-4">
           <article className="prose lg:prose-xl max-w-4xl mx-auto text-neutral-900"> {/* Darker text color */}
-            {project.heroImage && (
-              <div className="relative w-full h-72 md:h-96 mb-8 rounded-lg overflow-hidden shadow-md">
-                <Image 
-                  src={project.heroImage} 
-                  alt={project.title} 
-                  fill 
-                  className="object-cover" 
-                  priority
-                />
-                <div 
-                  className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/60 to-transparent"
-                >
-                  <h1 className="text-white text-2xl md:text-3xl font-bold m-0">{project.title}</h1>
-                </div>
-              </div>
-            )}
-            
-            {!project.heroImage && <h1 className="text-neutral-900">{project.title}</h1>}
+            {/* Title - Always displayed, no hero image */}
+            <h1 className="text-3xl md:text-4xl font-bold mb-6 text-neutral-900">{project.title}</h1>
             
             <p className="text-lg text-neutral-700 mb-4">
               <span 
