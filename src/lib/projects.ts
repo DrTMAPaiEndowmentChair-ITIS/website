@@ -21,7 +21,8 @@ export interface ProjectFrontmatter {
   heroImage?: string;
   status?: 'current' | 'completed'; // Add status field
   completionDate?: string; // Add completion date for completed projects
-  [key: string]: any; // Allow other properties
+  attachments?: string[]; // Array of attachment URLs
+  [key: string]: string | number | boolean | string[] | undefined; // More specific type for additional properties
 }
 
 export interface ProjectData extends ProjectFrontmatter {

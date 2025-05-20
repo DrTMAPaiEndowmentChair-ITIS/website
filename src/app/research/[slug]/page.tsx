@@ -3,11 +3,12 @@ import { MDXRemote } from 'next-mdx-remote/rsc'; // For RSC rendering of MDX
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button'; // Re-using button for consistency
+import React from 'react';
 
 // Custom MDX components
 const components = {
   img: (props: React.ComponentPropsWithoutRef<'img'>) => (
-    <div className="my-8 rounded-lg overflow-hidden shadow-md">
+    <div className="not-prose my-8 rounded-lg overflow-hidden shadow-md">
       {typeof props.src === 'string' ? (
         <Image 
           {...props}
@@ -23,7 +24,29 @@ const components = {
   // Add styling to other MDX elements as needed
   h2: (props: React.ComponentPropsWithoutRef<'h2'>) => <h2 className="text-neutral-900 font-bold mt-8 mb-4" {...props} />,
   h3: (props: React.ComponentPropsWithoutRef<'h3'>) => <h3 className="text-neutral-900 font-semibold mt-6 mb-3" {...props} />,
-  p: (props: React.ComponentPropsWithoutRef<'p'>) => <p className="text-neutral-800 mb-4" {...props} />,
+  p: (props: React.ComponentPropsWithoutRef<'p'>) => {
+    const childrenArray = React.Children.toArray(props.children);
+    // Filter out empty/whitespace-only text nodes
+    const significantChildren = childrenArray.filter(child => {
+      if (typeof child === 'string' && child.trim() === '') {
+        return false; // Ignore whitespace-only strings
+      }
+      return true;
+    });
+
+    if (
+      significantChildren.length === 1 &&
+      React.isValidElement(significantChildren[0]) &&
+      (significantChildren[0] as React.ReactElement).type === 'img'
+    ) {
+      // It's a paragraph with only an image (and possibly ignorable whitespace)
+      // Render only the significant child (the image itself).
+      // MDXRemote will then use the custom 'img' component for this image.
+      return <>{significantChildren[0]}</>;
+    }
+    // Otherwise, render as a normal paragraph
+    return <p className="text-neutral-800 mb-4" {...props} />;
+  },
   ul: (props: React.ComponentPropsWithoutRef<'ul'>) => <ul className="text-neutral-800 mb-4 list-disc pl-6" {...props} />,
   ol: (props: React.ComponentPropsWithoutRef<'ol'>) => <ol className="text-neutral-800 mb-4 list-decimal pl-6" {...props} />,
   li: (props: React.ComponentPropsWithoutRef<'li'>) => <li className="text-neutral-800 mb-1" {...props} />,
@@ -85,8 +108,11 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const project = await getProjectData(params.slug);
+type Params = Promise<{ slug: string }>;
+
+export async function generateMetadata({ params }: { params: Params }) {
+  const { slug } = await params;
+  const project = await getProjectData(slug);
   if (!project) {
     return {
       title: 'Project Not Found',
@@ -98,8 +124,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-export default async function ResearchProjectPage({ params }: { params: { slug: string } }) {
-  const project = await getProjectData(params.slug);
+export default async function ResearchProjectPage({ params }: { params: Params }) {
+  const { slug } = await params;
+  const project = await getProjectData(slug);
 
   if (!project) {
     // Or handle with notFound() from next/navigation

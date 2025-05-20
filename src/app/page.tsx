@@ -10,51 +10,19 @@ import {
 } from "@/components/ui/carousel";
 import { getSortedProjectsData, ProjectFrontmatter } from "@/lib/projects";
 import { getSortedEventsData, EventFrontmatter } from "@/lib/events";
+import Navbar from "@/components/layout/Navbar";
 
 export default function Home() {
-  const researchProjects: ProjectFrontmatter[] = getSortedProjectsData('current');
-  const completedProjects: ProjectFrontmatter[] = getSortedProjectsData('completed');
+  const researchProjects: ProjectFrontmatter[] =
+    getSortedProjectsData("current");
+  const completedProjects: ProjectFrontmatter[] =
+    getSortedProjectsData("completed");
   const upcomingEvents: EventFrontmatter[] = getSortedEventsData();
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-sm border-b border-neutral-200/50 z-50">
-        <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-          <Link href="/" className="text-xl font-semibold text-neutral-900">
-            Dr. TMA Pai Endowment Chair, MAHE, Manipal
-          </Link>
-          <div className="hidden md:flex items-center space-x-8">
-            <Link
-              href="#research"
-              className="text-neutral-900 hover:text-neutral-600"
-            >
-              Research
-            </Link>
-            <Link
-              href="#completed-research"
-              className="text-neutral-900 hover:text-neutral-600"
-            >
-              Completed Research
-            </Link>
-            <Link
-              href="#events"
-              className="text-neutral-900 hover:text-neutral-600"
-            >
-              Events
-            </Link>
-            <Link
-              href="#about"
-              className="text-neutral-900 hover:text-neutral-600"
-            >
-              About
-            </Link>
-            <Button asChild className="bg-[#E8580C] text-white hover:bg-[#E8580C]/90">
-              <Link href="/apply">Apply Now</Link>
-            </Button>
-          </div>
-        </div>
-      </nav>
+      {/* Universal Navigation */}
+      <Navbar />
 
       {/* Hero Section */}
       <section className="pt-32 pb-20">
@@ -104,10 +72,32 @@ export default function Home() {
             <h3 className="text-xl md:text-2xl font-semibold mb-6 text-[#E8580C]">
               Intelligent Technologies, Industry 4.0 & Sustainability
             </h3>
-            <p className="text-neutral-700 text-lg">
-              The Dr. TMA Pai Endowment Chair at Manipal Academy of Higher Education (MAHE) is dedicated to advancing the frontiers of Intelligent Technologies, Industry 4.0, and Sustainability. <br /><br />
-              <strong>Intelligent Technologies</strong> refer to advanced digital systems such as artificial intelligence, machine learning, and smart automation that enable machines to learn, adapt, and make decisions. <strong>Industry 4.0</strong> represents the fourth industrial revolution, characterized by the integration of cyber-physical systems, the Internet of Things (IoT), and data-driven manufacturing for smarter, more connected industries. <strong>Sustainability</strong> focuses on developing solutions that meet present needs without compromising the ability of future generations to meet theirs, emphasizing environmental stewardship, resource efficiency, and social responsibility. <br /><br />
-              In an era defined by rapid technological transformation, applied research in these domains is crucial for shaping a smarter, more sustainable future. Students and professors at MAHE are at the forefront of this movement, collaborating on innovative projects that bridge academia and industry, foster interdisciplinary learning, and drive impactful solutions for real-world challenges. Through this initiative, MAHE empowers the next generation of researchers and leaders to make meaningful contributions to society and industry alike.
+            <p className="text-neutral-700 text-lg text-justify">
+              The Dr. TMA Pai Endowment Chair at Manipal Academy of Higher
+              Education (MAHE) is dedicated to advancing the frontiers of
+              Intelligent Technologies, Industry 4.0, and Sustainability. <br />
+              <br />
+              <strong>Intelligent Technologies</strong> refer to advanced
+              digital systems such as artificial intelligence, machine learning,
+              and smart automation that enable machines to learn, adapt, and
+              make decisions. <strong>Industry 4.0</strong> represents the
+              fourth industrial revolution, characterized by the integration of
+              cyber-physical systems, the Internet of Things (IoT), and
+              data-driven manufacturing for smarter, more connected industries.{" "}
+              <strong>Sustainability</strong> focuses on developing solutions
+              that meet present needs without compromising the ability of future
+              generations to meet theirs, emphasizing environmental stewardship,
+              resource efficiency, and social responsibility. <br />
+              <br />
+              In an era defined by rapid technological transformation, applied
+              research in these domains is crucial for shaping a smarter, more
+              sustainable future. Students and professors at MAHE are at the
+              forefront of this movement, collaborating on innovative projects
+              that bridge academia and industry, foster interdisciplinary
+              learning, and drive impactful solutions for real-world challenges.
+              Through this initiative, MAHE empowers the next generation of
+              researchers and leaders to make meaningful contributions to
+              society and industry alike.
             </p>
           </div>
         </div>
@@ -150,7 +140,7 @@ export default function Home() {
             </h2>
             <Carousel className="w-full">
               <CarouselContent>
-                {researchProjects.map((project, _index) => (
+                {researchProjects.map((project) => (
                   <CarouselItem
                     key={project.slug}
                     className="md:basis-1/2 lg:basis-1/3"
@@ -199,7 +189,9 @@ export default function Home() {
                             size="sm"
                             className="bg-[#E8580C] hover:bg-[#E8580C]/90 text-white"
                           >
-                            <Link href={`/research/${project.slug}`}>Learn More</Link>
+                            <Link href={`/research/${project.slug}`}>
+                              Learn More
+                            </Link>
                           </Button>
                         </div>
                       </div>
@@ -223,7 +215,7 @@ export default function Home() {
             </h2>
             <Carousel className="w-full">
               <CarouselContent>
-                {completedProjects.map((project, _index) => (
+                {completedProjects.map((project) => (
                   <CarouselItem
                     key={project.slug}
                     className="md:basis-1/2 lg:basis-1/3"
@@ -273,10 +265,15 @@ export default function Home() {
                               size="sm"
                               className="bg-[#E8580C] hover:bg-[#E8580C]/90 text-white"
                             >
-                              <Link href={`/research/${project.slug}`}>View Results</Link>
+                              <Link href={`/research/${project.slug}`}>
+                                View Results
+                              </Link>
                             </Button>
                             <span className="text-xs text-neutral-500">
-                              Completed: {new Date(project.completionDate ?? 0).toLocaleDateString()}
+                              Completed:{" "}
+                              {new Date(
+                                project.completionDate ?? 0,
+                              ).toLocaleDateString()}
                             </span>
                           </div>
                         </div>
@@ -298,74 +295,65 @@ export default function Home() {
           <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl font-bold mb-12 text-center text-black">
               Our Industry Partners
-              <span className="block text-base text-center mt-3 text-neutral-600">Collaborating with leading companies across multiple sectors</span>
+              <span className="block text-base text-center mt-3 text-neutral-600">
+                Collaborating with leading companies across multiple sectors
+              </span>
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mb-10">
               {[
                 {
-                  name: "HealthTech Solutions",
-                  description: "Healthcare Technology",
-                  type: "Healthcare",
-                  logo: "/companies/healthtech.svg",
-                  color: "#0078D7", // Blue
-                },
-                {
                   name: "Schneider Electric",
                   description: "Energy Management & Automation",
                   type: "Energy",
-                  logo: "/companies/greenpower.svg",
+                  logo: "/companies/schneider-logo.svg",
                   color: "#3CB043", // Green for Schneider Electric
-                },
-                {
-                  name: "UrbanTech",
-                  description: "Smart City Solutions",
-                  type: "Infrastructure",
-                  logo: "/companies/urbantech.svg",
-                  color: "#FF5733", // Orange/Red
                 },
                 {
                   name: "AMD",
                   description: "Semiconductor Manufacturing",
                   type: "Technology",
-                  logo: "/companies/dataflow.svg",
+                  logo: "/companies/amd_logo.svg",
                   color: "#E40046", // Red for AMD
                 },
                 {
                   name: "IBM",
                   description: "Cloud Computing & AI",
                   type: "Technology",
-                  logo: "/companies/healthtech.svg",
+                  logo: "/companies/IBM_logo.svg",
                   color: "#1F70C1", // IBM Blue
                 },
                 {
                   name: "Siemens",
                   description: "Industrial Automation",
                   type: "Manufacturing",
-                  logo: "/companies/greenpower.svg",
+                  logo: "/companies/Siemens-logo.svg",
                   color: "#009999", // Teal
                 },
                 {
                   name: "Nvidia",
                   description: "AI & High-Performance Computing",
                   type: "Technology",
-                  logo: "/companies/urbantech.svg",
+                  logo: "/companies/nvidia.svg",
                   color: "#76B900", // Nvidia Green
                 },
                 {
                   name: "Intel",
                   description: "Computing Innovation",
                   type: "Technology",
-                  logo: "/companies/dataflow.svg",
+                  logo: "/companies/intel.svg",
                   color: "#0071C5", // Intel Blue
                 },
               ].map((company, index) => (
                 <div key={index} className="group">
-                  <div 
+                  <div
                     className="relative aspect-square overflow-hidden rounded-xl bg-white p-6 shadow-lg transition-all duration-300 hover:shadow-xl hover:translate-y-[-5px]"
-                    style={{ borderTop: `3px solid ${company.color}`, borderBottom: `1px solid ${company.color}20` }}
+                    style={{
+                      borderTop: `3px solid ${company.color}`,
+                      borderBottom: `1px solid ${company.color}20`,
+                    }}
                   >
                     <div className="flex h-full flex-col items-center justify-center text-center">
-                      <div 
+                      <div
                         className="mb-3 h-16 w-16 rounded-lg flex items-center justify-center transition-all duration-300 group-hover:scale-110"
                         style={{ backgroundColor: `${company.color}15` }}
                       >
@@ -377,17 +365,17 @@ export default function Home() {
                           className="object-contain"
                         />
                       </div>
-                      <h3 
+                      <h3
                         className="text-lg font-bold mb-1 transition-all duration-300 group-hover:translate-y-[-2px]"
                         style={{ color: company.color }}
                       >
                         {company.name}
                       </h3>
-                      <div 
+                      <div
                         className="text-xs mb-2 px-2 py-1 rounded-full inline-block"
-                        style={{ 
+                        style={{
                           backgroundColor: `${company.color}15`,
-                          color: company.color
+                          color: company.color,
                         }}
                       >
                         {company.type}
@@ -414,11 +402,11 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl font-bold mb-12 text-center text-black">
-              Upcoming Events
+              Events
             </h2>
             <Carousel className="w-full">
               <CarouselContent>
-                {upcomingEvents.map((event, _index) => (
+                {upcomingEvents.map((event) => (
                   <CarouselItem
                     key={event.slug}
                     className="md:basis-1/2 lg:basis-1/3"
@@ -446,12 +434,14 @@ export default function Home() {
                           <p className="text-neutral-600 mb-4">
                             {event.description}
                           </p>
-                          <Button 
+                          <Button
                             asChild
                             size="sm"
                             className="bg-[#E8580C] text-white hover:bg-[#E8580C]/90"
                           >
-                            <Link href={`/events/${event.slug}`}>Learn More</Link>
+                            <Link href={`/events/${event.slug}`}>
+                              Learn More
+                            </Link>
                           </Button>
                         </div>
                       </div>
@@ -477,12 +467,12 @@ export default function Home() {
               Apply now to participate in cutting-edge research projects and
               collaborate with industry leaders.
             </p>
-            <Button size="lg" asChild className="bg-[#E8580C] hover:bg-[#E8580C]/90 text-white">
-              <Link
-                href="/apply"
-              >
-                Apply Now
-              </Link>
+            <Button
+              size="lg"
+              asChild
+              className="bg-[#E8580C] hover:bg-[#E8580C]/90 text-white"
+            >
+              <Link href="/apply">Apply Now</Link>
             </Button>
           </div>
         </div>
@@ -560,8 +550,8 @@ export default function Home() {
           </div>
           <div className="mt-12 pt-8 border-t border-neutral-200/50 text-center text-neutral-600">
             <p>
-              &copy; {new Date().getFullYear()} Dr. TMA Pai Endowment Chair, MAHE, Manipal. All
-              rights reserved.
+              &copy; {new Date().getFullYear()} Dr. TMA Pai Endowment Chair,
+              MAHE, Manipal. All rights reserved.
             </p>
           </div>
         </div>

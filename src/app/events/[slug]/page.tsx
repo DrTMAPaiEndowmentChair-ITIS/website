@@ -3,6 +3,46 @@ import { MDXRemote } from 'next-mdx-remote/rsc';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
+import React from 'react';
+
+// Custom MDX components to prevent hydration errors
+const components = {
+  img: (props: React.ComponentPropsWithoutRef<'img'>) => (
+    <div className="not-prose my-8 rounded-lg overflow-hidden shadow-md">
+      {typeof props.src === 'string' ? (
+        <Image 
+          {...props}
+          src={props.src}
+          alt={props.alt || ''}
+          className="w-full h-auto object-contain rounded-lg"
+          width={800}
+          height={400}
+        />
+      ) : null}
+    </div>
+  ),
+  p: (props: React.ComponentPropsWithoutRef<'p'>) => {
+    const childrenArray = React.Children.toArray(props.children);
+    // Filter out empty/whitespace-only text nodes
+    const significantChildren = childrenArray.filter(child => {
+      if (typeof child === 'string' && child.trim() === '') {
+        return false; // Ignore whitespace-only strings
+      }
+      return true;
+    });
+
+    if (
+      significantChildren.length === 1 &&
+      React.isValidElement(significantChildren[0]) &&
+      (significantChildren[0] as React.ReactElement).type === 'img'
+    ) {
+      // It's a paragraph with only an image (and possibly whitespace)
+      return <>{significantChildren[0]}</>;
+    }
+    // Otherwise, render as a normal paragraph
+    return <p className="text-neutral-700 mb-4" {...props} />;
+  }
+};
 
 // --- Re-import or define SiteNavigation and SiteFooter ---
 // Ideally, these are shared components. For now, repeating simplified versions.
@@ -17,6 +57,7 @@ const SiteNavigation = () => (
       <div className="hidden md:flex items-center space-x-8">
         <Link href="/#research" className="text-neutral-900 hover:text-neutral-600">Research</Link>
         <Link href="/#events" className="text-neutral-900 hover:text-neutral-600">Events</Link>
+        <Link href="/chairperson" className="text-neutral-900 hover:text-neutral-600">Chairperson</Link>
         <Link href="/#about" className="text-neutral-900 hover:text-neutral-600">About</Link>
         <Button asChild className="bg-[#E8580C] text-white hover:bg-[#E8580C]/90">
           <Link href="/apply">Apply Now</Link>
@@ -43,8 +84,11 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const event = await getEventData(params.slug);
+type Params = Promise<{ slug: string }>;
+
+export async function generateMetadata({ params }: { params: Params }) {
+  const { slug } = await params;
+  const event = await getEventData(slug);
   if (!event) {
     return {
       title: 'Event Not Found',
@@ -56,13 +100,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-export default async function EventPage({
-  params,
-}: {
-  params: { slug: string };
-  searchParams?: { [key: string]: string | string[] | undefined };
-}) {
-  const event = await getEventData(params.slug);
+export default async function EventPage({ params }: { params: Params }) {
+  const { slug } = await params;
+  const event = await getEventData(slug);
 
   if (!event) {
     return <div className="container mx-auto px-4 py-20 pt-32 text-center">Event not found.</div>;
@@ -85,7 +125,7 @@ export default async function EventPage({
             <p className="text-md text-neutral-500 mb-6"><em>Event Date (for sorting): {new Date(event.date).toLocaleDateString()}</em></p>
             
             <div className="mdx-content">
-              <MDXRemote source={event.content} />
+              <MDXRemote source={event.content} components={components} />
             </div>
 
             <div className="mt-12 text-center">

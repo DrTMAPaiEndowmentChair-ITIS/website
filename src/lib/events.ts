@@ -13,7 +13,7 @@ export interface EventFrontmatter {
   slug: string;
   order: number;
   published: boolean;
-  [key: string]: any; // Allow other properties
+  [key: string]: string | number | boolean; // More specific type for additional properties
 }
 
 export interface EventData extends EventFrontmatter {
