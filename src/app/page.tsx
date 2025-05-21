@@ -306,35 +306,35 @@ export default function Home() {
                 Collaborating with leading companies across multiple sectors
               </span>
             </h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mb-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-10">
               {[
                 {
                   name: "Schneider Electric",
                   description: "Energy Management & Automation",
                   type: "Energy",
                   logo: "/companies/schneider-logo.svg",
-                  color: "#3CB043", // Green for Schneider Electric
+                  color: "#3CB043",
                 },
                 {
                   name: "TE Connectivity",
                   description: "Electronic Connectors",
                   type: "Technology",
                   logo: "/companies/te-connectivity-logo.svg",
-                  color: "#E98302", // Red for AMD
+                  color: "#E98302",
                 },
                 {
                   name: "AMD",
                   description: "Semiconductor Manufacturing",
                   type: "Technology",
                   logo: "/companies/amd_logo.svg",
-                  color: "#E40046", // Red for AMD
+                  color: "#E40046",
                 },
                 {
                   name: "IBM",
                   description: "Cloud Computing & AI",
                   type: "Technology",
                   logo: "/companies/IBM_logo.svg",
-                  color: "#1F70C1", // IBM Blue
+                  color: "#1F70C1",
                 },
                 {
                   name: "Motorola Solutions",
@@ -358,47 +358,35 @@ export default function Home() {
                   color: "#0071C5", // Intel Blue
                 },
               ].map((company, index) => (
-                <div key={index} className="group">
+                <div
+                  key={index}
+                  className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200 flex flex-col items-center text-center"
+                >
                   <div
-                    className="relative aspect-square overflow-hidden rounded-xl bg-white p-6 shadow-lg transition-all duration-300 hover:shadow-xl hover:translate-y-[-5px]"
+                    className="w-24 h-24 mb-4 p-4 rounded-lg flex items-center justify-center"
+                    style={{ backgroundColor: `${company.color}15` }}
+                  >
+                    <Image
+                      src={company.logo}
+                      alt={company.name}
+                      width={80}
+                      height={80}
+                      className="object-contain"
+                    />
+                  </div>
+                  <h3 className="text-lg font-semibold mb-2 text-neutral-900">
+                    {company.name}
+                  </h3>
+                  <p className="text-sm text-neutral-600 mb-2">{company.description}</p>
+                  <span
+                    className="text-xs px-3 py-1 rounded-full"
                     style={{
-                      borderTop: `3px solid ${company.color}`,
-                      borderBottom: `1px solid ${company.color}20`,
+                      backgroundColor: `${company.color}15`,
+                      color: company.color,
                     }}
                   >
-                    <div className="flex h-full flex-col items-center justify-center text-center">
-                      <div
-                        className="mb-3 h-16 w-16 rounded-lg flex items-center justify-center transition-all duration-300 group-hover:scale-110"
-                        style={{ backgroundColor: `${company.color}15` }}
-                      >
-                        <Image
-                          src={company.logo}
-                          alt={company.name}
-                          width={64}
-                          height={64}
-                          className="object-contain"
-                        />
-                      </div>
-                      <h3
-                        className="text-lg font-bold mb-1 transition-all duration-300 group-hover:translate-y-[-2px]"
-                        style={{ color: company.color }}
-                      >
-                        {company.name}
-                      </h3>
-                      <div
-                        className="text-xs mb-2 px-2 py-1 rounded-full inline-block"
-                        style={{
-                          backgroundColor: `${company.color}15`,
-                          color: company.color,
-                        }}
-                      >
-                        {company.type}
-                      </div>
-                      <p className="text-sm text-neutral-600 transition-opacity duration-300 group-hover:opacity-80">
-                        {company.description}
-                      </p>
-                    </div>
-                  </div>
+                    {company.type}
+                  </span>
                 </div>
               ))}
             </div>

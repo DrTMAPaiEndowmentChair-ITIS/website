@@ -102,7 +102,7 @@ export default async function EventPage({ params }: { params: Params }) {
               </div>
             )}
             <h1 className="text-4xl font-bold mb-6 text-black">{event.title}</h1>
-            <p className="text-lg text-neutral-600 mb-1">Date: {event.displayDate}</p>            
+            <p className="text-lg text-neutral-600 mb-1">Date: {event.displayDate}</p>  
             <div className="mdx-content prose-headings:text-black">
               <MDXRemote source={event.content} components={components} />
             </div>
