@@ -28,7 +28,7 @@ export default function MobileNav() {
               {/* Header */}
               <div className="flex items-center justify-between p-4 border-b border-neutral-200">
                 <Link href="/" className="text-xl font-bold text-neutral-900">
-                  Dr. TMA Pai Chair
+                  Dr. TMA Pai Endowment Chair
                 </Link>
                 <button
                   onClick={() => setIsOpen(false)}

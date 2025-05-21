@@ -9,7 +9,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="text-xl font-bold text-neutral-900">
-            Dr. TMA Pai Chair
+            Dr. TMA Pai Endowment Chair
           </Link>
 
           {/* Desktop Navigation */}
