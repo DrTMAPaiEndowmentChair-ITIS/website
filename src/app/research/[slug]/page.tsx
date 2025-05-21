@@ -4,6 +4,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button'; // Re-using button for consistency
 import React from 'react';
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 
 // Custom MDX components
 const components = {
@@ -72,35 +74,6 @@ const components = {
   ),
 };
 
-// Re-using Navigation and Footer (Simplified stubs, ideally import from actual components)
-// You'll need to adjust these to import your actual Nav and Footer components
-const SiteNavigation = () => (
-  <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-sm border-b border-neutral-200/50 z-50">
-    <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-      <Link href="/" className="text-xl font-semibold text-neutral-900">
-        Dr. TMA Pai Endowment Chair
-      </Link>
-      <div className="hidden md:flex items-center space-x-8">
-        <Link href="/#research" className="text-neutral-900 hover:text-neutral-600">Research</Link>
-        <Link href="/#events" className="text-neutral-900 hover:text-neutral-600">Events</Link>
-        <Link href="/#about" className="text-neutral-900 hover:text-neutral-600">About</Link>
-        <Button asChild className="bg-[#E8580C] text-white hover:bg-[#E8580C]/90">
-          <Link href="/apply">Apply Now</Link>
-        </Button>
-      </div>
-    </div>
-  </nav>
-);
-
-const SiteFooter = () => (
-  <footer className="py-12 border-t border-neutral-200/50">
-    <div className="container mx-auto px-4 text-center text-neutral-600">
-      <p>&copy; {new Date().getFullYear()} Dr. TMA Pai Endowment Chair, MAHE, Manipal. All rights reserved.</p>
-    </div>
-  </footer>
-);
-
-
 export async function generateStaticParams() {
   const projectSlugs = getAllProjectSlugs(); // No 'await' as it's sync
   return projectSlugs.map((project) => ({
@@ -147,7 +120,7 @@ export default async function ResearchProjectPage({ params }: { params: Params }
   
   return (
     <div className="min-h-screen bg-white flex flex-col">
-      <SiteNavigation /> {/* Add your actual Navigation component here */}
+      <Navbar />
       
       <main className="flex-grow pt-24 pb-12"> {/* Added padding top for fixed nav */}
         <div className="container mx-auto px-4">
@@ -248,7 +221,7 @@ export default async function ResearchProjectPage({ params }: { params: Params }
                 }}
                 className="hover:bg-opacity-10 hover:bg-[var(--light-bg)]"
               >
-                <Link href="/apply">Apply for this Project</Link>
+                <Link href="https://lttstore.com">Apply for this Project</Link>
               </Button>
               
               {project.attachments && project.attachments.length > 0 && (
@@ -307,7 +280,7 @@ export default async function ResearchProjectPage({ params }: { params: Params }
         </div>
       </main>
       
-      <SiteFooter /> {/* Add your actual Footer component here */}
+      <Footer />
     </div>
   );
 }

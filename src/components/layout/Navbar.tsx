@@ -34,7 +34,7 @@ export default function Navbar() {
             About
           </Link>
           <Button asChild className="bg-[#E8580C] text-white hover:bg-[#E8580C]/90">
-            <Link href="/apply">Apply Now</Link>
+            <Link href="https://lttstore.com">Apply Now</Link>
           </Button>
         </div>
       </div>

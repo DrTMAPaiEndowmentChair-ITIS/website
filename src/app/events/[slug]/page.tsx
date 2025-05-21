@@ -4,6 +4,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import React from 'react';
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 
 // Custom MDX components to prevent hydration errors
 const components = {
@@ -20,6 +22,18 @@ const components = {
         />
       ) : null}
     </div>
+  ),
+  h1: (props: React.ComponentPropsWithoutRef<'h1'>) => (
+    <h1 className="text-4xl font-bold mb-6 text-black" {...props} />
+  ),
+  h2: (props: React.ComponentPropsWithoutRef<'h2'>) => (
+    <h2 className="text-3xl font-bold mb-4 text-black" {...props} />
+  ),
+  h3: (props: React.ComponentPropsWithoutRef<'h3'>) => (
+    <h3 className="text-2xl font-semibold mb-3 text-black" {...props} />
+  ),
+  h4: (props: React.ComponentPropsWithoutRef<'h4'>) => (
+    <h4 className="text-xl font-semibold mb-2 text-black" {...props} />
   ),
   p: (props: React.ComponentPropsWithoutRef<'p'>) => {
     const childrenArray = React.Children.toArray(props.children);
@@ -43,39 +57,6 @@ const components = {
     return <p className="text-neutral-700 mb-4" {...props} />;
   }
 };
-
-// --- Re-import or define SiteNavigation and SiteFooter ---
-// Ideally, these are shared components. For now, repeating simplified versions.
-// Replace with actual imports: import SiteNavigation from '@/components/layout/SiteNavigation'; etc.
-
-const SiteNavigation = () => (
-  <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-sm border-b border-neutral-200/50 z-50">
-    <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-      <Link href="/" className="text-xl font-semibold text-neutral-900">
-        Dr. TMA Pai Endowment Chair
-      </Link>
-      <div className="hidden md:flex items-center space-x-8">
-        <Link href="/#research" className="text-neutral-900 hover:text-neutral-600">Research</Link>
-        <Link href="/#events" className="text-neutral-900 hover:text-neutral-600">Events</Link>
-        <Link href="/chairperson" className="text-neutral-900 hover:text-neutral-600">Chairperson</Link>
-        <Link href="/#about" className="text-neutral-900 hover:text-neutral-600">About</Link>
-        <Button asChild className="bg-[#E8580C] text-white hover:bg-[#E8580C]/90">
-          <Link href="/apply">Apply Now</Link>
-        </Button>
-      </div>
-    </div>
-  </nav>
-);
-
-const SiteFooter = () => (
-  <footer className="py-12 border-t border-neutral-200/50">
-    <div className="container mx-auto px-4 text-center text-neutral-600">
-      <p>&copy; {new Date().getFullYear()} Dr. TMA Pai Endowment Chair, MAHE, Manipal. All rights reserved.</p>
-    </div>
-  </footer>
-);
-// --- End Navigation/Footer ---
-
 
 export async function generateStaticParams() {
   const eventSlugs = getAllEventSlugs();
@@ -110,7 +91,7 @@ export default async function EventPage({ params }: { params: Params }) {
 
   return (
     <div className="min-h-screen bg-white flex flex-col">
-      <SiteNavigation />
+      <Navbar />
       
       <main className="flex-grow pt-24 pb-12">
         <div className="container mx-auto px-4">
@@ -120,11 +101,9 @@ export default async function EventPage({ params }: { params: Params }) {
                 <Image src={event.image} alt={event.title} fill className="object-cover" />
               </div>
             )}
-            <h1>{event.title}</h1>
-            <p className="text-lg text-neutral-600 mb-1">Date: {event.displayDate}</p>
-            <p className="text-md text-neutral-500 mb-6"><em>Event Date (for sorting): {new Date(event.date).toLocaleDateString()}</em></p>
-            
-            <div className="mdx-content">
+            <h1 className="text-4xl font-bold mb-6 text-black">{event.title}</h1>
+            <p className="text-lg text-neutral-600 mb-1">Date: {event.displayDate}</p>            
+            <div className="mdx-content prose-headings:text-black">
               <MDXRemote source={event.content} components={components} />
             </div>
 
@@ -137,7 +116,7 @@ export default async function EventPage({ params }: { params: Params }) {
         </div>
       </main>
       
-      <SiteFooter />
+      <Footer />
     </div>
   );
 } 

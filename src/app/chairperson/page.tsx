@@ -2,6 +2,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/layout/Navbar";
+import ImageCarousel from "@/components/ui/ImageCarousel";
+import Footer from "@/components/layout/Footer";
 
 export const metadata = {
   title: "Dr. Manohara Pai MM | Chairperson | Dr. TMA Pai Endowment Chair",
@@ -10,6 +12,49 @@ export const metadata = {
 };
 
 export default function ChairpersonPage() {
+  const patentsAndAwards = [
+    {
+      image: "/chairperson/patents/NTTA.jpeg",
+      caption: "National Technical Teachers Award (NTTA 2022)",
+      objectFit: "contain"
+    },
+    {
+      image: "/chairperson/patents/InnovationPioneers.jpg",
+      caption: "Award received from Minister of Science and Technology (Prithviraj Chavan) for mentoring innovation. The Secretary of Department of Science and Technology (Dr. T.Ramasami in the middle)",
+      objectFit: "contain"
+    },
+    {
+      image: "/chairperson/patents/AustinTX.jpg",
+      caption: "Infodev Business Incubation Training(2011) and Intensive training on Incubation in Texas Austin, USA(2010)",
+      objectFit: "contain"
+    },
+    {
+      image: "/chairperson/patents/USPatent1.png",
+      caption: "US Patent for Adaptive Routing in Wireless Networks",
+      objectFit: "contain"
+    },
+    {
+      image: "/chairperson/patents/USPatent2.png",
+      caption: "US Patent for Image Processing and Analysis",
+      objectFit: "contain"
+    },
+    {
+      image: "/chairperson/patents/JapanesePatent.png",
+      caption: "Japanese Patent",
+      objectFit: "contain"
+    },
+    {
+      image: "/chairperson/patents/Patent-OpticalFiber.jpeg",
+      caption: "Patent for Optical Fiber Inserter Technology",
+      objectFit: "contain"
+    },
+    {
+      image: "/chairperson/patents/diabetic-ulcer.jpeg",
+      caption: "Indian Patent for Diabetic Ulcer Detection Methodology",
+      objectFit: "contain"
+    },
+  ];
+
   return (
     <div className="min-h-screen bg-white">
       {/* Universal Navigation */}
@@ -33,10 +78,10 @@ export default function ChairpersonPage() {
                 </p>
                 <p className="text-lg text-neutral-600 mb-6">
                   <a
-                    href="mailto:mmm.pai@manipal.edu"
+                    href="mailto:drtmapaichair.itis@manipal.edu"
                     className="text-[#E8580C] hover:underline"
                   >
-                    mmm.pai@manipal.edu
+                    drtmapaichair.itis@manipal.edu
                   </a>
                 </p>
                 <div className="flex space-x-4 mb-8">
@@ -100,6 +145,18 @@ export default function ChairpersonPage() {
                 Dr. Pai currently serves as the Director of the Centre for Artificial Intelligence at MIT, MAHE, where he leads a team of researchers working on cutting-edge technologies. He is also the holder of the prestigious Dr. TMA Pai Endowment Chair in Intelligent Technologies, Industry 4.0 and Sustainability (2023-2025), recognizing his expertise and contributions to these fields. His work bridges academic research with real-world applications, creating technologies that address societal challenges.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Patents and Awards Section */}
+      <section className="py-20 bg-neutral-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-5xl mx-auto">
+            <h2 className="text-3xl font-bold mb-12 text-neutral-900 text-center">
+              Awards and Patents
+            </h2>
+            <ImageCarousel items={patentsAndAwards} />
           </div>
         </div>
       </section>
@@ -685,96 +742,14 @@ export default function ChairpersonPage() {
               size="lg"
               className="bg-[#E8580C] hover:bg-[#E8580C]/90 text-white"
             >
-              <Link href="mailto:mmm.pai@manipal.edu">Contact Now</Link>
+              <Link href="https://lttstore.com">Apply Now</Link>
             </Button>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="py-12 border-t border-neutral-200/50">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <div>
-              <h3 className="text-lg font-semibold mb-4 text-neutral-900">
-                Contact
-              </h3>
-              <p className="text-neutral-600">
-                <span className="font-medium">Name:</span> Dr. Manohara Pai M.M.
-                <br />
-                <span className="font-medium">Office:</span> Senior Professor, Department of ICT, MIT, Manipal
-                <br />
-                <span className="font-medium">Email:</span> mmm.pai@manipal.edu
-                <br />
-                <span className="font-medium">Mobile:</span> +91 9945202361, +91 8660736005
-                <br />
-                <span className="font-medium">Location:</span> Manipal, Karnataka, India
-              </p>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold mb-4 text-neutral-900">
-                Quick Links
-              </h3>
-              <ul className="space-y-2">
-                <li>
-                  <Link
-                    href="/#about"
-                    className="text-neutral-600 hover:text-neutral-900"
-                  >
-                    About
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/#research"
-                    className="text-neutral-600 hover:text-neutral-900"
-                  >
-                    Research
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/#events"
-                    className="text-neutral-600 hover:text-neutral-900"
-                  >
-                    Events
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/apply"
-                    className="text-neutral-600 hover:text-neutral-900"
-                  >
-                    Apply
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold mb-4 text-neutral-900">
-                Follow Us
-              </h3>
-              <div className="flex space-x-4">
-                <Link href="#" className="text-neutral-600 hover:text-accent">
-                  LinkedIn
-                </Link>
-                <Link href="#" className="text-neutral-600 hover:text-accent">
-                  Twitter
-                </Link>
-                <Link href="#" className="text-neutral-600 hover:text-accent">
-                  Facebook
-                </Link>
-              </div>
-            </div>
-          </div>
-          <div className="mt-12 pt-8 border-t border-neutral-200/50 text-center text-neutral-600">
-            <p>
-              &copy; {new Date().getFullYear()} Dr. TMA Pai Endowment Chair,
-              MAHE, Manipal. All rights reserved.
-            </p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

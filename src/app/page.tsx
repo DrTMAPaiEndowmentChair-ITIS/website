@@ -11,6 +11,7 @@ import {
 import { getSortedProjectsData, ProjectFrontmatter } from "@/lib/projects";
 import { getSortedEventsData, EventFrontmatter } from "@/lib/events";
 import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 
 export default function Home() {
   const researchProjects: ProjectFrontmatter[] =
@@ -31,7 +32,7 @@ export default function Home() {
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
                 <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-neutral-900">
-                  Advancing Research Through Industry Collaboration
+                  Advancing Academic Research Through Industry Collaboration
                 </h1>
                 <p className="text-neutral-600 text-lg mb-8">
                   Join us in pushing the boundaries of innovation through
@@ -55,7 +56,13 @@ export default function Home() {
                 </div>
               </div>
               <div className="relative aspect-square">
-                <div className="absolute inset-0 bg-neutral-50 rounded-2xl"></div>
+                <Image
+                  src="/hero-image.png"
+                  alt="Research and Innovation"
+                  fill
+                  className="object-cover rounded-2xl"
+                  priority
+                />
               </div>
             </div>
           </div>
@@ -116,13 +123,13 @@ export default function Home() {
               </div>
               <div className="text-center p-8 rounded-2xl bg-neutral-50/50">
                 <div className="text-4xl font-bold mb-2 text-neutral-900">
-                  50+
+                  10+
                 </div>
                 <div className="text-neutral-600">Industry Partners</div>
               </div>
               <div className="text-center p-8 rounded-2xl bg-neutral-50/50">
                 <div className="text-4xl font-bold mb-2 text-neutral-900">
-                  100+
+                  50+
                 </div>
                 <div className="text-neutral-600">Student Researchers</div>
               </div>
@@ -309,6 +316,13 @@ export default function Home() {
                   color: "#3CB043", // Green for Schneider Electric
                 },
                 {
+                  name: "TE Connectivity",
+                  description: "Electronic Connectors",
+                  type: "Technology",
+                  logo: "/companies/te-connectivity-logo.svg",
+                  color: "#E98302", // Red for AMD
+                },
+                {
                   name: "AMD",
                   description: "Semiconductor Manufacturing",
                   type: "Technology",
@@ -323,11 +337,11 @@ export default function Home() {
                   color: "#1F70C1", // IBM Blue
                 },
                 {
-                  name: "Siemens",
-                  description: "Industrial Automation",
+                  name: "Motorola Solutions",
+                  description: "Industrial Communication",
                   type: "Manufacturing",
-                  logo: "/companies/Siemens-logo.svg",
-                  color: "#009999", // Teal
+                  logo: "/companies/motorola-logo-icon.svg",
+                  color: "#0163BE", // Teal
                 },
                 {
                   name: "Nvidia",
@@ -387,11 +401,6 @@ export default function Home() {
                   </div>
                 </div>
               ))}
-            </div>
-            <div className="text-center mt-10">
-              <Button className="bg-[#E8580C] hover:bg-[#E8580C]/90 text-white transition-transform duration-300 hover:scale-105">
-                View all industry partners
-              </Button>
             </div>
           </div>
         </div>
@@ -472,90 +481,14 @@ export default function Home() {
               asChild
               className="bg-[#E8580C] hover:bg-[#E8580C]/90 text-white"
             >
-              <Link href="/apply">Apply Now</Link>
+              <Link href="https://lttstore.com">Apply Now</Link>
             </Button>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="py-12 border-t border-neutral-200/50">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <div>
-              <h3 className="text-lg font-semibold mb-4 text-neutral-900">
-                Contact
-              </h3>
-              <p className="text-neutral-600">
-                Email: endowment@example.com
-                <br />
-                Phone: +91 123 456 7890
-              </p>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold mb-4 text-neutral-900">
-                Quick Links
-              </h3>
-              <ul className="space-y-2">
-                <li>
-                  <Link
-                    href="/about"
-                    className="text-neutral-600 hover:text-neutral-900"
-                  >
-                    About
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/research"
-                    className="text-neutral-600 hover:text-neutral-900"
-                  >
-                    Research
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/events"
-                    className="text-neutral-600 hover:text-neutral-900"
-                  >
-                    Events
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/contact"
-                    className="text-neutral-600 hover:text-neutral-900"
-                  >
-                    Contact
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold mb-4 text-neutral-900">
-                Follow Us
-              </h3>
-              <div className="flex space-x-4">
-                <Link href="#" className="text-neutral-600 hover:text-accent">
-                  LinkedIn
-                </Link>
-                <Link href="#" className="text-neutral-600 hover:text-accent">
-                  Twitter
-                </Link>
-                <Link href="#" className="text-neutral-600 hover:text-accent">
-                  Facebook
-                </Link>
-              </div>
-            </div>
-          </div>
-          <div className="mt-12 pt-8 border-t border-neutral-200/50 text-center text-neutral-600">
-            <p>
-              &copy; {new Date().getFullYear()} Dr. TMA Pai Endowment Chair,
-              MAHE, Manipal. All rights reserved.
-            </p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
