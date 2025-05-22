@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-import { Menu, X } from 'lucide-react';
+import { useState } from "react";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Menu, X } from "lucide-react";
 
 export default function MobileNav() {
   const [isOpen, setIsOpen] = useState(false);
@@ -87,7 +87,10 @@ export default function MobileNav() {
                   asChild
                   className="w-full bg-[#E8580C] hover:bg-[#E8580C]/90 text-white"
                 >
-                  <Link href="https://lttstore.com" onClick={() => setIsOpen(false)}>
+                  <Link
+                    href="https://lttstore.com"
+                    onClick={() => setIsOpen(false)}
+                  >
                     Apply Now
                   </Link>
                 </Button>
@@ -98,4 +101,4 @@ export default function MobileNav() {
       )}
     </div>
   );
-} 
+}

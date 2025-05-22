@@ -9,7 +9,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="text-xl font-bold text-neutral-900">
-            Dr. TMA Pai Endowment Chair
+            Dr. TMA Pai Endowment Chair, MAHE, Manipal
           </Link>
 
           {/* Desktop Navigation */}
@@ -46,4 +46,4 @@ export default function Navbar() {
       </div>
     </nav>
   );
-} 
+}
