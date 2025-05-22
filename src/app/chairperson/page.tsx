@@ -25,7 +25,7 @@ export default function ChairpersonPage() {
       objectFit: "contain",
     },
     {
-      image: "/chairperson/patents/newscoverage.png",
+      image: "/chairperson/patents/newscoverage.jpeg",
       caption:
         "Dr. Manohar Pai M, Professor, Department of Information Communication Technology (ICT) has received the prestigious National Technical Best Teacher award from AICTE",
       objectFit: "contain",
