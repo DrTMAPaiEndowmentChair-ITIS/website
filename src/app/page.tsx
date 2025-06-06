@@ -12,6 +12,52 @@ import { getSortedProjectsData, ProjectFrontmatter } from "@/lib/projects";
 import { getSortedEventsData, EventFrontmatter } from "@/lib/events";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import { 
+  Zap, 
+  Cable, 
+  Cpu, 
+  Cloud, 
+  Radio,
+  Building2,
+  Microscope,
+  GraduationCap 
+} from "lucide-react";
+
+// Function to get company icon or logo based on company name
+const getCompanyIcon = (companyName: string, companyLogo?: string) => {
+  const iconProps = { size: 24, className: "text-neutral-600" };
+  
+  // Government agencies - use their actual logos
+  if (['dst', 'birac', 'aicte'].includes(companyName.toLowerCase())) {
+    if (companyLogo) {
+      return (
+        <Image
+          src={companyLogo}
+          alt={companyName}
+          width={32}
+          height={32}
+          className="object-contain"
+        />
+      );
+    }
+  }
+  
+  // Commercial companies - use icons
+  switch (companyName.toLowerCase()) {
+    case 'schneider electric':
+      return <Zap {...iconProps} />; // Energy & Power
+    case 'te connectivity':
+      return <Cable {...iconProps} />; // Electronic Connectors
+    case 'amd':
+      return <Cpu {...iconProps} />; // Semiconductor/Processors
+    case 'ibm':
+      return <Cloud {...iconProps} />; // Cloud Computing & AI
+    case 'motorola solutions':
+      return <Radio {...iconProps} />; // Industrial Communication
+    default:
+      return <Building2 {...iconProps} />; // Generic company icon
+  }
+};
 
 export default function Home() {
   const researchProjects: ProjectFrontmatter[] =
@@ -32,7 +78,7 @@ export default function Home() {
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
                 <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-neutral-900">
-                  Advancing Academic Research Through Industry Collaboration
+                  Advancing Academic Research Through Industry Collaborators
                 </h1>
                 <p className="text-neutral-600 text-lg mb-8">
                   Join us in pushing the boundaries of innovation through
@@ -125,7 +171,7 @@ export default function Home() {
                 <div className="text-4xl font-bold mb-2 text-neutral-900">
                   10+
                 </div>
-                <div className="text-neutral-600">Industry Partners</div>
+                <div className="text-neutral-600">Industry Collaborators</div>
               </div>
               <div className="text-center p-8 rounded-2xl bg-neutral-50/50">
                 <div className="text-4xl font-bold mb-2 text-neutral-900">
@@ -156,15 +202,8 @@ export default function Home() {
                       <div className="group relative h-full overflow-hidden rounded-xl bg-white shadow-lg transition-all hover:shadow-xl">
                         <div className="p-6">
                           <div className="mb-4 flex items-center space-x-3">
-                            <div className="relative h-12 w-12 overflow-hidden rounded-lg bg-neutral-100">
-                              {project.companyLogo && (
-                                <Image
-                                  src={project.companyLogo}
-                                  alt={project.companyName}
-                                  fill
-                                  className="object-contain"
-                                />
-                              )}
+                            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-neutral-100">
+                              {getCompanyIcon(project.companyName, project.companyLogo)}
                             </div>
                             <div>
                               <h4 className="text-sm font-medium text-neutral-900">
@@ -231,15 +270,8 @@ export default function Home() {
                       <div className="group relative h-full overflow-hidden rounded-xl bg-white shadow-lg transition-all hover:shadow-xl">
                         <div className="p-6">
                           <div className="mb-4 flex items-center space-x-3">
-                            <div className="relative h-12 w-12 overflow-hidden rounded-lg bg-neutral-100">
-                              {project.companyLogo && (
-                                <Image
-                                  src={project.companyLogo}
-                                  alt={project.companyName}
-                                  fill
-                                  className="object-contain"
-                                />
-                              )}
+                            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-neutral-100">
+                              {getCompanyIcon(project.companyName, project.companyLogo)}
                             </div>
                             <div>
                               <h4 className="text-sm font-medium text-neutral-900">
@@ -301,7 +333,7 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl font-bold mb-12 text-center text-black">
-              Industry Partners
+              Industry Collaborators
               <span className="block text-base text-center mt-3 text-neutral-600">
                 Collaborating with leading companies across multiple sectors
               </span>
@@ -343,20 +375,6 @@ export default function Home() {
                   logo: "/companies/motorola-logo-icon.svg",
                   color: "#0163BE", // Teal
                 },
-                {
-                  name: "Nvidia",
-                  description: "AI & High-Performance Computing",
-                  type: "Technology",
-                  logo: "/companies/nvidia.svg",
-                  color: "#76B900", // Nvidia Green
-                },
-                {
-                  name: "Intel",
-                  description: "Computing Innovation",
-                  type: "Technology",
-                  logo: "/companies/intel.svg",
-                  color: "#0071C5", // Intel Blue
-                },
               ].map((company, index) => (
                 <div
                   key={index}
@@ -377,7 +395,9 @@ export default function Home() {
                   <h3 className="text-lg font-semibold mb-2 text-neutral-900">
                     {company.name}
                   </h3>
-                  <p className="text-sm text-neutral-600 mb-2">{company.description}</p>
+                  <p className="text-sm text-neutral-600 mb-2">
+                    {company.description}
+                  </p>
                   <span
                     className="text-xs px-3 py-1 rounded-full"
                     style={{
@@ -386,6 +406,80 @@ export default function Home() {
                     }}
                   >
                     {company.type}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Government Funding Agencies Section */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <div className="max-w-5xl mx-auto">
+            <h2 className="text-3xl font-bold mb-12 text-center text-black">
+              Research Grant Supporting Government Agencies
+              <span className="block text-base text-center mt-3 text-neutral-600">
+                Supported by the Indian government organizations in science and
+                technology
+              </span>
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-10">
+              {[
+                {
+                  name: "DST",
+                  description: "Department of Science & Technology",
+                  type: "Government",
+                  logo: "/companies/dst-logo.svg",
+                  color: "#19417D",
+                },
+                {
+                  name: "BIRAC",
+                  description:
+                    "Biotechnology Industry Research Assistance Council",
+                  type: "Biotechnology",
+                  logo: "/companies/birac.svg",
+                  color: "#2E7D32",
+                },
+                {
+                  name: "AICTE",
+                  description: "All India Council for Technical Education",
+                  type: "Education",
+                  logo: "/companies/aicte-logo.svg",
+                  color: "#003366",
+                },
+              ].map((agency, index) => (
+                <div
+                  key={index}
+                  className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200 flex flex-col items-center text-center"
+                >
+                  <div
+                    className="w-24 h-24 mb-4 p-4 rounded-lg flex items-center justify-center"
+                    style={{ backgroundColor: `${agency.color}15` }}
+                  >
+                    <Image
+                      src={agency.logo}
+                      alt={agency.name}
+                      width={80}
+                      height={80}
+                      className="object-contain"
+                    />
+                  </div>
+                  <h3 className="text-lg font-semibold mb-2 text-neutral-900">
+                    {agency.name}
+                  </h3>
+                  <p className="text-sm text-neutral-600 mb-2">
+                    {agency.description}
+                  </p>
+                  <span
+                    className="text-xs px-3 py-1 rounded-full"
+                    style={{
+                      backgroundColor: `${agency.color}15`,
+                      color: agency.color,
+                    }}
+                  >
+                    {agency.type}
                   </span>
                 </div>
               ))}

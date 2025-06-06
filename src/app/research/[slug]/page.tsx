@@ -180,14 +180,6 @@ export default async function ResearchProjectPage({ params }: { params: Params }
                 Collaborating With: {project.companyName}
               </h3>
               <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-                {project.companyLogo && (
-                  <div 
-                    className="relative h-20 w-20 flex-shrink-0 p-2 rounded-md flex items-center justify-center shadow-sm"
-                    style={{ backgroundColor: `${companyColor}15` }}
-                  >
-                    <Image src={project.companyLogo} alt={project.companyName} fill className="object-contain p-2" />
-                  </div>
-                )}
                 <p className="text-neutral-800">{project.companyDescription}</p>
               </div>
             </div>
