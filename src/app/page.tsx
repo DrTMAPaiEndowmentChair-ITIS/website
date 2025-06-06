@@ -18,9 +18,7 @@ import {
   Cpu, 
   Cloud, 
   Radio,
-  Building2,
-  Microscope,
-  GraduationCap 
+  Building2
 } from "lucide-react";
 
 // Function to get company icon or logo based on company name
