@@ -12,21 +12,14 @@ import { getSortedProjectsData, ProjectFrontmatter } from "@/lib/projects";
 import { getSortedEventsData, EventFrontmatter } from "@/lib/events";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import { 
-  Zap, 
-  Cable, 
-  Cpu, 
-  Cloud, 
-  Radio,
-  Building2
-} from "lucide-react";
+import { Zap, Cable, Cpu, Cloud, Radio, Building2 } from "lucide-react";
 
 // Function to get company icon or logo based on company name
 const getCompanyIcon = (companyName: string, companyLogo?: string) => {
   const iconProps = { size: 24, className: "text-neutral-600" };
-  
+
   // Government agencies - use their actual logos
-  if (['dst', 'birac', 'aicte'].includes(companyName.toLowerCase())) {
+  if (["dst", "birac", "aicte"].includes(companyName.toLowerCase())) {
     if (companyLogo) {
       return (
         <Image
@@ -39,18 +32,18 @@ const getCompanyIcon = (companyName: string, companyLogo?: string) => {
       );
     }
   }
-  
+
   // Commercial companies - use icons
   switch (companyName.toLowerCase()) {
-    case 'schneider electric':
+    case "schneider electric":
       return <Zap {...iconProps} />; // Energy & Power
-    case 'te connectivity':
+    case "te connectivity":
       return <Cable {...iconProps} />; // Electronic Connectors
-    case 'amd':
+    case "amd":
       return <Cpu {...iconProps} />; // Semiconductor/Processors
-    case 'ibm':
+    case "ibm":
       return <Cloud {...iconProps} />; // Cloud Computing & AI
-    case 'motorola solutions':
+    case "motorola solutions":
       return <Radio {...iconProps} />; // Industrial Communication
     default:
       return <Building2 {...iconProps} />; // Generic company icon
@@ -76,7 +69,7 @@ export default function Home() {
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
                 <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-neutral-900">
-                  Advancing Academic Research Through Industry Collaborators
+                  Advancing Academic Research Through Industry Collaborations
                 </h1>
                 <p className="text-neutral-600 text-lg mb-8">
                   Join us in pushing the boundaries of innovation through
@@ -201,7 +194,10 @@ export default function Home() {
                         <div className="p-6">
                           <div className="mb-4 flex items-center space-x-3">
                             <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-neutral-100">
-                              {getCompanyIcon(project.companyName, project.companyLogo)}
+                              {getCompanyIcon(
+                                project.companyName,
+                                project.companyLogo,
+                              )}
                             </div>
                             <div>
                               <h4 className="text-sm font-medium text-neutral-900">
@@ -269,7 +265,10 @@ export default function Home() {
                         <div className="p-6">
                           <div className="mb-4 flex items-center space-x-3">
                             <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-neutral-100">
-                              {getCompanyIcon(project.companyName, project.companyLogo)}
+                              {getCompanyIcon(
+                                project.companyName,
+                                project.companyLogo,
+                              )}
                             </div>
                             <div>
                               <h4 className="text-sm font-medium text-neutral-900">

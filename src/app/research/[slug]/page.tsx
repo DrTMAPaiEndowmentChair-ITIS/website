@@ -233,41 +233,7 @@ export default async function ResearchProjectPage({ params }: { params: Params }
               )}
             </div>
             
-            {/* Related links section */}
-            <div className="mt-8 p-4 rounded-lg" style={{ backgroundColor: `${companyColor}10` }}>
-              <h3 className="text-lg font-semibold mb-3" style={{ color: companyColor }}>
-                Related Resources
-              </h3>
-              <ul className="space-y-2">
-                <li>
-                  <Link 
-                    href="#" 
-                    className="text-neutral-800 hover:text-[color:var(--link-color)]"
-                    style={{ color: companyColor }}
-                  >
-                    Research Publications
-                  </Link>
-                </li>
-                <li>
-                  <Link 
-                    href="#" 
-                    className="text-neutral-800 hover:text-[color:var(--link-color)]"
-                    style={{ color: companyColor }}
-                  >
-                    Project Timeline
-                  </Link>
-                </li>
-                <li>
-                  <Link 
-                    href="#" 
-                    className="text-neutral-800 hover:text-[color:var(--link-color)]"
-                    style={{ color: companyColor }}
-                  >
-                    Partner Organizations
-                  </Link>
-                </li>
-              </ul>
-            </div>
+
           </article>
         </div>
       </main>

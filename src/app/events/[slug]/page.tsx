@@ -55,7 +55,12 @@ const components = {
     }
     // Otherwise, render as a normal paragraph
     return <p className="text-neutral-700 mb-4" {...props} />;
-  }
+  },
+  ul: (props: React.ComponentPropsWithoutRef<'ul'>) => <ul className="text-neutral-800 mb-4 list-disc pl-6" {...props} />,
+  ol: (props: React.ComponentPropsWithoutRef<'ol'>) => <ol className="text-neutral-800 mb-4 list-decimal pl-6" {...props} />,
+  li: (props: React.ComponentPropsWithoutRef<'li'>) => <li className="text-neutral-800 mb-1" {...props} />,
+  strong: (props: React.ComponentPropsWithoutRef<'strong'>) => <strong className="text-neutral-900 font-semibold" {...props} />,
+  em: (props: React.ComponentPropsWithoutRef<'em'>) => <em className="text-neutral-800" {...props} />
 };
 
 export async function generateStaticParams() {

@@ -67,6 +67,11 @@ export default function ChairpersonPage() {
       caption: "Indian Patent for Diabetic Ulcer Detection Methodology",
       objectFit: "contain",
     },
+    {
+      image: "/chairperson/patents/FootCompl.jpg",
+      caption: "Indian Patent for Detection of Foot Complications",
+      objectFit: "contain",
+    },
   ];
 
   return (
