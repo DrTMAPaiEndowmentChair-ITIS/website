@@ -2,7 +2,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { Cpu, HardDrive, Zap, Monitor, Activity, Server } from "lucide-react";
+import { Cpu, HardDrive, Zap, Monitor, Activity } from "lucide-react";
 
 export const metadata = {
   title: "Computational Resources | Dr. TMA Pai Endowment Chair",
@@ -41,7 +41,8 @@ export default function ComputePage() {
       ],
       aiCapabilities: {
         tier: "Production-Scale AI Development",
-        description: "Enterprise-grade infrastructure for deploying and scaling AI solutions in production environments",
+        description:
+          "Enterprise-grade infrastructure for deploying and scaling AI solutions in production environments",
         capabilities: [
           "Training large language models with billions of parameters",
           "Production-scale deep learning model deployment",
@@ -80,7 +81,8 @@ export default function ComputePage() {
       ],
       aiCapabilities: {
         tier: "AI Prototyping & Development",
-        description: "Optimized for rapid prototyping, testing, and iterative development of AI models",
+        description:
+          "Optimized for rapid prototyping, testing, and iterative development of AI models",
         capabilities: [
           "Neural network prototyping and validation",
           "Computer vision model development",
@@ -119,7 +121,8 @@ export default function ComputePage() {
       ],
       aiCapabilities: {
         tier: "AI Prototyping & Development",
-        description: "Compact yet powerful systems for AI experimentation and rapid development cycles",
+        description:
+          "Compact yet powerful systems for AI experimentation and rapid development cycles",
         capabilities: [
           "Quick AI model prototyping and testing",
           "Small to medium-scale neural network training",
@@ -361,14 +364,16 @@ export default function ComputePage() {
                           {workstation.aiCapabilities.description}
                         </p>
                         <div className="space-y-3">
-                          {workstation.aiCapabilities.capabilities.map((capability, i) => (
-                            <div key={i} className="flex items-start">
-                              <div className="w-2 h-2 bg-[#E8580C] rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                              <span className="text-neutral-700 text-sm">
-                                {capability}
-                              </span>
-                            </div>
-                          ))}
+                          {workstation.aiCapabilities.capabilities.map(
+                            (capability, i) => (
+                              <div key={i} className="flex items-start">
+                                <div className="w-2 h-2 bg-[#E8580C] rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                                <span className="text-neutral-700 text-sm">
+                                  {capability}
+                                </span>
+                              </div>
+                            ),
+                          )}
                         </div>
                       </div>
                     </div>
