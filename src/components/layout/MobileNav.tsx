@@ -88,7 +88,7 @@ export default function MobileNav() {
                   className="w-full bg-[#E8580C] hover:bg-[#E8580C]/90 text-white"
                 >
                   <Link
-                    href="https://lttstore.com"
+                    href="/apply"
                     onClick={() => setIsOpen(false)}
                   >
                     Apply Now

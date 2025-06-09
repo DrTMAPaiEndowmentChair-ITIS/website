@@ -555,13 +555,13 @@ export default function Home() {
               Apply now to participate in cutting-edge research projects and
               collaborate with industry leaders.
             </p>
-            <Button
-              size="lg"
-              asChild
-              className="bg-[#E8580C] hover:bg-[#E8580C]/90 text-white"
-            >
-              <Link href="https://lttstore.com">Apply Now</Link>
-            </Button>
+                            <Button
+                  size="lg"
+                  asChild
+                  className="bg-[#E8580C] hover:bg-[#E8580C]/90 text-white"
+                >
+                  <Link href="/apply">Apply Now</Link>
+                </Button>
           </div>
         </div>
       </section>

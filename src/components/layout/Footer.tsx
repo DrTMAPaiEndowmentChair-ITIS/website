@@ -60,7 +60,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="https://lttstore.com" className="text-neutral-600 hover:text-neutral-900 transition-colors">
+                <Link href="/apply" className="text-neutral-600 hover:text-neutral-900 transition-colors">
                   Apply
                 </Link>
               </li>

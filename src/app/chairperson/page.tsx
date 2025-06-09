@@ -1348,7 +1348,7 @@ export default function ChairpersonPage() {
               size="lg"
               className="bg-[#E8580C] hover:bg-[#E8580C]/90 text-white"
             >
-              <Link href="https://lttstore.com">Apply Now</Link>
+              <Link href="/apply">Apply Now</Link>
             </Button>
           </div>
         </div>

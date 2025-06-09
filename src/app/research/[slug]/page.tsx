@@ -213,7 +213,7 @@ export default async function ResearchProjectPage({ params }: { params: Params }
                 }}
                 className="hover:bg-opacity-10 hover:bg-[var(--light-bg)]"
               >
-                <Link href="https://lttstore.com">Apply for this Project</Link>
+                <Link href="/apply">Apply for this Project</Link>
               </Button>
               
               {project.attachments && project.attachments.length > 0 && (
