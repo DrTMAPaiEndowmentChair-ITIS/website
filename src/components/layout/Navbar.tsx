@@ -27,6 +27,12 @@ export default function Navbar() {
               Events
             </Link>
             <Link
+              href="/compute"
+              className="text-neutral-600 hover:text-neutral-900 transition-colors"
+            >
+              Compute
+            </Link>
+            <Link
               href="/chairperson"
               className="text-neutral-600 hover:text-neutral-900 transition-colors"
             >

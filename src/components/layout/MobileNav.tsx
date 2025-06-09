@@ -71,6 +71,15 @@ export default function MobileNav() {
                   </li>
                   <li>
                     <Link
+                      href="/compute"
+                      className="block text-lg text-neutral-600 hover:text-neutral-900 transition-colors"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      Compute
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
                       href="/chairperson"
                       className="block text-lg text-neutral-600 hover:text-neutral-900 transition-colors"
                       onClick={() => setIsOpen(false)}

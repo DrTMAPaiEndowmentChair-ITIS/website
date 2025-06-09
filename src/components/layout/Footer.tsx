@@ -60,6 +60,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/compute" className="text-neutral-600 hover:text-neutral-900 transition-colors">
+                  Compute
+                </Link>
+              </li>
+              <li>
                 <Link href="/apply" className="text-neutral-600 hover:text-neutral-900 transition-colors">
                   Apply
                 </Link>
