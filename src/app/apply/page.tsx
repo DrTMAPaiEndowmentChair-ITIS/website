@@ -140,7 +140,7 @@ export default function ApplyPage() {
                 </h3>
                 <p className="text-neutral-700 mb-4">
                   If you have questions about the application process or our
-                  research programs, don't hesitate to reach out.
+                  research programs, please reach out.
                 </p>
                 <div className="text-sm text-neutral-600">
                   <p className="mb-2">
