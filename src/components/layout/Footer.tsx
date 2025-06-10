@@ -22,7 +22,7 @@ export default function Footer() {
 
           <div>
             <h3 className="text-lg font-semibold mb-4 text-neutral-900">
-              Chairperson
+              Chair Professor
             </h3>
             <p className="text-neutral-600">
               <span className="font-medium">Dr. TMA Pai Endowment Chair</span>

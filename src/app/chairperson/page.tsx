@@ -6,7 +6,7 @@ import ImageCarousel from "@/components/ui/ImageCarousel";
 import Footer from "@/components/layout/Footer";
 
 export const metadata = {
-  title: "Dr. Manohara Pai MM | Chairperson | Dr. TMA Pai Endowment Chair",
+  title: "Dr. Manohara Pai MM | Chair Professor | Dr. TMA Pai Endowment Chair",
   description:
     "Learn about Dr. Manohara Pai MM, an accomplished academic with over 35 years of experience in industry, research, and teaching.",
 };
@@ -86,7 +86,7 @@ export default function ChairpersonPage() {
             <div className="grid md:grid-cols-2 gap-12 items-start">
               <div className="order-2 md:order-1">
                 <div className="inline-block px-4 py-2 bg-[#E8580C]/10 text-[#E8580C] rounded-full text-sm font-semibold mb-4">
-                  Chairperson
+                  Chair Professor
                 </div>
                 <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight text-neutral-900">
                   Dr. Manohara Pai M.M.

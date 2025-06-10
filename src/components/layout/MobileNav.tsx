@@ -84,7 +84,7 @@ export default function MobileNav() {
                       className="block text-lg text-neutral-600 hover:text-neutral-900 transition-colors"
                       onClick={() => setIsOpen(false)}
                     >
-                      Chairperson
+                      Chair Professor
                     </Link>
                   </li>
                 </ul>

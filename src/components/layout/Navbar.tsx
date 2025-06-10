@@ -8,8 +8,13 @@ export default function Navbar() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="text-xl font-bold text-neutral-900">
-            Dr. TMA Pai Endowment Chair, MAHE, Manipal
+          <Link href="/" className="flex flex-col">
+            <span className="text-xl font-bold text-neutral-900">
+              Dr. TMA Pai Endowment Chair, MAHE, Manipal
+            </span>
+            <span className="text-sm text-neutral-600 font-normal">
+              Intelligent Technologies, Industry 4.0 & Sustainability
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -36,7 +41,7 @@ export default function Navbar() {
               href="/chairperson"
               className="text-neutral-600 hover:text-neutral-900 transition-colors"
             >
-              Chairperson
+              Chair Professor
             </Link>
             <Button
               asChild

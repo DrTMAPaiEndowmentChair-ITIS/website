@@ -35,7 +35,7 @@ export default function ApplyPage() {
                 variant="outline"
                 className="border-[#E8580C] text-[#E8580C] hover:bg-[#E8580C]/10"
               >
-                <Link href="/chairperson">Meet the Chairperson</Link>
+                <Link href="/chairperson">Meet the Chair Professor</Link>
               </Button>
             </div>
           </div>

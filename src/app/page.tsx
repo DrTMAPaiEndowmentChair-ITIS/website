@@ -351,13 +351,14 @@ export default function Home() {
                   logo: "/companies/te-connectivity-logo.svg",
                   color: "#E98302",
                 },
-                {
+                /*  {
                   name: "AMD",
                   description: "Semiconductor Manufacturing",
                   type: "Technology",
                   logo: "/companies/amd_logo.svg",
                   color: "#E40046",
                 },
+                */
                 {
                   name: "IBM",
                   description: "Cloud Computing & AI",
@@ -365,6 +366,7 @@ export default function Home() {
                   logo: "/companies/IBM_logo.svg",
                   color: "#1F70C1",
                 },
+                /*
                 {
                   name: "Motorola Solutions",
                   description: "Industrial Communication",
@@ -372,6 +374,7 @@ export default function Home() {
                   logo: "/companies/motorola-logo-icon.svg",
                   color: "#0163BE", // Teal
                 },
+                */
               ].map((company, index) => (
                 <div
                   key={index}
@@ -555,13 +558,13 @@ export default function Home() {
               Apply now to participate in cutting-edge research projects and
               collaborate with industry leaders.
             </p>
-                            <Button
-                  size="lg"
-                  asChild
-                  className="bg-[#E8580C] hover:bg-[#E8580C]/90 text-white"
-                >
-                  <Link href="/apply">Apply Now</Link>
-                </Button>
+            <Button
+              size="lg"
+              asChild
+              className="bg-[#E8580C] hover:bg-[#E8580C]/90 text-white"
+            >
+              <Link href="/apply">Apply Now</Link>
+            </Button>
           </div>
         </div>
       </section>
