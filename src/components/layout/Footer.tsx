@@ -12,11 +12,14 @@ export default function Footer() {
             <p className="text-neutral-600">
               <span className="font-medium">Name:</span> Dr. Manohara Pai M.M.
               <br />
-              <span className="font-medium">Office:</span> Senior Professor, Department of ICT, MIT, Manipal
+              <span className="font-medium">Office:</span> Senior Professor,
+              School of Computer Engineering, MIT, Manipal
               <br />
-              <span className="font-medium">Email:</span> drtmapaichair.itis@manipal.edu
+              <span className="font-medium">Email:</span>{" "}
+              drtmapaichair.itis@manipal.edu
               <br />
-              <span className="font-medium">Location:</span> Manipal, Karnataka, India
+              <span className="font-medium">Location:</span> Manipal, Karnataka,
+              India
             </p>
           </div>
 
@@ -30,8 +33,8 @@ export default function Footer() {
               Intelligent Technologies, Industry 4.0 & Sustainability
               <br />
               <br />
-              <Link 
-                href="/chairperson" 
+              <Link
+                href="/chairperson"
                 className="text-[#E8580C] hover:text-[#E8580C]/80 transition-colors"
               >
                 Learn more about Dr. Manohara Pai M.M. →
@@ -45,27 +48,42 @@ export default function Footer() {
             </h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/" className="text-neutral-600 hover:text-neutral-900 transition-colors">
+                <Link
+                  href="/"
+                  className="text-neutral-600 hover:text-neutral-900 transition-colors"
+                >
                   Home
                 </Link>
               </li>
               <li>
-                <Link href="/#research" className="text-neutral-600 hover:text-neutral-900 transition-colors">
+                <Link
+                  href="/#research"
+                  className="text-neutral-600 hover:text-neutral-900 transition-colors"
+                >
                   Research
                 </Link>
               </li>
               <li>
-                <Link href="/#events" className="text-neutral-600 hover:text-neutral-900 transition-colors">
+                <Link
+                  href="/#events"
+                  className="text-neutral-600 hover:text-neutral-900 transition-colors"
+                >
                   Events
                 </Link>
               </li>
               <li>
-                <Link href="/compute" className="text-neutral-600 hover:text-neutral-900 transition-colors">
+                <Link
+                  href="/compute"
+                  className="text-neutral-600 hover:text-neutral-900 transition-colors"
+                >
                   Compute
                 </Link>
               </li>
               <li>
-                <Link href="/apply" className="text-neutral-600 hover:text-neutral-900 transition-colors">
+                <Link
+                  href="/apply"
+                  className="text-neutral-600 hover:text-neutral-900 transition-colors"
+                >
                   Apply
                 </Link>
               </li>
@@ -78,9 +96,9 @@ export default function Footer() {
             </h3>
             <ul className="space-y-2">
               <li>
-                <a 
-                  href="https://linkedin.com" 
-                  target="_blank" 
+                <a
+                  href="https://linkedin.com"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="text-neutral-600 hover:text-neutral-900 transition-colors"
                 >
@@ -88,9 +106,9 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a 
-                  href="https://twitter.com" 
-                  target="_blank" 
+                <a
+                  href="https://twitter.com"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="text-neutral-600 hover:text-neutral-900 transition-colors"
                 >
@@ -98,9 +116,9 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a 
-                  href="https://github.com" 
-                  target="_blank" 
+                <a
+                  href="https://github.com"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="text-neutral-600 hover:text-neutral-900 transition-colors"
                 >
@@ -112,9 +130,12 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 pt-8 border-t border-neutral-200/50 text-center text-neutral-600">
-          <p>© {new Date().getFullYear()} Dr. TMA Pai Endowment Chair. All rights reserved.</p>
+          <p>
+            © {new Date().getFullYear()} Dr. TMA Pai Endowment Chair. All
+            rights reserved.
+          </p>
         </div>
       </div>
     </footer>
   );
-} 
+}
