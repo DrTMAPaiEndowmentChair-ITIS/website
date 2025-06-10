@@ -107,17 +107,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="https://twitter.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-neutral-600 hover:text-neutral-900 transition-colors"
-                >
-                  Twitter
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://github.com"
+                  href="https://github.com/Dr-TMA-Pai-Endowment-Chair-ITIS"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-neutral-600 hover:text-neutral-900 transition-colors"

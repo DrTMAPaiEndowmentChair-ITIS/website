@@ -8,11 +8,14 @@ export default function Navbar() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between min-h-16 py-2">
           {/* Logo */}
-          <Link href="/" className="flex flex-col py-1 max-w-[60%] sm:max-w-none">
+          <Link
+            href="/"
+            className="flex flex-col py-1 max-w-[60%] sm:max-w-none"
+          >
             <span className="text-sm sm:text-lg lg:text-xl font-bold text-neutral-900 leading-tight">
               Dr. TMA Pai Endowment Chair, MAHE, Manipal
             </span>
-            <span className="text-xs sm:text-sm text-neutral-600 font-normal leading-tight">
+            <span className="text-xs sm:text-sm text-[#E8580C] font-normal leading-tight">
               Intelligent Technologies, Industry 4.0 & Sustainability
             </span>
           </Link>
