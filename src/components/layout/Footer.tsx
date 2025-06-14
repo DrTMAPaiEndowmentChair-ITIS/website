@@ -97,7 +97,7 @@ export default function Footer() {
             <ul className="space-y-2">
               <li>
                 <a
-                  href="https://linkedin.com"
+                  href="https://www.linkedin.com/company/dr-tma-pai-endowment-chair-itis/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-neutral-600 hover:text-neutral-900 transition-colors"

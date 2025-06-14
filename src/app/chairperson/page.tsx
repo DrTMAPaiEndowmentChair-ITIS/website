@@ -89,7 +89,7 @@ export default function ChairpersonPage() {
                   Chair Professor
                 </div>
                 <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight text-neutral-900">
-                  Dr. Manohara Pai M.M.
+                  Dr. Manohara M.M. Pai
                 </h1>
                 <p className="text-xl font-medium text-[#E8580C] mb-4">
                   Senior Professor, School of Computer Engineering, MIT, Manipal
