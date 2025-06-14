@@ -325,6 +325,80 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Government Funding Agencies Section */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <div className="max-w-5xl mx-auto">
+            <h2 className="text-3xl font-bold mb-12 text-center text-black">
+              Research Grant Supporting Government Agencies
+              <span className="block text-base text-center mt-3 text-neutral-600">
+                Supported by the Indian government organizations in science and
+                technology
+              </span>
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-10">
+              {[
+                {
+                  name: "DST",
+                  description: "Department of Science & Technology",
+                  type: "Government",
+                  logo: "/companies/dst-logo.svg",
+                  color: "#19417D",
+                },
+                {
+                  name: "BIRAC",
+                  description:
+                    "Biotechnology Industry Research Assistance Council",
+                  type: "Biotechnology",
+                  logo: "/companies/birac.svg",
+                  color: "#2E7D32",
+                },
+                {
+                  name: "AICTE",
+                  description: "All India Council for Technical Education",
+                  type: "Education",
+                  logo: "/companies/aicte-logo.svg",
+                  color: "#003366",
+                },
+              ].map((agency, index) => (
+                <div
+                  key={index}
+                  className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200 flex flex-col items-center text-center"
+                >
+                  <div
+                    className="w-24 h-24 mb-4 p-4 rounded-lg flex items-center justify-center"
+                    style={{ backgroundColor: `${agency.color}15` }}
+                  >
+                    <Image
+                      src={agency.logo}
+                      alt={agency.name}
+                      width={80}
+                      height={80}
+                      className="object-contain"
+                    />
+                  </div>
+                  <h3 className="text-lg font-semibold mb-2 text-neutral-900">
+                    {agency.name}
+                  </h3>
+                  <p className="text-sm text-neutral-600 mb-2">
+                    {agency.description}
+                  </p>
+                  <span
+                    className="text-xs px-3 py-1 rounded-full"
+                    style={{
+                      backgroundColor: `${agency.color}15`,
+                      color: agency.color,
+                    }}
+                  >
+                    {agency.type}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Companies Section */}
       <section className="py-20 bg-neutral-50">
         <div className="container mx-auto px-4">
@@ -406,80 +480,6 @@ export default function Home() {
                     }}
                   >
                     {company.type}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Government Funding Agencies Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto">
-            <h2 className="text-3xl font-bold mb-12 text-center text-black">
-              Research Grant Supporting Government Agencies
-              <span className="block text-base text-center mt-3 text-neutral-600">
-                Supported by the Indian government organizations in science and
-                technology
-              </span>
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-10">
-              {[
-                {
-                  name: "DST",
-                  description: "Department of Science & Technology",
-                  type: "Government",
-                  logo: "/companies/dst-logo.svg",
-                  color: "#19417D",
-                },
-                {
-                  name: "BIRAC",
-                  description:
-                    "Biotechnology Industry Research Assistance Council",
-                  type: "Biotechnology",
-                  logo: "/companies/birac.svg",
-                  color: "#2E7D32",
-                },
-                {
-                  name: "AICTE",
-                  description: "All India Council for Technical Education",
-                  type: "Education",
-                  logo: "/companies/aicte-logo.svg",
-                  color: "#003366",
-                },
-              ].map((agency, index) => (
-                <div
-                  key={index}
-                  className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200 flex flex-col items-center text-center"
-                >
-                  <div
-                    className="w-24 h-24 mb-4 p-4 rounded-lg flex items-center justify-center"
-                    style={{ backgroundColor: `${agency.color}15` }}
-                  >
-                    <Image
-                      src={agency.logo}
-                      alt={agency.name}
-                      width={80}
-                      height={80}
-                      className="object-contain"
-                    />
-                  </div>
-                  <h3 className="text-lg font-semibold mb-2 text-neutral-900">
-                    {agency.name}
-                  </h3>
-                  <p className="text-sm text-neutral-600 mb-2">
-                    {agency.description}
-                  </p>
-                  <span
-                    className="text-xs px-3 py-1 rounded-full"
-                    style={{
-                      backgroundColor: `${agency.color}15`,
-                      color: agency.color,
-                    }}
-                  >
-                    {agency.type}
                   </span>
                 </div>
               ))}
