@@ -172,15 +172,12 @@ export default function ChairpersonPage() {
               </p>
 
               <p className="text-lg text-neutral-700 text-justify">
-                Dr. Pai currently serves as the Director of the Centre for
-                Artificial Intelligence at MIT, MAHE, where he leads a team of
-                researchers working on cutting-edge technologies. He is also the
-                holder of the prestigious Dr. TMA Pai Endowment Chair in
-                Intelligent Technologies, Industry 4.0 and Sustainability
-                (2023-2025), recognizing his expertise and contributions to
-                these fields. His work bridges academic research with real-world
-                applications, creating technologies that address societal
-                challenges.
+                Dr. Pai is the holder of the prestigious Dr. TMA Pai Endowment
+                Chair in Intelligent Technologies, Industry 4.0 and
+                Sustainability (2023-2025), recognizing his expertise and
+                contributions to these fields. His work bridges academic
+                research with real-world applications, creating technologies
+                that address societal challenges.
               </p>
             </div>
           </div>
