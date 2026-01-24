@@ -17,9 +17,9 @@ import {
   Building01Icon,
   GraduationScrollIcon,
   UserGroupIcon,
+  ClockIcon,
   FlashIcon,
   DollarCircleIcon,
-  StarIcon,
   ComputerIcon,
   HeartCheckIcon,
   Video01Icon,
@@ -29,17 +29,16 @@ import {
   AnalyticsUpIcon,
   CloudIcon,
   ArrowRight01Icon,
-  CheckmarkCircle01Icon,
   Mail01Icon,
 } from "@hugeicons/core-free-icons";
 
 export const metadata = {
   title: "Dr. Manohara Pai MM | Chair Professor | Dr. TMA Pai Endowment Chair",
-  description: "Learn about Dr. Manohara Pai MM, an accomplished academic with over 35 years of experience in industry, research, and teaching.",
+  description: "Profile of Dr. Manohara Pai MM, Senior Professor at MIT Manipal with 33+ years in teaching, research, and administration.",
 };
 
 const heroStats = [
-  { value: "33+", label: "Years of Excellence" },
+  { value: "33+", label: "Years Experience" },
   { value: "10", label: "Patents Granted" },
   { value: "156", label: "Publications" },
   { value: "14", label: "PhD Scholars" },
@@ -47,522 +46,554 @@ const heroStats = [
 
 const patentsAndAwards = [
   { image: "/chairperson/patents/NTTA.jpeg", caption: "National Technical Teachers Award (NTTA 2022)" },
-  { image: "/chairperson/patents/MPAward.jpg", caption: "Dr. Manohar Pai M received the prestigious National Technical Best Teacher award from AICTE" },
-  { image: "/chairperson/patents/newscoverage.jpeg", caption: "News coverage of the National Technical Best Teacher award" },
-  { image: "/chairperson/patents/InnovationPioneers.jpg", caption: "Award from Minister of Science and Technology (Prithviraj Chavan) for mentoring innovation" },
-  { image: "/chairperson/patents/AustinTX.jpg", caption: "Infodev Business Incubation Training (2011) and Intensive training on Incubation in Texas Austin, USA (2010)" },
-  { image: "/chairperson/patents/USPatent1.png", caption: "US Patent for Adaptive Routing in Wireless Networks" },
-  { image: "/chairperson/patents/USPatent2.png", caption: "US Patent for Image Processing and Analysis" },
+  { image: "/chairperson/patents/MPAward.jpg", caption: "National Technical Best Teacher award from AICTE" },
+  { image: "/chairperson/patents/newscoverage.jpeg", caption: "News coverage of the NTTA award" },
+  { image: "/chairperson/patents/InnovationPioneers.jpg", caption: "Innovation mentoring award from Minister of Science and Technology" },
+  { image: "/chairperson/patents/AustinTX.jpg", caption: "Infodev Business Incubation Training, Texas Austin (2010-2011)" },
+  { image: "/chairperson/patents/USPatent1.png", caption: "US Patent: Adaptive Routing in Wireless Networks" },
+  { image: "/chairperson/patents/USPatent2.png", caption: "US Patent: Image Processing and Analysis" },
   { image: "/chairperson/patents/JapanesePatent.png", caption: "Japanese Patent" },
-  { image: "/chairperson/patents/Patent-OpticalFiber.jpeg", caption: "Patent for Optical Fiber Inserter Technology" },
-  { image: "/chairperson/patents/diabetic-ulcer.jpeg", caption: "Indian Patent for Diabetic Ulcer Detection Methodology" },
-  { image: "/chairperson/patents/FootCompl.jpg", caption: "Indian Patent for Detection of Foot Complications" },
+  { image: "/chairperson/patents/Patent-OpticalFiber.jpeg", caption: "Patent: Optical Fiber Inserter Technology" },
+  { image: "/chairperson/patents/diabetic-ulcer.jpeg", caption: "Indian Patent: Diabetic Ulcer Detection" },
+  { image: "/chairperson/patents/FootCompl.jpg", caption: "Indian Patent: Detection of Foot Complications" },
 ];
 
-const timeline = [
-  { year: "2023", title: "Senior Professor", subtitle: "MIT, MAHE", current: true },
-  { year: "2023", title: "Dr. TMA Pai Endowment Chair", subtitle: "Intelligent Technologies, Industry 4.0 & Sustainability" },
-  { year: "2022", title: "National Technical Teachers Award", subtitle: "AICTE, Ministry of Education, Govt. of India" },
-  { year: "2017", title: "Associate Director (Research & Consultancy)", subtitle: "MIT, MAHE" },
-  { year: "2010", title: "CEO, MUTBI", subtitle: "Manipal University Technology Business Incubator" },
-  { year: "2008", title: "Associate Director (Innovation Center)", subtitle: "DST-supported Innovation Centre" },
-  { year: "2001", title: "Professor & Founder Head, Dept. of ICT", subtitle: "MIT, MAHE" },
-  { year: "2001", title: "Ph.D. Computer Science & Engineering", subtitle: "University of Mysore" },
-  { year: "1992", title: "M.Tech Digital Electronics", subtitle: "NITK, Surathkal" },
+const adminPositions = [
+  {
+    icon: ClockIcon,
+    title: "Associate Director (Research and Consultancy), MIT, MAHE",
+    period: "Jan 2017 - Dec 2019",
+    points: [
+      "Enhanced institute publications from 347 to 770",
+      "Increased PhD registrations to over 200",
+      "Reformed PhD progress monitoring process",
+    ],
+  },
+  {
+    icon: FlashIcon,
+    title: "Associate Director (Innovation Center), MIT, MAHE",
+    period: "March 2008 - Dec 2016",
+    points: [
+      "Established Central Instrumentation Facility (inaugurated by Dr. Anil Kakodkar)",
+      "Set up Central Computing facility with HPC",
+      "Started annual 'Innovation Day' event",
+      "Established Technology Business Incubator (Rs.5 Crores grant from DST & MAHE)",
+      "Set up Intellectual Property services (50+ patents filed, 10+ granted)",
+      "Received innovation award from Minister of S&T",
+    ],
+  },
+  {
+    icon: Building01Icon,
+    title: "Head of Department of ICT, MIT, MAHE",
+    period: "May 2001 - Jan 2008",
+    points: [
+      "Established new Department with B.Tech(IT) and MCA programs",
+      "Started M.Tech(Computer Networking and Engineering) in 2005",
+      "Started M.Tech(Software Engineering) in 2006 with TU Eindhoven",
+      "Started annual event 'p.i.n.g'",
+      "Organized International Conference ICICOT 07 for MIT's Golden Jubilee",
+    ],
+  },
+  {
+    icon: UserGroupIcon,
+    title: "CEO, Manipal University Technology Business Incubator (MUTBI)",
+    period: "April 2010 - June 2016",
+    points: [
+      "Set up MUTBI Society as founder Secretary",
+      "Built 16,000 sq. ft. incubation facility for 10 start-ups & 10 pre-incubatees",
+      "Created Rs.2 crores corpus as seed support grant",
+      "Started 'Provenance' Business plan competition (awards of Rs.10 lakhs)",
+      "Industrial Collaboration for Incubation supported by TE-Connectivity",
+    ],
+  },
 ];
 
 const researchAreas = [
-  { name: "AI & ML Solutions", icon: ComputerIcon },
+  { name: "AI & ML", icon: ComputerIcon },
   { name: "Healthcare Tech", icon: HeartCheckIcon },
   { name: "Video Processing", icon: Video01Icon },
-  { name: "IIOT Solutions", icon: ChipIcon },
-  { name: "Wireless Sensor Networks", icon: Wifi01Icon },
-  { name: "GPS & Location Tech", icon: Location01Icon },
+  { name: "IIOT", icon: ChipIcon },
+  { name: "Wireless Networks", icon: Wifi01Icon },
+  { name: "GPS & Location", icon: Location01Icon },
   { name: "Data Analytics", icon: AnalyticsUpIcon },
   { name: "Cloud Computing", icon: CloudIcon },
 ];
 
-const achievements = [
-  {
-    icon: Award01Icon,
-    title: "Patents",
-    stats: "10 Granted",
-    details: ["3 US Patents", "1 Japanese Patent", "6 Indian Patents", "$8,000 Patenting Award"],
-  },
-  {
-    icon: BookOpen01Icon,
-    title: "Publications",
-    stats: "156 Papers",
-    details: ["International Journals", "Conference Proceedings", "2 Authored Books"],
-  },
-  {
-    icon: GraduationScrollIcon,
-    title: "Mentorship",
-    stats: "14 PhD Scholars",
-    details: ["8 Completed", "6 Ongoing", "81 M.Tech Theses"],
-  },
-  {
-    icon: DollarCircleIcon,
-    title: "Funding",
-    stats: "₹5+ Crores",
-    details: ["DST Grants", "Industry Partnerships", "BIRAC Support"],
-  },
-];
-
 const keyAwards = [
-  {
-    title: "Dr. TMA Pai Endowment Chair",
-    subtitle: "Intelligent Technologies, Industry 4.0 and Sustainability",
-    year: "2023-2025",
-  },
-  {
-    title: "National Technical Teachers Award",
-    subtitle: "AICTE, Ministry of Education, Govt. of India",
-    year: "2022",
-  },
-  {
-    title: "Innovation Pioneer Award",
-    subtitle: "Hon. Minister of Science & Technology",
-    year: "2009",
-  },
-  {
-    title: "Dr. TMA Pai Endowment Chair",
-    subtitle: "Data Analytics and Cloud Computing",
-    year: "2011-2014",
-  },
+  { title: "Dr. TMA Pai Endowment Chair", subtitle: "Intelligent Technologies, Industry 4.0 and Sustainability", year: "2023-2025" },
+  { title: "National Technical Teachers Award (NTTA)", subtitle: "AICTE, Ministry of Education, Govt. of India", year: "2022" },
+  { title: "Dr. TMA Pai Endowment Chair", subtitle: "Data Analytics and Cloud Computing", year: "2011-2014" },
+  { title: "Indigenous Dental Implants Technology Mentorship Award", subtitle: "IUSSTF-INTEL-DST, Hon. Minister of Science & Technology", year: "2009" },
+  { title: "Certified Trainer, Infodev, World Bank", subtitle: "Business Incubation and Technology Commercialization", year: "2012" },
 ];
 
 export default function ChairpersonPage() {
   return (
     <div className="min-h-screen">
-      {/* Hero Section - Dramatic & Grand */}
-      <section className="relative pt-24 pb-20 lg:pt-32 lg:pb-28 overflow-hidden">
-        {/* Background Elements */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/8 via-primary/3 to-transparent" />
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-primary/5 to-transparent" />
-        <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-background to-transparent" />
+      {/* Hero Section */}
+      <section className="relative pt-24 pb-16 lg:pt-32 lg:pb-20 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent" />
 
         <div className="container mx-auto px-4 lg:px-8 relative">
           <div className="max-w-6xl mx-auto">
-            <div className="grid lg:grid-cols-5 gap-12 lg:gap-16 items-center">
-              {/* Image Column */}
+            <div className="grid lg:grid-cols-5 gap-10 lg:gap-16 items-start">
+              {/* Image */}
               <div className="lg:col-span-2 order-1 lg:order-2">
-                <div className="relative">
-                  {/* Decorative frame */}
-                  <div className="absolute -inset-4 bg-gradient-to-br from-primary/20 to-primary/5 -z-10" />
-                  <div className="absolute -inset-4 border border-primary/20 translate-x-4 translate-y-4 -z-10" />
-                  <div className="relative aspect-[4/5] w-full max-w-md mx-auto overflow-hidden border-2 border-primary/30 bg-muted group">
-                    <Image
-                      src="/chairperson/image.jpg"
-                      alt="Dr. Manohara Pai MM"
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
-                      fill
-                      priority
-                    />
-                  </div>
+                <div className="relative aspect-[4/5] w-full max-w-sm mx-auto overflow-hidden border border-border bg-muted">
+                  <Image
+                    src="/chairperson/image.jpg"
+                    alt="Dr. Manohara Pai MM"
+                    className="object-cover"
+                    fill
+                    priority
+                  />
                 </div>
               </div>
 
-              {/* Content Column */}
+              {/* Content */}
               <div className="lg:col-span-3 order-2 lg:order-1">
-                <div className="space-y-6">
-                  <div>
-                    <p className="text-xs uppercase tracking-[0.3em] text-primary font-medium mb-4">
-                      Chair Professor
-                    </p>
-                    <h1 className="text-4xl sm:text-5xl lg:text-6xl font-medium leading-[1.1] tracking-tight text-foreground mb-4">
-                      Dr. Manohara
-                      <span className="block text-primary">M.M. Pai</span>
-                    </h1>
-                    <p className="text-lg sm:text-xl text-muted-foreground font-light leading-relaxed">
-                      Senior Professor, School of Computer Engineering
-                      <span className="block text-base mt-1">Manipal Institute of Technology, MAHE</span>
-                    </p>
-                  </div>
+                <p className="text-xs uppercase tracking-[0.2em] text-primary mb-3">Chair Professor</p>
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-medium leading-tight tracking-tight text-foreground mb-3">
+                  Dr. Manohara M.M. Pai
+                </h1>
+                <p className="text-base text-muted-foreground mb-1">
+                  Senior Professor, Department of Information and Communication Technology
+                </p>
+                <p className="text-sm text-muted-foreground mb-6">
+                  Manipal Institute of Technology, MAHE
+                </p>
 
-                  <div className="flex flex-wrap gap-3">
-                    <a
-                      href="mailto:drtmapaichair.itis@manipal.edu"
-                      className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground text-sm hover:bg-primary/90 transition-colors"
-                    >
-                      <HugeiconsIcon icon={Mail01Icon} strokeWidth={2} className="size-4" />
-                      Contact
-                    </a>
-                    <a href="https://scholar.google.co.in/citations?user=Zr3-m3IAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" className="px-4 py-2 border border-border hover:border-primary/50 text-sm text-muted-foreground hover:text-primary transition-colors">Google Scholar</a>
-                    <a href="https://orcid.org/0000-0003-2164-2945" target="_blank" rel="noopener noreferrer" className="px-4 py-2 border border-border hover:border-primary/50 text-sm text-muted-foreground hover:text-primary transition-colors">ORCID</a>
-                  </div>
+                <div className="flex flex-wrap gap-2 mb-8">
+                  <a href="mailto:drtmapaichair.itis@manipal.edu" className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground text-sm hover:bg-primary/90 transition-colors">
+                    <HugeiconsIcon icon={Mail01Icon} strokeWidth={2} className="size-4" />
+                    drtmapaichair.itis@manipal.edu
+                  </a>
+                </div>
+
+                <div className="flex flex-wrap gap-2 text-xs">
+                  <a href="https://researcher.manipal.edu/en/persons/manohara-m-m-pai" target="_blank" rel="noopener noreferrer" className="px-3 py-1.5 border border-border hover:border-primary/50 text-muted-foreground hover:text-primary transition-colors">Manipal Pure</a>
+                  <a href="https://orcid.org/0000-0003-2164-2945" target="_blank" rel="noopener noreferrer" className="px-3 py-1.5 border border-border hover:border-primary/50 text-muted-foreground hover:text-primary transition-colors">ORCID</a>
+                  <a href="https://scholar.google.co.in/citations?user=Zr3-m3IAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" className="px-3 py-1.5 border border-border hover:border-primary/50 text-muted-foreground hover:text-primary transition-colors">Google Scholar</a>
                 </div>
               </div>
             </div>
 
-            {/* Stats Bar */}
-            <div className="mt-16 lg:mt-20">
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-border">
-                {heroStats.map((stat, index) => (
-                  <div key={index} className="bg-background dark:bg-transparent p-6 lg:p-8 text-center group hover:bg-primary/5 transition-colors">
-                    <p className="text-3xl sm:text-4xl lg:text-5xl font-light text-primary mb-2 tracking-tight">
-                      {stat.value}
-                    </p>
-                    <p className="text-xs uppercase tracking-widest text-muted-foreground">
-                      {stat.label}
-                    </p>
-                  </div>
-                ))}
-              </div>
+            {/* Stats */}
+            <div className="mt-12 grid grid-cols-2 lg:grid-cols-4 border border-border divide-x divide-y lg:divide-y-0 divide-border">
+              {heroStats.map((stat, index) => (
+                <div key={index} className="p-6 text-center bg-card dark:bg-transparent">
+                  <p className="text-2xl sm:text-3xl font-light text-primary mb-1">{stat.value}</p>
+                  <p className="text-[10px] uppercase tracking-widest text-muted-foreground">{stat.label}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* About Section - Editorial Style */}
-      <section className="py-20 lg:py-28">
+      {/* About */}
+      <section className="py-16 bg-muted/30 dark:bg-transparent">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-4xl mx-auto">
-            <div className="grid lg:grid-cols-12 gap-8 lg:gap-12">
-              <div className="lg:col-span-4">
-                <p className="text-xs uppercase tracking-[0.3em] text-primary font-medium mb-2">About</p>
-                <h2 className="text-2xl lg:text-3xl font-medium text-foreground tracking-tight leading-tight">
-                  A Legacy of Innovation & Excellence
-                </h2>
-              </div>
-              <div className="lg:col-span-8">
-                <div className="text-base text-muted-foreground space-y-6 leading-relaxed">
-                  <p className="text-lg text-foreground font-light leading-relaxed">
-                    Dr. Manohara Pai M.M. is a distinguished academic leader whose career spans over three decades
-                    of transformative contributions to technical education, research innovation, and industry collaboration.
-                  </p>
-                  <p>
-                    As holder of the prestigious <span className="text-foreground font-medium">Dr. TMA Pai Endowment Chair
-                    in Intelligent Technologies, Industry 4.0 and Sustainability</span>, he continues to bridge the gap
-                    between academic research and real-world applications, creating technologies that address pressing
-                    societal challenges.
-                  </p>
-                  <p>
-                    His visionary leadership has shaped MAHE's innovation ecosystem—from establishing the Department
-                    of Information and Communication Technology to founding the Technology Business Incubator,
-                    which has nurtured numerous startups and industry partnerships.
-                  </p>
-                </div>
-              </div>
+            <p className="text-[10px] uppercase tracking-[0.2em] text-primary mb-2">About</p>
+            <h2 className="text-xl font-medium mb-6 text-foreground tracking-tight">Background</h2>
+            <div className="text-sm text-muted-foreground space-y-4 leading-relaxed">
+              <p>
+                Dr. Manohara Pai M.M. has 33 years of experience in administration, teaching, research, industrial collaborations, and consultancy at Manipal Institute of Technology. He holds a Ph.D. in Computer Science & Engineering from the University of Mysore (2001), M.Tech in Digital Electronics and Advanced Communications from NITK Surathkal (1992), and B.E. in Electronics & Communication from SJCE Mysore (1987).
+              </p>
+              <p>
+                He is the current holder of the Dr. TMA Pai Endowment Chair in Intelligent Technologies, Industry 4.0 and Sustainability (2023-2025). Previously, he held the Dr. TMA Pai Endowment Chair in Data Analytics and Cloud Computing (2011-2014).
+              </p>
+              <p>
+                His research interests include Computer Communication Networks, Wireless Adhoc Networks, Video Processing, Data Analytics, Cloud Computing, Technology Commercialization, and Patenting. He is a certified mentor by Infodev World Bank, Washington D.C.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Awards Highlight - Large Cards */}
-      <section className="py-20 lg:py-28 bg-muted/40 dark:bg-transparent">
+      {/* Awards & Patents */}
+      <section className="py-16">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12 lg:mb-16">
-              <p className="text-xs uppercase tracking-[0.3em] text-primary font-medium mb-3">Recognition</p>
-              <h2 className="text-3xl lg:text-4xl font-medium text-foreground tracking-tight">
-                Honors & Awards
-              </h2>
-            </div>
+          <div className="max-w-5xl mx-auto">
+            <p className="text-[10px] uppercase tracking-[0.2em] text-primary mb-2 text-center">Recognition</p>
+            <h2 className="text-xl font-medium mb-8 text-foreground text-center tracking-tight">Awards & Patents</h2>
 
-            <div className="grid md:grid-cols-2 gap-6 mb-12">
+            {/* Key Awards */}
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
               {keyAwards.map((award, index) => (
-                <div
-                  key={index}
-                  className="group relative p-8 lg:p-10 bg-background dark:bg-transparent border border-border hover:border-primary/50 transition-all duration-300"
-                >
-                  <div className="absolute top-0 right-0 px-4 py-2 bg-primary/10 text-primary text-xs font-medium">
-                    {award.year}
-                  </div>
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
-                      <HugeiconsIcon icon={Award01Icon} strokeWidth={2} className="size-6 text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-medium text-foreground mb-1 tracking-tight">{award.title}</h3>
-                      <p className="text-sm text-muted-foreground">{award.subtitle}</p>
-                    </div>
-                  </div>
+                <div key={index} className="p-5 border border-border hover:border-primary/50 transition-colors bg-card dark:bg-transparent">
+                  <p className="text-xs text-primary font-medium mb-1">{award.year}</p>
+                  <h3 className="text-sm font-medium text-foreground mb-1">{award.title}</h3>
+                  <p className="text-xs text-muted-foreground">{award.subtitle}</p>
                 </div>
               ))}
             </div>
 
-            {/* Patents & Awards Carousel */}
+            {/* Patent Details */}
+            <div className="p-6 border border-border bg-muted/30 dark:bg-transparent mb-8">
+              <h3 className="text-sm font-medium text-foreground mb-3">Patent Portfolio</h3>
+              <p className="text-xs text-muted-foreground mb-3">
+                Holds <span className="text-foreground font-medium">10 granted patents</span>: 3 US Patents (US9616346B2, US9503511B2, US8295280B2), 1 Japanese Patent (JP5512889), and 6 Indian Patents (including IN280657). Received a patenting award of $8,000.
+              </p>
+              <p className="text-xs text-muted-foreground">
+                Published <span className="text-foreground font-medium">156 papers</span> in national/international journals and conference proceedings, and authored 2 books.
+              </p>
+            </div>
+
+            {/* Carousel */}
             <Carousel className="w-full" opts={{ align: "start" }}>
               <CarouselContent className="-ml-4">
                 {patentsAndAwards.map((item, index) => (
                   <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
-                    <div className="h-full group">
-                      <div className="relative aspect-[4/3] w-full bg-muted dark:bg-white/5 overflow-hidden border border-border group-hover:border-primary/50 transition-colors">
-                        <Image
-                          src={item.image}
-                          alt={item.caption}
-                          fill
-                          className="object-contain p-4 transition-transform duration-500 group-hover:scale-105"
-                        />
+                    <div className="h-full">
+                      <div className="relative aspect-[4/3] w-full bg-muted dark:bg-white/5 overflow-hidden border border-border">
+                        <Image src={item.image} alt={item.caption} fill className="object-contain p-2" />
                       </div>
-                      <p className="mt-3 text-xs text-muted-foreground leading-relaxed">{item.caption}</p>
+                      <p className="mt-2 text-xs text-muted-foreground">{item.caption}</p>
                     </div>
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <CarouselPrevious className="hidden md:flex -left-12 bg-background border-border hover:bg-primary/10 hover:text-primary hover:border-primary/50" />
-              <CarouselNext className="hidden md:flex -right-12 bg-background border-border hover:bg-primary/10 hover:text-primary hover:border-primary/50" />
+              <CarouselPrevious className="hidden md:flex -left-12" />
+              <CarouselNext className="hidden md:flex -right-12" />
             </Carousel>
           </div>
         </div>
       </section>
 
-      {/* Achievements Grid - Impactful Numbers */}
-      <section className="py-20 lg:py-28">
+      {/* Administrative Positions */}
+      <section className="py-16 bg-muted/30 dark:bg-transparent">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12 lg:mb-16">
-              <p className="text-xs uppercase tracking-[0.3em] text-primary font-medium mb-3">Impact</p>
-              <h2 className="text-3xl lg:text-4xl font-medium text-foreground tracking-tight">
-                Achievements at a Glance
-              </h2>
-            </div>
+          <div className="max-w-5xl mx-auto">
+            <p className="text-[10px] uppercase tracking-[0.2em] text-primary mb-2">Leadership</p>
+            <h2 className="text-xl font-medium mb-8 text-foreground tracking-tight">Administrative Positions</h2>
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-border">
-              {achievements.map((item, index) => (
-                <div key={index} className="bg-background dark:bg-transparent p-6 lg:p-8 group hover:bg-primary/5 transition-colors">
-                  <div className="w-14 h-14 bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
-                    <HugeiconsIcon icon={item.icon} strokeWidth={1.5} className="size-7 text-primary" />
-                  </div>
-                  <h3 className="text-xs uppercase tracking-widest text-muted-foreground mb-2">{item.title}</h3>
-                  <p className="text-2xl lg:text-3xl font-light text-foreground mb-4 tracking-tight">{item.stats}</p>
-                  <ul className="space-y-1">
-                    {item.details.map((detail, i) => (
-                      <li key={i} className="text-xs text-muted-foreground flex items-center gap-2">
-                        <span className="w-1 h-1 bg-primary rounded-full" />
-                        {detail}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+            <div className="space-y-4">
+              {adminPositions.map((pos, index) => (
+                <Card key={index} className="dark:bg-transparent">
+                  <CardContent>
+                    <div className="flex items-start gap-4">
+                      <div className="w-10 h-10 bg-primary/10 flex items-center justify-center shrink-0">
+                        <HugeiconsIcon icon={pos.icon} strokeWidth={2} className="size-5 text-primary" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h3 className="text-sm font-medium text-foreground">{pos.title}</h3>
+                        <p className="text-xs text-muted-foreground mb-3">{pos.period}</p>
+                        <ul className="space-y-1.5">
+                          {pos.points.map((point, i) => (
+                            <li key={i} className="text-xs text-muted-foreground flex items-start gap-2">
+                              <span className="w-1 h-1 bg-primary rounded-full mt-1.5 shrink-0" />
+                              {point}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
               ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Career Timeline */}
-      <section className="py-20 lg:py-28 bg-muted/40 dark:bg-transparent">
+      {/* Academic Background */}
+      <section className="py-16">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12 lg:mb-16">
-              <p className="text-xs uppercase tracking-[0.3em] text-primary font-medium mb-3">Journey</p>
-              <h2 className="text-3xl lg:text-4xl font-medium text-foreground tracking-tight">
-                Career Milestones
-              </h2>
-            </div>
-
-            <div className="relative">
-              {/* Timeline line */}
-              <div className="absolute left-8 lg:left-1/2 top-0 bottom-0 w-px bg-border lg:-translate-x-px" />
-
-              <div className="space-y-8">
-                {timeline.map((item, index) => (
-                  <div key={index} className={`relative flex items-start gap-6 lg:gap-12 ${index % 2 === 0 ? 'lg:flex-row-reverse' : ''}`}>
-                    {/* Timeline dot */}
-                    <div className="absolute left-8 lg:left-1/2 w-4 h-4 -translate-x-1/2 bg-background border-2 border-primary rounded-full z-10">
-                      {item.current && <div className="absolute inset-1 bg-primary rounded-full animate-pulse" />}
-                    </div>
-
-                    {/* Content */}
-                    <div className={`flex-1 ml-16 lg:ml-0 ${index % 2 === 0 ? 'lg:text-right lg:pr-12' : 'lg:pl-12'}`}>
-                      <div className={`inline-block p-6 bg-background dark:bg-transparent border border-border hover:border-primary/50 transition-colors ${index % 2 === 0 ? 'lg:text-right' : ''}`}>
-                        <p className="text-primary text-sm font-medium mb-1">{item.year}</p>
-                        <h3 className="text-base font-medium text-foreground mb-1 tracking-tight">{item.title}</h3>
-                        <p className="text-xs text-muted-foreground">{item.subtitle}</p>
+          <div className="max-w-5xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-8">
+              {/* Education */}
+              <div>
+                <p className="text-[10px] uppercase tracking-[0.2em] text-primary mb-2">Education</p>
+                <h2 className="text-xl font-medium mb-6 text-foreground tracking-tight">Academic Background</h2>
+                <Card className="dark:bg-transparent">
+                  <CardContent>
+                    <div className="flex items-start gap-3">
+                      <div className="w-10 h-10 bg-primary/10 flex items-center justify-center shrink-0">
+                        <HugeiconsIcon icon={GraduationScrollIcon} strokeWidth={2} className="size-5 text-primary" />
+                      </div>
+                      <div className="space-y-4">
+                        <div className="border-l-2 border-primary/30 pl-3">
+                          <p className="text-xs text-primary font-medium">2001</p>
+                          <p className="text-sm font-medium text-foreground">Ph.D. in Computer Science & Engineering</p>
+                          <p className="text-xs text-muted-foreground">University of Mysore</p>
+                        </div>
+                        <div className="border-l-2 border-primary/30 pl-3">
+                          <p className="text-xs text-primary font-medium">1992</p>
+                          <p className="text-sm font-medium text-foreground">M.Tech in Digital Electronics and Advanced Communications</p>
+                          <p className="text-xs text-muted-foreground">NITK, Surathkal</p>
+                        </div>
+                        <div className="border-l-2 border-primary/30 pl-3">
+                          <p className="text-xs text-primary font-medium">1987</p>
+                          <p className="text-sm font-medium text-foreground">B.E. in Electronics & Communication</p>
+                          <p className="text-xs text-muted-foreground">SJCE, Mysore</p>
+                        </div>
                       </div>
                     </div>
+                  </CardContent>
+                </Card>
+              </div>
 
-                    {/* Spacer for alternating layout */}
-                    <div className="hidden lg:block flex-1" />
-                  </div>
-                ))}
+              {/* Career */}
+              <div>
+                <p className="text-[10px] uppercase tracking-[0.2em] text-primary mb-2">Career</p>
+                <h2 className="text-xl font-medium mb-6 text-foreground tracking-tight">Professional Experience</h2>
+                <Card className="dark:bg-transparent">
+                  <CardContent>
+                    <div className="flex items-start gap-3">
+                      <div className="w-10 h-10 bg-primary/10 flex items-center justify-center shrink-0">
+                        <HugeiconsIcon icon={BookOpen01Icon} strokeWidth={2} className="size-5 text-primary" />
+                      </div>
+                      <div className="space-y-3">
+                        <div className="border-l-2 border-primary/30 pl-3">
+                          <p className="text-xs text-primary font-medium">June 2023 - Present</p>
+                          <p className="text-sm font-medium text-foreground">Senior Professor</p>
+                        </div>
+                        <div className="border-l-2 border-muted pl-3">
+                          <p className="text-xs text-muted-foreground">Oct 2001 - June 2023</p>
+                          <p className="text-sm text-foreground">Professor</p>
+                        </div>
+                        <div className="border-l-2 border-muted pl-3">
+                          <p className="text-xs text-muted-foreground">Sept 1995 - Oct 2001</p>
+                          <p className="text-sm text-foreground">Reader</p>
+                        </div>
+                        <div className="border-l-2 border-muted pl-3">
+                          <p className="text-xs text-muted-foreground">Feb 1992 - Sept 1995</p>
+                          <p className="text-sm text-foreground">Lecturer</p>
+                        </div>
+                        <p className="text-xs text-muted-foreground pt-2">
+                          Professor in Charge, Centre for Advanced Scientific and Industrial Research at MIT, MAHE.
+                        </p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Research Areas - Visual Grid */}
-      <section className="py-20 lg:py-28">
+      {/* Mentorship & Publications */}
+      <section className="py-16 bg-muted/30 dark:bg-transparent">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-              <div className="lg:col-span-4">
-                <p className="text-xs uppercase tracking-[0.3em] text-primary font-medium mb-3">Expertise</p>
-                <h2 className="text-3xl lg:text-4xl font-medium text-foreground tracking-tight mb-4">
-                  Research Focus
-                </h2>
-                <p className="text-sm text-muted-foreground leading-relaxed mb-6">
-                  Spanning computer networks, AI, healthcare technology, and industrial IoT—with
-                  expertise certified by Infodev World Bank, Washington D.C.
-                </p>
-                <div className="hidden lg:block">
-                  <Button asChild variant="outline">
-                    <Link href="/#research">
-                      View Current Projects
-                      <HugeiconsIcon icon={ArrowRight01Icon} strokeWidth={2} data-icon="inline-end" />
-                    </Link>
-                  </Button>
+          <div className="max-w-5xl mx-auto">
+            <p className="text-[10px] uppercase tracking-[0.2em] text-primary mb-2">Output</p>
+            <h2 className="text-xl font-medium mb-8 text-foreground tracking-tight">Mentorship & Publications</h2>
+
+            <div className="grid sm:grid-cols-3 gap-4 mb-8">
+              <Card className="dark:bg-transparent">
+                <CardContent>
+                  <div className="w-10 h-10 bg-primary/10 flex items-center justify-center mb-3">
+                    <HugeiconsIcon icon={GraduationScrollIcon} strokeWidth={2} className="size-5 text-primary" />
+                  </div>
+                  <h3 className="text-sm font-medium mb-2 text-foreground">PhD Guidance</h3>
+                  <p className="text-xs text-muted-foreground">
+                    <span className="text-foreground font-medium">8 completed</span>, 6 ongoing
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="dark:bg-transparent">
+                <CardContent>
+                  <div className="w-10 h-10 bg-primary/10 flex items-center justify-center mb-3">
+                    <HugeiconsIcon icon={BookOpen01Icon} strokeWidth={2} className="size-5 text-primary" />
+                  </div>
+                  <h3 className="text-sm font-medium mb-2 text-foreground">M.Tech Theses</h3>
+                  <p className="text-xs text-muted-foreground">
+                    Guided <span className="text-foreground font-medium">81 theses</span>
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="dark:bg-transparent">
+                <CardContent>
+                  <div className="w-10 h-10 bg-primary/10 flex items-center justify-center mb-3">
+                    <HugeiconsIcon icon={Award01Icon} strokeWidth={2} className="size-5 text-primary" />
+                  </div>
+                  <h3 className="text-sm font-medium mb-2 text-foreground">Publications</h3>
+                  <p className="text-xs text-muted-foreground">
+                    <span className="text-foreground font-medium">156 papers</span>, 2 books
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Books */}
+            <div className="p-6 border border-border bg-card dark:bg-transparent">
+              <h3 className="text-sm font-medium mb-4 text-foreground">Authored Books</h3>
+              <div className="grid sm:grid-cols-2 gap-4">
+                <div className="p-4 bg-muted/50 dark:bg-white/5 border border-border">
+                  <h4 className="text-sm font-medium text-foreground mb-1">Advances in Information & Communication Technologies ICICOT'07</h4>
+                  <p className="text-xs text-muted-foreground">Co-edited proceedings for International Conference ICICOT 2007</p>
+                </div>
+                <div className="p-4 bg-muted/50 dark:bg-white/5 border border-border">
+                  <h4 className="text-sm font-medium text-foreground mb-1">Scalable Video Coding using Wavelet Transformation</h4>
+                  <p className="text-xs text-muted-foreground">Specialized book on video coding techniques</p>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-              <div className="lg:col-span-8">
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-px bg-border">
-                  {researchAreas.map((area, index) => (
-                    <div key={index} className="bg-background dark:bg-transparent p-6 text-center group hover:bg-primary/5 transition-colors">
-                      <div className="w-12 h-12 bg-primary/10 flex items-center justify-center mx-auto mb-3 group-hover:bg-primary/20 transition-colors">
-                        <HugeiconsIcon icon={area.icon} strokeWidth={1.5} className="size-6 text-primary" />
-                      </div>
-                      <span className="text-xs font-medium text-foreground">{area.name}</span>
-                    </div>
-                  ))}
-                </div>
+      {/* Research Areas */}
+      <section className="py-16">
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="max-w-5xl mx-auto">
+            <p className="text-[10px] uppercase tracking-[0.2em] text-primary mb-2 text-center">Expertise</p>
+            <h2 className="text-xl font-medium mb-2 text-center text-foreground tracking-tight">Research Interests</h2>
+            <p className="text-xs text-muted-foreground text-center mb-8">
+              Computer Communication Networks, Wireless Adhoc Networks, Video Processing, Data Analytics, Cloud Computing, Technology Commercialization, Patenting, and Mentoring
+            </p>
 
-                {/* Research Highlights */}
-                <div className="mt-8 grid sm:grid-cols-2 gap-4">
-                  <Card className="group hover:border-primary/50 transition-colors dark:bg-transparent">
-                    <CardContent>
-                      <h3 className="text-sm font-medium mb-2 text-foreground tracking-tight">AI & Healthcare</h3>
-                      <p className="text-xs text-muted-foreground leading-relaxed">
-                        Pioneering AI-powered diagnostic tools, wearable IoT devices for patient monitoring,
-                        and patented innovations in dental implant technology.
-                      </p>
-                    </CardContent>
-                  </Card>
-                  <Card className="group hover:border-primary/50 transition-colors dark:bg-transparent">
-                    <CardContent>
-                      <h3 className="text-sm font-medium mb-2 text-foreground tracking-tight">Industrial IoT</h3>
-                      <p className="text-xs text-muted-foreground leading-relaxed">
-                        Smart factory automation, energy-efficient wireless sensor networks, and real-time
-                        analytics with partners like IBM, TE Connectivity, and Schneider Electric.
-                      </p>
-                    </CardContent>
-                  </Card>
+            <div className="grid grid-cols-4 sm:grid-cols-8 gap-4 mb-10">
+              {researchAreas.map((area, index) => (
+                <div key={index} className="flex flex-col items-center text-center">
+                  <div className="w-12 h-12 bg-primary/10 flex items-center justify-center mb-2">
+                    <HugeiconsIcon icon={area.icon} strokeWidth={1.5} className="size-5 text-primary" />
+                  </div>
+                  <span className="text-[10px] text-muted-foreground">{area.name}</span>
                 </div>
-              </div>
+              ))}
+            </div>
+
+            {/* Research Detail Cards */}
+            <div className="grid sm:grid-cols-2 gap-4">
+              <Card className="dark:bg-transparent">
+                <CardContent>
+                  <h3 className="text-sm font-medium mb-2 text-foreground">AI and Healthcare Applications</h3>
+                  <ul className="text-xs text-muted-foreground space-y-1">
+                    <li className="flex items-start gap-2"><span className="w-1 h-1 bg-primary rounded-full mt-1.5 shrink-0" />AI-powered diagnostic tools for disease detection</li>
+                    <li className="flex items-start gap-2"><span className="w-1 h-1 bg-primary rounded-full mt-1.5 shrink-0" />Wearable IoT devices for patient monitoring</li>
+                    <li className="flex items-start gap-2"><span className="w-1 h-1 bg-primary rounded-full mt-1.5 shrink-0" />Healthcare data analytics and management systems</li>
+                    <li className="flex items-start gap-2"><span className="w-1 h-1 bg-primary rounded-full mt-1.5 shrink-0" />Patented dental implant and diabetic foot ulcer detection technology</li>
+                  </ul>
+                </CardContent>
+              </Card>
+
+              <Card className="dark:bg-transparent">
+                <CardContent>
+                  <h3 className="text-sm font-medium mb-2 text-foreground">Industrial IoT and Sensor Networks</h3>
+                  <ul className="text-xs text-muted-foreground space-y-1">
+                    <li className="flex items-start gap-2"><span className="w-1 h-1 bg-primary rounded-full mt-1.5 shrink-0" />Smart factory automation and monitoring</li>
+                    <li className="flex items-start gap-2"><span className="w-1 h-1 bg-primary rounded-full mt-1.5 shrink-0" />Energy-efficient wireless sensor networks</li>
+                    <li className="flex items-start gap-2"><span className="w-1 h-1 bg-primary rounded-full mt-1.5 shrink-0" />Real-time data analytics for process optimization</li>
+                    <li className="flex items-start gap-2"><span className="w-1 h-1 bg-primary rounded-full mt-1.5 shrink-0" />Collaborations with IBM, TE Connectivity, Schneider Electric</li>
+                  </ul>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </div>
       </section>
 
       {/* International & Professional */}
-      <section className="py-20 lg:py-28 bg-muted/40 dark:bg-transparent">
+      <section className="py-16 bg-muted/30 dark:bg-transparent">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
+          <div className="max-w-5xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-8">
               {/* International */}
-              <div className="p-8 lg:p-10 bg-background dark:bg-transparent border border-border">
-                <div className="flex items-start gap-4 mb-6">
-                  <div className="w-14 h-14 bg-primary/10 flex items-center justify-center shrink-0">
-                    <HugeiconsIcon icon={GlobeIcon} strokeWidth={1.5} className="size-7 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-medium text-foreground tracking-tight">Global Engagement</h3>
-                    <p className="text-sm text-muted-foreground">International collaborations & expertise</p>
-                  </div>
-                </div>
-                <ul className="space-y-3 text-sm text-muted-foreground">
-                  <li className="flex items-start gap-3">
-                    <HugeiconsIcon icon={CheckmarkCircle01Icon} strokeWidth={2} className="size-4 text-primary mt-0.5 shrink-0" />
-                    <span>Visiting Professor, ESIGELEC, France (since 2006)</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <HugeiconsIcon icon={CheckmarkCircle01Icon} strokeWidth={2} className="size-4 text-primary mt-0.5 shrink-0" />
-                    <span>PhD Examiner, University of Rouen, France</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <HugeiconsIcon icon={CheckmarkCircle01Icon} strokeWidth={2} className="size-4 text-primary mt-0.5 shrink-0" />
-                    <span>Technology Commercialization, IC2 Institute, UT Austin</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <HugeiconsIcon icon={CheckmarkCircle01Icon} strokeWidth={2} className="size-4 text-primary mt-0.5 shrink-0" />
-                    <span>Global Forum on Innovation, Helsinki (2011)</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <HugeiconsIcon icon={CheckmarkCircle01Icon} strokeWidth={2} className="size-4 text-primary mt-0.5 shrink-0" />
-                    <span>TU Eindhoven collaboration (2007-2010)</span>
-                  </li>
-                </ul>
+              <div>
+                <p className="text-[10px] uppercase tracking-[0.2em] text-primary mb-2">International</p>
+                <h2 className="text-xl font-medium mb-6 text-foreground tracking-tight">Global Engagement</h2>
+                <Card className="h-full dark:bg-transparent">
+                  <CardContent>
+                    <div className="flex items-start gap-3 mb-4">
+                      <div className="w-10 h-10 bg-primary/10 flex items-center justify-center shrink-0">
+                        <HugeiconsIcon icon={GlobeIcon} strokeWidth={2} className="size-5 text-primary" />
+                      </div>
+                      <ul className="space-y-2 text-xs text-muted-foreground">
+                        <li>Visiting Professor, ESIGELEC, France (since 2006)</li>
+                        <li>PhD Examiner, University of Rouen, France</li>
+                        <li>Technology Commercialization Training, IC2 Institute, University of Texas, Austin (2010)</li>
+                        <li>Global Forum on Innovation & Technology Entrepreneurship, Helsinki (2011)</li>
+                        <li>Collaboration with TU Eindhoven, Netherlands (2007-2010)</li>
+                      </ul>
+                    </div>
+                  </CardContent>
+                </Card>
               </div>
 
               {/* Professional */}
-              <div className="p-8 lg:p-10 bg-background dark:bg-transparent border border-border">
-                <div className="flex items-start gap-4 mb-6">
-                  <div className="w-14 h-14 bg-primary/10 flex items-center justify-center shrink-0">
-                    <HugeiconsIcon icon={UserGroupIcon} strokeWidth={1.5} className="size-7 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-medium text-foreground tracking-tight">Professional Leadership</h3>
-                    <p className="text-sm text-muted-foreground">Memberships & advisory roles</p>
-                  </div>
-                </div>
-                <ul className="space-y-3 text-sm text-muted-foreground">
-                  <li className="flex items-start gap-3">
-                    <HugeiconsIcon icon={CheckmarkCircle01Icon} strokeWidth={2} className="size-4 text-primary mt-0.5 shrink-0" />
-                    <span>Senior Member, IEEE</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <HugeiconsIcon icon={CheckmarkCircle01Icon} strokeWidth={2} className="size-4 text-primary mt-0.5 shrink-0" />
-                    <span>Chair, IEEE Mangalore Subsection (2019)</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <HugeiconsIcon icon={CheckmarkCircle01Icon} strokeWidth={2} className="size-4 text-primary mt-0.5 shrink-0" />
-                    <span>Advisor & Subject Expert for UPSC</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <HugeiconsIcon icon={CheckmarkCircle01Icon} strokeWidth={2} className="size-4 text-primary mt-0.5 shrink-0" />
-                    <span>Reviewer, IEEE Transactions on Video Processing</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <HugeiconsIcon icon={CheckmarkCircle01Icon} strokeWidth={2} className="size-4 text-primary mt-0.5 shrink-0" />
-                    <span>Chaired 20+ International Conference sessions</span>
-                  </li>
-                </ul>
+              <div>
+                <p className="text-[10px] uppercase tracking-[0.2em] text-primary mb-2">Professional</p>
+                <h2 className="text-xl font-medium mb-6 text-foreground tracking-tight">Activities & Memberships</h2>
+                <Card className="h-full dark:bg-transparent">
+                  <CardContent>
+                    <div className="flex items-start gap-3 mb-4">
+                      <div className="w-10 h-10 bg-primary/10 flex items-center justify-center shrink-0">
+                        <HugeiconsIcon icon={UserGroupIcon} strokeWidth={2} className="size-5 text-primary" />
+                      </div>
+                      <div>
+                        <h4 className="text-sm font-medium text-foreground mb-2">Memberships</h4>
+                        <ul className="space-y-1 text-xs text-muted-foreground mb-4">
+                          <li>Senior Member, IEEE</li>
+                          <li>Chair, IEEE Mangalore Subsection (2019)</li>
+                          <li>Past Execom Member, IEEE Bangalore Section</li>
+                          <li>Life Member, ISTE and Systems Society of India</li>
+                        </ul>
+                        <h4 className="text-sm font-medium text-foreground mb-2">Advisory Roles</h4>
+                        <ul className="space-y-1 text-xs text-muted-foreground">
+                          <li>Subject Expert for UPSC (IAS/IPS/IFS selection)</li>
+                          <li>Subject Expert, Goa Public Service Commission</li>
+                          <li>Reviewer, IEEE Transactions on Video Processing</li>
+                          <li>Chaired sessions in 20+ International Conferences</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Funding Partners */}
-      <section className="py-20 lg:py-28">
+      {/* Funding */}
+      <section className="py-16">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center">
-            <p className="text-xs uppercase tracking-[0.3em] text-primary font-medium mb-3">Partnerships</p>
-            <h2 className="text-3xl lg:text-4xl font-medium text-foreground tracking-tight mb-4">
-              Research & Funding Partners
-            </h2>
-            <p className="text-sm text-muted-foreground mb-12 max-w-2xl mx-auto">
-              Collaborating with leading organizations to advance research and innovation
-            </p>
+          <div className="max-w-5xl mx-auto">
+            <p className="text-[10px] uppercase tracking-[0.2em] text-primary mb-2">Support</p>
+            <h2 className="text-xl font-medium mb-6 text-foreground tracking-tight">Research Funding</h2>
 
-            <div className="flex flex-wrap justify-center items-center gap-8 lg:gap-12 opacity-70">
-              {["DST", "BIRAC", "AICTE", "IBM", "Schneider Electric", "TE Connectivity"].map((partner) => (
-                <span key={partner} className="text-sm text-muted-foreground font-medium">{partner}</span>
-              ))}
-            </div>
+            <Card className="dark:bg-transparent">
+              <CardContent>
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-primary/10 flex items-center justify-center shrink-0">
+                    <HugeiconsIcon icon={DollarCircleIcon} strokeWidth={2} className="size-6 text-primary" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-muted-foreground mb-4">
+                      Established the Technology Business Incubator at MIT, MAHE with a grant of <span className="text-foreground font-medium">Rs.5 Crores</span> from DST, Govt. of India, and MAHE. Secured multiple research grants from:
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {["BIRAC", "DST", "IBM", "TE Connectivity", "Schneider Electric", "AICTE"].map((org) => (
+                        <span key={org} className="px-3 py-1 bg-muted dark:bg-white/10 text-xs text-muted-foreground">{org}</span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
 
-      {/* CTA Section - Grand */}
-      <section className="relative py-24 lg:py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-primary/5 to-transparent" />
-        <div className="absolute top-0 left-0 w-1/3 h-full bg-gradient-to-r from-primary/10 to-transparent" />
-
+      {/* CTA */}
+      <section className="relative py-16 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent" />
         <div className="container mx-auto px-4 lg:px-8 relative">
-          <div className="max-w-3xl mx-auto text-center">
-            <p className="text-xs uppercase tracking-[0.3em] text-primary font-medium mb-4">Get Involved</p>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium mb-6 text-foreground tracking-tight leading-tight">
-              Connect with<br />Dr. Manohara Pai
+          <div className="max-w-2xl mx-auto text-center">
+            <p className="text-[10px] uppercase tracking-[0.2em] text-primary mb-2">Contact</p>
+            <h2 className="text-2xl font-medium mb-4 text-foreground tracking-tight">
+              Connect with Dr. Manohara Pai
             </h2>
-            <p className="text-base text-muted-foreground mb-8 leading-relaxed max-w-xl mx-auto">
-              Interested in collaborative research, academic partnerships, or exploring
-              opportunities with the Endowment Chair?
+            <p className="text-sm text-muted-foreground mb-6">
+              For research collaboration, academic partnerships, or inquiries about the Endowment Chair.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Button asChild size="lg">
                 <Link href="/apply">
                   Apply for Research
