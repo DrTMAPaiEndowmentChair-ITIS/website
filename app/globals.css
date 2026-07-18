@@ -48,6 +48,8 @@
 }
 
 :root {
+  --motion-ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --motion-ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
   --background: oklch(0.985 0.008 78);
   --foreground: oklch(0.19 0.02 55);
   --card: oklch(0.998 0.003 78);
@@ -167,8 +169,24 @@
     background-size: 48px 48px;
   }
 
+  .compute-hero-grid {
+    background-image:
+      linear-gradient(to right, color-mix(in oklab, var(--border) 48%, transparent) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in oklab, var(--border) 42%, transparent) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 100%);
+  }
+
+  .compute-card-grid {
+    background-image:
+      linear-gradient(to right, color-mix(in oklab, var(--background) 9%, transparent) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in oklab, var(--background) 9%, transparent) 1px, transparent 1px);
+    background-size: 40px 40px;
+    mask-image: linear-gradient(120deg, black, transparent 78%);
+  }
+
   .animate-in-up {
-    animation: enter-up 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation: enter-up 650ms var(--motion-ease-out) both;
   }
 
   .animation-delay-1 {
@@ -181,6 +199,55 @@
 
   .animation-delay-3 {
     animation-delay: 270ms;
+  }
+}
+
+main > div > section[data-reveal="true"] > .container {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 520ms var(--motion-ease-out),
+    transform 520ms var(--motion-ease-out);
+}
+
+main > div > section[data-reveal-visible="true"] > .container {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.motion-arrow {
+  transition: transform 180ms var(--motion-ease-out);
+}
+
+[data-slot="button"] {
+  transition:
+    color 180ms var(--motion-ease-out),
+    background-color 180ms var(--motion-ease-out),
+    border-color 180ms var(--motion-ease-out),
+    box-shadow 220ms var(--motion-ease-out),
+    transform 160ms var(--motion-ease-out);
+}
+
+[data-slot="button"]:active {
+  transform: scale(0.97);
+  transition-duration: 100ms;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .group:hover .motion-arrow,
+  [data-slot="button"]:hover .motion-arrow,
+  [data-slot="button"]:hover [data-icon="inline-end"] {
+    transform: translateX(3px);
+  }
+
+  .interactive-card:hover {
+    transform: translateY(-3px);
+    border-color: color-mix(in oklab, var(--primary) 40%, var(--border));
+    box-shadow: 0 20px 45px -32px color-mix(in oklab, var(--foreground) 30%, transparent);
+  }
+
+  .interactive-image:hover {
+    transform: scale(1.02);
   }
 }
 
@@ -203,8 +270,18 @@
   *,
   *::before,
   *::after {
-    animation-duration: 0.01ms !important;
+    animation-duration: 180ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+  }
+
+  main > div > section[data-reveal="true"] > .container {
+    transform: none;
+    transition: opacity 180ms ease-out;
+  }
+
+  .interactive-card:hover,
+  .interactive-image:hover,
+  [data-slot="button"]:active {
+    transform: none;
   }
 }

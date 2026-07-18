@@ -103,8 +103,9 @@ export default function Home() {
                     src="/hero-image.png"
                     alt="Manipal Academy of Higher Education, School of Computer Engineering"
                     fill
-                    className="object-contain p-4 transition-transform duration-700 hover:scale-[1.02] dark:invert dark:hue-rotate-180"
+                    className="interactive-image object-contain p-4 transition-transform duration-250 [transition-timing-function:var(--motion-ease-out)] dark:invert dark:hue-rotate-180"
                     priority
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                   />
                 </div>
               </div>
@@ -155,21 +156,21 @@ export default function Home() {
             </div>
             <div className="prose prose-sm dark:prose-invert max-w-none">
               <div className="grid md:grid-cols-3 gap-6 text-sm text-muted-foreground">
-                <div className="group rounded-2xl border border-border bg-card/75 p-6 transition-all duration-500 hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl hover:shadow-foreground/5">
+                <div className="interactive-card group rounded-2xl border border-border bg-card/75 p-6 transition-[transform,box-shadow,border-color] duration-200 [transition-timing-function:var(--motion-ease-out)]">
                   <h3 className="text-foreground font-medium mb-2 text-base">Intelligent Technologies</h3>
                   <p className="text-xs leading-relaxed">
                     Advanced digital systems including AI, machine learning, and smart automation
                     that enable machines to learn, adapt, and make decisions.
                   </p>
                 </div>
-                <div className="group rounded-2xl border border-border bg-card/75 p-6 transition-all duration-500 hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl hover:shadow-foreground/5">
+                <div className="interactive-card group rounded-2xl border border-border bg-card/75 p-6 transition-[transform,box-shadow,border-color] duration-200 [transition-timing-function:var(--motion-ease-out)]">
                   <h3 className="text-foreground font-medium mb-2 text-base">Industry 4.0</h3>
                   <p className="text-xs leading-relaxed">
                     The fourth industrial revolution with cyber-physical systems, IoT, and
                     data-driven manufacturing for smarter industries.
                   </p>
                 </div>
-                <div className="group rounded-2xl border border-border bg-card/75 p-6 transition-all duration-500 hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl hover:shadow-foreground/5">
+                <div className="interactive-card group rounded-2xl border border-border bg-card/75 p-6 transition-[transform,box-shadow,border-color] duration-200 [transition-timing-function:var(--motion-ease-out)]">
                   <h3 className="text-foreground font-medium mb-2 text-base">Sustainability</h3>
                   <p className="text-xs leading-relaxed">
                     Developing solutions that meet present needs without compromising future
@@ -205,7 +206,7 @@ export default function Home() {
                 {researchProjects.map((project) => (
                   <CarouselItem key={project.slug} className="pl-4 md:basis-1/2 lg:basis-1/3">
                     <Link href={`/research/${project.slug}`} className="block h-full group">
-                      <Card className="h-full border-border hover:border-primary/50 transition-all duration-300 dark:bg-transparent">
+                      <Card className="interactive-card h-full border-border transition-[transform,box-shadow,border-color] duration-200 [transition-timing-function:var(--motion-ease-out)] dark:bg-transparent">
                         <CardHeader className="pb-2">
                           <div className="flex items-center gap-3 mb-3">
                             <div className="flex h-9 w-9 items-center justify-center bg-primary/10 group-hover:bg-primary/20 transition-colors shrink-0">
@@ -232,9 +233,9 @@ export default function Home() {
                           </div>
                         </CardContent>
                         <CardFooter className="pt-2 border-t border-border mt-auto">
-                          <span className="text-xs text-primary flex items-center gap-1 group-hover:gap-2 transition-all">
+                          <span className="text-xs text-primary flex items-center gap-1">
                             View project
-                            <HugeiconsIcon icon={ArrowRight01Icon} strokeWidth={2} className="size-3" />
+                            <HugeiconsIcon icon={ArrowRight01Icon} strokeWidth={2} className="motion-arrow size-3" />
                           </span>
                         </CardFooter>
                       </Card>
@@ -266,7 +267,7 @@ export default function Home() {
                 {completedProjects.map((project) => (
                   <CarouselItem key={project.slug} className="pl-4 md:basis-1/2 lg:basis-1/3">
                     <Link href={`/research/${project.slug}`} className="block h-full group">
-                      <Card className="h-full border-border hover:border-primary/50 transition-all duration-300 dark:bg-transparent">
+                      <Card className="interactive-card h-full border-border transition-[transform,box-shadow,border-color] duration-200 [transition-timing-function:var(--motion-ease-out)] dark:bg-transparent">
                         <CardHeader className="pb-2">
                           <div className="flex items-center gap-3 mb-3">
                             <div className="flex h-9 w-9 items-center justify-center bg-muted dark:bg-white/10 group-hover:bg-primary/10 transition-colors shrink-0">
@@ -298,9 +299,9 @@ export default function Home() {
                           </div>
                         </CardContent>
                         <CardFooter className="pt-2 border-t border-border mt-auto">
-                          <span className="text-xs text-muted-foreground group-hover:text-primary transition-colors flex items-center gap-1 group-hover:gap-2">
+                          <span className="text-xs text-muted-foreground group-hover:text-primary transition-colors flex items-center gap-1">
                             View results
-                            <HugeiconsIcon icon={ArrowRight01Icon} strokeWidth={2} className="size-3" />
+                            <HugeiconsIcon icon={ArrowRight01Icon} strokeWidth={2} className="motion-arrow size-3" />
                           </span>
                         </CardFooter>
                       </Card>
@@ -400,14 +401,14 @@ export default function Home() {
                 {upcomingEvents.map((event) => (
                   <CarouselItem key={event.slug} className="pl-4 md:basis-1/2 lg:basis-1/3">
                     <Link href={`/events/${event.slug}`} className="block h-full group">
-                      <Card className="h-full border-border hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 dark:bg-transparent">
+                      <Card className="interactive-card h-full border-border transition-[transform,box-shadow,border-color] duration-200 [transition-timing-function:var(--motion-ease-out)] dark:bg-transparent">
                         {event.image && (
                           <div className="relative aspect-[16/10] w-full overflow-hidden">
                             <Image
                               src={event.image}
                               alt={event.title}
                               fill
-                              className="object-cover group-hover:scale-105 transition-transform duration-500"
+                              className="object-cover group-hover:scale-[1.03] transition-transform duration-250 [transition-timing-function:var(--motion-ease-out)]"
                               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             />
                           </div>
@@ -423,9 +424,9 @@ export default function Home() {
                           <CardDescription className="text-xs line-clamp-2">{event.description}</CardDescription>
                         </CardHeader>
                         <CardFooter>
-                          <span className="text-xs text-primary flex items-center gap-1 group-hover:gap-2 transition-all">
+                          <span className="text-xs text-primary flex items-center gap-1">
                             Learn more
-                            <HugeiconsIcon icon={ArrowRight01Icon} strokeWidth={2} className="size-3" />
+                            <HugeiconsIcon icon={ArrowRight01Icon} strokeWidth={2} className="motion-arrow size-3" />
                           </span>
                         </CardFooter>
                       </Card>
