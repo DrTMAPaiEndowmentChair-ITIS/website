@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/carousel";
 import { getSortedProjectsData, ProjectFrontmatter } from "@/src/lib/projects";
 import { getSortedEventsData, EventFrontmatter } from "@/src/lib/events";
+import { cn } from "@/lib/utils";
 import { HugeiconsIcon } from "@hugeicons/react";
 import {
   FlashIcon,
@@ -67,25 +68,24 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
-      <section className="relative overflow-hidden pt-28 pb-20 lg:pt-32 lg:pb-28">
+      <section className="relative overflow-hidden pt-24 pb-20 lg:pb-28">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.08] via-background to-background" />
         <div className="absolute -right-32 top-16 size-[34rem] rounded-full border border-primary/10" />
         <div className="absolute -right-12 top-36 size-[22rem] rounded-full border border-primary/10" />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-6xl">
-            <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
+            <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20">
               <div>
                 <Badge variant="secondary" className="mb-6 uppercase tracking-wider">
                   MAHE, Manipal
                 </Badge>
-                <h1 className="max-w-3xl text-4xl font-semibold leading-[1.04] tracking-[-0.035em] text-foreground sm:text-5xl lg:text-6xl">
-                  Advancing Research Through{" "}
-                  <span className="text-primary">Industry Collaborations</span>
+                <h1 className="max-w-3xl text-4xl font-semibold leading-[1.04] tracking-[-0.04em] text-foreground sm:text-5xl lg:text-[3.75rem]">
+                  Advancing research{" "}
+                  <span className="text-primary">with industry</span>
                 </h1>
-                <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground">
-                  Research projects and industry partnerships across intelligent
-                  technologies, Industry 4.0, and sustainability at the Dr. TMA
-                  Pai Endowment Chair.
+                <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+                  Applied research in intelligent systems, industrial automation,
+                  cybersecurity, software quality, and sustainability.
                 </p>
                 <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                   <Button asChild size="lg">
@@ -100,22 +100,24 @@ export default function Home() {
                 </div>
               </div>
               <div className="relative">
-                <div className="relative mx-auto max-w-lg overflow-hidden rounded-2xl border bg-card/80 shadow-[0_24px_80px_-48px_var(--foreground)] backdrop-blur-sm">
-                  <div className="relative aspect-[4/3]">
+                <figure className="relative mx-auto max-w-md overflow-hidden rounded-2xl border bg-card shadow-[0_24px_80px_-48px_var(--foreground)] lg:mr-0">
+                  <div className="relative aspect-[4/5] overflow-hidden bg-muted">
                     <Image
-                      src="/hero-image.png"
-                      alt="Manipal Academy of Higher Education, School of Computer Engineering"
+                      src="/chairperson/image.jpg"
+                      alt="Dr. Manohara M.M. Pai"
                       fill
-                      className="object-contain p-8 transition-transform duration-500 hover:scale-[1.015]"
+                      className="object-cover object-top transition-transform duration-500 hover:scale-[1.015]"
                       priority
                       sizes="(max-width: 1024px) 100vw, 45vw"
                     />
                   </div>
-                  <div className="flex items-center justify-between border-t bg-muted/40 px-5 py-3 text-xs text-muted-foreground">
-                    <span>School of Computer Engineering</span>
-                    <span>MAHE, Manipal</span>
-                  </div>
-                </div>
+                  <figcaption className="border-t px-5 py-4">
+                    <p className="font-semibold text-foreground">Dr. Manohara M.M. Pai</p>
+                    <p className="mt-1 text-sm text-muted-foreground">
+                      Senior Professor, School of Computer Engineering
+                    </p>
+                  </figcaption>
+                </figure>
               </div>
             </div>
           </div>
@@ -155,49 +157,49 @@ export default function Home() {
                 About
               </p>
               <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-                Dr. TMA Pai Endowment Chair
+                Research agenda
               </h2>
               <p className="mt-3 text-base text-muted-foreground">
-                Intelligent Technologies, Industry 4.0 & Sustainability
+                Intelligent technologies, Industry 4.0, and applied sustainability
               </p>
             </div>
             <div className="grid gap-4 md:grid-cols-2">
-                <Card className="md:col-span-2">
-                  <CardHeader className="md:grid md:grid-cols-[auto_1fr] md:items-start md:gap-x-5">
-                    <div className="flex size-11 items-center justify-center rounded-lg bg-primary/10 text-primary md:row-span-2">
-                      <HugeiconsIcon icon={CpuIcon} strokeWidth={2} />
-                    </div>
-                    <CardTitle>Intelligent Technologies</CardTitle>
-                    <CardDescription>
-                    Advanced digital systems including AI, machine learning, and smart automation
-                    that enable machines to learn, adapt, and make decisions.
-                    </CardDescription>
-                  </CardHeader>
-                </Card>
-                <Card>
-                  <CardHeader>
-                    <div className="mb-3 flex size-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                      <HugeiconsIcon icon={Building01Icon} strokeWidth={2} />
-                    </div>
-                    <CardTitle>Industry 4.0</CardTitle>
-                    <CardDescription>
-                    The fourth industrial revolution with cyber-physical systems, IoT, and
-                    data-driven manufacturing for smarter industries.
-                    </CardDescription>
-                  </CardHeader>
-                </Card>
-                <Card>
-                  <CardHeader>
-                    <div className="mb-3 flex size-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                      <HugeiconsIcon icon={AnalyticsUpIcon} strokeWidth={2} />
-                    </div>
-                    <CardTitle>Sustainability</CardTitle>
-                    <CardDescription>
-                    Developing solutions that meet present needs without compromising future
-                    generations&apos; ability to meet theirs.
-                    </CardDescription>
-                  </CardHeader>
-                </Card>
+              <Card className="md:col-span-2">
+                <CardHeader className="md:grid md:grid-cols-[auto_1fr] md:items-start md:gap-x-5">
+                  <div className="flex size-11 items-center justify-center rounded-lg bg-primary/10 text-primary md:row-span-2">
+                    <HugeiconsIcon icon={CpuIcon} strokeWidth={2} />
+                  </div>
+                  <CardTitle>Intelligent Systems</CardTitle>
+                  <CardDescription>
+                    LLM-assisted industrial automation, software quality analysis,
+                    and cybersecurity recommendation systems.
+                  </CardDescription>
+                </CardHeader>
+              </Card>
+              <Card>
+                <CardHeader>
+                  <div className="mb-3 flex size-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                    <HugeiconsIcon icon={Building01Icon} strokeWidth={2} />
+                  </div>
+                  <CardTitle>Industry 4.0</CardTitle>
+                  <CardDescription>
+                    Current work includes migration from IEC 61131-3 PLC codebases
+                    to IEC 61499 distributed automation.
+                  </CardDescription>
+                </CardHeader>
+              </Card>
+              <Card>
+                <CardHeader>
+                  <div className="mb-3 flex size-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                    <HugeiconsIcon icon={AnalyticsUpIcon} strokeWidth={2} />
+                  </div>
+                  <CardTitle>Applied Sustainability</CardTitle>
+                  <CardDescription>
+                    The portfolio includes battery health estimation, smart
+                    aquaculture, and sensor-based healthcare systems.
+                  </CardDescription>
+                </CardHeader>
+              </Card>
             </div>
           </div>
         </div>
@@ -207,67 +209,92 @@ export default function Home() {
       <section id="research" className="bg-muted/30 py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-6xl">
-            <div className="mb-10 flex items-end justify-between">
+            <div className="mb-10">
               <div>
                 <p className="mb-2 text-xs font-medium uppercase tracking-[0.18em] text-primary">
                   Research
                 </p>
                 <h2 className="text-3xl font-semibold tracking-tight text-foreground">
-                  Current Projects
+                  Active research
                 </h2>
+                <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+                  Three current projects apply AI to industrial automation,
+                  software engineering, and cybersecurity.
+                </p>
               </div>
-              <Button variant="ghost" size="sm" asChild className="hidden sm:flex">
-                <Link href="/#research">
-                  View All
-                  <HugeiconsIcon icon={ArrowRight01Icon} strokeWidth={2} data-icon="inline-end" />
-                </Link>
-              </Button>
             </div>
-            <Carousel className="w-full" opts={{ align: "start" }}>
-              <CarouselContent className="-ml-4">
-                {researchProjects.map((project) => (
-                  <CarouselItem key={project.slug} className="pl-4 md:basis-1/2 lg:basis-1/3">
-                    <Link href={`/research/${project.slug}`} className="block h-full group">
-                      <Card className="h-full transition-[transform,box-shadow] duration-200 group-hover:-translate-y-0.5 group-hover:shadow-md">
-                        <CardHeader>
-                          <div className="mb-2 flex items-center gap-3">
-                            <div className="flex size-9 shrink-0 items-center justify-center rounded-md bg-secondary text-secondary-foreground">
-                              {getCompanyIcon(project.companyName, project.companyLogo)}
+            <div className="grid gap-4 lg:grid-cols-[1.25fr_0.75fr]">
+              {researchProjects.map((project, index) => (
+                <Link
+                  key={project.slug}
+                  href={`/research/${project.slug}`}
+                  className={cn("group block", index === 0 && "lg:row-span-2")}
+                >
+                  <Card
+                    className={cn(
+                      "h-full transition-[transform,box-shadow] duration-200 group-hover:-translate-y-0.5 group-hover:shadow-md",
+                      index === 0 && "min-h-[26rem]"
+                    )}
+                  >
+                    <CardHeader>
+                      <div className="mb-3 flex items-center gap-3">
+                        <div className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                          {getCompanyIcon(project.companyName, project.companyLogo)}
+                        </div>
+                        <div className="min-w-0 flex-1">
+                          <p className="truncate text-xs font-medium text-muted-foreground">
+                            {project.companyName || "Chair research team"}
+                          </p>
+                        </div>
+                        <Badge variant={index === 0 ? "default" : "secondary"}>
+                          Active
+                        </Badge>
+                      </div>
+                      <CardTitle className={cn(
+                        "transition-colors group-hover:text-primary",
+                        index === 0 && "max-w-xl text-2xl leading-tight sm:text-3xl"
+                      )}>
+                        {project.title}
+                      </CardTitle>
+                      <CardDescription className={cn(index !== 0 && "line-clamp-2")}>
+                        {project.description}
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent className="mt-auto">
+                      {index === 0 && (
+                        <dl className="mb-6 grid gap-3 sm:grid-cols-3">
+                          {[
+                            { label: "Source", value: "IEC 61131-3" },
+                            { label: "Target", value: "IEC 61499" },
+                            { label: "Method", value: "LLM-assisted migration" },
+                          ].map((item) => (
+                            <div key={item.label} className="rounded-lg bg-muted p-3">
+                              <dt className="text-[10px] font-medium uppercase tracking-wide text-muted-foreground">
+                                {item.label}
+                              </dt>
+                              <dd className="mt-1 text-sm font-semibold text-foreground">
+                                {item.value}
+                              </dd>
                             </div>
-                            <div className="min-w-0 flex-1">
-                              <p className="truncate text-xs font-medium text-foreground">
-                                {project.companyName}
-                              </p>
-                            </div>
-                          </div>
-                          <CardTitle className="line-clamp-2 transition-colors group-hover:text-primary">
-                            {project.title}
-                          </CardTitle>
-                          <CardDescription className="line-clamp-2">
-                            {project.description}
-                          </CardDescription>
-                        </CardHeader>
-                        <CardContent>
-                          <div className="flex flex-wrap gap-1.5">
-                            {project.tags.slice(0, 3).map((tag, tagIndex) => (
-                              <Badge key={tagIndex} variant="secondary">{tag}</Badge>
-                            ))}
-                          </div>
-                        </CardContent>
-                        <CardFooter className="mt-auto">
-                          <span className="flex items-center gap-1 text-sm font-medium text-primary">
-                            View project
-                            <HugeiconsIcon icon={ArrowRight01Icon} strokeWidth={2} />
-                          </span>
-                        </CardFooter>
-                      </Card>
-                    </Link>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <CarouselPrevious className="-left-4 hidden md:flex" />
-              <CarouselNext className="-right-4 hidden md:flex" />
-            </Carousel>
+                          ))}
+                        </dl>
+                      )}
+                      <div className="flex flex-wrap gap-1.5">
+                        {project.tags.slice(0, index === 0 ? 5 : 3).map((tag) => (
+                          <Badge key={tag} variant="outline">{tag}</Badge>
+                        ))}
+                      </div>
+                    </CardContent>
+                    <CardFooter>
+                      <span className="flex items-center gap-1 text-sm font-medium text-primary">
+                        View project
+                        <HugeiconsIcon icon={ArrowRight01Icon} strokeWidth={2} />
+                      </span>
+                    </CardFooter>
+                  </Card>
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -282,8 +309,12 @@ export default function Home() {
                   Archive
                 </p>
                 <h2 className="text-3xl font-semibold tracking-tight text-foreground">
-                  Completed Projects
+                  Research archive
                 </h2>
+                <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+                  Completed work across AI, industrial systems, healthcare,
+                  cloud computing, mobility, and incubation.
+                </p>
               </div>
             </div>
             <Carousel className="w-full" opts={{ align: "start" }}>
@@ -299,14 +330,10 @@ export default function Home() {
                             </div>
                             <div className="min-w-0 flex-1">
                               <p className="truncate text-xs font-medium text-foreground">
-                                {project.companyName}
+                                {project.companyName || "Chair research team"}
                               </p>
-                              {project.completionDate && (
-                                <p className="text-[10px] text-muted-foreground">
-                                  Completed {new Date(project.completionDate).toLocaleDateString("en-US", { year: "numeric", month: "short" })}
-                                </p>
-                              )}
                             </div>
+                            <Badge variant="secondary">Completed</Badge>
                           </div>
                           <CardTitle className="line-clamp-2 transition-colors group-hover:text-primary">
                             {project.title}
@@ -349,58 +376,64 @@ export default function Home() {
                 Partners
               </p>
               <h2 className="text-3xl font-semibold tracking-tight text-foreground">
-                Collaborators & Funding
+                Funding and collaborators
               </h2>
+              <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground">
+                Government agencies and industry teams represented across the
+                published project portfolio.
+              </p>
             </div>
 
-            <div className="mb-12">
-              <p className="mb-6 text-center text-sm font-medium text-muted-foreground">
-                Government Agencies
-              </p>
-              <div className="mx-auto grid max-w-2xl grid-cols-1 gap-4 sm:grid-cols-3">
-                {[
-                  { name: "DST", logo: "/companies/dst-logo.svg", invertDark: true },
-                  { name: "BIRAC", logo: "/companies/birac.svg", invertDark: false },
-                  { name: "AICTE", logo: "/companies/aicte-logo.svg", invertDark: false },
-                ].map((agency) => (
-                  <Card key={agency.name} size="sm">
-                    <CardContent className="flex h-20 items-center justify-center">
+            <div className="grid gap-4 md:grid-cols-2">
+              <Card>
+                <CardHeader className="border-b">
+                  <CardTitle>Government agencies</CardTitle>
+                  <CardDescription>DST, BIRAC, and AICTE</CardDescription>
+                </CardHeader>
+                <CardContent className="grid grid-cols-3 divide-x p-0">
+                  {[
+                    { name: "DST", logo: "/companies/dst-logo.svg", invertDark: true },
+                    { name: "BIRAC", logo: "/companies/birac.svg", invertDark: false },
+                    { name: "AICTE", logo: "/companies/aicte-logo.svg", invertDark: false },
+                  ].map((agency) => (
+                    <div key={agency.name} className="flex h-28 items-center justify-center p-4">
                       <Image
                         src={agency.logo}
                         alt={agency.name}
                         width={80}
                         height={40}
+                        style={{ width: "auto", height: "auto" }}
                         className={`object-contain opacity-75 transition-opacity hover:opacity-100 ${agency.invertDark ? "dark:invert dark:hue-rotate-180" : ""}`}
                       />
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </div>
+                    </div>
+                  ))}
+                </CardContent>
+              </Card>
 
-            <div>
-              <p className="mb-6 text-center text-sm font-medium text-muted-foreground">
-                Industry Partners
-              </p>
-              <div className="mx-auto grid max-w-2xl grid-cols-1 gap-4 sm:grid-cols-3">
-                {[
-                  { name: "Schneider Electric", logo: "/companies/schneider-logo.svg" },
-                  { name: "TE Connectivity", logo: "/companies/te-connectivity-logo.svg" },
-                  { name: "IBM", logo: "/companies/IBM_logo.svg" },
-                ].map((company) => (
-                  <Card key={company.name} size="sm">
-                    <CardContent className="flex h-20 items-center justify-center">
+              <Card>
+                <CardHeader className="border-b">
+                  <CardTitle>Industry partners</CardTitle>
+                  <CardDescription>Automation, connectivity, and cloud</CardDescription>
+                </CardHeader>
+                <CardContent className="grid grid-cols-3 divide-x p-0">
+                  {[
+                    { name: "Schneider Electric", logo: "/companies/schneider-logo.svg" },
+                    { name: "TE Connectivity", logo: "/companies/te-connectivity-logo.svg" },
+                    { name: "IBM", logo: "/companies/IBM_logo.svg" },
+                  ].map((company) => (
+                    <div key={company.name} className="flex h-28 items-center justify-center p-4">
                       <Image
                         src={company.logo}
                         alt={company.name}
                         width={80}
                         height={40}
+                        style={{ width: "auto", height: "auto" }}
                         className="object-contain opacity-75 transition-opacity hover:opacity-100"
                       />
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
+                    </div>
+                  ))}
+                </CardContent>
+              </Card>
             </div>
           </div>
         </div>
@@ -416,8 +449,12 @@ export default function Home() {
                   Events
                 </p>
                 <h2 className="text-3xl font-semibold tracking-tight text-foreground">
-                  Upcoming & Recent
+                  Recent Events
                 </h2>
+                <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+                  Workshops and programmes published by the chair, most recently
+                  updated in May 2025.
+                </p>
               </div>
             </div>
             <Carousel className="w-full" opts={{ align: "start" }}>
