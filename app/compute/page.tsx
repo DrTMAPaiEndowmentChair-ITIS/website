@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { HugeiconsIcon } from "@hugeicons/react";
 import {
   CpuIcon,
@@ -11,8 +10,6 @@ import {
   ComputerIcon,
   Rocket01Icon,
   ArrowRight01Icon,
-  FlashIcon,
-  CloudIcon,
 } from "@hugeicons/core-free-icons";
 
 export const metadata = {
@@ -21,6 +18,19 @@ export const metadata = {
 };
 
 const workstations = [
+  {
+    id: "mac-studio-m3-ultra",
+    name: "Apple Mac Studio",
+    quantity: 4,
+    tier: "AI / Unified Memory",
+    cpu: "Apple M3 Ultra",
+    cpuSpecs: "32-core CPU · 819GB/s",
+    gpu: "80-core Apple GPU",
+    gpuSpecs: "32-core Neural Engine",
+    memory: "512GB unified memory",
+    storage: "4TB SSD",
+    source: "https://www.apple.com/in/shop/buy-mac/mac-studio/m3-ultra-chip-32-core-cpu-80-core-gpu-512gb-memory-4tb-storage",
+  },
   {
     id: "lenovo-p8",
     name: "Lenovo ThinkStation P8",
@@ -60,10 +70,9 @@ const workstations = [
 ];
 
 const totalSpecs = {
-  cores: 1 * 96 + 3 * 12 + 3 * 20,
-  threads: 1 * 192 + 3 * 24 + 3 * 28,
-  memory: 1 * 256 + 3 * 64 + 3 * 32,
-  gpuMemory: 1 * 48 + 3 * 12 + 3 * 12,
+  systems: 4 + 1 + 3 + 3,
+  cores: 4 * 32 + 1 * 96 + 3 * 12 + 3 * 20,
+  memory: 4 * 512 + 1 * 256 + 3 * 64 + 3 * 32,
 };
 
 const capabilities = [
@@ -88,24 +97,24 @@ export default function ComputePage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative pt-24 pb-16 lg:pt-32 lg:pb-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent dark:from-primary/10" />
-        <div className="absolute top-1/2 right-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 dark:bg-primary/10" />
+      <section className="surface-grid relative overflow-hidden border-b border-border pt-32 pb-20 lg:pt-44 lg:pb-24">
+        <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/90 to-background" />
+        <div className="absolute left-1/2 top-20 h-72 w-72 -translate-x-1/2 rounded-full border border-primary/20 shadow-[0_0_120px_30px_color-mix(in_oklab,var(--primary)_12%,transparent)]" />
 
         <div className="container relative mx-auto px-4 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
-            <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-4">
+            <p className="eyebrow animate-in-up mb-5">
               Infrastructure
             </p>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-medium mb-6 leading-[1.1] tracking-tight text-foreground">
+            <h1 className="animate-in-up animation-delay-1 text-4xl font-normal leading-[1.02] tracking-[-0.04em] text-foreground sm:text-5xl lg:text-6xl">
               High-Performance{" "}
-              <span className="text-primary">Computing Lab</span>
+              <em className="font-normal text-primary">Computing Lab</em>
             </h1>
-            <p className="text-muted-foreground text-sm sm:text-base mb-8 max-w-2xl mx-auto leading-relaxed">
-              Access state-of-the-art computational resources featuring AMD Threadripper Pro
-              processors and professional-grade NVIDIA GPUs for cutting-edge research.
+            <p className="animate-in-up animation-delay-2 mx-auto mt-7 mb-9 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+              Access state-of-the-art computational resources featuring Apple M3 Ultra,
+              AMD Threadripper Pro processors, and professional-grade NVIDIA GPUs.
             </p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <div className="animate-in-up animation-delay-3 flex flex-col sm:flex-row gap-3 justify-center">
               <Button asChild size="lg">
                 <Link href="/apply">
                   Request Access
@@ -126,13 +135,13 @@ export default function ComputePage() {
           <div className="max-w-5xl mx-auto">
             <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-border">
               {[
+                { value: totalSpecs.systems, label: "Workstations", icon: ComputerIcon },
                 { value: totalSpecs.cores, label: "CPU Cores", icon: CpuIcon },
-                { value: totalSpecs.threads, label: "Threads", icon: Activity01Icon },
-                { value: `${totalSpecs.gpuMemory}GB`, label: "GPU Memory", icon: ChipIcon },
-                { value: `${totalSpecs.memory}GB`, label: "System RAM", icon: HardDriveIcon },
+                { value: "2.53TB", label: "Total Memory", icon: HardDriveIcon },
+                { value: "2TB + 120GB", label: "Unified + VRAM", icon: ChipIcon },
               ].map((stat, index) => (
                 <div key={index} className="text-center py-6 px-4">
-                  <div className="inline-flex items-center justify-center w-8 h-8 mb-2 bg-primary/10 text-primary">
+                  <div className="inline-flex items-center justify-center w-8 h-8 mb-2 rounded-full bg-primary/10 text-primary">
                     <HugeiconsIcon icon={stat.icon} strokeWidth={2} className="size-4" />
                   </div>
                   <div className="text-xl sm:text-2xl lg:text-3xl font-medium text-foreground tracking-tight">
@@ -165,13 +174,13 @@ export default function ComputePage() {
               {workstations.map((ws) => (
                 <div
                   key={ws.id}
-                  className="group border border-border bg-card dark:bg-transparent hover:border-primary/50 transition-colors"
+                  className="group overflow-hidden rounded-2xl border border-border bg-card/80 shadow-sm backdrop-blur-sm transition-all duration-500 hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-xl hover:shadow-foreground/5"
                 >
                   <div className="p-4 sm:p-6">
                     {/* Header */}
                     <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 mb-4">
                       <div className="flex items-center gap-3">
-                        <span className="flex items-center justify-center w-8 h-8 bg-primary/10 text-primary text-sm font-medium">
+                        <span className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary text-sm font-semibold">
                           {ws.quantity}x
                         </span>
                         <div>
@@ -183,27 +192,42 @@ export default function ComputePage() {
 
                     {/* Specs Grid */}
                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-                      <div className="bg-muted/50 dark:bg-white/5 p-3">
+                      <div className="rounded-xl bg-muted/60 p-3">
                         <p className="text-[10px] text-muted-foreground uppercase tracking-wide mb-1">CPU</p>
                         <p className="text-xs font-medium text-foreground">{ws.cpu}</p>
                         <p className="text-[10px] text-muted-foreground mt-0.5">{ws.cpuSpecs}</p>
                       </div>
-                      <div className="bg-muted/50 dark:bg-white/5 p-3">
+                      <div className="rounded-xl bg-muted/60 p-3">
                         <p className="text-[10px] text-muted-foreground uppercase tracking-wide mb-1">GPU</p>
                         <p className="text-xs font-medium text-foreground">{ws.gpu}</p>
                         <p className="text-[10px] text-muted-foreground mt-0.5">{ws.gpuSpecs}</p>
                       </div>
-                      <div className="bg-muted/50 dark:bg-white/5 p-3">
+                      <div className="rounded-xl bg-muted/60 p-3">
                         <p className="text-[10px] text-muted-foreground uppercase tracking-wide mb-1">Memory</p>
                         <p className="text-xs font-medium text-foreground">{ws.memory}</p>
-                        <p className="text-[10px] text-muted-foreground mt-0.5">ECC RDIMM</p>
+                        <p className="text-[10px] text-muted-foreground mt-0.5">
+                          {ws.id === "mac-studio-m3-ultra" ? "Unified architecture" : "ECC RDIMM"}
+                        </p>
                       </div>
-                      <div className="bg-muted/50 dark:bg-white/5 p-3">
+                      <div className="rounded-xl bg-muted/60 p-3">
                         <p className="text-[10px] text-muted-foreground uppercase tracking-wide mb-1">Storage</p>
                         <p className="text-xs font-medium text-foreground">{ws.storage}</p>
-                        <p className="text-[10px] text-muted-foreground mt-0.5">PCIe 4.0/5.0</p>
+                        <p className="text-[10px] text-muted-foreground mt-0.5">
+                          {ws.id === "mac-studio-m3-ultra" ? "Internal SSD" : "PCIe 4.0/5.0"}
+                        </p>
                       </div>
                     </div>
+                    {ws.source && (
+                      <a
+                        href={ws.source}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-4 inline-flex items-center gap-1 text-[10px] font-medium text-muted-foreground transition-colors hover:text-primary"
+                      >
+                        Configuration verified with Apple
+                        <HugeiconsIcon icon={ArrowRight01Icon} strokeWidth={2} className="size-3 -rotate-45" />
+                      </a>
+                    )}
                   </div>
                 </div>
               ))}

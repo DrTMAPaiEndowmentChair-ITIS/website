@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
 import {
   Carousel,
@@ -64,28 +63,29 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative pt-24 pb-20 lg:pt-32 lg:pb-28 overflow-hidden">
-        {/* Background gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent dark:from-primary/10" />
-        <div className="absolute top-1/2 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 dark:bg-primary/10" />
+      <section className="surface-grid relative overflow-hidden border-b border-border pt-32 pb-20 lg:pt-44 lg:pb-28">
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/94 to-background/55" />
+        <div className="absolute -right-20 top-20 size-[34rem] rounded-full border border-primary/20" />
+        <div className="absolute right-12 top-52 size-[22rem] rounded-full border border-primary/15" />
 
         <div className="container relative mx-auto px-4 lg:px-8">
           <div className="max-w-6xl mx-auto">
-            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
               <div className="order-2 lg:order-1">
-                <Badge variant="secondary" className="mb-6 text-[10px] uppercase tracking-widest">
-                  MAHE, Manipal
-                </Badge>
-                <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-medium mb-6 leading-[1.1] tracking-tight text-foreground">
+                <div className="eyebrow animate-in-up mb-7 flex items-center gap-3">
+                  <span className="h-px w-10 bg-primary" />
+                  MAHE · Manipal
+                </div>
+                <h1 className="animate-in-up animation-delay-1 text-4xl font-normal leading-[1.02] tracking-[-0.04em] text-foreground sm:text-5xl lg:text-6xl">
                   Advancing Research Through{" "}
-                  <span className="text-primary">Industry Collaborations</span>
+                  <em className="font-normal text-primary">Industry Collaborations</em>
                 </h1>
-                <p className="text-muted-foreground text-sm sm:text-base mb-8 max-w-lg leading-relaxed">
+                <p className="animate-in-up animation-delay-2 mt-8 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
                   Join us in pushing the boundaries of innovation through
                   cutting-edge research projects and industry partnerships at the
                   Dr. TMA Pai Endowment Chair.
                 </p>
-                <div className="flex flex-col sm:flex-row gap-3">
+                <div className="animate-in-up animation-delay-3 mt-9 flex flex-col gap-3 sm:flex-row">
                   <Button asChild size="lg">
                     <Link href="/apply">
                       Apply for Research
@@ -97,13 +97,13 @@ export default function Home() {
                   </Button>
                 </div>
               </div>
-              <div className="order-1 lg:order-2 relative">
-                <div className="relative aspect-square max-w-md mx-auto lg:max-w-none">
+              <div className="order-1 lg:order-2 animate-in-up animation-delay-3 relative">
+                <div className="relative mx-auto aspect-square max-w-md overflow-hidden rounded-[2rem] border border-border bg-card/70 p-5 shadow-2xl shadow-foreground/8 backdrop-blur-sm lg:max-w-none">
                   <Image
                     src="/hero-image.png"
-                    alt="Research and Innovation"
+                    alt="Manipal Academy of Higher Education, School of Computer Engineering"
                     fill
-                    className="object-contain dark:invert dark:hue-rotate-180"
+                    className="object-contain p-4 transition-transform duration-700 hover:scale-[1.02] dark:invert dark:hue-rotate-180"
                     priority
                   />
                 </div>
@@ -114,7 +114,7 @@ export default function Home() {
       </section>
 
       {/* Stats Section - Moved up for impact */}
-      <section className="py-12 border-y border-border bg-card dark:bg-transparent">
+      <section className="border-b border-border bg-card/75 py-12 backdrop-blur-sm">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-5xl mx-auto">
             <div className="grid grid-cols-3 divide-x divide-border">
@@ -124,10 +124,10 @@ export default function Home() {
                 { value: "50+", label: "Student Researchers", icon: UserGroupIcon },
               ].map((stat, index) => (
                 <div key={index} className="text-center px-4 py-2">
-                  <div className="inline-flex items-center justify-center w-10 h-10 mb-3 bg-primary/10 text-primary">
+                  <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
                     <HugeiconsIcon icon={stat.icon} strokeWidth={2} className="size-5" />
                   </div>
-                  <div className="text-2xl sm:text-3xl lg:text-4xl font-medium text-foreground tracking-tight">
+                  <div className="display-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-foreground tracking-tight">
                     {stat.value}
                   </div>
                   <div className="text-[10px] sm:text-xs text-muted-foreground uppercase tracking-wide mt-1">
@@ -145,7 +145,7 @@ export default function Home() {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-10">
-              <p className="text-[10px] uppercase tracking-widest text-primary mb-3">About</p>
+              <p className="eyebrow mb-3">About</p>
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-medium text-foreground tracking-tight">
                 Dr. TMA Pai Endowment Chair
               </h2>
@@ -155,25 +155,25 @@ export default function Home() {
             </div>
             <div className="prose prose-sm dark:prose-invert max-w-none">
               <div className="grid md:grid-cols-3 gap-6 text-sm text-muted-foreground">
-                <div className="p-6 bg-muted/50 dark:bg-white/5 border border-border hover:border-primary/30 transition-colors">
+                <div className="group rounded-2xl border border-border bg-card/75 p-6 transition-all duration-500 hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl hover:shadow-foreground/5">
                   <h3 className="text-foreground font-medium mb-2 text-base">Intelligent Technologies</h3>
                   <p className="text-xs leading-relaxed">
                     Advanced digital systems including AI, machine learning, and smart automation
                     that enable machines to learn, adapt, and make decisions.
                   </p>
                 </div>
-                <div className="p-6 bg-muted/50 dark:bg-white/5 border border-border hover:border-primary/30 transition-colors">
+                <div className="group rounded-2xl border border-border bg-card/75 p-6 transition-all duration-500 hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl hover:shadow-foreground/5">
                   <h3 className="text-foreground font-medium mb-2 text-base">Industry 4.0</h3>
                   <p className="text-xs leading-relaxed">
                     The fourth industrial revolution with cyber-physical systems, IoT, and
                     data-driven manufacturing for smarter industries.
                   </p>
                 </div>
-                <div className="p-6 bg-muted/50 dark:bg-white/5 border border-border hover:border-primary/30 transition-colors">
+                <div className="group rounded-2xl border border-border bg-card/75 p-6 transition-all duration-500 hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl hover:shadow-foreground/5">
                   <h3 className="text-foreground font-medium mb-2 text-base">Sustainability</h3>
                   <p className="text-xs leading-relaxed">
                     Developing solutions that meet present needs without compromising future
-                    generations' ability to meet theirs.
+                    generations&apos; ability to meet theirs.
                   </p>
                 </div>
               </div>

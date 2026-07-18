@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { HugeiconsIcon } from "@hugeicons/react";
-import { CheckmarkCircle01Icon, HelpCircleIcon, ArrowRight01Icon, Mail01Icon } from "@hugeicons/core-free-icons";
+import { CheckmarkCircle01Icon, HelpCircleIcon, Mail01Icon } from "@hugeicons/core-free-icons";
 
 export const metadata = {
   title: "Apply for Research | Dr. TMA Pai Endowment Chair",

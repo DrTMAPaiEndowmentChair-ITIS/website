@@ -25,7 +25,7 @@ const footerLinks = {
 
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-card">
+    <footer className="border-t border-border bg-foreground text-background">
       <div className="container mx-auto px-4 lg:px-8">
         {/* Main Footer */}
         <div className="py-12 lg:py-16">
@@ -33,14 +33,14 @@ export function Footer() {
             {/* Brand */}
             <div className="col-span-2 md:col-span-1">
               <Link href="/" className="inline-block mb-4 group">
-                <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors block">
+                <span className="display-serif text-lg font-semibold text-background group-hover:text-primary transition-colors block">
                   Dr. TMA Pai Endowment Chair
                 </span>
-                <span className="text-[10px] text-muted-foreground uppercase tracking-wide">
+                <span className="text-[10px] text-background/55 uppercase tracking-wide">
                   MAHE, Manipal
                 </span>
               </Link>
-              <p className="text-xs text-muted-foreground leading-relaxed mb-4">
+              <p className="text-xs text-background/60 leading-relaxed mb-4">
                 Advancing research in Intelligent Technologies, Industry 4.0 & Sustainability
                 through industry collaborations.
               </p>
@@ -51,7 +51,7 @@ export function Footer() {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center w-8 h-8 bg-muted hover:bg-primary/10 text-muted-foreground hover:text-primary transition-colors"
+                    className="flex items-center justify-center w-9 h-9 rounded-full border border-background/15 text-background/60 hover:border-primary hover:text-primary transition-colors"
                     aria-label={link.label}
                   >
                     <HugeiconsIcon icon={link.icon} strokeWidth={2} className="size-4" />
@@ -62,7 +62,7 @@ export function Footer() {
 
             {/* Navigation */}
             <div>
-              <p className="text-[10px] uppercase tracking-widest text-muted-foreground mb-4">
+              <p className="text-[10px] uppercase tracking-widest text-background/40 mb-4">
                 Navigation
               </p>
               <ul className="space-y-2">
@@ -70,7 +70,7 @@ export function Footer() {
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="text-xs text-muted-foreground hover:text-foreground transition-colors"
+                      className="text-xs text-background/60 hover:text-background transition-colors"
                     >
                       {link.label}
                     </Link>
@@ -81,7 +81,7 @@ export function Footer() {
 
             {/* Resources */}
             <div>
-              <p className="text-[10px] uppercase tracking-widest text-muted-foreground mb-4">
+              <p className="text-[10px] uppercase tracking-widest text-background/40 mb-4">
                 Resources
               </p>
               <ul className="space-y-2">
@@ -91,7 +91,7 @@ export function Footer() {
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-xs text-muted-foreground hover:text-foreground transition-colors inline-flex items-center gap-1 group"
+                      className="text-xs text-background/60 hover:text-background transition-colors inline-flex items-center gap-1 group"
                     >
                       {link.label}
                       <HugeiconsIcon
@@ -107,20 +107,20 @@ export function Footer() {
 
             {/* Contact */}
             <div>
-              <p className="text-[10px] uppercase tracking-widest text-muted-foreground mb-4">
+              <p className="text-[10px] uppercase tracking-widest text-background/40 mb-4">
                 Contact
               </p>
               <ul className="space-y-3">
                 <li>
                   <a
                     href="mailto:drtmapaichair.itis@manipal.edu"
-                    className="text-xs text-muted-foreground hover:text-foreground transition-colors flex items-start gap-2"
+                    className="text-xs text-background/60 hover:text-background transition-colors flex items-start gap-2"
                   >
                     <HugeiconsIcon icon={Mail01Icon} strokeWidth={2} className="size-3.5 mt-0.5 shrink-0" />
                     <span>drtmapaichair.itis@manipal.edu</span>
                   </a>
                 </li>
-                <li className="text-xs text-muted-foreground flex items-start gap-2">
+                <li className="text-xs text-background/60 flex items-start gap-2">
                   <HugeiconsIcon icon={Location01Icon} strokeWidth={2} className="size-3.5 mt-0.5 shrink-0" />
                   <span>
                     MIT, MAHE<br />
@@ -134,10 +134,10 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="py-4 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] text-muted-foreground">
+        <div className="py-4 border-t border-background/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] text-background/45">
           <p>{new Date().getFullYear()} Dr. TMA Pai Endowment Chair. All rights reserved.</p>
           <p>
-            <Link href="/chairperson" className="hover:text-foreground transition-colors">
+            <Link href="/chairperson" className="hover:text-background transition-colors">
               Dr. Manohara Pai M.M.
             </Link>
             {" "}&middot;{" "}
