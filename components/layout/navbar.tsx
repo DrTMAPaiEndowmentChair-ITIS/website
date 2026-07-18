@@ -27,39 +27,39 @@ export function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-border/60 bg-background/95 backdrop-blur-md">
-      <div className="container mx-auto px-4 lg:px-8">
+    <nav className="fixed inset-x-0 top-0 z-50 border-b bg-background/80 backdrop-blur-xl">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
-          <Link href="/" className="flex flex-col py-1 max-w-[55%] sm:max-w-none group">
-            <span className="text-sm sm:text-base font-medium text-foreground leading-tight group-hover:text-primary transition-colors">
+          <Link href="/" className="group flex max-w-[58%] flex-col sm:max-w-none">
+            <span className="text-sm font-semibold leading-tight tracking-tight text-foreground transition-colors group-hover:text-primary sm:text-base">
               Dr. TMA Pai Endowment Chair
             </span>
-            <span className="text-[10px] sm:text-xs text-muted-foreground font-normal leading-tight tracking-wide uppercase">
+            <span className="truncate text-[10px] leading-tight text-muted-foreground sm:text-xs">
               Intelligent Technologies, Industry 4.0 & Sustainability
             </span>
           </Link>
 
-          <div className="hidden lg:flex items-center gap-1">
+          <div className="hidden items-center gap-1 lg:flex">
             {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                target={link.external ? "_blank" : undefined}
-                rel={link.external ? "noopener noreferrer" : undefined}
-                className="relative px-3 py-2 text-xs text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1 group"
-              >
-                {link.label}
-                {link.external && (
-                  <HugeiconsIcon
-                    icon={ArrowUpRight01Icon}
-                    strokeWidth={2}
-                    className="size-3 opacity-50 group-hover:opacity-100 transition-opacity"
-                  />
-                )}
-              </Link>
+              <Button key={link.href} variant="ghost" size="sm" asChild>
+                <Link
+                  href={link.href}
+                  target={link.external ? "_blank" : undefined}
+                  rel={link.external ? "noopener noreferrer" : undefined}
+                >
+                  {link.label}
+                  {link.external && (
+                    <HugeiconsIcon
+                      icon={ArrowUpRight01Icon}
+                      strokeWidth={2}
+                      data-icon="inline-end"
+                    />
+                  )}
+                </Link>
+              </Button>
             ))}
 
-            <div className="w-px h-5 bg-border mx-2" />
+            <Separator orientation="vertical" className="mx-2 h-5" />
 
             <ThemeToggle />
 
@@ -68,12 +68,12 @@ export function Navbar() {
             </Button>
           </div>
 
-          <div className="flex items-center gap-2 lg:hidden">
+          <div className="flex items-center gap-1 lg:hidden">
             <ThemeToggle />
             <Sheet open={open} onOpenChange={setOpen}>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon-sm">
-                  <HugeiconsIcon icon={Menu01Icon} strokeWidth={2} className="size-5" />
+                <Button variant="ghost" size="icon">
+                  <HugeiconsIcon icon={Menu01Icon} strokeWidth={2} />
                   <span className="sr-only">Toggle menu</span>
                 </Button>
               </SheetTrigger>
@@ -81,36 +81,34 @@ export function Navbar() {
                 <SheetHeader>
                   <SheetTitle className="text-left text-sm">Navigation</SheetTitle>
                 </SheetHeader>
-                <Separator className="my-4" />
-                <nav className="flex flex-col gap-1">
-                  <Link
-                    href="/"
-                    className="px-3 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
-                    onClick={() => setOpen(false)}
-                  >
-                    Home
-                  </Link>
-                  {navLinks.map((link) => (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      target={link.external ? "_blank" : undefined}
-                      rel={link.external ? "noopener noreferrer" : undefined}
-                      className="px-3 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-muted transition-colors flex items-center justify-between"
-                      onClick={() => setOpen(false)}
-                    >
-                      {link.label}
-                      {link.external && (
-                        <HugeiconsIcon
-                          icon={ArrowUpRight01Icon}
-                          strokeWidth={2}
-                          className="size-3.5 opacity-50"
-                        />
-                      )}
+                <Separator />
+                <nav className="flex flex-col gap-1 px-4">
+                  <Button variant="ghost" className="justify-start" asChild>
+                    <Link href="/" onClick={() => setOpen(false)}>
+                      Home
                     </Link>
+                  </Button>
+                  {navLinks.map((link) => (
+                    <Button key={link.href} variant="ghost" className="justify-start" asChild>
+                      <Link
+                        href={link.href}
+                        target={link.external ? "_blank" : undefined}
+                        rel={link.external ? "noopener noreferrer" : undefined}
+                        onClick={() => setOpen(false)}
+                      >
+                        {link.label}
+                        {link.external && (
+                          <HugeiconsIcon
+                            icon={ArrowUpRight01Icon}
+                            strokeWidth={2}
+                            data-icon="inline-end"
+                          />
+                        )}
+                      </Link>
+                    </Button>
                   ))}
-                  <Separator className="my-3" />
-                  <div className="px-3">
+                  <Separator />
+                  <div className="pt-2">
                     <Button asChild className="w-full">
                       <Link href="/apply" onClick={() => setOpen(false)}>
                         Apply Now
