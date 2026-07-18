@@ -1,7 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  allowedDevOrigins: [
+    "2.3.4.7",
+    "100.89.228.43",
+    "quasar.walrus-pangolin.ts.net",
+  ],
 };
 
 export default nextConfig;

@@ -67,22 +67,25 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
-      <section className="pt-28 pb-16 lg:pt-36 lg:pb-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden pt-28 pb-20 lg:pt-32 lg:pb-28">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.08] via-background to-background" />
+        <div className="absolute -right-32 top-16 size-[34rem] rounded-full border border-primary/10" />
+        <div className="absolute -right-12 top-36 size-[22rem] rounded-full border border-primary/10" />
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-6xl">
             <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
               <div>
-                <Badge variant="outline" className="mb-6">
+                <Badge variant="secondary" className="mb-6 uppercase tracking-wider">
                   MAHE, Manipal
                 </Badge>
-                <h1 className="max-w-3xl text-4xl font-semibold leading-[1.05] tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-                  Industry-backed research in{" "}
-                  <span className="text-primary">intelligent systems</span>
+                <h1 className="max-w-3xl text-4xl font-semibold leading-[1.04] tracking-[-0.035em] text-foreground sm:text-5xl lg:text-6xl">
+                  Advancing Research Through{" "}
+                  <span className="text-primary">Industry Collaborations</span>
                 </h1>
                 <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground">
-                  The Dr. TMA Pai Endowment Chair connects MAHE researchers with
-                  industry partners across intelligent technologies, Industry 4.0,
-                  and sustainability.
+                  Research projects and industry partnerships across intelligent
+                  technologies, Industry 4.0, and sustainability at the Dr. TMA
+                  Pai Endowment Chair.
                 </p>
                 <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                   <Button asChild size="lg">
@@ -97,54 +100,60 @@ export default function Home() {
                 </div>
               </div>
               <div className="relative">
-                <Card className="mx-auto max-w-lg">
-                  <CardContent className="relative aspect-[4/3] p-6 sm:p-8">
+                <div className="relative mx-auto max-w-lg overflow-hidden rounded-2xl border bg-card/80 shadow-[0_24px_80px_-48px_var(--foreground)] backdrop-blur-sm">
+                  <div className="relative aspect-[4/3]">
                     <Image
                       src="/hero-image.png"
                       alt="Manipal Academy of Higher Education, School of Computer Engineering"
                       fill
-                      className="object-contain p-6"
+                      className="object-contain p-8 transition-transform duration-500 hover:scale-[1.015]"
                       priority
                       sizes="(max-width: 1024px) 100vw, 45vw"
                     />
-                  </CardContent>
-                </Card>
+                  </div>
+                  <div className="flex items-center justify-between border-t bg-muted/40 px-5 py-3 text-xs text-muted-foreground">
+                    <span>School of Computer Engineering</span>
+                    <span>MAHE, Manipal</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="pb-16 lg:pb-24">
+      <section className="border-y bg-card/70 py-10">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <Card className="mx-auto max-w-5xl">
-            <CardContent className="grid grid-cols-1 divide-y p-0 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+          <div className="mx-auto max-w-5xl">
+            <div className="grid grid-cols-1 divide-y sm:grid-cols-3 sm:divide-x sm:divide-y-0">
               {stats.map((stat) => (
-                <div key={stat.label} className="flex items-center gap-4 p-6 sm:justify-center">
-                  <div className="flex size-10 shrink-0 items-center justify-center rounded-md bg-secondary text-secondary-foreground">
+                <div key={stat.label} className="flex items-center gap-4 px-6 py-4 sm:justify-center">
+                  <div className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
                     <HugeiconsIcon icon={stat.icon} strokeWidth={2} />
                   </div>
                   <div>
-                    <div className="text-2xl font-semibold tracking-tight text-foreground">
-                    {stat.value}
+                    <div className="text-3xl font-semibold tracking-tight text-foreground">
+                      {stat.value}
                     </div>
-                    <div className="text-xs text-muted-foreground">
-                    {stat.label}
+                    <div className="text-xs uppercase tracking-wide text-muted-foreground">
+                      {stat.label}
                     </div>
                   </div>
                 </div>
               ))}
-            </CardContent>
-          </Card>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Chair Info Section */}
-      <section className="border-y bg-muted/30 py-20 lg:py-24">
+      <section className="py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-5xl">
             <div className="mb-10 text-center">
-              <Badge variant="secondary" className="mb-4">About the chair</Badge>
+              <p className="mb-3 text-xs font-medium uppercase tracking-[0.18em] text-primary">
+                About
+              </p>
               <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
                 Dr. TMA Pai Endowment Chair
               </h2>
@@ -152,9 +161,12 @@ export default function Home() {
                 Intelligent Technologies, Industry 4.0 & Sustainability
               </p>
             </div>
-            <div className="grid gap-4 md:grid-cols-3">
-                <Card>
-                  <CardHeader>
+            <div className="grid gap-4 md:grid-cols-2">
+                <Card className="md:col-span-2">
+                  <CardHeader className="md:grid md:grid-cols-[auto_1fr] md:items-start md:gap-x-5">
+                    <div className="flex size-11 items-center justify-center rounded-lg bg-primary/10 text-primary md:row-span-2">
+                      <HugeiconsIcon icon={CpuIcon} strokeWidth={2} />
+                    </div>
                     <CardTitle>Intelligent Technologies</CardTitle>
                     <CardDescription>
                     Advanced digital systems including AI, machine learning, and smart automation
@@ -164,6 +176,9 @@ export default function Home() {
                 </Card>
                 <Card>
                   <CardHeader>
+                    <div className="mb-3 flex size-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                      <HugeiconsIcon icon={Building01Icon} strokeWidth={2} />
+                    </div>
                     <CardTitle>Industry 4.0</CardTitle>
                     <CardDescription>
                     The fourth industrial revolution with cyber-physical systems, IoT, and
@@ -173,6 +188,9 @@ export default function Home() {
                 </Card>
                 <Card>
                   <CardHeader>
+                    <div className="mb-3 flex size-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                      <HugeiconsIcon icon={AnalyticsUpIcon} strokeWidth={2} />
+                    </div>
                     <CardTitle>Sustainability</CardTitle>
                     <CardDescription>
                     Developing solutions that meet present needs without compromising future
@@ -186,12 +204,14 @@ export default function Home() {
       </section>
 
       {/* Current Research Projects */}
-      <section id="research" className="py-20 lg:py-24">
+      <section id="research" className="bg-muted/30 py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-6xl">
             <div className="mb-10 flex items-end justify-between">
               <div>
-                <Badge variant="outline" className="mb-3">Research</Badge>
+                <p className="mb-2 text-xs font-medium uppercase tracking-[0.18em] text-primary">
+                  Research
+                </p>
                 <h2 className="text-3xl font-semibold tracking-tight text-foreground">
                   Current Projects
                 </h2>
@@ -253,12 +273,14 @@ export default function Home() {
       </section>
 
       {/* Completed Research Projects */}
-      <section id="completed-research" className="border-y bg-muted/30 py-20 lg:py-24">
+      <section id="completed-research" className="py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-6xl">
             <div className="mb-10 flex items-end justify-between">
               <div>
-                <Badge variant="outline" className="mb-3">Archive</Badge>
+                <p className="mb-2 text-xs font-medium uppercase tracking-[0.18em] text-primary">
+                  Archive
+                </p>
                 <h2 className="text-3xl font-semibold tracking-tight text-foreground">
                   Completed Projects
                 </h2>
@@ -319,11 +341,13 @@ export default function Home() {
       </section>
 
       {/* Partners Section */}
-      <section className="py-20 lg:py-24">
+      <section className="bg-muted/30 py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-5xl">
             <div className="mb-12 text-center">
-              <Badge variant="outline" className="mb-3">Partners</Badge>
+              <p className="mb-2 text-xs font-medium uppercase tracking-[0.18em] text-primary">
+                Partners
+              </p>
               <h2 className="text-3xl font-semibold tracking-tight text-foreground">
                 Collaborators & Funding
               </h2>
@@ -383,12 +407,14 @@ export default function Home() {
       </section>
 
       {/* Events Section */}
-      <section id="events" className="border-y bg-muted/30 py-20 lg:py-24">
+      <section id="events" className="py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-6xl">
             <div className="mb-10 flex items-end justify-between">
               <div>
-                <Badge variant="outline" className="mb-3">Events</Badge>
+                <p className="mb-2 text-xs font-medium uppercase tracking-[0.18em] text-primary">
+                  Events
+                </p>
                 <h2 className="text-3xl font-semibold tracking-tight text-foreground">
                   Upcoming & Recent
                 </h2>
@@ -440,19 +466,20 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 lg:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <Card className="mx-auto max-w-4xl">
-            <CardHeader className="text-center">
-              <Badge variant="secondary" className="mx-auto mb-2">Applications</Badge>
-              <CardTitle className="text-2xl sm:text-3xl">
-                Contribute to an active research project
-              </CardTitle>
-              <CardDescription className="mx-auto max-w-xl">
-                Submit your background and research interests for review by the chair team.
-              </CardDescription>
-            </CardHeader>
-            <CardFooter className="flex-col justify-center gap-3 sm:flex-row">
+      <section className="relative overflow-hidden border-t bg-gradient-to-br from-primary/[0.08] via-background to-background py-20 lg:py-28">
+        <div className="absolute left-1/2 top-1/2 size-80 -translate-x-1/2 -translate-y-1/2 rounded-full border border-primary/10" />
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-3xl text-center">
+            <div className="mx-auto mb-6 flex size-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
+              <HugeiconsIcon icon={AnalyticsUpIcon} strokeWidth={2} />
+            </div>
+            <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+              Contribute to an active research project
+            </h2>
+            <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
+              Submit your background and research interests for review by the chair team.
+            </p>
+            <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
                 <Button asChild size="lg">
                   <Link href="/apply">
                     Apply Now
@@ -462,8 +489,8 @@ export default function Home() {
                 <Button variant="outline" asChild size="lg">
                   <Link href="/chairperson">Chair Professor</Link>
                 </Button>
-            </CardFooter>
-          </Card>
+            </div>
+          </div>
         </div>
       </section>
     </div>

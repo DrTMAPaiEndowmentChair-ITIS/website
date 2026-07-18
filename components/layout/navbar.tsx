@@ -41,22 +41,22 @@ export function Navbar() {
 
           <div className="hidden items-center gap-1 lg:flex">
             {navLinks.map((link) => (
-              <Button key={link.href} variant="ghost" size="sm" asChild>
-                <Link
-                  href={link.href}
-                  target={link.external ? "_blank" : undefined}
-                  rel={link.external ? "noopener noreferrer" : undefined}
-                >
-                  {link.label}
-                  {link.external && (
-                    <HugeiconsIcon
-                      icon={ArrowUpRight01Icon}
-                      strokeWidth={2}
-                      data-icon="inline-end"
-                    />
-                  )}
-                </Link>
-              </Button>
+              <Link
+                key={link.href}
+                href={link.href}
+                target={link.external ? "_blank" : undefined}
+                rel={link.external ? "noopener noreferrer" : undefined}
+                className="group relative flex items-center gap-1 px-3 py-2 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground after:absolute after:inset-x-3 after:bottom-0 after:h-px after:origin-left after:scale-x-0 after:bg-primary after:transition-transform hover:after:scale-x-100"
+              >
+                {link.label}
+                {link.external && (
+                  <HugeiconsIcon
+                    icon={ArrowUpRight01Icon}
+                    strokeWidth={2}
+                    className="opacity-50 transition-opacity group-hover:opacity-100"
+                  />
+                )}
+              </Link>
             ))}
 
             <Separator orientation="vertical" className="mx-2 h-5" />
