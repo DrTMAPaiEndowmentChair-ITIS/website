@@ -27,11 +27,11 @@ export function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-transparent">
+    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-border/60 bg-background/95 backdrop-blur-md">
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="flex h-[72px] items-center justify-between">
+        <div className="flex h-16 items-center justify-between">
           <Link href="/" className="flex flex-col py-1 max-w-[55%] sm:max-w-none group">
-            <span className="display-serif text-base sm:text-lg font-semibold text-foreground leading-tight group-hover:text-primary transition-colors duration-300">
+            <span className="text-sm sm:text-base font-medium text-foreground leading-tight group-hover:text-primary transition-colors">
               Dr. TMA Pai Endowment Chair
             </span>
             <span className="text-[10px] sm:text-xs text-muted-foreground font-normal leading-tight tracking-wide uppercase">
@@ -46,7 +46,7 @@ export function Navbar() {
                 href={link.href}
                 target={link.external ? "_blank" : undefined}
                 rel={link.external ? "noopener noreferrer" : undefined}
-                className="relative px-3 py-2 text-xs font-medium text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1 group after:absolute after:bottom-0 after:left-3 after:right-3 after:h-px after:origin-left after:scale-x-0 after:bg-primary after:transition-transform after:duration-300 hover:after:scale-x-100"
+                className="relative px-3 py-2 text-xs text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1 group"
               >
                 {link.label}
                 {link.external && (

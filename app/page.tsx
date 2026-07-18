@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
 import {
   Carousel,
@@ -63,29 +64,27 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="surface-grid relative overflow-hidden border-b border-border pt-32 pb-20 lg:pt-44 lg:pb-28">
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/94 to-background/55" />
-        <div className="absolute -right-20 top-20 size-[34rem] rounded-full border border-primary/20" />
-        <div className="absolute right-12 top-52 size-[22rem] rounded-full border border-primary/15" />
+      <section className="relative overflow-hidden pt-24 pb-20 lg:pt-32 lg:pb-28">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent dark:from-primary/10" />
+        <div className="absolute top-1/2 right-0 h-[500px] w-[500px] translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/5 blur-3xl dark:bg-primary/10" />
 
         <div className="container relative mx-auto px-4 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
               <div className="order-2 lg:order-1">
-                <div className="eyebrow animate-in-up mb-7 flex items-center gap-3">
-                  <span className="h-px w-10 bg-primary" />
-                  MAHE · Manipal
-                </div>
-                <h1 className="animate-in-up animation-delay-1 text-4xl font-normal leading-[1.02] tracking-[-0.04em] text-foreground sm:text-5xl lg:text-6xl">
+                <Badge variant="secondary" className="mb-6 text-[10px] uppercase tracking-widest">
+                  MAHE, Manipal
+                </Badge>
+                <h1 className="mb-6 text-3xl font-medium leading-[1.1] tracking-tight text-foreground sm:text-4xl lg:text-5xl xl:text-6xl">
                   Advancing Research Through{" "}
-                  <em className="font-normal text-primary">Industry Collaborations</em>
+                  <span className="text-primary">Industry Collaborations</span>
                 </h1>
-                <p className="animate-in-up animation-delay-2 mt-8 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+                <p className="mb-8 max-w-lg text-sm leading-relaxed text-muted-foreground sm:text-base">
                   Join us in pushing the boundaries of innovation through
                   cutting-edge research projects and industry partnerships at the
                   Dr. TMA Pai Endowment Chair.
                 </p>
-                <div className="animate-in-up animation-delay-3 mt-9 flex flex-col gap-3 sm:flex-row">
+                <div className="flex flex-col gap-3 sm:flex-row">
                   <Button asChild size="lg">
                     <Link href="/apply">
                       Apply for Research
@@ -97,13 +96,13 @@ export default function Home() {
                   </Button>
                 </div>
               </div>
-              <div className="order-1 lg:order-2 animate-in-up animation-delay-3 relative">
-                <div className="relative mx-auto aspect-square max-w-md overflow-hidden rounded-[2rem] border border-border bg-card/70 p-5 shadow-2xl shadow-foreground/8 backdrop-blur-sm lg:max-w-none">
+              <div className="relative order-1 lg:order-2">
+                <div className="relative mx-auto aspect-square max-w-md lg:max-w-none">
                   <Image
                     src="/hero-image.png"
                     alt="Manipal Academy of Higher Education, School of Computer Engineering"
                     fill
-                    className="interactive-image object-contain p-4 transition-transform duration-250 [transition-timing-function:var(--motion-ease-out)] dark:invert dark:hue-rotate-180"
+                    className="object-contain dark:invert dark:hue-rotate-180"
                     priority
                     sizes="(max-width: 1024px) 100vw, 50vw"
                   />
@@ -115,7 +114,7 @@ export default function Home() {
       </section>
 
       {/* Stats Section - Moved up for impact */}
-      <section className="border-b border-border bg-card/75 py-12 backdrop-blur-sm">
+      <section className="border-y border-border bg-card py-12 dark:bg-transparent">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-5xl mx-auto">
             <div className="grid grid-cols-3 divide-x divide-border">
@@ -125,10 +124,10 @@ export default function Home() {
                 { value: "50+", label: "Student Researchers", icon: UserGroupIcon },
               ].map((stat, index) => (
                 <div key={index} className="text-center px-4 py-2">
-                  <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
+                  <div className="mb-3 inline-flex h-10 w-10 items-center justify-center bg-primary/10 text-primary">
                     <HugeiconsIcon icon={stat.icon} strokeWidth={2} className="size-5" />
                   </div>
-                  <div className="display-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-foreground tracking-tight">
+                  <div className="text-2xl font-medium tracking-tight text-foreground sm:text-3xl lg:text-4xl">
                     {stat.value}
                   </div>
                   <div className="text-[10px] sm:text-xs text-muted-foreground uppercase tracking-wide mt-1">
@@ -146,7 +145,7 @@ export default function Home() {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-10">
-              <p className="eyebrow mb-3">About</p>
+              <p className="mb-3 text-[10px] uppercase tracking-widest text-primary">About</p>
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-medium text-foreground tracking-tight">
                 Dr. TMA Pai Endowment Chair
               </h2>
@@ -156,21 +155,21 @@ export default function Home() {
             </div>
             <div className="prose prose-sm dark:prose-invert max-w-none">
               <div className="grid md:grid-cols-3 gap-6 text-sm text-muted-foreground">
-                <div className="interactive-card group rounded-2xl border border-border bg-card/75 p-6 transition-[transform,box-shadow,border-color] duration-200 [transition-timing-function:var(--motion-ease-out)]">
+                <div className="border border-border bg-muted/50 p-6 transition-colors hover:border-primary/30 dark:bg-white/5">
                   <h3 className="text-foreground font-medium mb-2 text-base">Intelligent Technologies</h3>
                   <p className="text-xs leading-relaxed">
                     Advanced digital systems including AI, machine learning, and smart automation
                     that enable machines to learn, adapt, and make decisions.
                   </p>
                 </div>
-                <div className="interactive-card group rounded-2xl border border-border bg-card/75 p-6 transition-[transform,box-shadow,border-color] duration-200 [transition-timing-function:var(--motion-ease-out)]">
+                <div className="border border-border bg-muted/50 p-6 transition-colors hover:border-primary/30 dark:bg-white/5">
                   <h3 className="text-foreground font-medium mb-2 text-base">Industry 4.0</h3>
                   <p className="text-xs leading-relaxed">
                     The fourth industrial revolution with cyber-physical systems, IoT, and
                     data-driven manufacturing for smarter industries.
                   </p>
                 </div>
-                <div className="interactive-card group rounded-2xl border border-border bg-card/75 p-6 transition-[transform,box-shadow,border-color] duration-200 [transition-timing-function:var(--motion-ease-out)]">
+                <div className="border border-border bg-muted/50 p-6 transition-colors hover:border-primary/30 dark:bg-white/5">
                   <h3 className="text-foreground font-medium mb-2 text-base">Sustainability</h3>
                   <p className="text-xs leading-relaxed">
                     Developing solutions that meet present needs without compromising future
@@ -206,7 +205,7 @@ export default function Home() {
                 {researchProjects.map((project) => (
                   <CarouselItem key={project.slug} className="pl-4 md:basis-1/2 lg:basis-1/3">
                     <Link href={`/research/${project.slug}`} className="block h-full group">
-                      <Card className="interactive-card h-full border-border transition-[transform,box-shadow,border-color] duration-200 [transition-timing-function:var(--motion-ease-out)] dark:bg-transparent">
+                      <Card className="h-full border-border transition-colors duration-200 hover:border-primary/50 dark:bg-transparent">
                         <CardHeader className="pb-2">
                           <div className="flex items-center gap-3 mb-3">
                             <div className="flex h-9 w-9 items-center justify-center bg-primary/10 group-hover:bg-primary/20 transition-colors shrink-0">
@@ -233,9 +232,9 @@ export default function Home() {
                           </div>
                         </CardContent>
                         <CardFooter className="pt-2 border-t border-border mt-auto">
-                          <span className="text-xs text-primary flex items-center gap-1">
+                          <span className="flex items-center gap-1 text-xs text-primary transition-[gap] group-hover:gap-2">
                             View project
-                            <HugeiconsIcon icon={ArrowRight01Icon} strokeWidth={2} className="motion-arrow size-3" />
+                            <HugeiconsIcon icon={ArrowRight01Icon} strokeWidth={2} className="size-3" />
                           </span>
                         </CardFooter>
                       </Card>
@@ -267,7 +266,7 @@ export default function Home() {
                 {completedProjects.map((project) => (
                   <CarouselItem key={project.slug} className="pl-4 md:basis-1/2 lg:basis-1/3">
                     <Link href={`/research/${project.slug}`} className="block h-full group">
-                      <Card className="interactive-card h-full border-border transition-[transform,box-shadow,border-color] duration-200 [transition-timing-function:var(--motion-ease-out)] dark:bg-transparent">
+                      <Card className="h-full border-border transition-colors duration-200 hover:border-primary/50 dark:bg-transparent">
                         <CardHeader className="pb-2">
                           <div className="flex items-center gap-3 mb-3">
                             <div className="flex h-9 w-9 items-center justify-center bg-muted dark:bg-white/10 group-hover:bg-primary/10 transition-colors shrink-0">
@@ -299,9 +298,9 @@ export default function Home() {
                           </div>
                         </CardContent>
                         <CardFooter className="pt-2 border-t border-border mt-auto">
-                          <span className="text-xs text-muted-foreground group-hover:text-primary transition-colors flex items-center gap-1">
+                          <span className="flex items-center gap-1 text-xs text-muted-foreground transition-[color,gap] group-hover:gap-2 group-hover:text-primary">
                             View results
-                            <HugeiconsIcon icon={ArrowRight01Icon} strokeWidth={2} className="motion-arrow size-3" />
+                            <HugeiconsIcon icon={ArrowRight01Icon} strokeWidth={2} className="size-3" />
                           </span>
                         </CardFooter>
                       </Card>
@@ -401,14 +400,14 @@ export default function Home() {
                 {upcomingEvents.map((event) => (
                   <CarouselItem key={event.slug} className="pl-4 md:basis-1/2 lg:basis-1/3">
                     <Link href={`/events/${event.slug}`} className="block h-full group">
-                      <Card className="interactive-card h-full border-border transition-[transform,box-shadow,border-color] duration-200 [transition-timing-function:var(--motion-ease-out)] dark:bg-transparent">
+                      <Card className="h-full border-border transition-[border-color,box-shadow] duration-300 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 dark:bg-transparent">
                         {event.image && (
                           <div className="relative aspect-[16/10] w-full overflow-hidden">
                             <Image
                               src={event.image}
                               alt={event.title}
                               fill
-                              className="object-cover group-hover:scale-[1.03] transition-transform duration-250 [transition-timing-function:var(--motion-ease-out)]"
+                              className="object-cover transition-transform duration-500 group-hover:scale-105"
                               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             />
                           </div>
@@ -424,9 +423,9 @@ export default function Home() {
                           <CardDescription className="text-xs line-clamp-2">{event.description}</CardDescription>
                         </CardHeader>
                         <CardFooter>
-                          <span className="text-xs text-primary flex items-center gap-1">
+                          <span className="flex items-center gap-1 text-xs text-primary transition-[gap] group-hover:gap-2">
                             Learn more
-                            <HugeiconsIcon icon={ArrowRight01Icon} strokeWidth={2} className="motion-arrow size-3" />
+                            <HugeiconsIcon icon={ArrowRight01Icon} strokeWidth={2} className="size-3" />
                           </span>
                         </CardFooter>
                       </Card>
