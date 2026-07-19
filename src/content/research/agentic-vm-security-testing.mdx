@@ -1,0 +1,64 @@
+---
+title: "Agentic VM Security Testing"
+description: "An agent-driven testbed that spawns isolated QEMU virtual machines, Docker environments, or Linux containers to test application behavior, observe lifecycle changes, and map the resulting security threat surface."
+tags: ["Agentic AI", "Virtual Machines", "QEMU", "Docker", "Linux Containers", "Cybersecurity", "Observability"]
+companyName: "MIT, MAHE"
+companyLogo: ""
+companyDescription: "Dr. TMA Pai Endowment Chair for Intelligent Technologies, Industry 4.0 and Sustainability."
+companyColor: "#E8580C"
+order: 2
+published: true
+date: "2026-07-19"
+slug: "agentic-vm-security-testing"
+---
+
+## Project Overview
+
+This project develops an agentic testing platform that can create and coordinate multiple isolated execution environments for an application. Depending on the required level of isolation and fidelity, the agent can use QEMU virtual machines, Docker environments, or Linux containers.
+
+The platform will install and run an application under varied operating-system, dependency, configuration, network, and workload conditions. It will exercise the application's functions throughout its lifecycle, observe the changes it makes, and use those observations to build a map of the application's security threat surface.
+
+## Research Objectives
+
+- Design an agent capable of selecting, creating, configuring, and destroying suitable test environments
+- Test application installation, startup, normal operation, failure handling, upgrades, and removal
+- Exercise application functions under different system and network conditions
+- Record changes to files, processes, services, permissions, packages, system calls, and network activity
+- Correlate observed behavior with potential attack paths, trust boundaries, and security risks
+- Produce repeatable evidence that security researchers and developers can inspect
+
+## Isolated Test Environments
+
+The platform will support multiple execution backends:
+
+- **QEMU virtual machines** for strong isolation and full operating-system testing
+- **Docker environments** for fast, reproducible application and service testing
+- **Linux containers** for lightweight experiments across distributions and system configurations
+
+An orchestration layer will allow the agent to run tests in parallel, reproduce a previous environment, and compare application behavior across different circumstances.
+
+## Lifecycle Testing
+
+The agent will generate and execute test plans covering the complete application lifecycle:
+
+1. Provision a clean environment
+2. Install the application and its dependencies
+3. Discover and exercise available functions
+4. Introduce configuration, workload, dependency, and network variations
+5. Observe failure, recovery, update, and rollback behavior
+6. Remove the application and identify residual changes
+7. Preserve evidence and destroy the environment
+
+## Observability and Threat-Surface Mapping
+
+Each run will collect structured telemetry describing what the application changed and which resources it accessed. The system will compare snapshots and event streams to identify persistent files, spawned processes, exposed ports, privilege changes, external connections, sensitive data access, and other security-relevant behavior.
+
+These observations will be transformed into a threat-surface map that links application functions to assets, trust boundaries, entry points, side effects, and potential abuse paths. The final output will combine an auditable execution timeline with actionable findings for further security analysis.
+
+## Expected Outcomes
+
+- A reusable agentic framework for isolated application testing
+- Automated lifecycle and functional test generation
+- Unified observability across virtual-machine and container backends
+- Reproducible records of application-induced system changes
+- Evidence-based threat-surface maps for security review

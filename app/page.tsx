@@ -286,7 +286,6 @@ export default function Home() {
                 <h2 className="text-2xl sm:text-3xl font-medium text-foreground tracking-tight">
                   Current Projects
                 </h2>
-                <CountChip label={`${researchProjects.length} active`} />
               </div>
               <p className="text-sm text-muted-foreground mt-3 max-w-lg leading-relaxed">
                 Ongoing investigations with industry partners — from generative AI for
@@ -352,7 +351,6 @@ export default function Home() {
                 <h2 className="text-2xl sm:text-3xl font-medium text-foreground tracking-tight">
                   Completed Projects
                 </h2>
-                <CountChip label={`${completedProjects.length} delivered`} />
               </div>
               <p className="text-sm text-muted-foreground mt-3 max-w-lg leading-relaxed">
                 Two decades of delivered research — spanning healthcare devices,

@@ -1,0 +1,63 @@
+---
+title: "Cybersecurity Correlation Analysis"
+description: "A cybersecurity analysis system that correlates CVE records, CWE weakness classes, MITRE ATT&CK techniques, and contextual evidence to connect vulnerabilities with likely attack paths and defensive priorities."
+tags: ["Cybersecurity", "CVE", "CWE", "MITRE ATT&CK", "Threat Intelligence", "Knowledge Graphs", "Risk Analysis"]
+companyName: "MIT, MAHE"
+companyLogo: ""
+companyDescription: "Dr. TMA Pai Endowment Chair for Intelligent Technologies, Industry 4.0 and Sustainability."
+companyColor: "#E8580C"
+order: 3
+published: true
+date: "2026-07-19"
+slug: "cybersecurity-correlation-analysis"
+---
+
+## Project Overview
+
+This project investigates methods for correlating cybersecurity knowledge from CVE, CWE, MITRE ATT&CK, and other structured and unstructured sources. Its goal is to move beyond isolated vulnerability records and build a connected view of how software weaknesses, known vulnerabilities, adversary techniques, affected assets, and observed behavior relate to one another.
+
+The resulting system will help analysts identify plausible attack paths, understand why a vulnerability matters in a particular environment, and prioritize investigation and remediation using traceable evidence.
+
+## Research Objectives
+
+- Normalize data from cybersecurity standards, taxonomies, advisories, and technical reports
+- Link CVE vulnerabilities to their underlying CWE weakness classes
+- Map vulnerabilities and weaknesses to relevant MITRE ATT&CK tactics and techniques
+- Correlate software, version, configuration, exploitability, and environmental context
+- Identify clusters, recurring patterns, and multi-stage attack paths
+- Rank findings while preserving the evidence behind every relationship
+
+## Correlation Model
+
+The system will represent cybersecurity entities and relationships in a shared data model. Core entities will include vulnerabilities, weakness classes, attack techniques, software products, assets, configurations, indicators, mitigations, and evidence.
+
+Correlation methods will combine:
+
+- Identifier and taxonomy mapping
+- Rule-based semantic relationships
+- Text and entity similarity
+- Temporal and contextual analysis
+- Graph traversal and path analysis
+- Confidence scoring based on source quality and supporting evidence
+
+## Analysis Workflow
+
+1. Ingest and normalize cybersecurity data
+2. Resolve duplicate or ambiguous entities
+3. Construct relationships across CVE, CWE, and MITRE ATT&CK
+4. Add asset and environmental context
+5. Search for likely attack chains and shared causes
+6. Rank findings by relevance, confidence, and potential impact
+7. Present each conclusion with its source evidence and correlation path
+
+## Analyst Experience
+
+The project will provide exploratory views for moving between a vulnerability, its weakness category, related adversary behavior, affected systems, and possible mitigations. Analysts will be able to inspect why two records were correlated, compare competing explanations, and filter results by product, platform, technique, or confidence.
+
+## Expected Outcomes
+
+- A unified cybersecurity correlation model
+- A knowledge graph connecting vulnerabilities, weaknesses, and attack techniques
+- Explainable methods for identifying likely attack paths
+- Context-aware prioritization for security teams
+- Reusable pipelines for integrating additional threat-intelligence sources

@@ -1,0 +1,60 @@
+---
+title: "RBC Morphology and Pathological Correlation"
+description: "A computer-vision research project for analysing red blood cell morphology from microscopy images and correlating measurable cell-shape characteristics with pathological findings."
+tags: ["RBC Morphology", "Computer Vision", "Medical Imaging", "Cell Shape Analysis", "Pathology", "Machine Learning"]
+companyName: "MIT, MAHE"
+companyLogo: ""
+companyDescription: "Dr. TMA Pai Endowment Chair for Intelligent Technologies, Industry 4.0 and Sustainability."
+companyColor: "#E8580C"
+order: 4
+published: true
+date: "2026-07-19"
+slug: "rbc-morphology-pathological-correlation"
+---
+
+## Project Overview
+
+This project explores the use of computer vision and cell-shape analysis to study red blood cell (RBC) morphology in microscopy images. The research will identify and measure morphological characteristics, then investigate how those characteristics correlate with pathological findings and expert annotations.
+
+The aim is to create an interpretable analysis pipeline that can support researchers and pathology professionals by making RBC morphology assessment more consistent, measurable, and scalable. The system is intended as a research and decision-support tool rather than a standalone clinical diagnosis system.
+
+## Research Objectives
+
+- Detect and segment individual red blood cells in microscopy images
+- Separate overlapping cells and reject imaging artefacts
+- Measure cell size, shape, boundary, central pallor, colour, and texture characteristics
+- Group cells by recurring morphological patterns
+- Correlate image-derived features with expert labels and pathological findings
+- Quantify uncertainty and explain which features influence each result
+
+## Morphology Analysis Pipeline
+
+The proposed pipeline will include:
+
+1. Image quality assessment and colour normalization
+2. RBC detection and instance segmentation
+3. Separation of touching or overlapping cells
+4. Extraction of geometric, colour, and texture features
+5. Cell-level morphology classification or clustering
+6. Slide-level aggregation and distribution analysis
+7. Correlation with pathology labels and clinical research data
+
+## Interpretable Cell-Shape Features
+
+The analysis will emphasize measurable and clinically interpretable characteristics, including cell diameter, area, circularity, elongation, boundary irregularity, central pallor, colour distribution, texture, and variation across the observed cell population.
+
+Combining traditional morphology measurements with learned image representations will allow the project to compare interpretable feature-based methods with modern machine-learning approaches.
+
+## Pathological Correlation
+
+The research will evaluate associations between RBC morphology patterns and available pathological annotations. Analysis will be performed at both the individual-cell and sample level so that heterogeneous cell populations and the frequency of particular morphologies can be studied.
+
+Validation will focus on agreement with expert assessment, robustness across imaging conditions, transparent error analysis, and careful handling of uncertain or low-quality samples.
+
+## Expected Outcomes
+
+- A curated and quality-controlled RBC microscopy dataset
+- A reproducible pipeline for cell detection, segmentation, and feature extraction
+- Interpretable morphology measurements and visual summaries
+- Models for correlating cell-shape patterns with pathological findings
+- A research interface for reviewing cells, features, predictions, and uncertainty
