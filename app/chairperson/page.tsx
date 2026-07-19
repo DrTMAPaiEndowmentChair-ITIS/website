@@ -425,7 +425,7 @@ export default function ChairpersonPage() {
               <h3 className="text-sm font-medium mb-4 text-foreground">Authored Books</h3>
               <div className="grid sm:grid-cols-2 gap-4">
                 <div className="p-4 bg-muted/50 dark:bg-white/5 border border-border">
-                  <h4 className="text-sm font-medium text-foreground mb-1">Advances in Information & Communication Technologies ICICOT&apos;07</h4>
+                  <h4 className="text-sm font-medium text-foreground mb-1">Advances in Information & Communication Technologies ICICOT'07</h4>
                   <p className="text-xs text-muted-foreground">Co-edited proceedings for International Conference ICICOT 2007</p>
                 </div>
                 <div className="p-4 bg-muted/50 dark:bg-white/5 border border-border">

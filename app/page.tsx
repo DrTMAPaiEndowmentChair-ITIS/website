@@ -22,6 +22,7 @@ import {
   ArrowRight01Icon,
   Calendar01Icon,
   Rocket01Icon,
+  UserGroupIcon,
   AnalyticsUpIcon,
 } from "@hugeicons/core-free-icons";
 
@@ -59,35 +60,32 @@ export default function Home() {
   const researchProjects: ProjectFrontmatter[] = getSortedProjectsData("current");
   const completedProjects: ProjectFrontmatter[] = getSortedProjectsData("completed");
   const upcomingEvents: EventFrontmatter[] = getSortedEventsData();
-  const stats = [
-    { value: researchProjects.length, label: "Active projects", icon: Rocket01Icon },
-    { value: completedProjects.length, label: "Completed projects", icon: AnalyticsUpIcon },
-    { value: upcomingEvents.length, label: "Published events", icon: Calendar01Icon },
-  ];
 
   return (
     <div className="min-h-screen">
-      <section className="relative overflow-hidden pt-28 pb-20 lg:pt-32 lg:pb-28">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.08] via-background to-background" />
-        <div className="absolute -right-32 top-16 size-[34rem] rounded-full border border-primary/10" />
-        <div className="absolute -right-12 top-36 size-[22rem] rounded-full border border-primary/10" />
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-6xl">
-            <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
-              <div>
-                <Badge variant="secondary" className="mb-6 uppercase tracking-wider">
+      {/* Hero Section */}
+      <section className="relative pt-24 pb-20 lg:pt-32 lg:pb-28 overflow-hidden">
+        {/* Background gradient */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent dark:from-primary/10" />
+        <div className="absolute top-1/2 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 dark:bg-primary/10" />
+
+        <div className="container relative mx-auto px-4 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+              <div className="order-2 lg:order-1">
+                <Badge variant="secondary" className="mb-6 text-[10px] uppercase tracking-widest">
                   MAHE, Manipal
                 </Badge>
-                <h1 className="max-w-3xl text-4xl font-semibold leading-[1.04] tracking-[-0.035em] text-foreground sm:text-5xl lg:text-6xl">
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-medium mb-6 leading-[1.1] tracking-tight text-foreground">
                   Advancing Research Through{" "}
                   <span className="text-primary">Industry Collaborations</span>
                 </h1>
-                <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground">
-                  Research projects and industry partnerships across intelligent
-                  technologies, Industry 4.0, and sustainability at the Dr. TMA
-                  Pai Endowment Chair.
+                <p className="text-muted-foreground text-sm sm:text-base mb-8 max-w-lg leading-relaxed">
+                  Join us in pushing the boundaries of innovation through
+                  cutting-edge research projects and industry partnerships at the
+                  Dr. TMA Pai Endowment Chair.
                 </p>
-                <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <div className="flex flex-col sm:flex-row gap-3">
                   <Button asChild size="lg">
                     <Link href="/apply">
                       Apply for Research
@@ -99,22 +97,15 @@ export default function Home() {
                   </Button>
                 </div>
               </div>
-              <div className="relative">
-                <div className="relative mx-auto max-w-lg overflow-hidden rounded-2xl border bg-card/80 shadow-[0_24px_80px_-48px_var(--foreground)] backdrop-blur-sm">
-                  <div className="relative aspect-[4/3]">
-                    <Image
-                      src="/hero-image.png"
-                      alt="Manipal Academy of Higher Education, School of Computer Engineering"
-                      fill
-                      className="object-contain p-8 transition-transform duration-500 hover:scale-[1.015]"
-                      priority
-                      sizes="(max-width: 1024px) 100vw, 45vw"
-                    />
-                  </div>
-                  <div className="flex items-center justify-between border-t bg-muted/40 px-5 py-3 text-xs text-muted-foreground">
-                    <span>School of Computer Engineering</span>
-                    <span>MAHE, Manipal</span>
-                  </div>
+              <div className="order-1 lg:order-2 relative">
+                <div className="relative aspect-square max-w-md mx-auto lg:max-w-none">
+                  <Image
+                    src="/hero-image.png"
+                    alt="Research and Innovation"
+                    fill
+                    className="object-contain dark:invert dark:hue-rotate-180"
+                    priority
+                  />
                 </div>
               </div>
             </div>
@@ -122,22 +113,25 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-y bg-card/70 py-10">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-5xl">
-            <div className="grid grid-cols-1 divide-y sm:grid-cols-3 sm:divide-x sm:divide-y-0">
-              {stats.map((stat) => (
-                <div key={stat.label} className="flex items-center gap-4 px-6 py-4 sm:justify-center">
-                  <div className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                    <HugeiconsIcon icon={stat.icon} strokeWidth={2} />
+      {/* Stats Section - Moved up for impact */}
+      <section className="py-12 border-y border-border bg-card dark:bg-transparent">
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="max-w-5xl mx-auto">
+            <div className="grid grid-cols-3 divide-x divide-border">
+              {[
+                { value: "20+", label: "Research Projects", icon: Rocket01Icon },
+                { value: "10+", label: "Industry Partners", icon: Building01Icon },
+                { value: "50+", label: "Student Researchers", icon: UserGroupIcon },
+              ].map((stat, index) => (
+                <div key={index} className="text-center px-4 py-2">
+                  <div className="inline-flex items-center justify-center w-10 h-10 mb-3 bg-primary/10 text-primary">
+                    <HugeiconsIcon icon={stat.icon} strokeWidth={2} className="size-5" />
                   </div>
-                  <div>
-                    <div className="text-3xl font-semibold tracking-tight text-foreground">
-                      {stat.value}
-                    </div>
-                    <div className="text-xs uppercase tracking-wide text-muted-foreground">
-                      {stat.label}
-                    </div>
+                  <div className="text-2xl sm:text-3xl lg:text-4xl font-medium text-foreground tracking-tight">
+                    {stat.value}
+                  </div>
+                  <div className="text-[10px] sm:text-xs text-muted-foreground uppercase tracking-wide mt-1">
+                    {stat.label}
                   </div>
                 </div>
               ))}
@@ -148,71 +142,54 @@ export default function Home() {
 
       {/* Chair Info Section */}
       <section className="py-20 lg:py-28">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-5xl">
-            <div className="mb-10 text-center">
-              <p className="mb-3 text-xs font-medium uppercase tracking-[0.18em] text-primary">
-                About
-              </p>
-              <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-10">
+              <p className="text-[10px] uppercase tracking-widest text-primary mb-3">About</p>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-medium text-foreground tracking-tight">
                 Dr. TMA Pai Endowment Chair
               </h2>
-              <p className="mt-3 text-base text-muted-foreground">
+              <p className="text-sm sm:text-base text-muted-foreground mt-3">
                 Intelligent Technologies, Industry 4.0 & Sustainability
               </p>
             </div>
-            <div className="grid gap-4 md:grid-cols-2">
-                <Card className="md:col-span-2">
-                  <CardHeader className="md:grid md:grid-cols-[auto_1fr] md:items-start md:gap-x-5">
-                    <div className="flex size-11 items-center justify-center rounded-lg bg-primary/10 text-primary md:row-span-2">
-                      <HugeiconsIcon icon={CpuIcon} strokeWidth={2} />
-                    </div>
-                    <CardTitle>Intelligent Technologies</CardTitle>
-                    <CardDescription>
+            <div className="prose prose-sm dark:prose-invert max-w-none">
+              <div className="grid md:grid-cols-3 gap-6 text-sm text-muted-foreground">
+                <div className="p-6 bg-muted/50 dark:bg-white/5 border border-border hover:border-primary/30 transition-colors">
+                  <h3 className="text-foreground font-medium mb-2 text-base">Intelligent Technologies</h3>
+                  <p className="text-xs leading-relaxed">
                     Advanced digital systems including AI, machine learning, and smart automation
                     that enable machines to learn, adapt, and make decisions.
-                    </CardDescription>
-                  </CardHeader>
-                </Card>
-                <Card>
-                  <CardHeader>
-                    <div className="mb-3 flex size-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                      <HugeiconsIcon icon={Building01Icon} strokeWidth={2} />
-                    </div>
-                    <CardTitle>Industry 4.0</CardTitle>
-                    <CardDescription>
+                  </p>
+                </div>
+                <div className="p-6 bg-muted/50 dark:bg-white/5 border border-border hover:border-primary/30 transition-colors">
+                  <h3 className="text-foreground font-medium mb-2 text-base">Industry 4.0</h3>
+                  <p className="text-xs leading-relaxed">
                     The fourth industrial revolution with cyber-physical systems, IoT, and
                     data-driven manufacturing for smarter industries.
-                    </CardDescription>
-                  </CardHeader>
-                </Card>
-                <Card>
-                  <CardHeader>
-                    <div className="mb-3 flex size-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                      <HugeiconsIcon icon={AnalyticsUpIcon} strokeWidth={2} />
-                    </div>
-                    <CardTitle>Sustainability</CardTitle>
-                    <CardDescription>
+                  </p>
+                </div>
+                <div className="p-6 bg-muted/50 dark:bg-white/5 border border-border hover:border-primary/30 transition-colors">
+                  <h3 className="text-foreground font-medium mb-2 text-base">Sustainability</h3>
+                  <p className="text-xs leading-relaxed">
                     Developing solutions that meet present needs without compromising future
-                    generations&apos; ability to meet theirs.
-                    </CardDescription>
-                  </CardHeader>
-                </Card>
+                    generations' ability to meet theirs.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Current Research Projects */}
-      <section id="research" className="bg-muted/30 py-20 lg:py-28">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-6xl">
-            <div className="mb-10 flex items-end justify-between">
+      <section id="research" className="py-20 lg:py-28 bg-muted/30 dark:bg-transparent">
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            <div className="flex items-end justify-between mb-10">
               <div>
-                <p className="mb-2 text-xs font-medium uppercase tracking-[0.18em] text-primary">
-                  Research
-                </p>
-                <h2 className="text-3xl font-semibold tracking-tight text-foreground">
+                <p className="text-[10px] uppercase tracking-widest text-primary mb-2">Research</p>
+                <h2 className="text-2xl sm:text-3xl font-medium text-foreground tracking-tight">
                   Current Projects
                 </h2>
               </div>
@@ -228,36 +205,36 @@ export default function Home() {
                 {researchProjects.map((project) => (
                   <CarouselItem key={project.slug} className="pl-4 md:basis-1/2 lg:basis-1/3">
                     <Link href={`/research/${project.slug}`} className="block h-full group">
-                      <Card className="h-full transition-[transform,box-shadow] duration-200 group-hover:-translate-y-0.5 group-hover:shadow-md">
-                        <CardHeader>
-                          <div className="mb-2 flex items-center gap-3">
-                            <div className="flex size-9 shrink-0 items-center justify-center rounded-md bg-secondary text-secondary-foreground">
+                      <Card className="h-full border-border hover:border-primary/50 transition-all duration-300 dark:bg-transparent">
+                        <CardHeader className="pb-2">
+                          <div className="flex items-center gap-3 mb-3">
+                            <div className="flex h-9 w-9 items-center justify-center bg-primary/10 group-hover:bg-primary/20 transition-colors shrink-0">
                               {getCompanyIcon(project.companyName, project.companyLogo)}
                             </div>
-                            <div className="min-w-0 flex-1">
-                              <p className="truncate text-xs font-medium text-foreground">
+                            <div className="flex-1 min-w-0">
+                              <p className="text-[11px] font-medium text-foreground truncate">
                                 {project.companyName}
                               </p>
                             </div>
                           </div>
-                          <CardTitle className="line-clamp-2 transition-colors group-hover:text-primary">
+                          <CardTitle className="text-sm font-medium group-hover:text-primary transition-colors line-clamp-2 leading-snug">
                             {project.title}
                           </CardTitle>
-                          <CardDescription className="line-clamp-2">
-                            {project.description}
-                          </CardDescription>
                         </CardHeader>
-                        <CardContent>
-                          <div className="flex flex-wrap gap-1.5">
+                        <CardContent className="pt-0 pb-2">
+                          <p className="text-xs text-muted-foreground line-clamp-2 mb-3 leading-relaxed">{project.description}</p>
+                          <div className="flex flex-wrap gap-1">
                             {project.tags.slice(0, 3).map((tag, tagIndex) => (
-                              <Badge key={tagIndex} variant="secondary">{tag}</Badge>
+                              <span key={tagIndex} className="px-2 py-0.5 bg-muted dark:bg-white/10 text-[10px] text-muted-foreground">
+                                {tag}
+                              </span>
                             ))}
                           </div>
                         </CardContent>
-                        <CardFooter className="mt-auto">
-                          <span className="flex items-center gap-1 text-sm font-medium text-primary">
+                        <CardFooter className="pt-2 border-t border-border mt-auto">
+                          <span className="text-xs text-primary flex items-center gap-1 group-hover:gap-2 transition-all">
                             View project
-                            <HugeiconsIcon icon={ArrowRight01Icon} strokeWidth={2} />
+                            <HugeiconsIcon icon={ArrowRight01Icon} strokeWidth={2} className="size-3" />
                           </span>
                         </CardFooter>
                       </Card>
@@ -265,8 +242,8 @@ export default function Home() {
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <CarouselPrevious className="-left-4 hidden md:flex" />
-              <CarouselNext className="-right-4 hidden md:flex" />
+              <CarouselPrevious className="hidden md:flex -left-4 border-border hover:border-primary/50" />
+              <CarouselNext className="hidden md:flex -right-4 border-border hover:border-primary/50" />
             </Carousel>
           </div>
         </div>
@@ -274,14 +251,12 @@ export default function Home() {
 
       {/* Completed Research Projects */}
       <section id="completed-research" className="py-20 lg:py-28">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-6xl">
-            <div className="mb-10 flex items-end justify-between">
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            <div className="flex items-end justify-between mb-10">
               <div>
-                <p className="mb-2 text-xs font-medium uppercase tracking-[0.18em] text-primary">
-                  Archive
-                </p>
-                <h2 className="text-3xl font-semibold tracking-tight text-foreground">
+                <p className="text-[10px] uppercase tracking-widest text-primary mb-2">Archive</p>
+                <h2 className="text-2xl sm:text-3xl font-medium text-foreground tracking-tight">
                   Completed Projects
                 </h2>
               </div>
@@ -291,14 +266,14 @@ export default function Home() {
                 {completedProjects.map((project) => (
                   <CarouselItem key={project.slug} className="pl-4 md:basis-1/2 lg:basis-1/3">
                     <Link href={`/research/${project.slug}`} className="block h-full group">
-                      <Card className="h-full transition-[transform,box-shadow] duration-200 group-hover:-translate-y-0.5 group-hover:shadow-md">
-                        <CardHeader>
-                          <div className="mb-2 flex items-center gap-3">
-                            <div className="flex size-9 shrink-0 items-center justify-center rounded-md bg-secondary text-secondary-foreground">
+                      <Card className="h-full border-border hover:border-primary/50 transition-all duration-300 dark:bg-transparent">
+                        <CardHeader className="pb-2">
+                          <div className="flex items-center gap-3 mb-3">
+                            <div className="flex h-9 w-9 items-center justify-center bg-muted dark:bg-white/10 group-hover:bg-primary/10 transition-colors shrink-0">
                               {getCompanyIcon(project.companyName, project.companyLogo)}
                             </div>
-                            <div className="min-w-0 flex-1">
-                              <p className="truncate text-xs font-medium text-foreground">
+                            <div className="flex-1 min-w-0">
+                              <p className="text-[11px] font-medium text-foreground truncate">
                                 {project.companyName}
                               </p>
                               {project.completionDate && (
@@ -308,24 +283,24 @@ export default function Home() {
                               )}
                             </div>
                           </div>
-                          <CardTitle className="line-clamp-2 transition-colors group-hover:text-primary">
+                          <CardTitle className="text-sm font-medium group-hover:text-primary transition-colors line-clamp-2 leading-snug">
                             {project.title}
                           </CardTitle>
-                          <CardDescription className="line-clamp-2">
-                            {project.description}
-                          </CardDescription>
                         </CardHeader>
-                        <CardContent>
-                          <div className="flex flex-wrap gap-1.5">
+                        <CardContent className="pt-0 pb-2">
+                          <p className="text-xs text-muted-foreground line-clamp-2 mb-3 leading-relaxed">{project.description}</p>
+                          <div className="flex flex-wrap gap-1">
                             {project.tags.slice(0, 3).map((tag, tagIndex) => (
-                              <Badge key={tagIndex} variant="secondary">{tag}</Badge>
+                              <span key={tagIndex} className="px-2 py-0.5 bg-muted dark:bg-white/10 text-[10px] text-muted-foreground">
+                                {tag}
+                              </span>
                             ))}
                           </div>
                         </CardContent>
-                        <CardFooter className="mt-auto">
-                          <span className="flex items-center gap-1 text-sm font-medium text-muted-foreground transition-colors group-hover:text-primary">
+                        <CardFooter className="pt-2 border-t border-border mt-auto">
+                          <span className="text-xs text-muted-foreground group-hover:text-primary transition-colors flex items-center gap-1 group-hover:gap-2">
                             View results
-                            <HugeiconsIcon icon={ArrowRight01Icon} strokeWidth={2} />
+                            <HugeiconsIcon icon={ArrowRight01Icon} strokeWidth={2} className="size-3" />
                           </span>
                         </CardFooter>
                       </Card>
@@ -333,72 +308,74 @@ export default function Home() {
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <CarouselPrevious className="-left-4 hidden md:flex" />
-              <CarouselNext className="-right-4 hidden md:flex" />
+              <CarouselPrevious className="hidden md:flex -left-4 border-border hover:border-primary/50" />
+              <CarouselNext className="hidden md:flex -right-4 border-border hover:border-primary/50" />
             </Carousel>
           </div>
         </div>
       </section>
 
       {/* Partners Section */}
-      <section className="bg-muted/30 py-20 lg:py-28">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-5xl">
-            <div className="mb-12 text-center">
-              <p className="mb-2 text-xs font-medium uppercase tracking-[0.18em] text-primary">
-                Partners
-              </p>
-              <h2 className="text-3xl font-semibold tracking-tight text-foreground">
+      <section className="py-20 lg:py-28 bg-muted/30 dark:bg-transparent">
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-12">
+              <p className="text-[10px] uppercase tracking-widest text-primary mb-2">Partners</p>
+              <h2 className="text-2xl sm:text-3xl font-medium text-foreground tracking-tight">
                 Collaborators & Funding
               </h2>
             </div>
 
+            {/* Government Agencies */}
             <div className="mb-12">
-              <p className="mb-6 text-center text-sm font-medium text-muted-foreground">
+              <p className="text-xs text-muted-foreground text-center mb-6 uppercase tracking-wide">
                 Government Agencies
               </p>
-              <div className="mx-auto grid max-w-2xl grid-cols-1 gap-4 sm:grid-cols-3">
+              <div className="grid grid-cols-3 gap-4 max-w-2xl mx-auto">
                 {[
                   { name: "DST", logo: "/companies/dst-logo.svg", invertDark: true },
                   { name: "BIRAC", logo: "/companies/birac.svg", invertDark: false },
                   { name: "AICTE", logo: "/companies/aicte-logo.svg", invertDark: false },
-                ].map((agency) => (
-                  <Card key={agency.name} size="sm">
-                    <CardContent className="flex h-20 items-center justify-center">
-                      <Image
-                        src={agency.logo}
-                        alt={agency.name}
-                        width={80}
-                        height={40}
-                        className={`object-contain opacity-75 transition-opacity hover:opacity-100 ${agency.invertDark ? "dark:invert dark:hue-rotate-180" : ""}`}
-                      />
-                    </CardContent>
-                  </Card>
+                ].map((agency, index) => (
+                  <div
+                    key={index}
+                    className="flex items-center justify-center p-6 bg-background dark:bg-transparent border border-border hover:border-primary/30 transition-colors group"
+                  >
+                    <Image
+                      src={agency.logo}
+                      alt={agency.name}
+                      width={80}
+                      height={40}
+                      className={`object-contain opacity-70 group-hover:opacity-100 transition-opacity ${agency.invertDark ? "dark:invert dark:hue-rotate-180 dark:opacity-80 dark:group-hover:opacity-100" : ""}`}
+                    />
+                  </div>
                 ))}
               </div>
             </div>
 
+            {/* Industry Partners */}
             <div>
-              <p className="mb-6 text-center text-sm font-medium text-muted-foreground">
+              <p className="text-xs text-muted-foreground text-center mb-6 uppercase tracking-wide">
                 Industry Partners
               </p>
-              <div className="mx-auto grid max-w-2xl grid-cols-1 gap-4 sm:grid-cols-3">
+              <div className="grid grid-cols-3 gap-4 max-w-2xl mx-auto">
                 {[
                   { name: "Schneider Electric", logo: "/companies/schneider-logo.svg" },
                   { name: "TE Connectivity", logo: "/companies/te-connectivity-logo.svg" },
                   { name: "IBM", logo: "/companies/IBM_logo.svg" },
-                ].map((company) => (
-                  <Card key={company.name} size="sm">
-                    <CardContent className="flex h-20 items-center justify-center">
-                      <Image
-                        src={company.logo}
-                        alt={company.name}
-                        width={80}
-                        height={40}
-                        className="object-contain opacity-75 transition-opacity hover:opacity-100"
-                      />
-                    </CardContent>
-                  </Card>
+                ].map((company, index) => (
+                  <div
+                    key={index}
+                    className="flex items-center justify-center p-6 bg-background dark:bg-transparent border border-border hover:border-primary/30 transition-colors group"
+                  >
+                    <Image
+                      src={company.logo}
+                      alt={company.name}
+                      width={80}
+                      height={40}
+                      className="object-contain opacity-70 group-hover:opacity-100 transition-opacity"
+                    />
+                  </div>
                 ))}
               </div>
             </div>
@@ -408,14 +385,12 @@ export default function Home() {
 
       {/* Events Section */}
       <section id="events" className="py-20 lg:py-28">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-6xl">
-            <div className="mb-10 flex items-end justify-between">
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            <div className="flex items-end justify-between mb-10">
               <div>
-                <p className="mb-2 text-xs font-medium uppercase tracking-[0.18em] text-primary">
-                  Events
-                </p>
-                <h2 className="text-3xl font-semibold tracking-tight text-foreground">
+                <p className="text-[10px] uppercase tracking-widest text-primary mb-2">Events</p>
+                <h2 className="text-2xl sm:text-3xl font-medium text-foreground tracking-tight">
                   Upcoming & Recent
                 </h2>
               </div>
@@ -425,32 +400,32 @@ export default function Home() {
                 {upcomingEvents.map((event) => (
                   <CarouselItem key={event.slug} className="pl-4 md:basis-1/2 lg:basis-1/3">
                     <Link href={`/events/${event.slug}`} className="block h-full group">
-                      <Card className="h-full transition-[transform,box-shadow] duration-200 group-hover:-translate-y-0.5 group-hover:shadow-md">
+                      <Card className="h-full border-border hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 dark:bg-transparent">
                         {event.image && (
                           <div className="relative aspect-[16/10] w-full overflow-hidden">
                             <Image
                               src={event.image}
                               alt={event.title}
                               fill
-                              className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                              className="object-cover group-hover:scale-105 transition-transform duration-500"
                               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             />
                           </div>
                         )}
-                        <CardHeader>
-                          <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                            <HugeiconsIcon icon={Calendar01Icon} strokeWidth={2} />
+                        <CardHeader className="pt-3">
+                          <div className="flex items-center gap-2 text-[10px] text-muted-foreground">
+                            <HugeiconsIcon icon={Calendar01Icon} strokeWidth={2} className="size-3" />
                             {event.displayDate}
                           </div>
-                          <CardTitle className="line-clamp-2 transition-colors group-hover:text-primary">
+                          <CardTitle className="text-sm group-hover:text-primary transition-colors line-clamp-2">
                             {event.title}
                           </CardTitle>
-                          <CardDescription className="line-clamp-2">{event.description}</CardDescription>
+                          <CardDescription className="text-xs line-clamp-2">{event.description}</CardDescription>
                         </CardHeader>
                         <CardFooter>
-                          <span className="flex items-center gap-1 text-sm font-medium text-primary">
+                          <span className="text-xs text-primary flex items-center gap-1 group-hover:gap-2 transition-all">
                             Learn more
-                            <HugeiconsIcon icon={ArrowRight01Icon} strokeWidth={2} />
+                            <HugeiconsIcon icon={ArrowRight01Icon} strokeWidth={2} className="size-3" />
                           </span>
                         </CardFooter>
                       </Card>
@@ -458,37 +433,38 @@ export default function Home() {
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <CarouselPrevious className="-left-4 hidden md:flex" />
-              <CarouselNext className="-right-4 hidden md:flex" />
+              <CarouselPrevious className="hidden md:flex -left-4 border-border hover:border-primary/50" />
+              <CarouselNext className="hidden md:flex -right-4 border-border hover:border-primary/50" />
             </Carousel>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="relative overflow-hidden border-t bg-gradient-to-br from-primary/[0.08] via-background to-background py-20 lg:py-28">
-        <div className="absolute left-1/2 top-1/2 size-80 -translate-x-1/2 -translate-y-1/2 rounded-full border border-primary/10" />
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-3xl text-center">
-            <div className="mx-auto mb-6 flex size-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
-              <HugeiconsIcon icon={AnalyticsUpIcon} strokeWidth={2} />
+      <section className="relative py-16 lg:py-24 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent" />
+        <div className="container mx-auto px-4 lg:px-8 relative">
+          <div className="max-w-3xl mx-auto text-center">
+            <div className="inline-flex items-center justify-center w-12 h-12 bg-primary/10 text-primary mb-6">
+              <HugeiconsIcon icon={AnalyticsUpIcon} strokeWidth={2} className="size-6" />
             </div>
-            <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-              Contribute to an active research project
+            <h2 className="text-2xl sm:text-3xl font-medium mb-4 text-foreground tracking-tight">
+              Ready to Join Our Research Community?
             </h2>
-            <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
-              Submit your background and research interests for review by the chair team.
+            <p className="text-sm text-muted-foreground mb-8 max-w-lg mx-auto leading-relaxed">
+              Apply now to participate in cutting-edge research projects and
+              collaborate with industry leaders.
             </p>
-            <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-                <Button asChild size="lg">
-                  <Link href="/apply">
-                    Apply Now
-                    <HugeiconsIcon icon={ArrowRight01Icon} strokeWidth={2} data-icon="inline-end" />
-                  </Link>
-                </Button>
-                <Button variant="outline" asChild size="lg">
-                  <Link href="/chairperson">Chair Professor</Link>
-                </Button>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <Button asChild size="lg">
+                <Link href="/apply">
+                  Apply Now
+                  <HugeiconsIcon icon={ArrowRight01Icon} strokeWidth={2} data-icon="inline-end" />
+                </Link>
+              </Button>
+              <Button variant="outline" asChild size="lg">
+                <Link href="/chairperson">Meet the Chair Professor</Link>
+              </Button>
             </div>
           </div>
         </div>

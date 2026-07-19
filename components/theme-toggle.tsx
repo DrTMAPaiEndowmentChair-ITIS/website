@@ -16,8 +16,8 @@ export function ThemeToggle() {
 
   if (!mounted) {
     return (
-      <Button variant="ghost" size="icon" className="opacity-0">
-        <HugeiconsIcon icon={Sun01Icon} strokeWidth={2} />
+      <Button variant="ghost" size="icon-sm" className="opacity-0">
+        <HugeiconsIcon icon={Sun01Icon} strokeWidth={2} className="size-4" />
       </Button>
     );
   }
@@ -25,19 +25,19 @@ export function ThemeToggle() {
   return (
     <Button
       variant="ghost"
-      size="icon"
+      size="icon-sm"
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
       className="relative"
     >
       <HugeiconsIcon
         icon={Sun01Icon}
         strokeWidth={2}
-        className="rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0"
+        className="size-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0"
       />
       <HugeiconsIcon
         icon={Moon01Icon}
         strokeWidth={2}
-        className="absolute rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100"
+        className="absolute size-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100"
       />
       <span className="sr-only">Toggle theme</span>
     </Button>
