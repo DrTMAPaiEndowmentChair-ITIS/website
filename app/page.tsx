@@ -129,17 +129,7 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       {/* Hero Section — fills the first viewport, stats anchored at the bottom */}
-      <section className="relative min-h-svh flex flex-col overflow-hidden">
-        {/* Background: blueprint grid + gradient, running behind the transparent navbar */}
-        <div className="absolute inset-0 bg-grid opacity-40 dark:opacity-25 [mask-image:linear-gradient(to_bottom,black,transparent_80%)]" />
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent dark:from-primary/10" />
-        <div className="absolute top-1/2 right-0 -translate-y-1/2 translate-x-1/2">
-          <div className="w-[640px] h-[640px] rounded-full bg-radial from-primary/10 via-primary/[0.04] to-transparent to-70% dark:from-primary/15 animate-float" />
-        </div>
-        <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/3">
-          <div className="w-[520px] h-[520px] rounded-full bg-radial from-primary/[0.06] to-transparent to-70% dark:from-primary/10 animate-float-delayed" />
-        </div>
-
+      <section className="relative min-h-svh flex flex-col">
         <div className="container relative mx-auto px-4 lg:px-8 flex-1 flex items-center pt-24 pb-12">
           <div className="max-w-6xl mx-auto w-full">
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -277,7 +267,7 @@ export default function Home() {
       </section>
 
       {/* Current Research Projects */}
-      <section id="research" className="min-h-svh flex items-center py-24 bg-muted/30 dark:bg-transparent">
+      <section id="research" className="min-h-svh flex items-center py-24">
         <div className="container mx-auto px-4 lg:px-8 w-full">
           <div className="max-w-6xl mx-auto">
             <div className="mb-10 reveal">
@@ -412,7 +402,7 @@ export default function Home() {
       </section>
 
       {/* Partners Section */}
-      <section className="min-h-svh flex flex-col justify-center py-24 bg-muted/30 dark:bg-transparent">
+      <section className="min-h-svh flex flex-col justify-center py-24">
         <div className="container mx-auto px-4 lg:px-8 w-full">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-10 reveal">
@@ -572,7 +562,6 @@ export default function Home() {
 
       {/* CTA Section */}
       <section className="relative min-h-svh flex items-center py-24 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent dark:from-primary/10" />
         <div className="container mx-auto px-4 lg:px-8 relative w-full">
           <div className="max-w-4xl mx-auto">
             <div className="text-center reveal">

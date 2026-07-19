@@ -25,7 +25,7 @@ const footerLinks = {
 
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-card">
+    <footer className="border-t border-border">
       <div className="container mx-auto px-4 lg:px-8">
         {/* Main Footer */}
         <div className="py-12 lg:py-16">

@@ -115,7 +115,6 @@ export default async function ResearchProjectPage({ params }: { params: Params }
     <div className="min-h-screen">
       {/* Hero */}
       <section className="relative pt-24 pb-8 lg:pt-32 lg:pb-12 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent dark:from-primary/10" />
         <div className="container relative mx-auto px-4 lg:px-8">
           <article className="max-w-4xl mx-auto">
             <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-3">

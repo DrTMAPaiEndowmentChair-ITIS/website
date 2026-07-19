@@ -14,7 +14,6 @@ export default function ApplyPage() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative pt-24 pb-12 lg:pt-32 lg:pb-16 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent dark:from-primary/10" />
         <div className="container relative mx-auto px-4 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-4">
@@ -73,7 +72,7 @@ export default function ApplyPage() {
       </section>
 
       {/* Additional Information Section */}
-      <section className="py-16 lg:py-24 bg-muted/30 dark:bg-transparent">
+      <section className="py-16 lg:py-24">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-10">

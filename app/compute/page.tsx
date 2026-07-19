@@ -214,7 +214,6 @@ export default function ComputePage() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative pt-24 pb-16 lg:pt-32 lg:pb-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent dark:from-primary/10" />
         <div className="absolute top-1/2 right-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 dark:bg-primary/10" />
 
         <div className="container relative mx-auto px-4 lg:px-8">
@@ -246,7 +245,7 @@ export default function ComputePage() {
       </section>
 
       {/* Stats Bar */}
-      <section className="border-y border-border bg-card dark:bg-transparent">
+      <section className="border-y border-border">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-5xl mx-auto">
             <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-border">
@@ -423,7 +422,7 @@ export default function ComputePage() {
       </section>
 
       {/* Workstations Grid */}
-      <section className="py-16 lg:py-24 bg-muted/30 dark:bg-transparent">
+      <section className="py-16 lg:py-24">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
@@ -497,7 +496,7 @@ export default function ComputePage() {
       </section>
 
       {/* Capabilities */}
-      <section className="py-16 lg:py-24 bg-muted/30 dark:bg-transparent">
+      <section className="py-16 lg:py-24">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
@@ -528,7 +527,6 @@ export default function ComputePage() {
 
       {/* CTA Section */}
       <section className="relative py-16 lg:py-24 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent" />
         <div className="container mx-auto px-4 lg:px-8 relative">
           <div className="max-w-3xl mx-auto text-center">
             <div className="inline-flex items-center justify-center w-12 h-12 bg-primary/10 text-primary mb-6">

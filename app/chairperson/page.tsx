@@ -132,7 +132,6 @@ export default function ChairpersonPage() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative pt-24 pb-16 lg:pt-32 lg:pb-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent" />
 
         <div className="container mx-auto px-4 lg:px-8 relative">
           <div className="max-w-6xl mx-auto">
@@ -192,7 +191,7 @@ export default function ChairpersonPage() {
       </section>
 
       {/* About */}
-      <section className="py-16 bg-muted/30 dark:bg-transparent">
+      <section className="py-16">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary mb-2">About</p>
@@ -263,7 +262,7 @@ export default function ChairpersonPage() {
       </section>
 
       {/* Administrative Positions */}
-      <section className="py-16 bg-muted/30 dark:bg-transparent">
+      <section className="py-16">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-5xl mx-auto">
             <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary mb-2">Leadership</p>
@@ -376,7 +375,7 @@ export default function ChairpersonPage() {
       </section>
 
       {/* Mentorship & Publications */}
-      <section className="py-16 bg-muted/30 dark:bg-transparent">
+      <section className="py-16">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-5xl mx-auto">
             <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary mb-2">Output</p>
@@ -490,7 +489,7 @@ export default function ChairpersonPage() {
       </section>
 
       {/* International & Professional */}
-      <section className="py-16 bg-muted/30 dark:bg-transparent">
+      <section className="py-16">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-5xl mx-auto">
             <div className="grid md:grid-cols-2 gap-8">
@@ -583,7 +582,6 @@ export default function ChairpersonPage() {
 
       {/* CTA */}
       <section className="relative py-16 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent" />
         <div className="container mx-auto px-4 lg:px-8 relative">
           <div className="max-w-2xl mx-auto text-center">
             <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary mb-2">Contact</p>
