@@ -152,7 +152,7 @@ export default function ChairpersonPage() {
 
               {/* Content */}
               <div className="lg:col-span-3 order-2 lg:order-1">
-                <p className="text-xs uppercase tracking-[0.2em] text-primary mb-3">Chair Professor</p>
+                <p className="font-mono text-xs uppercase tracking-[0.2em] text-primary mb-3">Chair Professor</p>
                 <h1 className="text-3xl sm:text-4xl lg:text-5xl font-medium leading-tight tracking-tight text-foreground mb-3">
                   Dr. Manohara M.M. Pai
                 </h1>
@@ -183,7 +183,7 @@ export default function ChairpersonPage() {
               {heroStats.map((stat, index) => (
                 <div key={index} className="p-6 text-center bg-card dark:bg-transparent">
                   <p className="text-2xl sm:text-3xl font-light text-primary mb-1">{stat.value}</p>
-                  <p className="text-[10px] uppercase tracking-widest text-muted-foreground">{stat.label}</p>
+                  <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">{stat.label}</p>
                 </div>
               ))}
             </div>
@@ -195,7 +195,7 @@ export default function ChairpersonPage() {
       <section className="py-16 bg-muted/30 dark:bg-transparent">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-4xl mx-auto">
-            <p className="text-[10px] uppercase tracking-[0.2em] text-primary mb-2">About</p>
+            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary mb-2">About</p>
             <h2 className="text-xl font-medium mb-6 text-foreground tracking-tight">Background</h2>
             <div className="text-sm text-muted-foreground space-y-4 leading-relaxed">
               <p>
@@ -216,7 +216,7 @@ export default function ChairpersonPage() {
       <section className="py-16">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-5xl mx-auto">
-            <p className="text-[10px] uppercase tracking-[0.2em] text-primary mb-2 text-center">Recognition</p>
+            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary mb-2 text-center">Recognition</p>
             <h2 className="text-xl font-medium mb-8 text-foreground text-center tracking-tight">Awards & Patents</h2>
 
             {/* Key Awards */}
@@ -266,7 +266,7 @@ export default function ChairpersonPage() {
       <section className="py-16 bg-muted/30 dark:bg-transparent">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-5xl mx-auto">
-            <p className="text-[10px] uppercase tracking-[0.2em] text-primary mb-2">Leadership</p>
+            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary mb-2">Leadership</p>
             <h2 className="text-xl font-medium mb-8 text-foreground tracking-tight">Administrative Positions</h2>
 
             <div className="space-y-4">
@@ -305,7 +305,7 @@ export default function ChairpersonPage() {
             <div className="grid md:grid-cols-2 gap-8">
               {/* Education */}
               <div>
-                <p className="text-[10px] uppercase tracking-[0.2em] text-primary mb-2">Education</p>
+                <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary mb-2">Education</p>
                 <h2 className="text-xl font-medium mb-6 text-foreground tracking-tight">Academic Background</h2>
                 <Card className="dark:bg-transparent">
                   <CardContent>
@@ -337,7 +337,7 @@ export default function ChairpersonPage() {
 
               {/* Career */}
               <div>
-                <p className="text-[10px] uppercase tracking-[0.2em] text-primary mb-2">Career</p>
+                <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary mb-2">Career</p>
                 <h2 className="text-xl font-medium mb-6 text-foreground tracking-tight">Professional Experience</h2>
                 <Card className="dark:bg-transparent">
                   <CardContent>
@@ -379,7 +379,7 @@ export default function ChairpersonPage() {
       <section className="py-16 bg-muted/30 dark:bg-transparent">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-5xl mx-auto">
-            <p className="text-[10px] uppercase tracking-[0.2em] text-primary mb-2">Output</p>
+            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary mb-2">Output</p>
             <h2 className="text-xl font-medium mb-8 text-foreground tracking-tight">Mentorship & Publications</h2>
 
             <div className="grid sm:grid-cols-3 gap-4 mb-8">
@@ -425,7 +425,7 @@ export default function ChairpersonPage() {
               <h3 className="text-sm font-medium mb-4 text-foreground">Authored Books</h3>
               <div className="grid sm:grid-cols-2 gap-4">
                 <div className="p-4 bg-muted/50 dark:bg-white/5 border border-border">
-                  <h4 className="text-sm font-medium text-foreground mb-1">Advances in Information & Communication Technologies ICICOT'07</h4>
+                  <h4 className="text-sm font-medium text-foreground mb-1">Advances in Information & Communication Technologies ICICOT&apos;07</h4>
                   <p className="text-xs text-muted-foreground">Co-edited proceedings for International Conference ICICOT 2007</p>
                 </div>
                 <div className="p-4 bg-muted/50 dark:bg-white/5 border border-border">
@@ -442,7 +442,7 @@ export default function ChairpersonPage() {
       <section className="py-16">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-5xl mx-auto">
-            <p className="text-[10px] uppercase tracking-[0.2em] text-primary mb-2 text-center">Expertise</p>
+            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary mb-2 text-center">Expertise</p>
             <h2 className="text-xl font-medium mb-2 text-center text-foreground tracking-tight">Research Interests</h2>
             <p className="text-xs text-muted-foreground text-center mb-8">
               Computer Communication Networks, Wireless Adhoc Networks, Video Processing, Data Analytics, Cloud Computing, Technology Commercialization, Patenting, and Mentoring
@@ -496,7 +496,7 @@ export default function ChairpersonPage() {
             <div className="grid md:grid-cols-2 gap-8">
               {/* International */}
               <div>
-                <p className="text-[10px] uppercase tracking-[0.2em] text-primary mb-2">International</p>
+                <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary mb-2">International</p>
                 <h2 className="text-xl font-medium mb-6 text-foreground tracking-tight">Global Engagement</h2>
                 <Card className="h-full dark:bg-transparent">
                   <CardContent>
@@ -518,7 +518,7 @@ export default function ChairpersonPage() {
 
               {/* Professional */}
               <div>
-                <p className="text-[10px] uppercase tracking-[0.2em] text-primary mb-2">Professional</p>
+                <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary mb-2">Professional</p>
                 <h2 className="text-xl font-medium mb-6 text-foreground tracking-tight">Activities & Memberships</h2>
                 <Card className="h-full dark:bg-transparent">
                   <CardContent>
@@ -555,7 +555,7 @@ export default function ChairpersonPage() {
       <section className="py-16">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-5xl mx-auto">
-            <p className="text-[10px] uppercase tracking-[0.2em] text-primary mb-2">Support</p>
+            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary mb-2">Support</p>
             <h2 className="text-xl font-medium mb-6 text-foreground tracking-tight">Research Funding</h2>
 
             <Card className="dark:bg-transparent">
@@ -586,7 +586,7 @@ export default function ChairpersonPage() {
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent" />
         <div className="container mx-auto px-4 lg:px-8 relative">
           <div className="max-w-2xl mx-auto text-center">
-            <p className="text-[10px] uppercase tracking-[0.2em] text-primary mb-2">Contact</p>
+            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary mb-2">Contact</p>
             <h2 className="text-2xl font-medium mb-4 text-foreground tracking-tight">
               Connect with Dr. Manohara Pai
             </h2>

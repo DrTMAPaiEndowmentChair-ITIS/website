@@ -116,7 +116,7 @@ export default async function EventPage({ params }: { params: Params }) {
               </div>
             )}
 
-            <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-3">
+            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-3">
               Event
             </p>
             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-medium mb-4 text-foreground tracking-tight leading-[1.1]">

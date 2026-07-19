@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { HugeiconsIcon } from "@hugeicons/react";
-import { CheckmarkCircle01Icon, HelpCircleIcon, ArrowRight01Icon, Mail01Icon } from "@hugeicons/core-free-icons";
+import { CheckmarkCircle01Icon, HelpCircleIcon, Mail01Icon } from "@hugeicons/core-free-icons";
 
 export const metadata = {
   title: "Apply for Research | Dr. TMA Pai Endowment Chair",
@@ -17,7 +17,7 @@ export default function ApplyPage() {
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent dark:from-primary/10" />
         <div className="container relative mx-auto px-4 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
-            <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-4">
+            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-4">
               Join Us
             </p>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-medium mb-4 leading-[1.1] tracking-tight text-foreground">
@@ -77,7 +77,7 @@ export default function ApplyPage() {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-10">
-              <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-3">
+              <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-3">
                 Process
               </p>
               <h2 className="text-2xl sm:text-3xl font-medium text-foreground tracking-tight">

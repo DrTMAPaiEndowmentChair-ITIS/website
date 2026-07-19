@@ -33,10 +33,10 @@ export function Footer() {
             {/* Brand */}
             <div className="col-span-2 md:col-span-1">
               <Link href="/" className="inline-block mb-4 group">
-                <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors block">
+                <span className="font-mono text-sm font-medium text-foreground group-hover:text-primary transition-colors block">
                   Dr. TMA Pai Endowment Chair
                 </span>
-                <span className="text-[10px] text-muted-foreground uppercase tracking-wide">
+                <span className="font-mono text-[10px] text-muted-foreground uppercase tracking-wide">
                   MAHE, Manipal
                 </span>
               </Link>
@@ -62,7 +62,7 @@ export function Footer() {
 
             {/* Navigation */}
             <div>
-              <p className="text-[10px] uppercase tracking-widest text-muted-foreground mb-4">
+              <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground mb-4">
                 Navigation
               </p>
               <ul className="space-y-2">
@@ -81,7 +81,7 @@ export function Footer() {
 
             {/* Resources */}
             <div>
-              <p className="text-[10px] uppercase tracking-widest text-muted-foreground mb-4">
+              <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground mb-4">
                 Resources
               </p>
               <ul className="space-y-2">
@@ -107,7 +107,7 @@ export function Footer() {
 
             {/* Contact */}
             <div>
-              <p className="text-[10px] uppercase tracking-widest text-muted-foreground mb-4">
+              <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground mb-4">
                 Contact
               </p>
               <ul className="space-y-3">

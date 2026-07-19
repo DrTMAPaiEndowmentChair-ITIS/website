@@ -13,7 +13,8 @@ import { Separator } from "@/components/ui/separator";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { Menu01Icon, ArrowUpRight01Icon } from "@hugeicons/core-free-icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { cn } from "@/lib/utils";
 
 const navLinks = [
   { href: "/#research", label: "Research" },
@@ -25,13 +26,28 @@ const navLinks = [
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 16);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-lg border-b border-border/50">
+    <nav
+      className={cn(
+        "fixed top-0 left-0 right-0 z-50 border-b transition-[background-color,border-color,backdrop-filter] duration-300 ease-out",
+        scrolled
+          ? "bg-background/95 backdrop-blur-sm border-border/50"
+          : "bg-transparent backdrop-blur-0 border-transparent"
+      )}
+    >
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex flex-col py-1 max-w-[55%] sm:max-w-none group">
-            <span className="text-sm sm:text-base font-medium text-foreground leading-tight group-hover:text-primary transition-colors">
+            <span className="font-mono text-sm sm:text-base font-medium text-foreground leading-tight group-hover:text-primary transition-colors">
               Dr. TMA Pai Endowment Chair
             </span>
             <span className="text-[10px] sm:text-xs text-muted-foreground font-normal leading-tight tracking-wide uppercase">

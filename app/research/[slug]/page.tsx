@@ -118,7 +118,7 @@ export default async function ResearchProjectPage({ params }: { params: Params }
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent dark:from-primary/10" />
         <div className="container relative mx-auto px-4 lg:px-8">
           <article className="max-w-4xl mx-auto">
-            <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-3">
+            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-3">
               Research Project
             </p>
             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-medium mb-4 text-foreground tracking-tight leading-[1.1]">
@@ -142,7 +142,7 @@ export default async function ResearchProjectPage({ params }: { params: Params }
 
             <Card className="mb-8 dark:bg-transparent">
               <CardContent>
-                <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-1">
+                <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-1">
                   Partner
                 </p>
                 <h3 className="text-sm font-medium text-foreground mb-1">
