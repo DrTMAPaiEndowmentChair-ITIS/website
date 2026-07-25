@@ -297,7 +297,7 @@ export default function ComputePage() {
               </h2>
             </div>
 
-            <div className="border border-border bg-card dark:bg-transparent mb-4">
+            <div className="border border-border bg-panel mb-4">
               <div className="font-mono hidden md:grid md:grid-cols-[0.65fr_3fr_1.15fr] gap-6 px-5 py-3 border-b border-border text-[9px] uppercase tracking-wide text-muted-foreground">
                 <span>Precision</span>
                 <span>Available accelerators</span>
@@ -335,7 +335,7 @@ export default function ComputePage() {
             </div>
 
             <div className="grid lg:grid-cols-[1.45fr_1fr] gap-4">
-              <div className="border border-border bg-card dark:bg-transparent p-5 sm:p-6">
+              <div className="border border-border bg-panel p-5 sm:p-6">
                 <div className="flex items-baseline justify-between gap-4 mb-8">
                   <h3 className="text-sm font-medium text-foreground">Fleet FP32</h3>
                   <p className="text-xl sm:text-2xl font-medium text-primary tabular-nums">
@@ -379,7 +379,7 @@ export default function ComputePage() {
                 </div>
               </div>
 
-              <div className="border border-border bg-card dark:bg-transparent p-5 sm:p-6 flex flex-col">
+              <div className="border border-border bg-panel p-5 sm:p-6 flex flex-col">
                 <h3 className="text-sm font-medium text-foreground">FP32 Share</h3>
 
                 <div
@@ -438,7 +438,7 @@ export default function ComputePage() {
               {fleetCompute.map((ws, rank) => (
                 <div
                   key={ws.id}
-                  className="group border border-border bg-card dark:bg-transparent hover:border-primary/50 transition-colors"
+                  className="group border border-border bg-panel hover:border-primary/50 transition-colors"
                 >
                   <div className="p-4 sm:p-6">
                     {/* Header */}
@@ -510,7 +510,7 @@ export default function ComputePage() {
 
             <div className="grid sm:grid-cols-3 gap-4">
               {capabilities.map((cap, index) => (
-                <Card key={index} className="group hover:border-primary/50 transition-colors dark:bg-transparent">
+                <Card key={index} className="group hover:border-primary/50 transition-colors bg-panel">
                   <CardContent>
                     <div className="w-10 h-10 bg-primary/10 flex items-center justify-center mb-3 group-hover:bg-primary/20 transition-colors">
                       <HugeiconsIcon icon={cap.icon} strokeWidth={2} className="size-5 text-primary" />

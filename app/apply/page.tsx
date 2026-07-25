@@ -42,7 +42,7 @@ export default function ApplyPage() {
       <section className="pb-16 lg:pb-24">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-5xl mx-auto">
-            <Card className="dark:bg-transparent">
+            <Card className="bg-panel">
               <CardHeader className="border-b border-border bg-muted/30 dark:bg-white/5">
                 <CardTitle className="text-base">Research Application Form</CardTitle>
                 <CardDescription>
@@ -85,7 +85,7 @@ export default function ApplyPage() {
             </div>
 
             <div className="grid sm:grid-cols-2 gap-4">
-              <Card className="group hover:border-primary/50 transition-colors dark:bg-transparent">
+              <Card className="group hover:border-primary/50 transition-colors bg-panel">
                 <CardContent>
                   <div className="w-10 h-10 bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
                     <HugeiconsIcon icon={CheckmarkCircle01Icon} strokeWidth={2} className="size-5 text-primary" />
@@ -118,7 +118,7 @@ export default function ApplyPage() {
                 </CardContent>
               </Card>
 
-              <Card className="group hover:border-primary/50 transition-colors dark:bg-transparent">
+              <Card className="group hover:border-primary/50 transition-colors bg-panel">
                 <CardContent>
                   <div className="w-10 h-10 bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
                     <HugeiconsIcon icon={HelpCircleIcon} strokeWidth={2} className="size-5 text-primary" />

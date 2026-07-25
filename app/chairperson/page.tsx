@@ -180,7 +180,7 @@ export default function ChairpersonPage() {
             {/* Stats */}
             <div className="mt-12 grid grid-cols-2 lg:grid-cols-4 border border-border divide-x divide-y lg:divide-y-0 divide-border">
               {heroStats.map((stat, index) => (
-                <div key={index} className="p-6 text-center bg-card dark:bg-transparent">
+                <div key={index} className="p-6 text-center bg-panel">
                   <p className="text-2xl sm:text-3xl font-light text-primary mb-1">{stat.value}</p>
                   <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">{stat.label}</p>
                 </div>
@@ -221,7 +221,7 @@ export default function ChairpersonPage() {
             {/* Key Awards */}
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
               {keyAwards.map((award, index) => (
-                <div key={index} className="p-5 border border-border hover:border-primary/50 transition-colors bg-card dark:bg-transparent">
+                <div key={index} className="p-5 border border-border hover:border-primary/50 transition-colors bg-panel">
                   <p className="text-xs text-primary font-medium mb-1">{award.year}</p>
                   <h3 className="text-sm font-medium text-foreground mb-1">{award.title}</h3>
                   <p className="text-xs text-muted-foreground">{award.subtitle}</p>
@@ -270,7 +270,7 @@ export default function ChairpersonPage() {
 
             <div className="space-y-4">
               {adminPositions.map((pos, index) => (
-                <Card key={index} className="dark:bg-transparent">
+                <Card key={index} className="bg-panel">
                   <CardContent>
                     <div className="flex items-start gap-4">
                       <div className="w-10 h-10 bg-primary/10 flex items-center justify-center shrink-0">
@@ -306,7 +306,7 @@ export default function ChairpersonPage() {
               <div>
                 <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary mb-2">Education</p>
                 <h2 className="text-xl font-medium mb-6 text-foreground tracking-tight">Academic Background</h2>
-                <Card className="dark:bg-transparent">
+                <Card className="bg-panel">
                   <CardContent>
                     <div className="flex items-start gap-3">
                       <div className="w-10 h-10 bg-primary/10 flex items-center justify-center shrink-0">
@@ -338,7 +338,7 @@ export default function ChairpersonPage() {
               <div>
                 <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary mb-2">Career</p>
                 <h2 className="text-xl font-medium mb-6 text-foreground tracking-tight">Professional Experience</h2>
-                <Card className="dark:bg-transparent">
+                <Card className="bg-panel">
                   <CardContent>
                     <div className="flex items-start gap-3">
                       <div className="w-10 h-10 bg-primary/10 flex items-center justify-center shrink-0">
@@ -382,7 +382,7 @@ export default function ChairpersonPage() {
             <h2 className="text-xl font-medium mb-8 text-foreground tracking-tight">Mentorship & Publications</h2>
 
             <div className="grid sm:grid-cols-3 gap-4 mb-8">
-              <Card className="dark:bg-transparent">
+              <Card className="bg-panel">
                 <CardContent>
                   <div className="w-10 h-10 bg-primary/10 flex items-center justify-center mb-3">
                     <HugeiconsIcon icon={GraduationScrollIcon} strokeWidth={2} className="size-5 text-primary" />
@@ -394,7 +394,7 @@ export default function ChairpersonPage() {
                 </CardContent>
               </Card>
 
-              <Card className="dark:bg-transparent">
+              <Card className="bg-panel">
                 <CardContent>
                   <div className="w-10 h-10 bg-primary/10 flex items-center justify-center mb-3">
                     <HugeiconsIcon icon={BookOpen01Icon} strokeWidth={2} className="size-5 text-primary" />
@@ -406,7 +406,7 @@ export default function ChairpersonPage() {
                 </CardContent>
               </Card>
 
-              <Card className="dark:bg-transparent">
+              <Card className="bg-panel">
                 <CardContent>
                   <div className="w-10 h-10 bg-primary/10 flex items-center justify-center mb-3">
                     <HugeiconsIcon icon={Award01Icon} strokeWidth={2} className="size-5 text-primary" />
@@ -420,7 +420,7 @@ export default function ChairpersonPage() {
             </div>
 
             {/* Books */}
-            <div className="p-6 border border-border bg-card dark:bg-transparent">
+            <div className="p-6 border border-border bg-panel">
               <h3 className="text-sm font-medium mb-4 text-foreground">Authored Books</h3>
               <div className="grid sm:grid-cols-2 gap-4">
                 <div className="p-4 bg-muted/50 dark:bg-white/5 border border-border">
@@ -460,7 +460,7 @@ export default function ChairpersonPage() {
 
             {/* Research Detail Cards */}
             <div className="grid sm:grid-cols-2 gap-4">
-              <Card className="dark:bg-transparent">
+              <Card className="bg-panel">
                 <CardContent>
                   <h3 className="text-sm font-medium mb-2 text-foreground">AI and Healthcare Applications</h3>
                   <ul className="text-xs text-muted-foreground space-y-1">
@@ -472,7 +472,7 @@ export default function ChairpersonPage() {
                 </CardContent>
               </Card>
 
-              <Card className="dark:bg-transparent">
+              <Card className="bg-panel">
                 <CardContent>
                   <h3 className="text-sm font-medium mb-2 text-foreground">Industrial IoT and Sensor Networks</h3>
                   <ul className="text-xs text-muted-foreground space-y-1">
@@ -497,7 +497,7 @@ export default function ChairpersonPage() {
               <div>
                 <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary mb-2">International</p>
                 <h2 className="text-xl font-medium mb-6 text-foreground tracking-tight">Global Engagement</h2>
-                <Card className="h-full dark:bg-transparent">
+                <Card className="h-full bg-panel">
                   <CardContent>
                     <div className="flex items-start gap-3 mb-4">
                       <div className="w-10 h-10 bg-primary/10 flex items-center justify-center shrink-0">
@@ -519,7 +519,7 @@ export default function ChairpersonPage() {
               <div>
                 <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary mb-2">Professional</p>
                 <h2 className="text-xl font-medium mb-6 text-foreground tracking-tight">Activities & Memberships</h2>
-                <Card className="h-full dark:bg-transparent">
+                <Card className="h-full bg-panel">
                   <CardContent>
                     <div className="flex items-start gap-3 mb-4">
                       <div className="w-10 h-10 bg-primary/10 flex items-center justify-center shrink-0">
@@ -557,7 +557,7 @@ export default function ChairpersonPage() {
             <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary mb-2">Support</p>
             <h2 className="text-xl font-medium mb-6 text-foreground tracking-tight">Research Funding</h2>
 
-            <Card className="dark:bg-transparent">
+            <Card className="bg-panel">
               <CardContent>
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-primary/10 flex items-center justify-center shrink-0">

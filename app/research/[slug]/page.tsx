@@ -139,7 +139,7 @@ export default async function ResearchProjectPage({ params }: { params: Params }
               ))}
             </div>
 
-            <Card className="mb-8 dark:bg-transparent">
+            <Card className="mb-8 bg-panel">
               <CardContent>
                 <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-1">
                   Partner

@@ -137,6 +137,18 @@
   }
 }
 
+/* Panels sitting on the ambient site background. --card and --background are
+   pure white in light mode, so a plain bg-card would slab over the grid and
+   gradients; these stay translucent in light mode and drop out entirely in
+   dark, letting the background run through the page in both themes.
+   Unlayered, so it wins over the bg-card utility Card sets by default. */
+.bg-panel {
+  background-color: color-mix(in oklab, var(--card) 60%, transparent);
+}
+.dark .bg-panel {
+  background-color: transparent;
+}
+
 /* Subtle blueprint grid, used behind the hero */
 .bg-grid {
   background-image:

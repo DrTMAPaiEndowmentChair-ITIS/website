@@ -178,6 +178,7 @@ export default function Home() {
                     src="/hero-image.png"
                     alt="Research and Innovation"
                     fill
+                    sizes="(max-width: 640px) 20rem, (max-width: 1024px) 28rem, 34rem"
                     className="object-contain brightness-[1.021] mix-blend-multiply dark:invert dark:hue-rotate-180 dark:mix-blend-screen"
                     priority
                   />
@@ -291,7 +292,7 @@ export default function Home() {
                 {researchProjects.map((project) => (
                   <CarouselItem key={project.slug} className="pl-4 md:basis-1/2 lg:basis-1/3">
                     <Link href={`/research/${project.slug}`} className="block h-full group">
-                      <Card className="h-full border-border hover:border-primary/50 transition-all duration-300 dark:bg-transparent">
+                      <Card className="h-full border-border hover:border-primary/50 transition-all duration-300 bg-panel">
                         <CardHeader className="pb-2">
                           <div className="flex items-center gap-3 mb-3">
                             <div className="flex h-9 w-9 items-center justify-center bg-primary/10 group-hover:bg-primary/20 transition-colors shrink-0">
@@ -356,7 +357,7 @@ export default function Home() {
                 {completedProjects.map((project) => (
                   <CarouselItem key={project.slug} className="pl-4 md:basis-1/2 lg:basis-1/3">
                     <Link href={`/research/${project.slug}`} className="block h-full group">
-                      <Card className="h-full border-border hover:border-primary/50 transition-all duration-300 dark:bg-transparent">
+                      <Card className="h-full border-border hover:border-primary/50 transition-all duration-300 bg-panel">
                         <CardHeader className="pb-2">
                           <div className="flex items-center gap-3 mb-3">
                             <div className="flex h-9 w-9 items-center justify-center bg-muted dark:bg-white/10 group-hover:bg-primary/10 transition-colors shrink-0">
@@ -456,14 +457,17 @@ export default function Home() {
                 ].map((agency, index) => (
                   <div
                     key={index}
-                    className="flex items-center justify-center p-6 bg-background dark:bg-transparent border border-border hover:border-primary/30 transition-colors group"
+                    className="flex items-center justify-center p-6 bg-panel border border-border hover:border-primary/30 transition-colors group"
                   >
+                    {/* brightness-0 flattens the mark to black and invert lifts it
+                        to white — a predictable silhouette, unlike invert +
+                        hue-rotate, which shifts a coloured logo off brand. */}
                     <Image
                       src={agency.logo}
                       alt={agency.name}
                       width={80}
                       height={40}
-                      className={`object-contain opacity-70 group-hover:opacity-100 transition-opacity ${agency.invertDark ? "dark:invert dark:hue-rotate-180 dark:opacity-80 dark:group-hover:opacity-100" : ""}`}
+                      className={`object-contain h-auto opacity-70 group-hover:opacity-100 transition-opacity ${agency.invertDark ? "dark:brightness-0 dark:invert dark:opacity-80 dark:group-hover:opacity-100" : ""}`}
                     />
                   </div>
                 ))}
@@ -483,14 +487,14 @@ export default function Home() {
                 ].map((company, index) => (
                   <div
                     key={index}
-                    className="flex items-center justify-center p-6 bg-background dark:bg-transparent border border-border hover:border-primary/30 transition-colors group"
+                    className="flex items-center justify-center p-6 bg-panel border border-border hover:border-primary/30 transition-colors group"
                   >
                     <Image
                       src={company.logo}
                       alt={company.name}
                       width={80}
                       height={40}
-                      className="object-contain opacity-70 group-hover:opacity-100 transition-opacity"
+                      className="object-contain h-auto opacity-70 group-hover:opacity-100 transition-opacity"
                     />
                   </div>
                 ))}
@@ -524,7 +528,7 @@ export default function Home() {
                 {upcomingEvents.map((event) => (
                   <CarouselItem key={event.slug} className="pl-4 md:basis-1/2 lg:basis-1/3">
                     <Link href={`/events/${event.slug}`} className="block h-full group">
-                      <Card className="h-full border-border hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 dark:bg-transparent">
+                      <Card className="h-full border-border hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 bg-panel">
                         {event.image && (
                           <div className="relative aspect-[16/10] w-full overflow-hidden">
                             <Image
