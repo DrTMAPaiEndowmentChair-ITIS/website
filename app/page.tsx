@@ -170,11 +170,15 @@ export default function Home() {
               </div>
               <div className="order-1 lg:order-2 relative">
                 <div className="relative aspect-square max-w-xs sm:max-w-md mx-auto lg:max-w-none">
+                  {/* The PNG ships an opaque #FAFAFA plate, so it would mask the
+                      ambient background. brightness lifts that plate to pure
+                      white, which multiply then drops entirely; in dark mode
+                      invert turns the same plate black and screen drops it. */}
                   <Image
                     src="/hero-image.png"
                     alt="Research and Innovation"
                     fill
-                    className="object-contain dark:invert dark:hue-rotate-180"
+                    className="object-contain brightness-[1.021] mix-blend-multiply dark:invert dark:hue-rotate-180 dark:mix-blend-screen"
                     priority
                   />
                 </div>
