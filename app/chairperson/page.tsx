@@ -9,7 +9,6 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { HugeiconsIcon } from "@hugeicons/react";
 import {
   Award01Icon,
   BookOpen01Icon,
@@ -30,11 +29,12 @@ import {
   CloudIcon,
   ArrowRight01Icon,
   Mail01Icon,
-} from "@hugeicons/core-free-icons";
+} from "@/components/icons";
 
 export const metadata = {
   title: "Dr. Manohara Pai MM | Chair Professor | Dr. TMA Pai Endowment Chair",
-  description: "Profile of Dr. Manohara Pai MM, Senior Professor at MIT Manipal with 33+ years in teaching, research, and administration.",
+  description:
+    "Profile of Dr. Manohara Pai MM, Senior Professor at MIT Manipal with 33+ years in teaching, research, and administration.",
 };
 
 const heroStats = [
@@ -45,22 +45,49 @@ const heroStats = [
 ];
 
 const patentsAndAwards = [
-  { image: "/chairperson/patents/NTTA.jpeg", caption: "National Technical Teachers Award (NTTA 2022)" },
-  { image: "/chairperson/patents/MPAward.jpg", caption: "National Technical Best Teacher award from AICTE" },
-  { image: "/chairperson/patents/newscoverage.jpeg", caption: "News coverage of the NTTA award" },
-  { image: "/chairperson/patents/InnovationPioneers.jpg", caption: "Innovation mentoring award from Minister of Science and Technology" },
-  { image: "/chairperson/patents/AustinTX.jpg", caption: "Infodev Business Incubation Training, Texas Austin (2010-2011)" },
-  { image: "/chairperson/patents/USPatent1.png", caption: "US Patent: Adaptive Routing in Wireless Networks" },
-  { image: "/chairperson/patents/USPatent2.png", caption: "US Patent: Image Processing and Analysis" },
-  { image: "/chairperson/patents/JapanesePatent.png", caption: "Japanese Patent" },
-  { image: "/chairperson/patents/Patent-OpticalFiber.jpeg", caption: "Patent: Optical Fiber Inserter Technology" },
-  { image: "/chairperson/patents/diabetic-ulcer.jpeg", caption: "Indian Patent: Diabetic Ulcer Detection" },
-  { image: "/chairperson/patents/FootCompl.jpg", caption: "Indian Patent: Detection of Foot Complications" },
+  {
+    image: "/chairperson/patents/NTTA.jpg",
+    caption: "National Technical Teachers Award (NTTA 2022)",
+  },
+  {
+    image: "/chairperson/patents/MPAward.jpg",
+    caption: "National Technical Best Teacher award from AICTE",
+  },
+  { image: "/chairperson/patents/newscoverage.jpg", caption: "News coverage of the NTTA award" },
+  {
+    image: "/chairperson/patents/InnovationPioneers.jpg",
+    caption: "Innovation mentoring award from Minister of Science and Technology",
+  },
+  {
+    image: "/chairperson/patents/AustinTX.jpg",
+    caption: "Infodev Business Incubation Training, Texas Austin (2010-2011)",
+  },
+  {
+    image: "/chairperson/patents/USPatent1.jpg",
+    caption: "US Patent: Adaptive Routing in Wireless Networks",
+  },
+  {
+    image: "/chairperson/patents/USPatent2.jpg",
+    caption: "US Patent: Image Processing and Analysis",
+  },
+  { image: "/chairperson/patents/JapanesePatent.jpg", caption: "Japanese Patent" },
+  {
+    image: "/chairperson/patents/Patent-OpticalFiber.jpg",
+    caption: "Patent: Optical Fiber Inserter Technology",
+  },
+  {
+    image: "/chairperson/patents/diabetic-ulcer.jpg",
+    caption: "Indian Patent: Diabetic Ulcer Detection",
+  },
+  {
+    image: "/chairperson/patents/FootCompl.jpg",
+    caption: "Indian Patent: Detection of Foot Complications",
+  },
 ];
 
 const adminPositions = [
   {
-    icon: ClockIcon,
+    Icon: ClockIcon,
     title: "Associate Director (Research and Consultancy), MIT, MAHE",
     period: "Jan 2017 - Dec 2019",
     points: [
@@ -70,7 +97,7 @@ const adminPositions = [
     ],
   },
   {
-    icon: FlashIcon,
+    Icon: FlashIcon,
     title: "Associate Director (Innovation Center), MIT, MAHE",
     period: "March 2008 - Dec 2016",
     points: [
@@ -83,7 +110,7 @@ const adminPositions = [
     ],
   },
   {
-    icon: Building01Icon,
+    Icon: Building01Icon,
     title: "Head of Department of ICT, MIT, MAHE",
     period: "May 2001 - Jan 2008",
     points: [
@@ -95,7 +122,7 @@ const adminPositions = [
     ],
   },
   {
-    icon: UserGroupIcon,
+    Icon: UserGroupIcon,
     title: "CEO, Manipal University Technology Business Incubator (MUTBI)",
     period: "April 2010 - June 2016",
     points: [
@@ -109,22 +136,42 @@ const adminPositions = [
 ];
 
 const researchAreas = [
-  { name: "AI & ML", icon: ComputerIcon },
-  { name: "Healthcare Tech", icon: HeartCheckIcon },
-  { name: "Video Processing", icon: Video01Icon },
-  { name: "IIOT", icon: ChipIcon },
-  { name: "Wireless Networks", icon: Wifi01Icon },
-  { name: "GPS & Location", icon: Location01Icon },
-  { name: "Data Analytics", icon: AnalyticsUpIcon },
-  { name: "Cloud Computing", icon: CloudIcon },
+  { name: "AI & ML", Icon: ComputerIcon },
+  { name: "Healthcare Tech", Icon: HeartCheckIcon },
+  { name: "Video Processing", Icon: Video01Icon },
+  { name: "IIOT", Icon: ChipIcon },
+  { name: "Wireless Networks", Icon: Wifi01Icon },
+  { name: "GPS & Location", Icon: Location01Icon },
+  { name: "Data Analytics", Icon: AnalyticsUpIcon },
+  { name: "Cloud Computing", Icon: CloudIcon },
 ];
 
 const keyAwards = [
-  { title: "Dr. TMA Pai Endowment Chair", subtitle: "Intelligent Technologies, Industry 4.0 and Sustainability", year: "2023-2025" },
-  { title: "National Technical Teachers Award (NTTA)", subtitle: "AICTE, Ministry of Education, Govt. of India", year: "2022" },
-  { title: "Dr. TMA Pai Endowment Chair", subtitle: "Data Analytics and Cloud Computing", year: "2011-2014" },
-  { title: "Indigenous Dental Implants Technology Mentorship Award", subtitle: "IUSSTF-INTEL-DST, Hon. Minister of Science & Technology", year: "2009" },
-  { title: "Certified Trainer, Infodev, World Bank", subtitle: "Business Incubation and Technology Commercialization", year: "2012" },
+  {
+    title: "Dr. TMA Pai Endowment Chair",
+    subtitle: "Intelligent Technologies, Industry 4.0 and Sustainability",
+    year: "2023-2025",
+  },
+  {
+    title: "National Technical Teachers Award (NTTA)",
+    subtitle: "AICTE, Ministry of Education, Govt. of India",
+    year: "2022",
+  },
+  {
+    title: "Dr. TMA Pai Endowment Chair",
+    subtitle: "Data Analytics and Cloud Computing",
+    year: "2011-2014",
+  },
+  {
+    title: "Indigenous Dental Implants Technology Mentorship Award",
+    subtitle: "IUSSTF-INTEL-DST, Hon. Minister of Science & Technology",
+    year: "2009",
+  },
+  {
+    title: "Certified Trainer, Infodev, World Bank",
+    subtitle: "Business Incubation and Technology Commercialization",
+    year: "2012",
+  },
 ];
 
 export default function ChairpersonPage() {
@@ -132,7 +179,6 @@ export default function ChairpersonPage() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative pt-24 pb-16 lg:pt-32 lg:pb-20 overflow-hidden">
-
         <div className="container mx-auto px-4 lg:px-8 relative">
           <div className="max-w-6xl mx-auto">
             <div className="grid lg:grid-cols-5 gap-10 lg:gap-16 items-start">
@@ -144,14 +190,18 @@ export default function ChairpersonPage() {
                     alt="Dr. Manohara Pai MM"
                     className="object-cover"
                     fill
+                    sizes="384px"
                     priority
+                    fetchPriority="high"
                   />
                 </div>
               </div>
 
               {/* Content */}
               <div className="lg:col-span-3 order-2 lg:order-1">
-                <p className="font-mono text-xs uppercase tracking-[0.2em] text-primary mb-3">Chair Professor</p>
+                <p className="font-mono text-xs uppercase tracking-[0.2em] text-primary mb-3">
+                  Chair Professor
+                </p>
                 <h1 className="text-3xl sm:text-4xl lg:text-5xl font-medium leading-tight tracking-tight text-foreground mb-3">
                   Dr. Manohara M.M. Pai
                 </h1>
@@ -163,16 +213,40 @@ export default function ChairpersonPage() {
                 </p>
 
                 <div className="flex flex-wrap gap-2 mb-8">
-                  <a href="mailto:drtmapaichair.itis@manipal.edu" className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground text-sm hover:bg-primary/90 transition-colors">
-                    <HugeiconsIcon icon={Mail01Icon} strokeWidth={2} className="size-4" />
+                  <a
+                    href="mailto:drtmapaichair.itis@manipal.edu"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground text-sm hover:bg-primary/90 transition-colors"
+                  >
+                    <Mail01Icon strokeWidth={2} className="size-4" />
                     drtmapaichair.itis@manipal.edu
                   </a>
                 </div>
 
                 <div className="flex flex-wrap gap-2 text-xs">
-                  <a href="https://researcher.manipal.edu/en/persons/manohara-m-m-pai" target="_blank" rel="noopener noreferrer" className="px-3 py-1.5 border border-border hover:border-primary/50 text-muted-foreground hover:text-primary transition-colors">Manipal Pure</a>
-                  <a href="https://orcid.org/0000-0003-2164-2945" target="_blank" rel="noopener noreferrer" className="px-3 py-1.5 border border-border hover:border-primary/50 text-muted-foreground hover:text-primary transition-colors">ORCID</a>
-                  <a href="https://scholar.google.co.in/citations?user=Zr3-m3IAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" className="px-3 py-1.5 border border-border hover:border-primary/50 text-muted-foreground hover:text-primary transition-colors">Google Scholar</a>
+                  <a
+                    href="https://researcher.manipal.edu/en/persons/manohara-m-m-pai"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-3 py-1.5 border border-border hover:border-primary/50 text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    Manipal Pure
+                  </a>
+                  <a
+                    href="https://orcid.org/0000-0003-2164-2945"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-3 py-1.5 border border-border hover:border-primary/50 text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    ORCID
+                  </a>
+                  <a
+                    href="https://scholar.google.co.in/citations?user=Zr3-m3IAAAAJ&hl=en"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-3 py-1.5 border border-border hover:border-primary/50 text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    Google Scholar
+                  </a>
                 </div>
               </div>
             </div>
@@ -182,7 +256,9 @@ export default function ChairpersonPage() {
               {heroStats.map((stat, index) => (
                 <div key={index} className="p-6 text-center bg-panel">
                   <p className="text-2xl sm:text-3xl font-light text-primary mb-1">{stat.value}</p>
-                  <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">{stat.label}</p>
+                  <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+                    {stat.label}
+                  </p>
                 </div>
               ))}
             </div>
@@ -194,17 +270,29 @@ export default function ChairpersonPage() {
       <section className="py-16">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-4xl mx-auto">
-            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary mb-2">About</p>
+            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary mb-2">
+              About
+            </p>
             <h2 className="text-xl font-medium mb-6 text-foreground tracking-tight">Background</h2>
             <div className="text-sm text-muted-foreground space-y-4 leading-relaxed">
               <p>
-                Dr. Manohara Pai M.M. has 33 years of experience in administration, teaching, research, industrial collaborations, and consultancy at Manipal Institute of Technology. He holds a Ph.D. in Computer Science & Engineering from the University of Mysore (2001), M.Tech in Digital Electronics and Advanced Communications from NITK Surathkal (1992), and B.E. in Electronics & Communication from SJCE Mysore (1987).
+                Dr. Manohara Pai M.M. has 33 years of experience in administration, teaching,
+                research, industrial collaborations, and consultancy at Manipal Institute of
+                Technology. He holds a Ph.D. in Computer Science & Engineering from the University
+                of Mysore (2001), M.Tech in Digital Electronics and Advanced Communications from
+                NITK Surathkal (1992), and B.E. in Electronics & Communication from SJCE Mysore
+                (1987).
               </p>
               <p>
-                He is the current holder of the Dr. TMA Pai Endowment Chair in Intelligent Technologies, Industry 4.0 and Sustainability (2023-2025). Previously, he held the Dr. TMA Pai Endowment Chair in Data Analytics and Cloud Computing (2011-2014).
+                He is the current holder of the Dr. TMA Pai Endowment Chair in Intelligent
+                Technologies, Industry 4.0 and Sustainability (2023-2025). Previously, he held the
+                Dr. TMA Pai Endowment Chair in Data Analytics and Cloud Computing (2011-2014).
               </p>
               <p>
-                His research interests include Computer Communication Networks, Wireless Adhoc Networks, Video Processing, Data Analytics, Cloud Computing, Technology Commercialization, and Patenting. He is a certified mentor by Infodev World Bank, Washington D.C.
+                His research interests include Computer Communication Networks, Wireless Adhoc
+                Networks, Video Processing, Data Analytics, Cloud Computing, Technology
+                Commercialization, and Patenting. He is a certified mentor by Infodev World Bank,
+                Washington D.C.
               </p>
             </div>
           </div>
@@ -215,13 +303,20 @@ export default function ChairpersonPage() {
       <section className="py-16">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-5xl mx-auto">
-            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary mb-2 text-center">Recognition</p>
-            <h2 className="text-xl font-medium mb-8 text-foreground text-center tracking-tight">Awards & Patents</h2>
+            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary mb-2 text-center">
+              Recognition
+            </p>
+            <h2 className="text-xl font-medium mb-8 text-foreground text-center tracking-tight">
+              Awards & Patents
+            </h2>
 
             {/* Key Awards */}
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
               {keyAwards.map((award, index) => (
-                <div key={index} className="p-5 border border-border hover:border-primary/50 transition-colors bg-panel">
+                <div
+                  key={index}
+                  className="p-5 border border-border hover:border-primary/50 transition-colors bg-panel"
+                >
                   <p className="text-xs text-primary font-medium mb-1">{award.year}</p>
                   <h3 className="text-sm font-medium text-foreground mb-1">{award.title}</h3>
                   <p className="text-xs text-muted-foreground">{award.subtitle}</p>
@@ -233,10 +328,13 @@ export default function ChairpersonPage() {
             <div className="p-6 border border-border bg-muted/30 dark:bg-transparent mb-8">
               <h3 className="text-sm font-medium text-foreground mb-3">Patent Portfolio</h3>
               <p className="text-xs text-muted-foreground mb-3">
-                Holds <span className="text-foreground font-medium">10 granted patents</span>: 3 US Patents (US9616346B2, US9503511B2, US8295280B2), 1 Japanese Patent (JP5512889), and 6 Indian Patents (including IN280657). Received a patenting award of $8,000.
+                Holds <span className="text-foreground font-medium">10 granted patents</span>: 3 US
+                Patents (US9616346B2, US9503511B2, US8295280B2), 1 Japanese Patent (JP5512889), and
+                6 Indian Patents (including IN280657). Received a patenting award of $8,000.
               </p>
               <p className="text-xs text-muted-foreground">
-                Published <span className="text-foreground font-medium">156 papers</span> in national/international journals and conference proceedings, and authored 2 books.
+                Published <span className="text-foreground font-medium">156 papers</span> in
+                national/international journals and conference proceedings, and authored 2 books.
               </p>
             </div>
 
@@ -247,7 +345,14 @@ export default function ChairpersonPage() {
                   <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
                     <div className="h-full">
                       <div className="relative aspect-[4/3] w-full bg-muted dark:bg-white/5 overflow-hidden border border-border">
-                        <Image src={item.image} alt={item.caption} fill className="object-contain p-2" />
+                        <Image
+                          src={item.image}
+                          alt={item.caption}
+                          fill
+                          sizes="(max-width: 768px) 92vw, (max-width: 1024px) 46vw, 340px"
+                          quality={55}
+                          className="object-contain p-2"
+                        />
                       </div>
                       <p className="mt-2 text-xs text-muted-foreground">{item.caption}</p>
                     </div>
@@ -265,8 +370,12 @@ export default function ChairpersonPage() {
       <section className="py-16">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-5xl mx-auto">
-            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary mb-2">Leadership</p>
-            <h2 className="text-xl font-medium mb-8 text-foreground tracking-tight">Administrative Positions</h2>
+            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary mb-2">
+              Leadership
+            </p>
+            <h2 className="text-xl font-medium mb-8 text-foreground tracking-tight">
+              Administrative Positions
+            </h2>
 
             <div className="space-y-4">
               {adminPositions.map((pos, index) => (
@@ -274,14 +383,17 @@ export default function ChairpersonPage() {
                   <CardContent>
                     <div className="flex items-start gap-4">
                       <div className="w-10 h-10 bg-primary/10 flex items-center justify-center shrink-0">
-                        <HugeiconsIcon icon={pos.icon} strokeWidth={2} className="size-5 text-primary" />
+                        <pos.Icon strokeWidth={2} className="size-5 text-primary" />
                       </div>
                       <div className="flex-1 min-w-0">
                         <h3 className="text-sm font-medium text-foreground">{pos.title}</h3>
                         <p className="text-xs text-muted-foreground mb-3">{pos.period}</p>
                         <ul className="space-y-1.5">
                           {pos.points.map((point, i) => (
-                            <li key={i} className="text-xs text-muted-foreground flex items-start gap-2">
+                            <li
+                              key={i}
+                              className="text-xs text-muted-foreground flex items-start gap-2"
+                            >
                               <span className="w-1 h-1 bg-primary rounded-full mt-1.5 shrink-0" />
                               {point}
                             </li>
@@ -304,28 +416,38 @@ export default function ChairpersonPage() {
             <div className="grid md:grid-cols-2 gap-8">
               {/* Education */}
               <div>
-                <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary mb-2">Education</p>
-                <h2 className="text-xl font-medium mb-6 text-foreground tracking-tight">Academic Background</h2>
+                <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary mb-2">
+                  Education
+                </p>
+                <h2 className="text-xl font-medium mb-6 text-foreground tracking-tight">
+                  Academic Background
+                </h2>
                 <Card className="bg-panel">
                   <CardContent>
                     <div className="flex items-start gap-3">
                       <div className="w-10 h-10 bg-primary/10 flex items-center justify-center shrink-0">
-                        <HugeiconsIcon icon={GraduationScrollIcon} strokeWidth={2} className="size-5 text-primary" />
+                        <GraduationScrollIcon strokeWidth={2} className="size-5 text-primary" />
                       </div>
                       <div className="space-y-4">
                         <div className="border-l-2 border-primary/30 pl-3">
                           <p className="text-xs text-primary font-medium">2001</p>
-                          <p className="text-sm font-medium text-foreground">Ph.D. in Computer Science & Engineering</p>
+                          <p className="text-sm font-medium text-foreground">
+                            Ph.D. in Computer Science & Engineering
+                          </p>
                           <p className="text-xs text-muted-foreground">University of Mysore</p>
                         </div>
                         <div className="border-l-2 border-primary/30 pl-3">
                           <p className="text-xs text-primary font-medium">1992</p>
-                          <p className="text-sm font-medium text-foreground">M.Tech in Digital Electronics and Advanced Communications</p>
+                          <p className="text-sm font-medium text-foreground">
+                            M.Tech in Digital Electronics and Advanced Communications
+                          </p>
                           <p className="text-xs text-muted-foreground">NITK, Surathkal</p>
                         </div>
                         <div className="border-l-2 border-primary/30 pl-3">
                           <p className="text-xs text-primary font-medium">1987</p>
-                          <p className="text-sm font-medium text-foreground">B.E. in Electronics & Communication</p>
+                          <p className="text-sm font-medium text-foreground">
+                            B.E. in Electronics & Communication
+                          </p>
                           <p className="text-xs text-muted-foreground">SJCE, Mysore</p>
                         </div>
                       </div>
@@ -336,13 +458,17 @@ export default function ChairpersonPage() {
 
               {/* Career */}
               <div>
-                <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary mb-2">Career</p>
-                <h2 className="text-xl font-medium mb-6 text-foreground tracking-tight">Professional Experience</h2>
+                <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary mb-2">
+                  Career
+                </p>
+                <h2 className="text-xl font-medium mb-6 text-foreground tracking-tight">
+                  Professional Experience
+                </h2>
                 <Card className="bg-panel">
                   <CardContent>
                     <div className="flex items-start gap-3">
                       <div className="w-10 h-10 bg-primary/10 flex items-center justify-center shrink-0">
-                        <HugeiconsIcon icon={BookOpen01Icon} strokeWidth={2} className="size-5 text-primary" />
+                        <BookOpen01Icon strokeWidth={2} className="size-5 text-primary" />
                       </div>
                       <div className="space-y-3">
                         <div className="border-l-2 border-primary/30 pl-3">
@@ -362,7 +488,8 @@ export default function ChairpersonPage() {
                           <p className="text-sm text-foreground">Lecturer</p>
                         </div>
                         <p className="text-xs text-muted-foreground pt-2">
-                          Professor in Charge, Centre for Advanced Scientific and Industrial Research at MIT, MAHE.
+                          Professor in Charge, Centre for Advanced Scientific and Industrial
+                          Research at MIT, MAHE.
                         </p>
                       </div>
                     </div>
@@ -378,14 +505,18 @@ export default function ChairpersonPage() {
       <section className="py-16">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-5xl mx-auto">
-            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary mb-2">Output</p>
-            <h2 className="text-xl font-medium mb-8 text-foreground tracking-tight">Mentorship & Publications</h2>
+            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary mb-2">
+              Output
+            </p>
+            <h2 className="text-xl font-medium mb-8 text-foreground tracking-tight">
+              Mentorship & Publications
+            </h2>
 
             <div className="grid sm:grid-cols-3 gap-4 mb-8">
               <Card className="bg-panel">
                 <CardContent>
                   <div className="w-10 h-10 bg-primary/10 flex items-center justify-center mb-3">
-                    <HugeiconsIcon icon={GraduationScrollIcon} strokeWidth={2} className="size-5 text-primary" />
+                    <GraduationScrollIcon strokeWidth={2} className="size-5 text-primary" />
                   </div>
                   <h3 className="text-sm font-medium mb-2 text-foreground">PhD Guidance</h3>
                   <p className="text-xs text-muted-foreground">
@@ -397,7 +528,7 @@ export default function ChairpersonPage() {
               <Card className="bg-panel">
                 <CardContent>
                   <div className="w-10 h-10 bg-primary/10 flex items-center justify-center mb-3">
-                    <HugeiconsIcon icon={BookOpen01Icon} strokeWidth={2} className="size-5 text-primary" />
+                    <BookOpen01Icon strokeWidth={2} className="size-5 text-primary" />
                   </div>
                   <h3 className="text-sm font-medium mb-2 text-foreground">M.Tech Theses</h3>
                   <p className="text-xs text-muted-foreground">
@@ -409,7 +540,7 @@ export default function ChairpersonPage() {
               <Card className="bg-panel">
                 <CardContent>
                   <div className="w-10 h-10 bg-primary/10 flex items-center justify-center mb-3">
-                    <HugeiconsIcon icon={Award01Icon} strokeWidth={2} className="size-5 text-primary" />
+                    <Award01Icon strokeWidth={2} className="size-5 text-primary" />
                   </div>
                   <h3 className="text-sm font-medium mb-2 text-foreground">Publications</h3>
                   <p className="text-xs text-muted-foreground">
@@ -424,12 +555,20 @@ export default function ChairpersonPage() {
               <h3 className="text-sm font-medium mb-4 text-foreground">Authored Books</h3>
               <div className="grid sm:grid-cols-2 gap-4">
                 <div className="p-4 bg-muted/50 dark:bg-white/5 border border-border">
-                  <h4 className="text-sm font-medium text-foreground mb-1">Advances in Information & Communication Technologies ICICOT&apos;07</h4>
-                  <p className="text-xs text-muted-foreground">Co-edited proceedings for International Conference ICICOT 2007</p>
+                  <h4 className="text-sm font-medium text-foreground mb-1">
+                    Advances in Information & Communication Technologies ICICOT&apos;07
+                  </h4>
+                  <p className="text-xs text-muted-foreground">
+                    Co-edited proceedings for International Conference ICICOT 2007
+                  </p>
                 </div>
                 <div className="p-4 bg-muted/50 dark:bg-white/5 border border-border">
-                  <h4 className="text-sm font-medium text-foreground mb-1">Scalable Video Coding using Wavelet Transformation</h4>
-                  <p className="text-xs text-muted-foreground">Specialized book on video coding techniques</p>
+                  <h4 className="text-sm font-medium text-foreground mb-1">
+                    Scalable Video Coding using Wavelet Transformation
+                  </h4>
+                  <p className="text-xs text-muted-foreground">
+                    Specialized book on video coding techniques
+                  </p>
                 </div>
               </div>
             </div>
@@ -441,17 +580,22 @@ export default function ChairpersonPage() {
       <section className="py-16">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-5xl mx-auto">
-            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary mb-2 text-center">Expertise</p>
-            <h2 className="text-xl font-medium mb-2 text-center text-foreground tracking-tight">Research Interests</h2>
+            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary mb-2 text-center">
+              Expertise
+            </p>
+            <h2 className="text-xl font-medium mb-2 text-center text-foreground tracking-tight">
+              Research Interests
+            </h2>
             <p className="text-xs text-muted-foreground text-center mb-8">
-              Computer Communication Networks, Wireless Adhoc Networks, Video Processing, Data Analytics, Cloud Computing, Technology Commercialization, Patenting, and Mentoring
+              Computer Communication Networks, Wireless Adhoc Networks, Video Processing, Data
+              Analytics, Cloud Computing, Technology Commercialization, Patenting, and Mentoring
             </p>
 
             <div className="grid grid-cols-4 sm:grid-cols-8 gap-4 mb-10">
               {researchAreas.map((area, index) => (
                 <div key={index} className="flex flex-col items-center text-center">
                   <div className="w-12 h-12 bg-primary/10 flex items-center justify-center mb-2">
-                    <HugeiconsIcon icon={area.icon} strokeWidth={1.5} className="size-5 text-primary" />
+                    <area.Icon strokeWidth={1.5} className="size-5 text-primary" />
                   </div>
                   <span className="text-[10px] text-muted-foreground">{area.name}</span>
                 </div>
@@ -462,24 +606,52 @@ export default function ChairpersonPage() {
             <div className="grid sm:grid-cols-2 gap-4">
               <Card className="bg-panel">
                 <CardContent>
-                  <h3 className="text-sm font-medium mb-2 text-foreground">AI and Healthcare Applications</h3>
+                  <h3 className="text-sm font-medium mb-2 text-foreground">
+                    AI and Healthcare Applications
+                  </h3>
                   <ul className="text-xs text-muted-foreground space-y-1">
-                    <li className="flex items-start gap-2"><span className="w-1 h-1 bg-primary rounded-full mt-1.5 shrink-0" />AI-powered diagnostic tools for disease detection</li>
-                    <li className="flex items-start gap-2"><span className="w-1 h-1 bg-primary rounded-full mt-1.5 shrink-0" />Wearable IoT devices for patient monitoring</li>
-                    <li className="flex items-start gap-2"><span className="w-1 h-1 bg-primary rounded-full mt-1.5 shrink-0" />Healthcare data analytics and management systems</li>
-                    <li className="flex items-start gap-2"><span className="w-1 h-1 bg-primary rounded-full mt-1.5 shrink-0" />Patented dental implant and diabetic foot ulcer detection technology</li>
+                    <li className="flex items-start gap-2">
+                      <span className="w-1 h-1 bg-primary rounded-full mt-1.5 shrink-0" />
+                      AI-powered diagnostic tools for disease detection
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="w-1 h-1 bg-primary rounded-full mt-1.5 shrink-0" />
+                      Wearable IoT devices for patient monitoring
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="w-1 h-1 bg-primary rounded-full mt-1.5 shrink-0" />
+                      Healthcare data analytics and management systems
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="w-1 h-1 bg-primary rounded-full mt-1.5 shrink-0" />
+                      Patented dental implant and diabetic foot ulcer detection technology
+                    </li>
                   </ul>
                 </CardContent>
               </Card>
 
               <Card className="bg-panel">
                 <CardContent>
-                  <h3 className="text-sm font-medium mb-2 text-foreground">Industrial IoT and Sensor Networks</h3>
+                  <h3 className="text-sm font-medium mb-2 text-foreground">
+                    Industrial IoT and Sensor Networks
+                  </h3>
                   <ul className="text-xs text-muted-foreground space-y-1">
-                    <li className="flex items-start gap-2"><span className="w-1 h-1 bg-primary rounded-full mt-1.5 shrink-0" />Smart factory automation and monitoring</li>
-                    <li className="flex items-start gap-2"><span className="w-1 h-1 bg-primary rounded-full mt-1.5 shrink-0" />Energy-efficient wireless sensor networks</li>
-                    <li className="flex items-start gap-2"><span className="w-1 h-1 bg-primary rounded-full mt-1.5 shrink-0" />Real-time data analytics for process optimization</li>
-                    <li className="flex items-start gap-2"><span className="w-1 h-1 bg-primary rounded-full mt-1.5 shrink-0" />Collaborations with IBM, TE Connectivity, Schneider Electric</li>
+                    <li className="flex items-start gap-2">
+                      <span className="w-1 h-1 bg-primary rounded-full mt-1.5 shrink-0" />
+                      Smart factory automation and monitoring
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="w-1 h-1 bg-primary rounded-full mt-1.5 shrink-0" />
+                      Energy-efficient wireless sensor networks
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="w-1 h-1 bg-primary rounded-full mt-1.5 shrink-0" />
+                      Real-time data analytics for process optimization
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="w-1 h-1 bg-primary rounded-full mt-1.5 shrink-0" />
+                      Collaborations with IBM, TE Connectivity, Schneider Electric
+                    </li>
                   </ul>
                 </CardContent>
               </Card>
@@ -495,19 +667,28 @@ export default function ChairpersonPage() {
             <div className="grid md:grid-cols-2 gap-8">
               {/* International */}
               <div>
-                <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary mb-2">International</p>
-                <h2 className="text-xl font-medium mb-6 text-foreground tracking-tight">Global Engagement</h2>
+                <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary mb-2">
+                  International
+                </p>
+                <h2 className="text-xl font-medium mb-6 text-foreground tracking-tight">
+                  Global Engagement
+                </h2>
                 <Card className="h-full bg-panel">
                   <CardContent>
                     <div className="flex items-start gap-3 mb-4">
                       <div className="w-10 h-10 bg-primary/10 flex items-center justify-center shrink-0">
-                        <HugeiconsIcon icon={GlobeIcon} strokeWidth={2} className="size-5 text-primary" />
+                        <GlobeIcon strokeWidth={2} className="size-5 text-primary" />
                       </div>
                       <ul className="space-y-2 text-xs text-muted-foreground">
                         <li>Visiting Professor, ESIGELEC, France (since 2006)</li>
                         <li>PhD Examiner, University of Rouen, France</li>
-                        <li>Technology Commercialization Training, IC2 Institute, University of Texas, Austin (2010)</li>
-                        <li>Global Forum on Innovation & Technology Entrepreneurship, Helsinki (2011)</li>
+                        <li>
+                          Technology Commercialization Training, IC2 Institute, University of Texas,
+                          Austin (2010)
+                        </li>
+                        <li>
+                          Global Forum on Innovation & Technology Entrepreneurship, Helsinki (2011)
+                        </li>
                         <li>Collaboration with TU Eindhoven, Netherlands (2007-2010)</li>
                       </ul>
                     </div>
@@ -517,13 +698,17 @@ export default function ChairpersonPage() {
 
               {/* Professional */}
               <div>
-                <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary mb-2">Professional</p>
-                <h2 className="text-xl font-medium mb-6 text-foreground tracking-tight">Activities & Memberships</h2>
+                <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary mb-2">
+                  Professional
+                </p>
+                <h2 className="text-xl font-medium mb-6 text-foreground tracking-tight">
+                  Activities & Memberships
+                </h2>
                 <Card className="h-full bg-panel">
                   <CardContent>
                     <div className="flex items-start gap-3 mb-4">
                       <div className="w-10 h-10 bg-primary/10 flex items-center justify-center shrink-0">
-                        <HugeiconsIcon icon={UserGroupIcon} strokeWidth={2} className="size-5 text-primary" />
+                        <UserGroupIcon strokeWidth={2} className="size-5 text-primary" />
                       </div>
                       <div>
                         <h4 className="text-sm font-medium text-foreground mb-2">Memberships</h4>
@@ -554,22 +739,40 @@ export default function ChairpersonPage() {
       <section className="py-16">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-5xl mx-auto">
-            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary mb-2">Support</p>
-            <h2 className="text-xl font-medium mb-6 text-foreground tracking-tight">Research Funding</h2>
+            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary mb-2">
+              Support
+            </p>
+            <h2 className="text-xl font-medium mb-6 text-foreground tracking-tight">
+              Research Funding
+            </h2>
 
             <Card className="bg-panel">
               <CardContent>
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-primary/10 flex items-center justify-center shrink-0">
-                    <HugeiconsIcon icon={DollarCircleIcon} strokeWidth={2} className="size-6 text-primary" />
+                    <DollarCircleIcon strokeWidth={2} className="size-6 text-primary" />
                   </div>
                   <div>
                     <p className="text-sm text-muted-foreground mb-4">
-                      Established the Technology Business Incubator at MIT, MAHE with a grant of <span className="text-foreground font-medium">Rs.5 Crores</span> from DST, Govt. of India, and MAHE. Secured multiple research grants from:
+                      Established the Technology Business Incubator at MIT, MAHE with a grant of{" "}
+                      <span className="text-foreground font-medium">Rs.5 Crores</span> from DST,
+                      Govt. of India, and MAHE. Secured multiple research grants from:
                     </p>
                     <div className="flex flex-wrap gap-2">
-                      {["BIRAC", "DST", "IBM", "TE Connectivity", "Schneider Electric", "AICTE"].map((org) => (
-                        <span key={org} className="px-3 py-1 bg-muted dark:bg-white/10 text-xs text-muted-foreground">{org}</span>
+                      {[
+                        "BIRAC",
+                        "DST",
+                        "IBM",
+                        "TE Connectivity",
+                        "Schneider Electric",
+                        "AICTE",
+                      ].map((org) => (
+                        <span
+                          key={org}
+                          className="px-3 py-1 bg-muted dark:bg-white/10 text-xs text-muted-foreground"
+                        >
+                          {org}
+                        </span>
                       ))}
                     </div>
                   </div>
@@ -584,23 +787,26 @@ export default function ChairpersonPage() {
       <section className="relative py-16 overflow-hidden">
         <div className="container mx-auto px-4 lg:px-8 relative">
           <div className="max-w-2xl mx-auto text-center">
-            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary mb-2">Contact</p>
+            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary mb-2">
+              Contact
+            </p>
             <h2 className="text-2xl font-medium mb-4 text-foreground tracking-tight">
               Connect with Dr. Manohara Pai
             </h2>
             <p className="text-sm text-muted-foreground mb-6">
-              For research collaboration, academic partnerships, or inquiries about the Endowment Chair.
+              For research collaboration, academic partnerships, or inquiries about the Endowment
+              Chair.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Button asChild size="lg">
                 <Link href="/apply">
                   Apply for Research
-                  <HugeiconsIcon icon={ArrowRight01Icon} strokeWidth={2} data-icon="inline-end" />
+                  <ArrowRight01Icon strokeWidth={2} data-icon="inline-end" />
                 </Link>
               </Button>
               <Button asChild variant="outline" size="lg">
                 <a href="mailto:drtmapaichair.itis@manipal.edu">
-                  <HugeiconsIcon icon={Mail01Icon} strokeWidth={2} className="size-4" />
+                  <Mail01Icon strokeWidth={2} className="size-4" />
                   Send Email
                 </a>
               </Button>

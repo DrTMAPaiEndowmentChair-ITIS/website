@@ -2,7 +2,14 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardFooter,
+} from "@/components/ui/card";
 import {
   Carousel,
   CarouselContent,
@@ -10,9 +17,8 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { getSortedProjectsData, ProjectFrontmatter } from "@/src/lib/projects";
-import { getSortedEventsData, EventFrontmatter } from "@/src/lib/events";
-import { HugeiconsIcon } from "@hugeicons/react";
+import { getSortedProjectsData, type ProjectFrontmatter } from "@/src/lib/projects";
+import { getSortedEventsData, type EventFrontmatter } from "@/src/lib/events";
 import {
   FlashIcon,
   PlugSocketIcon,
@@ -28,7 +34,7 @@ import {
   FileEditIcon,
   Agreement01Icon,
   Rocket01Icon,
-} from "@hugeicons/core-free-icons";
+} from "@/components/icons";
 
 const getCompanyIcon = (companyName: string, companyLogo?: string) => {
   if (["dst", "birac", "aicte"].includes(companyName.toLowerCase())) {
@@ -48,15 +54,15 @@ const getCompanyIcon = (companyName: string, companyLogo?: string) => {
   const iconClass = "size-5 text-primary";
   switch (companyName.toLowerCase()) {
     case "schneider electric":
-      return <HugeiconsIcon icon={FlashIcon} strokeWidth={2} className={iconClass} />;
+      return <FlashIcon strokeWidth={2} className={iconClass} />;
     case "te connectivity":
-      return <HugeiconsIcon icon={PlugSocketIcon} strokeWidth={2} className={iconClass} />;
+      return <PlugSocketIcon strokeWidth={2} className={iconClass} />;
     case "amd":
-      return <HugeiconsIcon icon={CpuIcon} strokeWidth={2} className={iconClass} />;
+      return <CpuIcon strokeWidth={2} className={iconClass} />;
     case "ibm":
-      return <HugeiconsIcon icon={CloudIcon} strokeWidth={2} className={iconClass} />;
+      return <CloudIcon strokeWidth={2} className={iconClass} />;
     default:
-      return <HugeiconsIcon icon={Building01Icon} strokeWidth={2} className={iconClass} />;
+      return <Building01Icon strokeWidth={2} className={iconClass} />;
   }
 };
 
@@ -75,26 +81,33 @@ const CountChip = ({ label }: { label: string }) => (
   </span>
 );
 
-const HERO_DOMAINS = ["AI / ML", "IoT & Edge", "Industry 4.0", "Cybersecurity", "Cloud", "Sustainability"];
+const HERO_DOMAINS = [
+  "AI / ML",
+  "IoT & Edge",
+  "Industry 4.0",
+  "Cybersecurity",
+  "Cloud",
+  "Sustainability",
+];
 
 const MARQUEE_PARTNERS = ["Schneider Electric", "TE Connectivity", "IBM", "DST", "BIRAC", "AICTE"];
 
 const PILLARS = [
   {
     index: "01",
-    icon: AiBrain01Icon,
+    Icon: AiBrain01Icon,
     title: "Intelligent Technologies",
     body: "Advanced digital systems including AI, machine learning, and smart automation that enable machines to learn, adapt, and make decisions.",
   },
   {
     index: "02",
-    icon: Factory01Icon,
+    Icon: Factory01Icon,
     title: "Industry 4.0",
     body: "The fourth industrial revolution with cyber-physical systems, IoT, and data-driven manufacturing for smarter industries.",
   },
   {
     index: "03",
-    icon: Leaf01Icon,
+    Icon: Leaf01Icon,
     title: "Sustainability",
     body: "Developing solutions that meet present needs without compromising future generations' ability to meet theirs.",
   },
@@ -103,19 +116,19 @@ const PILLARS = [
 const APPLY_STEPS = [
   {
     index: "01",
-    icon: FileEditIcon,
+    Icon: FileEditIcon,
     title: "Submit Application",
     body: "Tell us about your background and the research areas you want to work in.",
   },
   {
     index: "02",
-    icon: Agreement01Icon,
+    Icon: Agreement01Icon,
     title: "Review & Matching",
     body: "The chair reviews your application and matches you with an active project.",
   },
   {
     index: "03",
-    icon: Rocket01Icon,
+    Icon: Rocket01Icon,
     title: "Begin Research",
     body: "Join the team, collaborate with industry mentors, and publish your work.",
   },
@@ -134,7 +147,10 @@ export default function Home() {
           <div className="max-w-6xl mx-auto w-full">
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
               <div className="order-2 lg:order-1">
-                <Badge variant="secondary" className="mb-6 font-mono text-[10px] uppercase tracking-widest">
+                <Badge
+                  variant="secondary"
+                  className="mb-6 font-mono text-[10px] uppercase tracking-widest"
+                >
                   MAHE, Manipal
                 </Badge>
                 <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-medium mb-6 leading-[1.1] tracking-tight text-foreground">
@@ -142,15 +158,14 @@ export default function Home() {
                   <span className="text-primary">Industry Collaborations</span>
                 </h1>
                 <p className="text-muted-foreground text-sm sm:text-base mb-8 max-w-lg leading-relaxed">
-                  Join us in pushing the boundaries of innovation through
-                  cutting-edge research projects and industry partnerships at the
-                  Dr. TMA Pai Endowment Chair.
+                  Join us in pushing the boundaries of innovation through cutting-edge research
+                  projects and industry partnerships at the Dr. TMA Pai Endowment Chair.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3">
                   <Button asChild size="lg">
                     <Link href="/apply">
                       Apply for Research
-                      <HugeiconsIcon icon={ArrowRight01Icon} strokeWidth={2} data-icon="inline-end" />
+                      <ArrowRight01Icon strokeWidth={2} data-icon="inline-end" />
                     </Link>
                   </Button>
                   <Button variant="outline" asChild size="lg">
@@ -212,7 +227,7 @@ export default function Home() {
       </section>
 
       {/* Chair Info Section */}
-      <section className="min-h-svh flex items-center py-24">
+      <section className="cv-auto min-h-svh flex items-center py-24">
         <div className="container mx-auto px-4 lg:px-8 w-full">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-10 reveal">
@@ -221,10 +236,9 @@ export default function Home() {
                 Dr. TMA Pai Endowment Chair
               </h2>
               <p className="text-sm sm:text-base text-muted-foreground mt-3 max-w-2xl mx-auto leading-relaxed">
-                An endowed chair at Manipal Academy of Higher Education dedicated to
-                research at the intersection of intelligent systems, industrial
-                transformation, and sustainable development — carried out hand in hand
-                with industry and government partners.
+                An endowed chair at Manipal Academy of Higher Education dedicated to research at the
+                intersection of intelligent systems, industrial transformation, and sustainable
+                development — carried out hand in hand with industry and government partners.
               </p>
             </div>
             <div className="grid md:grid-cols-3 gap-6 text-sm text-muted-foreground reveal">
@@ -235,7 +249,7 @@ export default function Home() {
                 >
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex h-9 w-9 items-center justify-center bg-primary/10 text-primary group-hover:bg-primary/20 transition-colors">
-                      <HugeiconsIcon icon={pillar.icon} strokeWidth={2} className="size-5" />
+                      <pillar.Icon strokeWidth={2} className="size-5" />
                     </div>
                     <span className="font-mono text-[10px] text-muted-foreground/60 tracking-widest">
                       {pillar.index}
@@ -258,7 +272,10 @@ export default function Home() {
                     {fact.label}
                   </p>
                   {fact.href ? (
-                    <Link href={fact.href} className="text-xs text-foreground hover:text-primary transition-colors">
+                    <Link
+                      href={fact.href}
+                      className="text-xs text-foreground hover:text-primary transition-colors"
+                    >
                       {fact.value} →
                     </Link>
                   ) : (
@@ -272,7 +289,7 @@ export default function Home() {
       </section>
 
       {/* Current Research Projects */}
-      <section id="research" className="min-h-svh flex items-center py-24">
+      <section id="research" className="cv-auto min-h-svh flex items-center py-24">
         <div className="container mx-auto px-4 lg:px-8 w-full">
           <div className="max-w-6xl mx-auto">
             <div className="mb-10 reveal">
@@ -283,8 +300,8 @@ export default function Home() {
                 </h2>
               </div>
               <p className="text-sm text-muted-foreground mt-3 max-w-lg leading-relaxed">
-                Ongoing investigations with industry partners — from generative AI for
-                industrial automation to software qualimetry and threat analysis.
+                Ongoing investigations with industry partners — from generative AI for industrial
+                automation to software qualimetry and threat analysis.
               </p>
             </div>
             <Carousel className="w-full" opts={{ align: "start" }}>
@@ -309,10 +326,15 @@ export default function Home() {
                           </CardTitle>
                         </CardHeader>
                         <CardContent className="pt-0 pb-2">
-                          <p className="text-xs text-muted-foreground line-clamp-2 mb-3 leading-relaxed">{project.description}</p>
+                          <p className="text-xs text-muted-foreground line-clamp-2 mb-3 leading-relaxed">
+                            {project.description}
+                          </p>
                           <div className="flex flex-wrap gap-1">
                             {project.tags.slice(0, 3).map((tag, tagIndex) => (
-                              <span key={tagIndex} className="px-2 py-0.5 bg-muted dark:bg-white/10 font-mono text-[10px] text-muted-foreground">
+                              <span
+                                key={tagIndex}
+                                className="px-2 py-0.5 bg-muted dark:bg-white/10 font-mono text-[10px] text-muted-foreground"
+                              >
                                 {tag}
                               </span>
                             ))}
@@ -321,7 +343,7 @@ export default function Home() {
                         <CardFooter className="pt-2 border-t border-border mt-auto">
                           <span className="text-xs text-primary flex items-center gap-1 group-hover:gap-2 transition-all">
                             View project
-                            <HugeiconsIcon icon={ArrowRight01Icon} strokeWidth={2} className="size-3" />
+                            <ArrowRight01Icon strokeWidth={2} className="size-3" />
                           </span>
                         </CardFooter>
                       </Card>
@@ -337,7 +359,7 @@ export default function Home() {
       </section>
 
       {/* Completed Research Projects */}
-      <section id="completed-research" className="min-h-svh flex items-center py-24">
+      <section id="completed-research" className="cv-auto min-h-svh flex items-center py-24">
         <div className="container mx-auto px-4 lg:px-8 w-full">
           <div className="max-w-6xl mx-auto">
             <div className="mb-10 reveal">
@@ -348,8 +370,8 @@ export default function Home() {
                 </h2>
               </div>
               <p className="text-sm text-muted-foreground mt-3 max-w-lg leading-relaxed">
-                Two decades of delivered research — spanning healthcare devices,
-                connected vehicles, smart aquaculture, and industrial analytics.
+                Two decades of delivered research — spanning healthcare devices, connected vehicles,
+                smart aquaculture, and industrial analytics.
               </p>
             </div>
             <Carousel className="w-full" opts={{ align: "start" }}>
@@ -369,7 +391,11 @@ export default function Home() {
                               </p>
                               {project.completionDate && (
                                 <p className="text-[10px] text-muted-foreground">
-                                  Completed {new Date(project.completionDate).toLocaleDateString("en-US", { year: "numeric", month: "short" })}
+                                  Completed{" "}
+                                  {new Date(project.completionDate).toLocaleDateString("en-US", {
+                                    year: "numeric",
+                                    month: "short",
+                                  })}
                                 </p>
                               )}
                             </div>
@@ -379,10 +405,15 @@ export default function Home() {
                           </CardTitle>
                         </CardHeader>
                         <CardContent className="pt-0 pb-2">
-                          <p className="text-xs text-muted-foreground line-clamp-2 mb-3 leading-relaxed">{project.description}</p>
+                          <p className="text-xs text-muted-foreground line-clamp-2 mb-3 leading-relaxed">
+                            {project.description}
+                          </p>
                           <div className="flex flex-wrap gap-1">
                             {project.tags.slice(0, 3).map((tag, tagIndex) => (
-                              <span key={tagIndex} className="px-2 py-0.5 bg-muted dark:bg-white/10 font-mono text-[10px] text-muted-foreground">
+                              <span
+                                key={tagIndex}
+                                className="px-2 py-0.5 bg-muted dark:bg-white/10 font-mono text-[10px] text-muted-foreground"
+                              >
                                 {tag}
                               </span>
                             ))}
@@ -391,7 +422,7 @@ export default function Home() {
                         <CardFooter className="pt-2 border-t border-border mt-auto">
                           <span className="text-xs text-muted-foreground group-hover:text-primary transition-colors flex items-center gap-1 group-hover:gap-2">
                             View results
-                            <HugeiconsIcon icon={ArrowRight01Icon} strokeWidth={2} className="size-3" />
+                            <ArrowRight01Icon strokeWidth={2} className="size-3" />
                           </span>
                         </CardFooter>
                       </Card>
@@ -407,7 +438,7 @@ export default function Home() {
       </section>
 
       {/* Partners Section */}
-      <section className="min-h-svh flex flex-col justify-center py-24">
+      <section className="cv-auto min-h-svh flex flex-col justify-center py-24">
         <div className="container mx-auto px-4 lg:px-8 w-full">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-10 reveal">
@@ -416,8 +447,8 @@ export default function Home() {
                 Collaborators & Funding
               </h2>
               <p className="text-sm text-muted-foreground mt-3 max-w-xl mx-auto leading-relaxed">
-                Research at the chair is grounded in real problems — sponsored, co-developed,
-                and deployed with global industry leaders and national funding agencies.
+                Research at the chair is grounded in real problems — sponsored, co-developed, and
+                deployed with global industry leaders and national funding agencies.
               </p>
             </div>
           </div>
@@ -451,9 +482,9 @@ export default function Home() {
               </p>
               <div className="grid grid-cols-3 gap-4 max-w-2xl mx-auto">
                 {[
-                  { name: "DST", logo: "/companies/dst-logo.svg", invertDark: true },
-                  { name: "BIRAC", logo: "/companies/birac.svg", invertDark: false },
-                  { name: "AICTE", logo: "/companies/aicte-logo.svg", invertDark: false },
+                  { name: "DST", logo: "/companies/dst-logo.png", invertDark: true },
+                  { name: "BIRAC", logo: "/companies/birac.png", invertDark: false },
+                  { name: "AICTE", logo: "/companies/aicte-logo.png", invertDark: false },
                 ].map((agency, index) => (
                   <div
                     key={index}
@@ -505,7 +536,7 @@ export default function Home() {
       </section>
 
       {/* Events Section */}
-      <section id="events" className="min-h-svh flex items-center py-24">
+      <section id="events" className="cv-auto min-h-svh flex items-center py-24">
         <div className="container mx-auto px-4 lg:px-8 w-full">
           <div className="max-w-6xl mx-auto">
             <div className="flex items-end justify-between gap-8 mb-10 reveal">
@@ -518,8 +549,8 @@ export default function Home() {
                   <CountChip label={`${upcomingEvents.length} events`} />
                 </div>
                 <p className="text-sm text-muted-foreground mt-3 max-w-lg leading-relaxed">
-                  Workshops, hackathons, CTFs, and panels that bring students and
-                  industry practitioners into the same room.
+                  Workshops, hackathons, CTFs, and panels that bring students and industry
+                  practitioners into the same room.
                 </p>
               </div>
             </div>
@@ -542,18 +573,20 @@ export default function Home() {
                         )}
                         <CardHeader className="pt-3">
                           <div className="flex items-center gap-2 font-mono text-[10px] text-muted-foreground">
-                            <HugeiconsIcon icon={Calendar01Icon} strokeWidth={2} className="size-3" />
+                            <Calendar01Icon strokeWidth={2} className="size-3" />
                             {event.displayDate}
                           </div>
                           <CardTitle className="text-sm group-hover:text-primary transition-colors line-clamp-2">
                             {event.title}
                           </CardTitle>
-                          <CardDescription className="text-xs line-clamp-2">{event.description}</CardDescription>
+                          <CardDescription className="text-xs line-clamp-2">
+                            {event.description}
+                          </CardDescription>
                         </CardHeader>
                         <CardFooter>
                           <span className="text-xs text-primary flex items-center gap-1 group-hover:gap-2 transition-all">
                             Learn more
-                            <HugeiconsIcon icon={ArrowRight01Icon} strokeWidth={2} className="size-3" />
+                            <ArrowRight01Icon strokeWidth={2} className="size-3" />
                           </span>
                         </CardFooter>
                       </Card>
@@ -569,19 +602,19 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="relative min-h-svh flex items-center py-24 overflow-hidden">
+      <section className="cv-auto relative min-h-svh flex items-center py-24 overflow-hidden">
         <div className="container mx-auto px-4 lg:px-8 relative w-full">
           <div className="max-w-4xl mx-auto">
             <div className="text-center reveal">
               <div className="inline-flex items-center justify-center w-12 h-12 bg-primary/10 text-primary mb-6">
-                <HugeiconsIcon icon={AnalyticsUpIcon} strokeWidth={2} className="size-6" />
+                <AnalyticsUpIcon strokeWidth={2} className="size-6" />
               </div>
               <h2 className="text-2xl sm:text-3xl font-medium mb-4 text-foreground tracking-tight">
                 Ready to Join Our Research Community?
               </h2>
               <p className="text-sm text-muted-foreground mb-10 max-w-lg mx-auto leading-relaxed">
-                Apply now to participate in cutting-edge research projects and
-                collaborate with industry leaders. Here is how it works:
+                Apply now to participate in cutting-edge research projects and collaborate with
+                industry leaders. Here is how it works:
               </p>
             </div>
 
@@ -594,7 +627,7 @@ export default function Home() {
                 >
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex h-9 w-9 items-center justify-center bg-primary/10 text-primary group-hover:bg-primary/20 transition-colors">
-                      <HugeiconsIcon icon={step.icon} strokeWidth={2} className="size-5" />
+                      <step.Icon strokeWidth={2} className="size-5" />
                     </div>
                     <span className="font-mono text-[10px] text-muted-foreground/60 tracking-widest">
                       {step.index}
@@ -610,7 +643,7 @@ export default function Home() {
               <Button asChild size="lg">
                 <Link href="/apply">
                   Apply Now
-                  <HugeiconsIcon icon={ArrowRight01Icon} strokeWidth={2} data-icon="inline-end" />
+                  <ArrowRight01Icon strokeWidth={2} data-icon="inline-end" />
                 </Link>
               </Button>
               <Button variant="outline" asChild size="lg">
