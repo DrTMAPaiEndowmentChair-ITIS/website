@@ -1,6 +1,5 @@
 @import "tailwindcss";
-@import "tw-animate-css";
-@import "shadcn/tailwind.css";
+@import "./shadcn-theme.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -116,6 +115,17 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+/* Cheap same-document navigation morph where the browser supports it. */
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 160ms;
+  animation-timing-function: ease-out;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -212,9 +222,57 @@
   }
 }
 
+/* Scroll-driven nav chrome — no JS scroll listener; avoid animating
+   backdrop-filter (forces expensive blur repaints every scroll frame). */
+.site-nav {
+  background-color: color-mix(in oklab, var(--background) 95%, transparent);
+  border-bottom-color: color-mix(in oklab, var(--border) 50%, transparent);
+  transition:
+    background-color 200ms ease-out,
+    border-color 200ms ease-out;
+}
+
+@supports (animation-timeline: scroll()) {
+  .site-nav {
+    background-color: transparent;
+    border-bottom-color: transparent;
+    animation: nav-scroll linear both;
+    animation-timeline: scroll();
+    animation-range: 0 48px;
+  }
+}
+
+@keyframes nav-scroll {
+  from {
+    background-color: transparent;
+    border-bottom-color: transparent;
+  }
+  to {
+    background-color: color-mix(in oklab, var(--background) 95%, transparent);
+    border-bottom-color: color-mix(in oklab, var(--border) 50%, transparent);
+  }
+}
+
+/* Skip paint work for offscreen page sections. */
+.cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 720px;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  .site-nav {
+    animation: none;
+    background-color: color-mix(in oklab, var(--background) 95%, transparent);
+    border-bottom-color: color-mix(in oklab, var(--border) 50%, transparent);
+  }
+
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none !important;
   }
 }
 

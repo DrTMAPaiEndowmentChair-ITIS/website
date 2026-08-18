@@ -1,20 +1,8 @@
-"use client";
-
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
-import { Separator } from "@/components/ui/separator";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { HugeiconsIcon } from "@hugeicons/react";
-import { Menu01Icon, ArrowUpRight01Icon } from "@hugeicons/core-free-icons";
-import { useEffect, useState } from "react";
-import { cn } from "@/lib/utils";
+import { MobileNav } from "@/components/layout/mobile-nav";
+import { ArrowUpRight01Icon } from "@/components/icons";
 
 const navLinks = [
   { href: "/#research", label: "Research" },
@@ -22,31 +10,14 @@ const navLinks = [
   { href: "/compute", label: "Compute" },
   { href: "/chairperson", label: "Chair Professor" },
   { href: "https://blog.ecitis.org", label: "Blog", external: true },
-];
+] as const;
 
 export function Navbar() {
-  const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 16);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   return (
-    <nav
-      className={cn(
-        "fixed top-0 left-0 right-0 z-50 border-b transition-[background-color,border-color,backdrop-filter] duration-300 ease-out",
-        scrolled
-          ? "bg-background/95 backdrop-blur-sm border-border/50"
-          : "bg-transparent backdrop-blur-0 border-transparent"
-      )}
-    >
+    <nav className="site-nav fixed top-0 left-0 right-0 z-50 border-b border-transparent">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <Link href="/" className="flex flex-col py-1 max-w-[55%] sm:max-w-none group">
+          <Link href="/" prefetch className="flex flex-col py-1 max-w-[55%] sm:max-w-none group">
             <span className="font-mono text-sm sm:text-base font-medium text-foreground leading-tight group-hover:text-primary transition-colors">
               Dr. TMA Pai Endowment Chair
             </span>
@@ -60,18 +31,18 @@ export function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                target={link.external ? "_blank" : undefined}
-                rel={link.external ? "noopener noreferrer" : undefined}
+                target={"external" in link && link.external ? "_blank" : undefined}
+                rel={"external" in link && link.external ? "noopener noreferrer" : undefined}
+                prefetch={!("external" in link && link.external)}
                 className="relative px-3 py-2 text-xs text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1 group"
               >
                 {link.label}
-                {link.external && (
-                  <HugeiconsIcon
-                    icon={ArrowUpRight01Icon}
+                {"external" in link && link.external ? (
+                  <ArrowUpRight01Icon
                     strokeWidth={2}
                     className="size-3 opacity-50 group-hover:opacity-100 transition-opacity"
                   />
-                )}
+                ) : null}
               </Link>
             ))}
 
@@ -80,62 +51,15 @@ export function Navbar() {
             <ThemeToggle />
 
             <Button asChild size="sm" className="ml-2">
-              <Link href="/apply">Apply Now</Link>
+              <Link href="/apply" prefetch>
+                Apply Now
+              </Link>
             </Button>
           </div>
 
           <div className="flex items-center gap-2 lg:hidden">
             <ThemeToggle />
-            <Sheet open={open} onOpenChange={setOpen}>
-              <SheetTrigger asChild>
-                <Button variant="ghost" size="icon-sm">
-                  <HugeiconsIcon icon={Menu01Icon} strokeWidth={2} className="size-5" />
-                  <span className="sr-only">Toggle menu</span>
-                </Button>
-              </SheetTrigger>
-              <SheetContent side="right" className="w-[280px] sm:w-[320px]">
-                <SheetHeader>
-                  <SheetTitle className="text-left text-sm">Navigation</SheetTitle>
-                </SheetHeader>
-                <Separator className="my-4" />
-                <nav className="flex flex-col gap-1">
-                  <Link
-                    href="/"
-                    className="px-3 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
-                    onClick={() => setOpen(false)}
-                  >
-                    Home
-                  </Link>
-                  {navLinks.map((link) => (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      target={link.external ? "_blank" : undefined}
-                      rel={link.external ? "noopener noreferrer" : undefined}
-                      className="px-3 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-muted transition-colors flex items-center justify-between"
-                      onClick={() => setOpen(false)}
-                    >
-                      {link.label}
-                      {link.external && (
-                        <HugeiconsIcon
-                          icon={ArrowUpRight01Icon}
-                          strokeWidth={2}
-                          className="size-3.5 opacity-50"
-                        />
-                      )}
-                    </Link>
-                  ))}
-                  <Separator className="my-3" />
-                  <div className="px-3">
-                    <Button asChild className="w-full">
-                      <Link href="/apply" onClick={() => setOpen(false)}>
-                        Apply Now
-                      </Link>
-                    </Button>
-                  </div>
-                </nav>
-              </SheetContent>
-            </Sheet>
+            <MobileNav links={[...navLinks]} />
           </div>
         </div>
       </div>

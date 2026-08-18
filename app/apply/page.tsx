@@ -1,12 +1,12 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { HugeiconsIcon } from "@hugeicons/react";
-import { CheckmarkCircle01Icon, HelpCircleIcon, Mail01Icon } from "@hugeicons/core-free-icons";
+import { CheckmarkCircle01Icon, HelpCircleIcon, Mail01Icon } from "@/components/icons";
 
 export const metadata = {
   title: "Apply for Research | Dr. TMA Pai Endowment Chair",
-  description: "Apply to work on cutting-edge research projects with industry partners at Dr. TMA Pai Endowment Chair, MAHE, Manipal.",
+  description:
+    "Apply to work on cutting-edge research projects with industry partners at Dr. TMA Pai Endowment Chair, MAHE, Manipal.",
 };
 
 export default function ApplyPage() {
@@ -23,8 +23,8 @@ export default function ApplyPage() {
               Apply for Research
             </h1>
             <p className="text-muted-foreground text-sm sm:text-base mb-8 max-w-2xl mx-auto leading-relaxed">
-              Work on cutting-edge projects and research with industry partners.
-              Fill out the application form below to get started.
+              Work on cutting-edge projects and research with industry partners. Fill out the
+              application form below to get started.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Button variant="outline" asChild>
@@ -88,7 +88,7 @@ export default function ApplyPage() {
               <Card className="group hover:border-primary/50 transition-colors bg-panel">
                 <CardContent>
                   <div className="w-10 h-10 bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                    <HugeiconsIcon icon={CheckmarkCircle01Icon} strokeWidth={2} className="size-5 text-primary" />
+                    <CheckmarkCircle01Icon strokeWidth={2} className="size-5 text-primary" />
                   </div>
                   <h3 className="text-sm font-medium mb-3 text-foreground tracking-tight">
                     What to Expect
@@ -121,20 +121,20 @@ export default function ApplyPage() {
               <Card className="group hover:border-primary/50 transition-colors bg-panel">
                 <CardContent>
                   <div className="w-10 h-10 bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                    <HugeiconsIcon icon={HelpCircleIcon} strokeWidth={2} className="size-5 text-primary" />
+                    <HelpCircleIcon strokeWidth={2} className="size-5 text-primary" />
                   </div>
                   <h3 className="text-sm font-medium mb-3 text-foreground tracking-tight">
                     Need Help?
                   </h3>
                   <p className="text-xs text-muted-foreground mb-4 leading-relaxed">
-                    If you have questions about the application process or our
-                    research programs, please reach out to us.
+                    If you have questions about the application process or our research programs,
+                    please reach out to us.
                   </p>
                   <a
                     href="mailto:drtmapaichair.itis@manipal.edu"
                     className="inline-flex items-center gap-2 text-xs text-primary hover:underline"
                   >
-                    <HugeiconsIcon icon={Mail01Icon} strokeWidth={2} className="size-3.5" />
+                    <Mail01Icon strokeWidth={2} className="size-3.5" />
                     drtmapaichair.itis@manipal.edu
                   </a>
                 </CardContent>

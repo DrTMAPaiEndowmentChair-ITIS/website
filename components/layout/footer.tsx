@@ -1,6 +1,11 @@
 import Link from "next/link";
-import { HugeiconsIcon } from "@hugeicons/react";
-import { Linkedin01Icon, GithubIcon, ArrowUpRight01Icon, Mail01Icon, Location01Icon } from "@hugeicons/core-free-icons";
+import {
+  Linkedin01Icon,
+  GithubIcon,
+  ArrowUpRight01Icon,
+  Mail01Icon,
+  Location01Icon,
+} from "@/components/icons";
 
 const footerLinks = {
   navigation: [
@@ -18,8 +23,16 @@ const footerLinks = {
     { label: "Google Scholar", href: "https://scholar.google.co.in/citations?user=Zr3-m3IAAAAJ" },
   ],
   social: [
-    { label: "LinkedIn", href: "https://www.linkedin.com/company/dr-tma-pai-endowment-chair-itis/", icon: Linkedin01Icon },
-    { label: "GitHub", href: "https://github.com/Dr-TMA-Pai-Endowment-Chair-ITIS", icon: GithubIcon },
+    {
+      label: "LinkedIn",
+      href: "https://www.linkedin.com/company/dr-tma-pai-endowment-chair-itis/",
+      Icon: Linkedin01Icon,
+    },
+    {
+      label: "GitHub",
+      href: "https://github.com/Dr-TMA-Pai-Endowment-Chair-ITIS",
+      Icon: GithubIcon,
+    },
   ],
 };
 
@@ -54,7 +67,7 @@ export function Footer() {
                     className="flex items-center justify-center w-8 h-8 bg-muted hover:bg-primary/10 text-muted-foreground hover:text-primary transition-colors"
                     aria-label={link.label}
                   >
-                    <HugeiconsIcon icon={link.icon} strokeWidth={2} className="size-4" />
+                    <link.Icon strokeWidth={2} className="size-4" />
                   </a>
                 ))}
               </div>
@@ -94,8 +107,7 @@ export function Footer() {
                       className="text-xs text-muted-foreground hover:text-foreground transition-colors inline-flex items-center gap-1 group"
                     >
                       {link.label}
-                      <HugeiconsIcon
-                        icon={ArrowUpRight01Icon}
+                      <ArrowUpRight01Icon
                         strokeWidth={2}
                         className="size-3 opacity-0 group-hover:opacity-100 transition-opacity"
                       />
@@ -116,15 +128,17 @@ export function Footer() {
                     href="mailto:drtmapaichair.itis@manipal.edu"
                     className="text-xs text-muted-foreground hover:text-foreground transition-colors flex items-start gap-2"
                   >
-                    <HugeiconsIcon icon={Mail01Icon} strokeWidth={2} className="size-3.5 mt-0.5 shrink-0" />
+                    <Mail01Icon strokeWidth={2} className="size-3.5 mt-0.5 shrink-0" />
                     <span>drtmapaichair.itis@manipal.edu</span>
                   </a>
                 </li>
                 <li className="text-xs text-muted-foreground flex items-start gap-2">
-                  <HugeiconsIcon icon={Location01Icon} strokeWidth={2} className="size-3.5 mt-0.5 shrink-0" />
+                  <Location01Icon strokeWidth={2} className="size-3.5 mt-0.5 shrink-0" />
                   <span>
-                    MIT, MAHE<br />
-                    Manipal, Karnataka 576104<br />
+                    MIT, MAHE
+                    <br />
+                    Manipal, Karnataka 576104
+                    <br />
                     India
                   </span>
                 </li>
@@ -139,9 +153,8 @@ export function Footer() {
           <p>
             <Link href="/chairperson" className="hover:text-foreground transition-colors">
               Dr. Manohara Pai M.M.
-            </Link>
-            {" "}&middot;{" "}
-            <span>Senior Professor, MIT, Manipal</span>
+            </Link>{" "}
+            &middot; <span>Senior Professor, MIT, Manipal</span>
           </p>
         </div>
       </div>

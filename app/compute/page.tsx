@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { HugeiconsIcon } from "@hugeicons/react";
 import {
   CpuIcon,
   HardDriveIcon,
@@ -10,11 +9,12 @@ import {
   ComputerIcon,
   Rocket01Icon,
   ArrowRight01Icon,
-} from "@hugeicons/core-free-icons";
+} from "@/components/icons";
 
 export const metadata = {
   title: "Computational Resources | Dr. TMA Pai Endowment Chair",
-  description: "State-of-the-art computational infrastructure featuring high-performance workstations for AI, machine learning, and advanced research.",
+  description:
+    "State-of-the-art computational infrastructure featuring high-performance workstations for AI, machine learning, and advanced research.",
 };
 
 const workstations = [
@@ -130,7 +130,7 @@ const totalSpecs = workstations.reduce(
       totals.acceleratorMemory + workstation.quantity * workstation.acceleratorMemoryGB,
     fp32Tflops: totals.fp32Tflops + workstation.quantity * workstation.fp32Tflops,
   }),
-  { systems: 0, cores: 0, threads: 0, memory: 0, acceleratorMemory: 0, fp32Tflops: 0 },
+  { systems: 0, cores: 0, threads: 0, memory: 0, acceleratorMemory: 0, fp32Tflops: 0 }
 );
 
 const fleetCompute = workstations
@@ -173,7 +173,7 @@ const precisionCompute = precisionDefinitions.map((definition) => ({
   ...definition,
   tflops: workstations.reduce(
     (total, workstation) => total + workstation.quantity * workstation[definition.field],
-    0,
+    0
   ),
 }));
 
@@ -187,23 +187,24 @@ function formatMemory(gigabytes: number) {
 
 function formatCompute(tflops: number, estimated = false) {
   if (tflops === 0) return "—";
-  const value = tflops >= 1000 ? `${(tflops / 1000).toFixed(2)} PFLOPS` : `${tflops.toFixed(0)} TFLOPS`;
+  const value =
+    tflops >= 1000 ? `${(tflops / 1000).toFixed(2)} PFLOPS` : `${tflops.toFixed(0)} TFLOPS`;
   return `${estimated ? "≈" : ""}${value}`;
 }
 
 const capabilities = [
   {
-    icon: ChipIcon,
+    Icon: ChipIcon,
     title: "AI & Machine Learning",
     description: "Train complex neural networks and deploy production-scale deep learning models.",
   },
   {
-    icon: Activity01Icon,
+    Icon: Activity01Icon,
     title: "Scientific Computing",
     description: "Execute large-scale simulations and computational modeling.",
   },
   {
-    icon: ComputerIcon,
+    Icon: ComputerIcon,
     title: "3D Visualization",
     description: "Create photorealistic renderings and complex visualizations.",
   },
@@ -222,18 +223,17 @@ export default function ComputePage() {
               Infrastructure
             </p>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-medium mb-6 leading-[1.1] tracking-tight text-foreground">
-              High-Performance{" "}
-              <span className="text-primary">Computing Lab</span>
+              High-Performance <span className="text-primary">Computing Lab</span>
             </h1>
             <p className="text-muted-foreground text-sm sm:text-base mb-8 max-w-2xl mx-auto leading-relaxed">
-              Access state-of-the-art computational resources featuring Apple silicon,
-              AMD Threadripper Pro processors, and professional-grade GPUs for cutting-edge research.
+              Access state-of-the-art computational resources featuring Apple silicon, AMD
+              Threadripper Pro processors, and professional-grade GPUs for cutting-edge research.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Button asChild size="lg">
                 <Link href="/apply">
                   Request Access
-                  <HugeiconsIcon icon={ArrowRight01Icon} strokeWidth={2} data-icon="inline-end" />
+                  <ArrowRight01Icon strokeWidth={2} data-icon="inline-end" />
                 </Link>
               </Button>
               <Button variant="outline" asChild size="lg">
@@ -253,23 +253,23 @@ export default function ComputePage() {
                 {
                   value: `≈${totalSpecs.fp32Tflops.toFixed(0)}`,
                   label: "FP32 TFLOPS",
-                  icon: Activity01Icon,
+                  Icon: Activity01Icon,
                 },
-                { value: totalSpecs.cores, label: "CPU Cores", icon: CpuIcon },
+                { value: totalSpecs.cores, label: "CPU Cores", Icon: CpuIcon },
                 {
                   value: formatMemory(totalSpecs.acceleratorMemory),
                   label: "Accelerator Memory",
-                  icon: ChipIcon,
+                  Icon: ChipIcon,
                 },
                 {
                   value: formatMemory(totalSpecs.memory),
                   label: "System Memory",
-                  icon: HardDriveIcon,
+                  Icon: HardDriveIcon,
                 },
               ].map((stat, index) => (
                 <div key={index} className="text-center py-6 px-4">
                   <div className="inline-flex items-center justify-center w-8 h-8 mb-2 bg-primary/10 text-primary">
-                    <HugeiconsIcon icon={stat.icon} strokeWidth={2} className="size-4" />
+                    <stat.Icon strokeWidth={2} className="size-4" />
                   </div>
                   <div className="text-xl sm:text-2xl lg:text-3xl font-medium text-foreground tracking-tight">
                     {stat.value}
@@ -356,9 +356,12 @@ export default function ComputePage() {
                       <div key={workstation.id}>
                         <div className="flex items-end justify-between gap-3 mb-2">
                           <div>
-                            <p className="text-xs font-medium text-foreground">{workstation.name}</p>
+                            <p className="text-xs font-medium text-foreground">
+                              {workstation.name}
+                            </p>
                             <p className="text-[10px] text-muted-foreground">
-                              {workstation.quantity} {workstation.quantity === 1 ? "system" : "systems"}
+                              {workstation.quantity}{" "}
+                              {workstation.quantity === 1 ? "system" : "systems"}
                             </p>
                           </div>
                           <p className="text-xs font-medium text-foreground tabular-nums">
@@ -391,7 +394,9 @@ export default function ComputePage() {
                     <div
                       key={workstation.id}
                       className={`${computeBarStyles[index]} first:rounded-l-sm last:rounded-r-sm`}
-                      style={{ width: `${(workstation.fleetTflops / totalSpecs.fp32Tflops) * 100}%` }}
+                      style={{
+                        width: `${(workstation.fleetTflops / totalSpecs.fp32Tflops) * 100}%`,
+                      }}
                     />
                   ))}
                 </div>
@@ -400,7 +405,9 @@ export default function ComputePage() {
                   {fleetCompute.map((workstation, index) => (
                     <div key={workstation.id} className="flex items-center gap-3">
                       <span className={`size-2.5 shrink-0 ${computeBarStyles[index]}`} />
-                      <span className="text-xs text-muted-foreground flex-1">{workstation.name}</span>
+                      <span className="text-xs text-muted-foreground flex-1">
+                        {workstation.name}
+                      </span>
                       <span className="text-xs font-medium text-foreground tabular-nums">
                         {((workstation.fleetTflops / totalSpecs.fp32Tflops) * 100).toFixed(1)}%
                       </span>
@@ -448,7 +455,9 @@ export default function ComputePage() {
                           #{rank + 1}
                         </span>
                         <div>
-                          <h3 className="text-sm sm:text-base font-medium text-foreground">{ws.name}</h3>
+                          <h3 className="text-sm sm:text-base font-medium text-foreground">
+                            {ws.name}
+                          </h3>
                           <p className="font-mono text-[10px] text-muted-foreground uppercase tracking-wide">
                             {ws.quantity}× available · {ws.tier}
                           </p>
@@ -467,24 +476,34 @@ export default function ComputePage() {
                     {/* Specs Grid */}
                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
                       <div className="bg-muted/50 dark:bg-white/5 p-3">
-                        <p className="font-mono text-[10px] text-muted-foreground uppercase tracking-wide mb-1">CPU</p>
+                        <p className="font-mono text-[10px] text-muted-foreground uppercase tracking-wide mb-1">
+                          CPU
+                        </p>
                         <p className="text-xs font-medium text-foreground">{ws.cpu}</p>
                         <p className="text-[10px] text-muted-foreground mt-0.5">{ws.cpuSpecs}</p>
                       </div>
                       <div className="bg-muted/50 dark:bg-white/5 p-3">
-                        <p className="font-mono text-[10px] text-muted-foreground uppercase tracking-wide mb-1">GPU</p>
+                        <p className="font-mono text-[10px] text-muted-foreground uppercase tracking-wide mb-1">
+                          GPU
+                        </p>
                         <p className="text-xs font-medium text-foreground">{ws.gpu}</p>
                         <p className="text-[10px] text-muted-foreground mt-0.5">{ws.gpuSpecs}</p>
                       </div>
                       <div className="bg-muted/50 dark:bg-white/5 p-3">
-                        <p className="font-mono text-[10px] text-muted-foreground uppercase tracking-wide mb-1">Memory</p>
+                        <p className="font-mono text-[10px] text-muted-foreground uppercase tracking-wide mb-1">
+                          Memory
+                        </p>
                         <p className="text-xs font-medium text-foreground">{ws.memory}</p>
                         <p className="text-[10px] text-muted-foreground mt-0.5">{ws.memorySpecs}</p>
                       </div>
                       <div className="bg-muted/50 dark:bg-white/5 p-3">
-                        <p className="font-mono text-[10px] text-muted-foreground uppercase tracking-wide mb-1">Storage</p>
+                        <p className="font-mono text-[10px] text-muted-foreground uppercase tracking-wide mb-1">
+                          Storage
+                        </p>
                         <p className="text-xs font-medium text-foreground">{ws.storage}</p>
-                        <p className="text-[10px] text-muted-foreground mt-0.5">{ws.storageSpecs}</p>
+                        <p className="text-[10px] text-muted-foreground mt-0.5">
+                          {ws.storageSpecs}
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -510,13 +529,20 @@ export default function ComputePage() {
 
             <div className="grid sm:grid-cols-3 gap-4">
               {capabilities.map((cap, index) => (
-                <Card key={index} className="group hover:border-primary/50 transition-colors bg-panel">
+                <Card
+                  key={index}
+                  className="group hover:border-primary/50 transition-colors bg-panel"
+                >
                   <CardContent>
                     <div className="w-10 h-10 bg-primary/10 flex items-center justify-center mb-3 group-hover:bg-primary/20 transition-colors">
-                      <HugeiconsIcon icon={cap.icon} strokeWidth={2} className="size-5 text-primary" />
+                      <cap.Icon strokeWidth={2} className="size-5 text-primary" />
                     </div>
-                    <h3 className="text-sm font-medium text-foreground mb-2 tracking-tight">{cap.title}</h3>
-                    <p className="text-xs text-muted-foreground leading-relaxed">{cap.description}</p>
+                    <h3 className="text-sm font-medium text-foreground mb-2 tracking-tight">
+                      {cap.title}
+                    </h3>
+                    <p className="text-xs text-muted-foreground leading-relaxed">
+                      {cap.description}
+                    </p>
                   </CardContent>
                 </Card>
               ))}
@@ -530,7 +556,7 @@ export default function ComputePage() {
         <div className="container mx-auto px-4 lg:px-8 relative">
           <div className="max-w-3xl mx-auto text-center">
             <div className="inline-flex items-center justify-center w-12 h-12 bg-primary/10 text-primary mb-6">
-              <HugeiconsIcon icon={Rocket01Icon} strokeWidth={2} className="size-6" />
+              <Rocket01Icon strokeWidth={2} className="size-6" />
             </div>
             <h2 className="text-2xl sm:text-3xl font-medium mb-4 text-foreground tracking-tight">
               Ready to Accelerate Your Research?
@@ -542,7 +568,7 @@ export default function ComputePage() {
               <Button asChild size="lg">
                 <Link href="/apply">
                   Request Access
-                  <HugeiconsIcon icon={ArrowRight01Icon} strokeWidth={2} data-icon="inline-end" />
+                  <ArrowRight01Icon strokeWidth={2} data-icon="inline-end" />
                 </Link>
               </Button>
               <Button variant="outline" asChild size="lg">
