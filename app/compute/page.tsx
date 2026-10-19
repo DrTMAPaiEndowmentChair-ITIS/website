@@ -197,17 +197,17 @@ const capabilities: { scene: SceneSpec; title: string; description: string }[] =
   {
     scene: "network",
     title: "AI & Machine Learning",
-    description: "Train complex neural networks and deploy production-scale deep learning models.",
+    description: "Train and serve deep learning models.",
   },
   {
     scene: "wave",
     title: "Scientific Computing",
-    description: "Execute large-scale simulations and computational modeling.",
+    description: "Large-scale simulation and modelling.",
   },
   {
     scene: "globe",
     title: "3D Visualization",
-    description: "Create photorealistic renderings and complex visualizations.",
+    description: "Rendering and visualisation.",
   },
 ];
 
@@ -231,8 +231,7 @@ export default function ComputePage() {
                 High-Performance <span className="text-primary">Computing Lab</span>
               </h1>
               <p className="text-muted-foreground text-base sm:text-lg mb-8 max-w-xl leading-relaxed text-pretty">
-                Access state-of-the-art computational resources featuring Apple silicon, AMD
-                Threadripper Pro processors, and professional-grade GPUs for cutting-edge research.
+                Apple silicon, Threadripper Pro, and workstation GPUs for lab research.
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <Button asChild size="lg">
@@ -292,12 +291,7 @@ export default function ComputePage() {
 
       {/* 01 Capacity */}
       <Section index="01">
-        <SectionHeader
-          index="01"
-          label="Capacity"
-          title="Available Compute"
-          lede="Dense peak throughput across the fleet at each numeric precision, then where that throughput and memory actually live."
-        />
+        <SectionHeader index="01" label="Capacity" title="Available Compute" />
 
         <figure className="reveal mb-4">
           <Bezel panelClassName="p-4 sm:p-6 lg:p-8">
@@ -331,7 +325,7 @@ export default function ComputePage() {
             <Bezel panelClassName="p-4 sm:p-6">
               <FigCaption fig="02" title="FP32 by system family" className="mb-1" />
               <p className="text-caption text-muted-foreground mb-6">
-                Each segment is one machine. Fleet total ≈{totalSpecs.fp32Tflops.toFixed(1)} TFLOPS.
+                One segment per machine · ≈{totalSpecs.fp32Tflops.toFixed(1)} TFLOPS total
               </p>
               <SegmentedBarChart
                 label="Fleet FP32 throughput by system family, one segment per machine"
@@ -351,7 +345,7 @@ export default function ComputePage() {
             <Bezel panelClassName="p-4 sm:p-6">
               <FigCaption fig="03" title="Accelerator memory by family" className="mb-1" />
               <p className="text-caption text-muted-foreground mb-6">
-                Each segment is one machine. Mac Studio memory is unified with the CPU.
+                One segment per machine · Mac Studio memory is unified
               </p>
               <SegmentedBarChart
                 label="Fleet accelerator memory by system family, one segment per machine"
@@ -391,7 +385,7 @@ export default function ComputePage() {
           index="02"
           label="Hardware"
           title="Compute Ranking"
-          lede="Ranked by fleet FP32. Meters compare each machine with the strongest in the lab on that spec."
+          lede="Ranked by fleet FP32."
         />
 
         <ol className="space-y-4">
@@ -533,12 +527,9 @@ export default function ComputePage() {
           <div className="inline-flex items-center justify-center size-12 border border-primary/30 bg-primary/[0.06] text-primary mb-6">
             <Rocket01Icon strokeWidth={2} className="size-5" />
           </div>
-          <h2 className="text-title font-medium mb-4 text-foreground text-balance">
-            Ready to Accelerate Your Research?
+          <h2 className="text-title font-medium mb-8 text-foreground text-balance">
+            Need compute for your research?
           </h2>
-          <p className="text-sm sm:text-base text-muted-foreground mb-8 max-w-lg mx-auto leading-relaxed">
-            Apply for access to our computational resources and start your research project today.
-          </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Button asChild size="lg">
               <Link href="/apply">

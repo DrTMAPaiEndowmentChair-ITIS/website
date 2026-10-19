@@ -21,8 +21,7 @@ export default function ApplyPage() {
               Apply for <span className="text-primary">Research</span>
             </h1>
             <p className="text-muted-foreground text-base sm:text-lg mb-8 max-w-2xl leading-relaxed text-pretty">
-              Work on cutting-edge projects and research with industry partners. Fill out the
-              application form below to get started.
+              Work on sponsored projects with industry partners.
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
               <Button variant="outline" asChild size="lg">
@@ -40,14 +39,9 @@ export default function ApplyPage() {
       <Section index="01" innerClassName="pt-10 sm:pt-12 lg:pt-14">
         <Bezel panelClassName="flex flex-col">
           <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border px-4 sm:px-6 py-3">
-            <div>
-              <h2 className="font-sans text-base font-medium text-foreground">
-                Research Application Form
-              </h2>
-              <p className="text-body-sm text-muted-foreground">
-                Please complete all required fields to submit your application.
-              </p>
-            </div>
+            <h2 className="font-sans text-base font-medium text-foreground">
+              Research Application Form
+            </h2>
             <span className="inline-flex items-center gap-2 font-mono text-micro uppercase tracking-[0.18em] text-muted-foreground">
               <span className="size-1.5 bg-primary animate-pulse" aria-hidden />
               Form 01 · Microsoft Forms
@@ -109,8 +103,7 @@ export default function ApplyPage() {
               <h3 className="font-sans text-base font-medium text-foreground">Need Help?</h3>
             </div>
             <p className="text-body-sm text-muted-foreground mb-6 leading-relaxed">
-              If you have questions about the application process or our research programs, please
-              reach out to us.
+              Questions about applying? Email us.
             </p>
             <a
               href="mailto:drtmapaichair.itis@manipal.edu"

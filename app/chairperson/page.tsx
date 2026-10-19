@@ -372,21 +372,19 @@ const outputs = [
   {
     value: 156,
     label: "Publications",
-    note: "Journals and conference proceedings, plus 2 books",
+    note: "Plus 2 books",
     size: "sm" as const,
     groups: [{ count: 156, columns: 13 }],
   },
   {
     value: 81,
     label: "M.Tech theses",
-    note: "Guided to completion",
     size: "sm" as const,
     groups: [{ count: 81, columns: 9 }],
   },
   {
     value: 14,
     label: "PhD scholars",
-    note: "Filled: completed · Ring: ongoing",
     size: "md" as const,
     groups: [
       { count: 8, label: "Completed" },
@@ -396,7 +394,6 @@ const outputs = [
   {
     value: 10,
     label: "Patents granted",
-    note: "Hover a group for patent numbers",
     size: "md" as const,
     groups: [
       { count: 3, label: "US", tip: "US9616346B2 · US9503511B2 · US8295280B2" },
@@ -539,12 +536,7 @@ export default function ChairpersonPage() {
 
       {/* 02 Career */}
       <Section index="02">
-        <SectionHeader
-          index="02"
-          label="Career"
-          title="Four decades at a glance"
-          lede="Education, faculty rank, leadership, endowed chairs, international work, and awards on one time axis. Hover or focus any span for its exact dates."
-        />
+        <SectionHeader index="02" label="Career" title="Four decades at a glance" />
         <figure className="reveal">
           <Bezel panelClassName="p-4 sm:p-6 lg:p-8">
             <FigCaption fig="01" title="Career timeline, 1985 – present" className="mb-6" />
@@ -566,12 +558,7 @@ export default function ChairpersonPage() {
 
       {/* 03 Output */}
       <Section index="03">
-        <SectionHeader
-          index="03"
-          label="Output"
-          title="Mentorship & Publications"
-          lede="Counted one dot at a time: every paper, thesis, scholar, and granted patent."
-        />
+        <SectionHeader index="03" label="Output" title="Mentorship & Publications" />
         <div className="grid md:grid-cols-2 gap-4 reveal">
           {outputs.map((o, i) => (
             <figure key={o.label}>
@@ -582,9 +569,11 @@ export default function ChairpersonPage() {
                     <span className="block font-mono text-5xl sm:text-6xl font-medium text-foreground tracking-tight">
                       {o.value}
                     </span>
-                    <p className="mt-2 text-caption text-muted-foreground max-w-[14rem]">
-                      {o.note}
-                    </p>
+                    {o.note ? (
+                      <p className="mt-2 text-caption text-muted-foreground max-w-[14rem]">
+                        {o.note}
+                      </p>
+                    ) : null}
                   </div>
                   <UnitChart groups={o.groups} size={o.size} label={`${o.value} ${o.label}`} />
                 </div>
@@ -598,19 +587,16 @@ export default function ChairpersonPage() {
           {[
             {
               title: "Advances in Information & Communication Technologies ICICOT'07",
-              body: "Co-edited proceedings for International Conference ICICOT 2007",
             },
             {
               title: "Scalable Video Coding using Wavelet Transformation",
-              body: "Specialized book on video coding techniques",
             },
           ].map((book, i) => (
             <Bezel key={book.title} panelClassName="p-5">
               <p className="font-mono text-micro uppercase tracking-[0.18em] text-primary mb-2">
                 Book {String(i + 1).padStart(2, "0")}
               </p>
-              <h3 className="font-sans text-body font-medium text-foreground mb-1">{book.title}</h3>
-              <p className="text-body-sm text-muted-foreground">{book.body}</p>
+              <h3 className="font-sans text-body font-medium text-foreground">{book.title}</h3>
             </Bezel>
           ))}
         </div>
@@ -636,14 +622,9 @@ export default function ChairpersonPage() {
 
         <Bezel className="mb-10 reveal" panelClassName="p-5 sm:p-6">
           <h3 className="font-sans text-body font-medium text-foreground mb-2">Patent Portfolio</h3>
-          <p className="text-body-sm text-muted-foreground mb-2 leading-relaxed">
-            Holds <span className="text-foreground font-medium">10 granted patents</span>: 3 US
-            Patents (US9616346B2, US9503511B2, US8295280B2), 1 Japanese Patent (JP5512889), and 6
-            Indian Patents (including IN280657). Received a patenting award of $8,000.
-          </p>
           <p className="text-body-sm text-muted-foreground leading-relaxed">
-            Published <span className="text-foreground font-medium">156 papers</span> in
-            national/international journals and conference proceedings, and authored 2 books.
+            US9616346B2 · US9503511B2 · US8295280B2 · JP5512889 · IN280657 and 5 more Indian
+            patents. Patenting award of $8,000.
           </p>
         </Bezel>
 
@@ -746,13 +727,7 @@ export default function ChairpersonPage() {
 
       {/* 06 Expertise */}
       <Section index="06">
-        <SectionHeader
-          index="06"
-          label="Expertise"
-          align="center"
-          title="Research Interests"
-          lede="Computer Communication Networks, Wireless Adhoc Networks, Video Processing, Data Analytics, Cloud Computing, Technology Commercialization, Patenting, and Mentoring"
-        />
+        <SectionHeader index="06" label="Expertise" align="center" title="Research Interests" />
 
         <ul className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 border-l border-t border-border mb-10 reveal">
           {researchAreas.map((area) => (
@@ -869,9 +844,9 @@ export default function ChairpersonPage() {
             </span>
             <div>
               <p className="text-body text-muted-foreground mb-4 leading-relaxed">
-                Established the Technology Business Incubator at MIT, MAHE with a grant of{" "}
-                <span className="text-foreground font-medium">Rs.5 Crores</span> from DST, Govt. of
-                India, and MAHE. Secured multiple research grants from:
+                Set up the Technology Business Incubator at MIT, MAHE with{" "}
+                <span className="text-foreground font-medium">Rs.5 Crores</span> from DST and MAHE.
+                Grants from:
               </p>
               <ul className="flex flex-wrap gap-2">
                 {["BIRAC", "DST", "IBM", "TE Connectivity", "Schneider Electric", "AICTE"].map(
@@ -894,13 +869,9 @@ export default function ChairpersonPage() {
       <Section index="10">
         <div className="max-w-2xl mx-auto text-center reveal">
           <Kicker label="Contact" className="justify-center" />
-          <h2 className="text-title font-medium mb-4 text-foreground text-balance">
+          <h2 className="text-title font-medium mb-8 text-foreground text-balance">
             Connect with Dr. Manohara Pai
           </h2>
-          <p className="text-sm sm:text-base text-muted-foreground mb-8">
-            For research collaboration, academic partnerships, or inquiries about the Endowment
-            Chair.
-          </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Button asChild size="lg">
               <Link href="/apply">

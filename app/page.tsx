@@ -57,15 +57,6 @@ const getCompanyIcon = (companyName: string, companyLogo?: string) => {
   }
 };
 
-const HERO_DOMAINS = [
-  "AI / ML",
-  "IoT & Edge",
-  "Industry 4.0",
-  "Cybersecurity",
-  "Cloud",
-  "Sustainability",
-];
-
 const MARQUEE_PARTNERS = ["Schneider Electric", "TE Connectivity", "IBM", "DST", "BIRAC", "AICTE"];
 
 const PILLARS: { index: string; scene: SceneSpec; title: string; body: string }[] = [
@@ -73,19 +64,19 @@ const PILLARS: { index: string; scene: SceneSpec; title: string; body: string }[
     index: "01",
     scene: "network",
     title: "Intelligent Technologies",
-    body: "Advanced digital systems including AI, machine learning, and smart automation that enable machines to learn, adapt, and make decisions.",
+    body: "AI, machine learning, and automation that learn and adapt.",
   },
   {
     index: "02",
     scene: "gear",
     title: "Industry 4.0",
-    body: "The fourth industrial revolution with cyber-physical systems, IoT, and data-driven manufacturing for smarter industries.",
+    body: "Cyber-physical systems, IoT, and data-driven manufacturing.",
   },
   {
     index: "03",
     scene: "leaf",
     title: "Sustainability",
-    body: "Developing solutions that meet present needs without compromising future generations' ability to meet theirs.",
+    body: "Engineering for today that doesn't borrow from tomorrow.",
   },
 ];
 
@@ -94,19 +85,19 @@ const APPLY_STEPS = [
     index: "01",
     Icon: FileEditIcon,
     title: "Submit Application",
-    body: "Tell us about your background and the research areas you want to work in.",
+    body: "Share your background and interests.",
   },
   {
     index: "02",
     Icon: Agreement01Icon,
     title: "Review & Matching",
-    body: "The chair reviews your application and matches you with an active project.",
+    body: "We match you with an active project.",
   },
   {
     index: "03",
     Icon: Rocket01Icon,
     title: "Begin Research",
-    body: "Join the team, collaborate with industry mentors, and publish your work.",
+    body: "Build with industry mentors and publish.",
   },
 ];
 
@@ -141,7 +132,7 @@ function ProjectCard({ project }: { project: ProjectFrontmatter }) {
         <h3 className="font-sans text-body font-medium leading-snug text-foreground group-hover:text-primary transition-colors line-clamp-2 mb-2">
           {project.title}
         </h3>
-        <p className="text-body-sm text-muted-foreground line-clamp-3 leading-relaxed mb-4">
+        <p className="text-body-sm text-muted-foreground line-clamp-2 leading-relaxed mb-4">
           {project.description}
         </p>
         <div className="flex flex-wrap gap-1 mt-auto">
@@ -153,12 +144,6 @@ function ProjectCard({ project }: { project: ProjectFrontmatter }) {
               {tag}
             </span>
           ))}
-        </div>
-        <div className="flex items-center justify-between border-t border-border mt-4 pt-3 text-xs">
-          <span className="text-primary flex items-center gap-1 group-hover:gap-2 transition-all">
-            {completed ? "View results" : "View project"}
-            <ArrowRight01Icon strokeWidth={2} className="size-3" />
-          </span>
         </div>
       </Bezel>
     </Link>
@@ -188,13 +173,9 @@ function EventCard({ event }: { event: EventFrontmatter }) {
           <h3 className="font-sans text-body font-medium leading-snug text-foreground group-hover:text-primary transition-colors line-clamp-2 mb-2">
             {event.title}
           </h3>
-          <p className="text-body-sm text-muted-foreground line-clamp-2 leading-relaxed mb-4">
+          <p className="text-body-sm text-muted-foreground line-clamp-2 leading-relaxed">
             {event.description}
           </p>
-          <span className="mt-auto text-xs text-primary flex items-center gap-1 group-hover:gap-2 transition-all">
-            Learn more
-            <ArrowRight01Icon strokeWidth={2} className="size-3" />
-          </span>
         </div>
       </Bezel>
     </Link>
@@ -236,8 +217,7 @@ export default function Home() {
                 <span className="text-primary">Industry Collaborations</span>
               </h1>
               <p className="text-muted-foreground text-base sm:text-lg mb-8 max-w-lg leading-relaxed text-pretty">
-                Join us in pushing the boundaries of innovation through cutting-edge research
-                projects and industry partnerships at the Dr. TMA Pai Endowment Chair.
+                Sponsored research with industry and government partners.
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <Button asChild size="lg">
@@ -250,16 +230,6 @@ export default function Home() {
                   <Link href="#research">Explore Projects</Link>
                 </Button>
               </div>
-              <ul className="flex flex-wrap gap-1.5 mt-8" aria-label="Research domains">
-                {HERO_DOMAINS.map((domain) => (
-                  <li
-                    key={domain}
-                    className="border border-border/70 bg-background/50 dark:bg-white/5 px-2.5 py-1 font-mono text-micro uppercase tracking-widest text-muted-foreground"
-                  >
-                    {domain}
-                  </li>
-                ))}
-              </ul>
             </div>
             <div>
               <div className="ticks relative aspect-square max-w-[15rem] sm:max-w-sm mx-auto lg:max-w-none">
@@ -313,8 +283,8 @@ export default function Home() {
           index="01"
           label="About"
           align="center"
-          title="Dr. TMA Pai Endowment Chair"
-          lede="An endowed chair at Manipal Academy of Higher Education dedicated to research at the intersection of intelligent systems, industrial transformation, and sustainable development — carried out hand in hand with industry and government partners."
+          title="Three research fronts"
+          lede="Led by Dr. Manohara Pai M.M. at MIT, MAHE."
         />
         <div className="grid md:grid-cols-3 gap-4 reveal">
           {PILLARS.map((pillar) => (
@@ -338,39 +308,11 @@ export default function Home() {
             </Bezel>
           ))}
         </div>
-        {/* Facts strip */}
-        <dl className="grid sm:grid-cols-3 border-l border-t border-border mt-4 reveal">
-          {[
-            { label: "Chair Holder", value: "Dr. Manohara Pai M.M.", href: "/chairperson" },
-            { label: "Institution", value: "MIT, MAHE, Manipal" },
-            { label: "Mandate", value: "Industry-collaborative research" },
-          ].map((fact) => (
-            <div key={fact.label} className="px-6 py-4 border-r border-b border-border">
-              <dt className="font-mono text-micro uppercase tracking-widest text-muted-foreground mb-1">
-                {fact.label}
-              </dt>
-              <dd className="text-sm text-foreground">
-                {fact.href ? (
-                  <Link href={fact.href} className="hover:text-primary transition-colors">
-                    {fact.value} →
-                  </Link>
-                ) : (
-                  fact.value
-                )}
-              </dd>
-            </div>
-          ))}
-        </dl>
       </Section>
 
       {/* 02 Current research */}
       <Section index="02" id="research" className="cv-auto scroll-mt-16">
-        <SectionHeader
-          index="02"
-          label="Research"
-          title="Current Projects"
-          lede="Ongoing investigations with industry partners — from generative AI for industrial automation to software qualimetry and threat analysis."
-        />
+        <SectionHeader index="02" label="Research" title="Current Projects" />
         <CardRail>
           {researchProjects.map((project) => (
             <CarouselItem key={project.slug} className="pl-4 md:basis-1/2 lg:basis-1/3">
@@ -386,19 +328,13 @@ export default function Home() {
           index="03"
           label="Track record"
           title="Three decades of sponsored research"
-          lede="From the first AICTE robotics grant to today's agentic security work. Hover a bar for the project and sponsor; select it to open."
         />
         <ResearchTimeline projects={[...completedProjects, ...researchProjects]} />
       </Section>
 
       {/* 04 Archive */}
       <Section index="04" id="completed-research" className="cv-auto scroll-mt-16">
-        <SectionHeader
-          index="04"
-          label="Archive"
-          title="Completed Projects"
-          lede="Delivered research — spanning healthcare devices, connected vehicles, smart aquaculture, and industrial analytics."
-        />
+        <SectionHeader index="04" label="Archive" title="Completed Projects" />
         <CardRail>
           {completedProjects.map((project) => (
             <CarouselItem key={project.slug} className="pl-4 md:basis-1/2 lg:basis-1/3">
@@ -415,13 +351,7 @@ export default function Home() {
         className="cv-auto scroll-mt-16"
         innerClassName="pb-0 sm:pb-0 lg:pb-0"
       >
-        <SectionHeader
-          index="05"
-          label="Partners"
-          align="center"
-          title="Collaborators & Funding"
-          lede="Research at the chair is grounded in real problems — sponsored, co-developed, and deployed with global industry leaders and national funding agencies."
-        />
+        <SectionHeader index="05" label="Partners" align="center" title="Collaborators & Funding" />
       </Section>
       <div className="cv-auto">
         {/* Partner marquee — full bleed */}
@@ -509,7 +439,6 @@ export default function Home() {
           index="06"
           label="Events"
           title="Upcoming & Recent"
-          lede="Workshops, hackathons, CTFs, and panels that bring students and industry practitioners into the same room."
           action={
             <span className="inline-flex items-center gap-1.5 border border-border px-2.5 py-1 font-mono text-micro uppercase tracking-widest text-muted-foreground">
               <span className="size-1.5 bg-primary" aria-hidden />
@@ -528,13 +457,7 @@ export default function Home() {
 
       {/* 07 Apply */}
       <Section index="07" className="cv-auto">
-        <SectionHeader
-          index="07"
-          label="Join"
-          align="center"
-          title="Ready to Join Our Research Community?"
-          lede="Apply now to participate in cutting-edge research projects and collaborate with industry leaders. Here is how it works:"
-        />
+        <SectionHeader index="07" label="Join" align="center" title="How to apply" />
 
         <ol className="relative grid sm:grid-cols-3 gap-4 mb-10 reveal">
           {/* Connector between steps */}

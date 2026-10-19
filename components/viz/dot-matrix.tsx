@@ -22,6 +22,7 @@ type DotMatrixProps = {
 
 const FPS = 20;
 const MORPH_MS = 1100;
+const SCROLL_IDLE_MS = 150;
 
 function resolve(spec: SceneSpec): Scene {
   return spec.startsWith("text:") ? textScene(spec.slice(5)) : SCENES[spec as SceneName];
@@ -213,8 +214,16 @@ export function DotMatrix({
       ctx.globalAlpha = 1;
     };
 
+    // Give the main thread to the page while it is being scrolled; the figure
+    // simply holds its frame and resumes when scrolling settles.
+    let scrolledAt = 0;
+    const onScroll = () => {
+      scrolledAt = performance.now();
+    };
+
     const tick = (now: number) => {
       raf = requestAnimationFrame(tick);
+      if (now - scrolledAt < SCROLL_IDLE_MS) return;
       if (now - last < 1000 / FPS) return;
       const dt = last ? Math.min(0.1, (now - last) / 1000) : 0;
       last = now;
@@ -284,6 +293,7 @@ export function DotMatrix({
     };
     const onVisibility = () => (document.hidden ? stop() : start());
     window.addEventListener("theme-change", onTheme);
+    window.addEventListener("scroll", onScroll, { passive: true });
     document.addEventListener("visibilitychange", onVisibility);
 
     return () => {
@@ -294,6 +304,7 @@ export function DotMatrix({
       ro.disconnect();
       io.disconnect();
       window.removeEventListener("theme-change", onTheme);
+      window.removeEventListener("scroll", onScroll);
       document.removeEventListener("visibilitychange", onVisibility);
     };
   }, [sceneKey, pitch, frame, hold]);
