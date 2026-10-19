@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { SectionRule } from "@/components/ui/section";
 import {
   Linkedin01Icon,
   GithubIcon,
@@ -38,8 +39,9 @@ const footerLinks = {
 
 export function Footer() {
   return (
-    <footer className="border-t border-border">
-      <div className="container mx-auto px-4 lg:px-8">
+    <footer className="relative">
+      <SectionRule />
+      <div className="shell">
         {/* Main Footer */}
         <div className="py-12 lg:py-16">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
@@ -147,16 +149,32 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="py-4 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] text-muted-foreground">
-          <p>{new Date().getFullYear()} Dr. TMA Pai Endowment Chair. All rights reserved.</p>
-          <p>
-            <Link href="/chairperson" className="hover:text-foreground transition-colors">
-              Dr. Manohara Pai M.M.
-            </Link>{" "}
-            &middot; <span>Senior Professor, MIT, Manipal</span>
-          </p>
-        </div>
+        {/* Title block, as on a drawing sheet */}
+        <dl className="grid grid-cols-2 md:grid-cols-4 border-l border-t border-border mb-10 text-[11px]">
+          {[
+            {
+              label: "Issued by",
+              value: <>&copy; {new Date().getFullYear()} Dr. TMA Pai Endowment Chair</>,
+            },
+            {
+              label: "Chair Professor",
+              value: (
+                <Link href="/chairperson" className="hover:text-primary transition-colors">
+                  Dr. Manohara Pai M.M.
+                </Link>
+              ),
+            },
+            { label: "Grid ref", value: "13.3525° N · 74.7924° E" },
+            { label: "Sheet", value: "ITIS · MIT, MAHE, Manipal" },
+          ].map((cell) => (
+            <div key={cell.label} className="border-r border-b border-border px-3 py-2.5">
+              <dt className="font-mono text-[9px] uppercase tracking-[0.2em] text-muted-foreground/80">
+                {cell.label}
+              </dt>
+              <dd className="mt-0.5 text-foreground tabular-nums">{cell.value}</dd>
+            </div>
+          ))}
+        </dl>
       </div>
     </footer>
   );

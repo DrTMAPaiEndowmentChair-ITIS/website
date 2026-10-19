@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Bezel, Kicker, Section, SectionHeader } from "@/components/ui/section";
 import { CheckmarkCircle01Icon, HelpCircleIcon, Mail01Icon } from "@/components/icons";
 
 export const metadata = {
@@ -12,25 +12,23 @@ export const metadata = {
 export default function ApplyPage() {
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative pt-24 pb-12 lg:pt-32 lg:pb-16 overflow-hidden">
-        <div className="container relative mx-auto px-4 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center">
-            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-4">
-              Join Us
-            </p>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-medium mb-4 leading-[1.1] tracking-tight text-foreground">
-              Apply for Research
+      {/* Hero */}
+      <section className="relative">
+        <div className="shell pt-28 pb-12 lg:pt-36 lg:pb-16">
+          <div className="max-w-3xl">
+            <Kicker label="Join Us" />
+            <h1 className="text-display font-medium mb-5 text-foreground text-balance">
+              Apply for <span className="text-primary">Research</span>
             </h1>
-            <p className="text-muted-foreground text-sm sm:text-base mb-8 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-muted-foreground text-base sm:text-lg mb-8 max-w-2xl leading-relaxed text-pretty">
               Work on cutting-edge projects and research with industry partners. Fill out the
               application form below to get started.
             </p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Button variant="outline" asChild>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Button variant="outline" asChild size="lg">
                 <Link href="/#research">View Projects</Link>
               </Button>
-              <Button variant="outline" asChild>
+              <Button variant="outline" asChild size="lg">
                 <Link href="/chairperson">Meet the Chair Professor</Link>
               </Button>
             </div>
@@ -38,111 +36,92 @@ export default function ApplyPage() {
         </div>
       </section>
 
-      {/* Application Form Section */}
-      <section className="pb-16 lg:pb-24">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-5xl mx-auto">
-            <Card className="bg-panel">
-              <CardHeader className="border-b border-border bg-muted/30 dark:bg-white/5">
-                <CardTitle className="text-base">Research Application Form</CardTitle>
-                <CardDescription>
-                  Please complete all required fields to submit your application.
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="p-0 sm:p-4">
-                <div className="w-full overflow-hidden">
-                  <iframe
-                    width="100%"
-                    height="700"
-                    src="https://forms.office.com/r/kN5F0Qiee2?embed=true"
-                    frameBorder="0"
-                    style={{
-                      border: "none",
-                      maxWidth: "100%",
-                    }}
-                    allowFullScreen
-                    title="Research Application Form"
-                    className="min-h-[600px] sm:min-h-[700px]"
-                  />
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Additional Information Section */}
-      <section className="py-16 lg:py-24">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-10">
-              <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-3">
-                Process
-              </p>
-              <h2 className="text-2xl sm:text-3xl font-medium text-foreground tracking-tight">
-                What Happens Next
+      {/* 01 Application form */}
+      <Section index="01" innerClassName="pt-10 sm:pt-12 lg:pt-14">
+        <Bezel panelClassName="flex flex-col">
+          <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border px-4 sm:px-6 py-3">
+            <div>
+              <h2 className="font-sans text-base font-medium text-foreground">
+                Research Application Form
               </h2>
+              <p className="text-[13px] text-muted-foreground">
+                Please complete all required fields to submit your application.
+              </p>
             </div>
-
-            <div className="grid sm:grid-cols-2 gap-4">
-              <Card className="group hover:border-primary/50 transition-colors bg-panel">
-                <CardContent>
-                  <div className="w-10 h-10 bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                    <CheckmarkCircle01Icon strokeWidth={2} className="size-5 text-primary" />
-                  </div>
-                  <h3 className="text-sm font-medium mb-3 text-foreground tracking-tight">
-                    What to Expect
-                  </h3>
-                  <ul className="text-xs text-muted-foreground space-y-2 leading-relaxed">
-                    <li className="flex items-start gap-2">
-                      <span className="w-1 h-1 bg-primary rounded-full mt-1.5 shrink-0" />
-                      Application review within 1-2 weeks
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="w-1 h-1 bg-primary rounded-full mt-1.5 shrink-0" />
-                      Interview with research team leads
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="w-1 h-1 bg-primary rounded-full mt-1.5 shrink-0" />
-                      Project assignment based on skills
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="w-1 h-1 bg-primary rounded-full mt-1.5 shrink-0" />
-                      Mentorship from industry experts
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="w-1 h-1 bg-primary rounded-full mt-1.5 shrink-0" />
-                      Access to research facilities
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
-
-              <Card className="group hover:border-primary/50 transition-colors bg-panel">
-                <CardContent>
-                  <div className="w-10 h-10 bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                    <HelpCircleIcon strokeWidth={2} className="size-5 text-primary" />
-                  </div>
-                  <h3 className="text-sm font-medium mb-3 text-foreground tracking-tight">
-                    Need Help?
-                  </h3>
-                  <p className="text-xs text-muted-foreground mb-4 leading-relaxed">
-                    If you have questions about the application process or our research programs,
-                    please reach out to us.
-                  </p>
-                  <a
-                    href="mailto:drtmapaichair.itis@manipal.edu"
-                    className="inline-flex items-center gap-2 text-xs text-primary hover:underline"
-                  >
-                    <Mail01Icon strokeWidth={2} className="size-3.5" />
-                    drtmapaichair.itis@manipal.edu
-                  </a>
-                </CardContent>
-              </Card>
-            </div>
+            <span className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
+              <span className="size-1.5 bg-primary animate-pulse" aria-hidden />
+              Form 01 · Microsoft Forms
+            </span>
           </div>
+          <div className="w-full overflow-hidden sm:p-4">
+            <iframe
+              width="100%"
+              height="700"
+              src="https://forms.office.com/r/kN5F0Qiee2?embed=true"
+              frameBorder="0"
+              style={{
+                border: "none",
+                maxWidth: "100%",
+              }}
+              allowFullScreen
+              title="Research Application Form"
+              className="block min-h-[640px] sm:min-h-[760px]"
+            />
+          </div>
+        </Bezel>
+      </Section>
+
+      {/* 02 Process */}
+      <Section index="02">
+        <SectionHeader index="02" label="Process" title="What Happens Next" />
+
+        <div className="grid md:grid-cols-[1.4fr_1fr] gap-4 reveal">
+          <Bezel panelClassName="p-5 sm:p-6">
+            <div className="flex items-center gap-3 mb-5">
+              <CheckmarkCircle01Icon strokeWidth={2} className="size-5 text-primary" />
+              <h3 className="font-sans text-base font-medium text-foreground">What to Expect</h3>
+            </div>
+            <ol className="relative space-y-4 pl-6 before:absolute before:left-[3px] before:top-1.5 before:bottom-1.5 before:w-px before:bg-[repeating-linear-gradient(to_bottom,var(--primary)_0_3px,transparent_3px_7px)] before:opacity-60">
+              {[
+                "Application review within 1-2 weeks",
+                "Interview with research team leads",
+                "Project assignment based on skills",
+                "Mentorship from industry experts",
+                "Access to research facilities",
+              ].map((step, i) => (
+                <li key={step} className="relative">
+                  <span
+                    className="absolute -left-6 top-1.5 size-[7px] bg-primary ring-2 ring-[var(--background)]"
+                    aria-hidden
+                  />
+                  <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
+                    Step {String(i + 1).padStart(2, "0")}
+                  </p>
+                  <p className="text-sm text-foreground">{step}</p>
+                </li>
+              ))}
+            </ol>
+          </Bezel>
+
+          <Bezel panelClassName="flex flex-col p-5 sm:p-6">
+            <div className="flex items-center gap-3 mb-5">
+              <HelpCircleIcon strokeWidth={2} className="size-5 text-primary" />
+              <h3 className="font-sans text-base font-medium text-foreground">Need Help?</h3>
+            </div>
+            <p className="text-[13px] text-muted-foreground mb-6 leading-relaxed">
+              If you have questions about the application process or our research programs, please
+              reach out to us.
+            </p>
+            <a
+              href="mailto:drtmapaichair.itis@manipal.edu"
+              className="mt-auto inline-flex items-center gap-2 border border-border px-3 py-2 text-xs text-foreground hover:border-primary/50 hover:text-primary transition-colors w-fit"
+            >
+              <Mail01Icon strokeWidth={2} className="size-3.5" />
+              drtmapaichair.itis@manipal.edu
+            </a>
+          </Bezel>
         </div>
-      </section>
+      </Section>
     </div>
   );
 }

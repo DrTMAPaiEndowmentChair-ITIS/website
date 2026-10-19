@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { Bezel, Kicker } from "@/components/ui/section";
 import React from "react";
 
 export const dynamic = "force-static";
@@ -29,7 +30,10 @@ const components = {
     <h1 className="text-2xl font-medium mb-4 text-foreground" {...props} />
   ),
   h2: (props: React.ComponentPropsWithoutRef<"h2">) => (
-    <h2 className="text-lg font-medium mb-3 text-foreground" {...props} />
+    <h2
+      className="text-xl font-medium mt-10 mb-3 text-foreground border-t border-border pt-6"
+      {...props}
+    />
   ),
   h3: (props: React.ComponentPropsWithoutRef<"h3">) => (
     <h3 className="text-base font-medium mb-2 text-foreground" {...props} />
@@ -50,16 +54,22 @@ const components = {
     ) {
       return <>{significantChildren[0]}</>;
     }
-    return <p className="text-sm text-muted-foreground mb-4" {...props} />;
+    return <p className="text-[15px] leading-relaxed text-muted-foreground mb-4" {...props} />;
   },
   ul: (props: React.ComponentPropsWithoutRef<"ul">) => (
-    <ul className="text-sm text-muted-foreground mb-4 list-disc pl-6 space-y-1" {...props} />
+    <ul
+      className="text-[15px] text-muted-foreground mb-4 list-[square] marker:text-primary pl-6 space-y-1.5"
+      {...props}
+    />
   ),
   ol: (props: React.ComponentPropsWithoutRef<"ol">) => (
-    <ol className="text-sm text-muted-foreground mb-4 list-decimal pl-6 space-y-1" {...props} />
+    <ol
+      className="text-[15px] text-muted-foreground mb-4 list-decimal marker:font-mono marker:text-primary pl-6 space-y-1.5"
+      {...props}
+    />
   ),
   li: (props: React.ComponentPropsWithoutRef<"li">) => (
-    <li className="text-sm text-muted-foreground" {...props} />
+    <li className="leading-relaxed" {...props} />
   ),
   strong: (props: React.ComponentPropsWithoutRef<"strong">) => (
     <strong className="font-medium text-foreground" {...props} />
@@ -105,40 +115,37 @@ export default async function EventPage({ params }: { params: Params }) {
   return (
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="relative pt-24 pb-8 lg:pt-32 lg:pb-12 overflow-hidden">
-        <div className="container relative mx-auto px-4 lg:px-8">
-          <article className="max-w-4xl mx-auto">
+      <section className="relative">
+        <div className="shell pt-28 pb-16 lg:pt-36 lg:pb-24">
+          <article className="max-w-3xl mx-auto">
+            <Kicker label="Event" />
+            <h1 className="text-title font-medium mb-3 text-foreground text-balance">
+              {event.title}
+            </h1>
+            <p className="font-mono text-xs text-muted-foreground mb-8">{event.displayDate}</p>
+
             {event.image && (
-              <div className="relative w-full aspect-video mb-8 overflow-hidden border border-border">
+              <Bezel className="ticks mb-10" panelClassName="relative aspect-video overflow-hidden">
                 <Image
                   src={event.image}
                   alt={event.title}
                   fill
-                  sizes="(max-width: 896px) 100vw, 896px"
+                  sizes="(max-width: 896px) 100vw, 768px"
                   priority
                   fetchPriority="high"
                   className="object-cover"
                 />
-              </div>
+              </Bezel>
             )}
-
-            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-3">
-              Event
-            </p>
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-medium mb-4 text-foreground tracking-tight leading-[1.1]">
-              {event.title}
-            </h1>
-
-            <p className="text-xs text-muted-foreground mb-8">{event.displayDate}</p>
 
             <div className="prose-sm max-w-none">
               <MDXRemote source={event.content} components={components} />
             </div>
 
-            <Separator className="my-8" />
+            <Separator className="my-10" />
 
             <div className="text-center">
-              <Button asChild>
+              <Button asChild size="lg">
                 <Link href="/#events">Back to All Events</Link>
               </Button>
             </div>

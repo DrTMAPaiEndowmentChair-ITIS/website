@@ -1,15 +1,7 @@
+import type { ReactNode } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-  CardFooter,
-} from "@/components/ui/card";
 import {
   Carousel,
   CarouselContent,
@@ -17,6 +9,9 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { Bezel, Kicker, Section, SectionHeader } from "@/components/ui/section";
+import { DotMatrix, type SceneSpec } from "@/components/viz/dot-matrix";
+import { ResearchTimeline } from "@/components/viz/research-timeline";
 import { getSortedProjectsData, type ProjectFrontmatter } from "@/src/lib/projects";
 import { getSortedEventsData, type EventFrontmatter } from "@/src/lib/events";
 import {
@@ -27,10 +22,6 @@ import {
   Building01Icon,
   ArrowRight01Icon,
   Calendar01Icon,
-  AnalyticsUpIcon,
-  AiBrain01Icon,
-  Factory01Icon,
-  Leaf01Icon,
   FileEditIcon,
   Agreement01Icon,
   Rocket01Icon,
@@ -51,7 +42,7 @@ const getCompanyIcon = (companyName: string, companyLogo?: string) => {
     }
   }
 
-  const iconClass = "size-5 text-primary";
+  const iconClass = "size-4 text-primary";
   switch (companyName.toLowerCase()) {
     case "schneider electric":
       return <FlashIcon strokeWidth={2} className={iconClass} />;
@@ -66,21 +57,6 @@ const getCompanyIcon = (companyName: string, companyLogo?: string) => {
   }
 };
 
-const SectionKicker = ({ index, label }: { index: string; label: string }) => (
-  <p className="font-mono text-[10px] uppercase tracking-widest text-primary mb-2">
-    <span className="text-muted-foreground">{index}</span>
-    <span className="mx-2 text-border">/</span>
-    {label}
-  </p>
-);
-
-const CountChip = ({ label }: { label: string }) => (
-  <span className="inline-flex items-center gap-1.5 border border-border px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-    <span className="size-1.5 bg-primary" aria-hidden />
-    {label}
-  </span>
-);
-
 const HERO_DOMAINS = [
   "AI / ML",
   "IoT & Edge",
@@ -92,22 +68,22 @@ const HERO_DOMAINS = [
 
 const MARQUEE_PARTNERS = ["Schneider Electric", "TE Connectivity", "IBM", "DST", "BIRAC", "AICTE"];
 
-const PILLARS = [
+const PILLARS: { index: string; scene: SceneSpec; title: string; body: string }[] = [
   {
     index: "01",
-    Icon: AiBrain01Icon,
+    scene: "network",
     title: "Intelligent Technologies",
     body: "Advanced digital systems including AI, machine learning, and smart automation that enable machines to learn, adapt, and make decisions.",
   },
   {
     index: "02",
-    Icon: Factory01Icon,
+    scene: "gear",
     title: "Industry 4.0",
     body: "The fourth industrial revolution with cyber-physical systems, IoT, and data-driven manufacturing for smarter industries.",
   },
   {
     index: "03",
-    Icon: Leaf01Icon,
+    scene: "leaf",
     title: "Sustainability",
     body: "Developing solutions that meet present needs without compromising future generations' ability to meet theirs.",
   },
@@ -134,326 +110,320 @@ const APPLY_STEPS = [
   },
 ];
 
+function yearOf(iso?: string) {
+  return iso ? new Date(iso).getUTCFullYear() : undefined;
+}
+
+function ProjectCard({ project }: { project: ProjectFrontmatter }) {
+  const completed = project.status === "completed";
+  const partner = project.companyName || "MIT, MAHE";
+  return (
+    <Link href={`/research/${project.slug}`} className="group block h-full">
+      <Bezel className="h-full" panelClassName="flex flex-col p-5">
+        <div className="flex items-center justify-between gap-3 mb-5">
+          <div className="flex min-w-0 items-center gap-2.5">
+            <span className="flex size-8 shrink-0 items-center justify-center border border-primary/20 bg-primary/[0.06]">
+              {getCompanyIcon(partner, project.companyLogo)}
+            </span>
+            <span className="truncate font-mono text-[11px] text-foreground">{partner}</span>
+          </div>
+          {completed ? (
+            <span className="shrink-0 font-mono text-[10px] tabular-nums text-muted-foreground">
+              {yearOf(project.date)}–{yearOf(project.completionDate)}
+            </span>
+          ) : (
+            <span className="shrink-0 inline-flex items-center gap-1.5 font-mono text-[9px] uppercase tracking-[0.18em] text-primary">
+              <span className="size-1.5 bg-primary animate-pulse" aria-hidden />
+              Active
+            </span>
+          )}
+        </div>
+        <h3 className="font-sans text-[15px] font-medium leading-snug text-foreground group-hover:text-primary transition-colors line-clamp-2 mb-2">
+          {project.title}
+        </h3>
+        <p className="text-[13px] text-muted-foreground line-clamp-3 leading-relaxed mb-4">
+          {project.description}
+        </p>
+        <div className="flex flex-wrap gap-1 mt-auto">
+          {project.tags.slice(0, 3).map((tag) => (
+            <span
+              key={tag}
+              className="border border-border px-1.5 py-0.5 font-mono text-[10px] text-muted-foreground"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+        <div className="flex items-center justify-between border-t border-border mt-4 pt-3 text-xs">
+          <span className="text-primary flex items-center gap-1 group-hover:gap-2 transition-all">
+            {completed ? "View results" : "View project"}
+            <ArrowRight01Icon strokeWidth={2} className="size-3" />
+          </span>
+        </div>
+      </Bezel>
+    </Link>
+  );
+}
+
+function EventCard({ event }: { event: EventFrontmatter }) {
+  return (
+    <Link href={`/events/${event.slug}`} className="group block h-full">
+      <Bezel className="h-full" panelClassName="flex flex-col">
+        {event.image && (
+          <div className="relative aspect-[16/10] w-full overflow-hidden border-b border-border">
+            <Image
+              src={event.image}
+              alt={event.title}
+              fill
+              className="object-cover group-hover:scale-[1.03] transition-transform duration-500"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            />
+          </div>
+        )}
+        <div className="flex flex-1 flex-col p-5">
+          <p className="flex items-center gap-2 font-mono text-[10px] text-muted-foreground mb-2">
+            <Calendar01Icon strokeWidth={2} className="size-3" />
+            {event.displayDate}
+          </p>
+          <h3 className="font-sans text-[15px] font-medium leading-snug text-foreground group-hover:text-primary transition-colors line-clamp-2 mb-2">
+            {event.title}
+          </h3>
+          <p className="text-[13px] text-muted-foreground line-clamp-2 leading-relaxed mb-4">
+            {event.description}
+          </p>
+          <span className="mt-auto text-xs text-primary flex items-center gap-1 group-hover:gap-2 transition-all">
+            Learn more
+            <ArrowRight01Icon strokeWidth={2} className="size-3" />
+          </span>
+        </div>
+      </Bezel>
+    </Link>
+  );
+}
+
+function CardRail({ children }: { children: ReactNode }) {
+  return (
+    <Carousel className="w-full reveal" opts={{ align: "start" }}>
+      <CarouselContent className="-ml-4">{children}</CarouselContent>
+      <CarouselPrevious className="hidden md:flex -left-4 border-border hover:border-primary/50" />
+      <CarouselNext className="hidden md:flex -right-4 border-border hover:border-primary/50" />
+    </Carousel>
+  );
+}
+
 export default function Home() {
   const researchProjects: ProjectFrontmatter[] = getSortedProjectsData("current");
   const completedProjects: ProjectFrontmatter[] = getSortedProjectsData("completed");
   const upcomingEvents: EventFrontmatter[] = getSortedEventsData();
+  const totalProjects = researchProjects.length + completedProjects.length;
+
+  const heroStats = [
+    { value: `${totalProjects}`, label: "Research projects", href: "#timeline" },
+    { value: "10+", label: "Industry partners", href: "#partners" },
+    { value: "50+", label: "Student researchers", href: "/apply" },
+  ];
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section — fills the first viewport, stats anchored at the bottom */}
+      {/* Hero — fills the first viewport, read-out strip anchored at the bottom */}
       <section className="relative min-h-svh flex flex-col">
-        <div className="container relative mx-auto px-4 lg:px-8 flex-1 flex items-center pt-24 pb-12">
-          <div className="max-w-6xl mx-auto w-full">
-            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-              <div className="order-2 lg:order-1">
-                <Badge
-                  variant="secondary"
-                  className="mb-6 font-mono text-[10px] uppercase tracking-widest"
-                >
-                  MAHE, Manipal
-                </Badge>
-                <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-medium mb-6 leading-[1.1] tracking-tight text-foreground">
-                  Advancing Research Through{" "}
-                  <span className="text-primary">Industry Collaborations</span>
-                </h1>
-                <p className="text-muted-foreground text-sm sm:text-base mb-8 max-w-lg leading-relaxed">
-                  Join us in pushing the boundaries of innovation through cutting-edge research
-                  projects and industry partnerships at the Dr. TMA Pai Endowment Chair.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-3">
-                  <Button asChild size="lg">
-                    <Link href="/apply">
-                      Apply for Research
-                      <ArrowRight01Icon strokeWidth={2} data-icon="inline-end" />
-                    </Link>
-                  </Button>
-                  <Button variant="outline" asChild size="lg">
-                    <Link href="#research">Explore Projects</Link>
-                  </Button>
-                </div>
-                <div className="flex flex-wrap gap-2 mt-8">
-                  {HERO_DOMAINS.map((domain) => (
-                    <span
-                      key={domain}
-                      className="border border-border/70 bg-background/50 dark:bg-white/5 px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-muted-foreground"
-                    >
-                      {domain}
-                    </span>
-                  ))}
-                </div>
-              </div>
-              <div className="order-1 lg:order-2 relative">
-                <div className="relative aspect-square max-w-xs sm:max-w-md mx-auto lg:max-w-none">
-                  {/* The PNG ships an opaque #FAFAFA plate, so it would mask the
-                      ambient background. brightness lifts that plate to pure
-                      white, which multiply then drops entirely; in dark mode
-                      invert turns the same plate black and screen drops it. */}
-                  <Image
-                    src="/hero-image.png"
-                    alt="Research and Innovation"
-                    fill
-                    sizes="(max-width: 640px) 20rem, (max-width: 1024px) 28rem, 34rem"
-                    className="object-contain brightness-[1.021] mix-blend-multiply dark:invert dark:hue-rotate-180 dark:mix-blend-screen"
-                    priority
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Stats strip */}
-        <div className="container relative mx-auto px-4 lg:px-8 pb-8">
-          <div className="max-w-5xl mx-auto">
-            <div className="grid grid-cols-3 divide-x divide-border border-t border-border pt-6">
-              {[
-                { value: "20+", label: "Research Projects" },
-                { value: "10+", label: "Industry Partners" },
-                { value: "50+", label: "Student Researchers" },
-              ].map((stat, index) => (
-                <div key={index} className="text-center px-4 py-2">
-                  <div className="font-mono text-2xl sm:text-3xl lg:text-4xl font-medium text-foreground tracking-tight">
-                    {stat.value}
-                  </div>
-                  <div className="font-mono text-[10px] sm:text-xs text-muted-foreground uppercase tracking-widest mt-1">
-                    {stat.label}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Chair Info Section */}
-      <section className="cv-auto min-h-svh flex items-center py-24">
-        <div className="container mx-auto px-4 lg:px-8 w-full">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-10 reveal">
-              <SectionKicker index="01" label="About" />
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-medium text-foreground tracking-tight">
-                Dr. TMA Pai Endowment Chair
-              </h2>
-              <p className="text-sm sm:text-base text-muted-foreground mt-3 max-w-2xl mx-auto leading-relaxed">
-                An endowed chair at Manipal Academy of Higher Education dedicated to research at the
-                intersection of intelligent systems, industrial transformation, and sustainable
-                development — carried out hand in hand with industry and government partners.
+        <div className="shell relative flex-1 flex items-center pt-28 pb-12">
+          <div className="grid lg:grid-cols-[1.1fr_1fr] gap-12 lg:gap-16 items-center w-full">
+            <div>
+              <Kicker label="MAHE, Manipal · Endowment Chair" className="mb-6" />
+              <h1 className="text-display font-medium mb-6 text-foreground text-balance">
+                Advancing Research Through{" "}
+                <span className="text-primary">Industry Collaborations</span>
+              </h1>
+              <p className="text-muted-foreground text-base sm:text-lg mb-8 max-w-lg leading-relaxed text-pretty">
+                Join us in pushing the boundaries of innovation through cutting-edge research
+                projects and industry partnerships at the Dr. TMA Pai Endowment Chair.
               </p>
-            </div>
-            <div className="grid md:grid-cols-3 gap-6 text-sm text-muted-foreground reveal">
-              {PILLARS.map((pillar) => (
-                <div
-                  key={pillar.title}
-                  className="group p-6 bg-muted/50 dark:bg-white/5 border border-border hover:border-primary/30 transition-colors"
-                >
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="flex h-9 w-9 items-center justify-center bg-primary/10 text-primary group-hover:bg-primary/20 transition-colors">
-                      <pillar.Icon strokeWidth={2} className="size-5" />
-                    </div>
-                    <span className="font-mono text-[10px] text-muted-foreground/60 tracking-widest">
-                      {pillar.index}
-                    </span>
-                  </div>
-                  <h3 className="text-foreground font-medium mb-2 text-base">{pillar.title}</h3>
-                  <p className="text-xs leading-relaxed">{pillar.body}</p>
-                </div>
-              ))}
-            </div>
-            {/* Facts strip */}
-            <div className="grid sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-border border border-border mt-6 reveal">
-              {[
-                { label: "Chair Holder", value: "Dr. Manohara Pai M.M.", href: "/chairperson" },
-                { label: "Institution", value: "MIT, MAHE, Manipal" },
-                { label: "Mandate", value: "Industry-collaborative research" },
-              ].map((fact) => (
-                <div key={fact.label} className="px-6 py-4">
-                  <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground mb-1">
-                    {fact.label}
-                  </p>
-                  {fact.href ? (
-                    <Link
-                      href={fact.href}
-                      className="text-xs text-foreground hover:text-primary transition-colors"
-                    >
-                      {fact.value} →
-                    </Link>
-                  ) : (
-                    <p className="text-xs text-foreground">{fact.value}</p>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Current Research Projects */}
-      <section id="research" className="cv-auto min-h-svh flex items-center py-24">
-        <div className="container mx-auto px-4 lg:px-8 w-full">
-          <div className="max-w-6xl mx-auto">
-            <div className="mb-10 reveal">
-              <SectionKicker index="02" label="Research" />
-              <div className="flex items-center gap-3 flex-wrap">
-                <h2 className="text-2xl sm:text-3xl font-medium text-foreground tracking-tight">
-                  Current Projects
-                </h2>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Button asChild size="lg">
+                  <Link href="/apply">
+                    Apply for Research
+                    <ArrowRight01Icon strokeWidth={2} data-icon="inline-end" />
+                  </Link>
+                </Button>
+                <Button variant="outline" asChild size="lg">
+                  <Link href="#research">Explore Projects</Link>
+                </Button>
               </div>
-              <p className="text-sm text-muted-foreground mt-3 max-w-lg leading-relaxed">
-                Ongoing investigations with industry partners — from generative AI for industrial
-                automation to software qualimetry and threat analysis.
-              </p>
-            </div>
-            <Carousel className="w-full" opts={{ align: "start" }}>
-              <CarouselContent className="-ml-4">
-                {researchProjects.map((project) => (
-                  <CarouselItem key={project.slug} className="pl-4 md:basis-1/2 lg:basis-1/3">
-                    <Link href={`/research/${project.slug}`} className="block h-full group">
-                      <Card className="h-full border-border hover:border-primary/50 transition-all duration-300 bg-panel">
-                        <CardHeader className="pb-2">
-                          <div className="flex items-center gap-3 mb-3">
-                            <div className="flex h-9 w-9 items-center justify-center bg-primary/10 group-hover:bg-primary/20 transition-colors shrink-0">
-                              {getCompanyIcon(project.companyName, project.companyLogo)}
-                            </div>
-                            <div className="flex-1 min-w-0">
-                              <p className="font-mono text-[11px] font-medium text-foreground truncate">
-                                {project.companyName}
-                              </p>
-                            </div>
-                          </div>
-                          <CardTitle className="text-sm font-medium group-hover:text-primary transition-colors line-clamp-2 leading-snug">
-                            {project.title}
-                          </CardTitle>
-                        </CardHeader>
-                        <CardContent className="pt-0 pb-2">
-                          <p className="text-xs text-muted-foreground line-clamp-2 mb-3 leading-relaxed">
-                            {project.description}
-                          </p>
-                          <div className="flex flex-wrap gap-1">
-                            {project.tags.slice(0, 3).map((tag, tagIndex) => (
-                              <span
-                                key={tagIndex}
-                                className="px-2 py-0.5 bg-muted dark:bg-white/10 font-mono text-[10px] text-muted-foreground"
-                              >
-                                {tag}
-                              </span>
-                            ))}
-                          </div>
-                        </CardContent>
-                        <CardFooter className="pt-2 border-t border-border mt-auto">
-                          <span className="text-xs text-primary flex items-center gap-1 group-hover:gap-2 transition-all">
-                            View project
-                            <ArrowRight01Icon strokeWidth={2} className="size-3" />
-                          </span>
-                        </CardFooter>
-                      </Card>
-                    </Link>
-                  </CarouselItem>
+              <ul className="flex flex-wrap gap-1.5 mt-8" aria-label="Research domains">
+                {HERO_DOMAINS.map((domain) => (
+                  <li
+                    key={domain}
+                    className="border border-border/70 bg-background/50 dark:bg-white/5 px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-muted-foreground"
+                  >
+                    {domain}
+                  </li>
                 ))}
-              </CarouselContent>
-              <CarouselPrevious className="hidden md:flex -left-4 border-border hover:border-primary/50" />
-              <CarouselNext className="hidden md:flex -right-4 border-border hover:border-primary/50" />
-            </Carousel>
-          </div>
-        </div>
-      </section>
-
-      {/* Completed Research Projects */}
-      <section id="completed-research" className="cv-auto min-h-svh flex items-center py-24">
-        <div className="container mx-auto px-4 lg:px-8 w-full">
-          <div className="max-w-6xl mx-auto">
-            <div className="mb-10 reveal">
-              <SectionKicker index="03" label="Archive" />
-              <div className="flex items-center gap-3 flex-wrap">
-                <h2 className="text-2xl sm:text-3xl font-medium text-foreground tracking-tight">
-                  Completed Projects
-                </h2>
+              </ul>
+            </div>
+            <div>
+              <div className="ticks relative aspect-square max-w-[15rem] sm:max-w-sm mx-auto lg:max-w-none">
+                {/* The PNG ships an opaque #FAFAFA plate, so it would mask the
+                    ambient background. brightness lifts that plate to pure
+                    white, which multiply then drops entirely; in dark mode
+                    invert turns the same plate black and screen drops it. */}
+                <Image
+                  src="/hero-image.png"
+                  alt="Research and Innovation"
+                  fill
+                  sizes="(max-width: 640px) 20rem, (max-width: 1024px) 28rem, 34rem"
+                  className="object-contain brightness-[1.021] mix-blend-multiply dark:invert dark:hue-rotate-180 dark:mix-blend-screen"
+                  priority
+                />
+                <span className="absolute left-0 -top-6 font-mono text-[9px] uppercase tracking-[0.2em] text-muted-foreground">
+                  Fig. 00 — Institution
+                </span>
+                <span className="absolute right-0 -bottom-6 font-mono text-[9px] tracking-[0.15em] text-muted-foreground tabular-nums">
+                  13.3525° N · 74.7924° E
+                </span>
               </div>
-              <p className="text-sm text-muted-foreground mt-3 max-w-lg leading-relaxed">
-                Two decades of delivered research — spanning healthcare devices, connected vehicles,
-                smart aquaculture, and industrial analytics.
-              </p>
             </div>
-            <Carousel className="w-full" opts={{ align: "start" }}>
-              <CarouselContent className="-ml-4">
-                {completedProjects.map((project) => (
-                  <CarouselItem key={project.slug} className="pl-4 md:basis-1/2 lg:basis-1/3">
-                    <Link href={`/research/${project.slug}`} className="block h-full group">
-                      <Card className="h-full border-border hover:border-primary/50 transition-all duration-300 bg-panel">
-                        <CardHeader className="pb-2">
-                          <div className="flex items-center gap-3 mb-3">
-                            <div className="flex h-9 w-9 items-center justify-center bg-muted dark:bg-white/10 group-hover:bg-primary/10 transition-colors shrink-0">
-                              {getCompanyIcon(project.companyName, project.companyLogo)}
-                            </div>
-                            <div className="flex-1 min-w-0">
-                              <p className="font-mono text-[11px] font-medium text-foreground truncate">
-                                {project.companyName}
-                              </p>
-                              {project.completionDate && (
-                                <p className="text-[10px] text-muted-foreground">
-                                  Completed{" "}
-                                  {new Date(project.completionDate).toLocaleDateString("en-US", {
-                                    year: "numeric",
-                                    month: "short",
-                                  })}
-                                </p>
-                              )}
-                            </div>
-                          </div>
-                          <CardTitle className="text-sm font-medium group-hover:text-primary transition-colors line-clamp-2 leading-snug">
-                            {project.title}
-                          </CardTitle>
-                        </CardHeader>
-                        <CardContent className="pt-0 pb-2">
-                          <p className="text-xs text-muted-foreground line-clamp-2 mb-3 leading-relaxed">
-                            {project.description}
-                          </p>
-                          <div className="flex flex-wrap gap-1">
-                            {project.tags.slice(0, 3).map((tag, tagIndex) => (
-                              <span
-                                key={tagIndex}
-                                className="px-2 py-0.5 bg-muted dark:bg-white/10 font-mono text-[10px] text-muted-foreground"
-                              >
-                                {tag}
-                              </span>
-                            ))}
-                          </div>
-                        </CardContent>
-                        <CardFooter className="pt-2 border-t border-border mt-auto">
-                          <span className="text-xs text-muted-foreground group-hover:text-primary transition-colors flex items-center gap-1 group-hover:gap-2">
-                            View results
-                            <ArrowRight01Icon strokeWidth={2} className="size-3" />
-                          </span>
-                        </CardFooter>
-                      </Card>
-                    </Link>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <CarouselPrevious className="hidden md:flex -left-4 border-border hover:border-primary/50" />
-              <CarouselNext className="hidden md:flex -right-4 border-border hover:border-primary/50" />
-            </Carousel>
+          </div>
+        </div>
+
+        {/* Read-out strip */}
+        <div className="shell relative pb-8">
+          <div className="ruler grid grid-cols-3 border-t border-border">
+            {heroStats.map((stat) => (
+              <Link
+                key={stat.label}
+                href={stat.href}
+                className="group px-2 sm:px-6 pt-6 pb-2 text-center border-l border-border first:border-l-0"
+              >
+                <div className="font-mono text-3xl sm:text-4xl lg:text-5xl font-medium text-foreground tracking-tight group-hover:text-primary transition-colors">
+                  {stat.value}
+                </div>
+                <div className="font-mono text-[9px] sm:text-[10px] text-muted-foreground uppercase tracking-[0.18em] mt-2">
+                  {stat.label}
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Partners Section */}
-      <section className="cv-auto min-h-svh flex flex-col justify-center py-24">
-        <div className="container mx-auto px-4 lg:px-8 w-full">
-          <div className="max-w-5xl mx-auto">
-            <div className="text-center mb-10 reveal">
-              <SectionKicker index="04" label="Partners" />
-              <h2 className="text-2xl sm:text-3xl font-medium text-foreground tracking-tight">
-                Collaborators & Funding
-              </h2>
-              <p className="text-sm text-muted-foreground mt-3 max-w-xl mx-auto leading-relaxed">
-                Research at the chair is grounded in real problems — sponsored, co-developed, and
-                deployed with global industry leaders and national funding agencies.
+      {/* 01 About */}
+      <Section index="01" className="cv-auto">
+        <SectionHeader
+          index="01"
+          label="About"
+          align="center"
+          title="Dr. TMA Pai Endowment Chair"
+          lede="An endowed chair at Manipal Academy of Higher Education dedicated to research at the intersection of intelligent systems, industrial transformation, and sustainable development — carried out hand in hand with industry and government partners."
+        />
+        <div className="grid md:grid-cols-3 gap-4 reveal">
+          {PILLARS.map((pillar) => (
+            <Bezel key={pillar.title} hover panelClassName="flex flex-col p-5 sm:p-6">
+              <div className="flex items-baseline justify-between mb-3">
+                <h3 className="font-sans text-lg font-medium text-foreground">{pillar.title}</h3>
+                <span className="font-mono text-[10px] text-muted-foreground/70 tracking-widest">
+                  {pillar.index}
+                </span>
+              </div>
+              <p className="text-[13px] leading-relaxed text-muted-foreground mb-6">
+                {pillar.body}
               </p>
-            </div>
-          </div>
+              <div className="mt-auto h-44 border border-primary/15 bg-primary/[0.025]">
+                <DotMatrix
+                  scenes={[pillar.scene]}
+                  pitch={6}
+                  label={`${pillar.title} illustration`}
+                />
+              </div>
+            </Bezel>
+          ))}
         </div>
+        {/* Facts strip */}
+        <dl className="grid sm:grid-cols-3 border-l border-t border-border mt-4 reveal">
+          {[
+            { label: "Chair Holder", value: "Dr. Manohara Pai M.M.", href: "/chairperson" },
+            { label: "Institution", value: "MIT, MAHE, Manipal" },
+            { label: "Mandate", value: "Industry-collaborative research" },
+          ].map((fact) => (
+            <div key={fact.label} className="px-6 py-4 border-r border-b border-border">
+              <dt className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground mb-1">
+                {fact.label}
+              </dt>
+              <dd className="text-sm text-foreground">
+                {fact.href ? (
+                  <Link href={fact.href} className="hover:text-primary transition-colors">
+                    {fact.value} →
+                  </Link>
+                ) : (
+                  fact.value
+                )}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </Section>
 
+      {/* 02 Current research */}
+      <Section index="02" id="research" className="cv-auto scroll-mt-16">
+        <SectionHeader
+          index="02"
+          label="Research"
+          title="Current Projects"
+          lede="Ongoing investigations with industry partners — from generative AI for industrial automation to software qualimetry and threat analysis."
+        />
+        <CardRail>
+          {researchProjects.map((project) => (
+            <CarouselItem key={project.slug} className="pl-4 md:basis-1/2 lg:basis-1/3">
+              <ProjectCard project={project} />
+            </CarouselItem>
+          ))}
+        </CardRail>
+      </Section>
+
+      {/* 03 Track record */}
+      <Section index="03" id="timeline" className="cv-auto scroll-mt-16">
+        <SectionHeader
+          index="03"
+          label="Track record"
+          title="Three decades of sponsored research"
+          lede="Every project the chair has run, from the first AICTE robotics grant to today's agentic security work. Hover or focus a bar for dates and the sponsor; select it to open the project."
+        />
+        <ResearchTimeline projects={[...completedProjects, ...researchProjects]} />
+      </Section>
+
+      {/* 04 Archive */}
+      <Section index="04" id="completed-research" className="cv-auto scroll-mt-16">
+        <SectionHeader
+          index="04"
+          label="Archive"
+          title="Completed Projects"
+          lede="Delivered research — spanning healthcare devices, connected vehicles, smart aquaculture, and industrial analytics."
+        />
+        <CardRail>
+          {completedProjects.map((project) => (
+            <CarouselItem key={project.slug} className="pl-4 md:basis-1/2 lg:basis-1/3">
+              <ProjectCard project={project} />
+            </CarouselItem>
+          ))}
+        </CardRail>
+      </Section>
+
+      {/* 05 Partners */}
+      <Section
+        index="05"
+        id="partners"
+        className="cv-auto scroll-mt-16"
+        innerClassName="pb-0 sm:pb-0 lg:pb-0"
+      >
+        <SectionHeader
+          index="05"
+          label="Partners"
+          align="center"
+          title="Collaborators & Funding"
+          lede="Research at the chair is grounded in real problems — sponsored, co-developed, and deployed with global industry leaders and national funding agencies."
+        />
+      </Section>
+      <div className="cv-auto">
         {/* Partner marquee — full bleed */}
         <div className="marquee relative overflow-hidden border-y border-border py-3 mb-12 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
           <div className="marquee-track flex w-max whitespace-nowrap">
@@ -473,186 +443,137 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="container mx-auto px-4 lg:px-8 w-full">
-          <div className="max-w-5xl mx-auto">
-            {/* Government Agencies */}
-            <div className="mb-12 reveal">
-              <p className="font-mono text-xs text-muted-foreground text-center mb-6 uppercase tracking-wide">
-                Government Agencies
-              </p>
-              <div className="grid grid-cols-3 gap-4 max-w-2xl mx-auto">
-                {[
+        <div className="shell pb-16 sm:pb-20 lg:pb-28">
+          <div className="grid md:grid-cols-2 gap-10 md:gap-6">
+            {[
+              {
+                title: "Government Agencies",
+                items: [
                   { name: "DST", logo: "/companies/dst-logo.png", invertDark: true },
                   { name: "BIRAC", logo: "/companies/birac.png", invertDark: false },
                   { name: "AICTE", logo: "/companies/aicte-logo.png", invertDark: false },
-                ].map((agency, index) => (
-                  <div
-                    key={index}
-                    className="flex items-center justify-center p-6 bg-panel border border-border hover:border-primary/30 transition-colors group"
-                  >
-                    {/* brightness-0 flattens the mark to black and invert lifts it
-                        to white — a predictable silhouette, unlike invert +
-                        hue-rotate, which shifts a coloured logo off brand. */}
-                    <Image
-                      src={agency.logo}
-                      alt={agency.name}
-                      width={80}
-                      height={40}
-                      className={`object-contain h-auto opacity-70 group-hover:opacity-100 transition-opacity ${agency.invertDark ? "dark:brightness-0 dark:invert dark:opacity-80 dark:group-hover:opacity-100" : ""}`}
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Industry Partners */}
-            <div className="reveal">
-              <p className="font-mono text-xs text-muted-foreground text-center mb-6 uppercase tracking-wide">
-                Industry Partners
-              </p>
-              <div className="grid grid-cols-3 gap-4 max-w-2xl mx-auto">
-                {[
-                  { name: "Schneider Electric", logo: "/companies/schneider-logo.svg" },
-                  { name: "TE Connectivity", logo: "/companies/te-connectivity-logo.svg" },
-                  { name: "IBM", logo: "/companies/IBM_logo.svg" },
-                ].map((company, index) => (
-                  <div
-                    key={index}
-                    className="flex items-center justify-center p-6 bg-panel border border-border hover:border-primary/30 transition-colors group"
-                  >
-                    <Image
-                      src={company.logo}
-                      alt={company.name}
-                      width={80}
-                      height={40}
-                      className="object-contain h-auto opacity-70 group-hover:opacity-100 transition-opacity"
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Events Section */}
-      <section id="events" className="cv-auto min-h-svh flex items-center py-24">
-        <div className="container mx-auto px-4 lg:px-8 w-full">
-          <div className="max-w-6xl mx-auto">
-            <div className="flex items-end justify-between gap-8 mb-10 reveal">
-              <div>
-                <SectionKicker index="05" label="Events" />
-                <div className="flex items-center gap-3 flex-wrap">
-                  <h2 className="text-2xl sm:text-3xl font-medium text-foreground tracking-tight">
-                    Upcoming & Recent
-                  </h2>
-                  <CountChip label={`${upcomingEvents.length} events`} />
-                </div>
-                <p className="text-sm text-muted-foreground mt-3 max-w-lg leading-relaxed">
-                  Workshops, hackathons, CTFs, and panels that bring students and industry
-                  practitioners into the same room.
+                ],
+              },
+              {
+                title: "Industry Partners",
+                items: [
+                  {
+                    name: "Schneider Electric",
+                    logo: "/companies/schneider-logo.svg",
+                    invertDark: false,
+                  },
+                  {
+                    name: "TE Connectivity",
+                    logo: "/companies/te-connectivity-logo.svg",
+                    invertDark: false,
+                  },
+                  { name: "IBM", logo: "/companies/IBM_logo.svg", invertDark: false },
+                ],
+              },
+            ].map((group) => (
+              <div key={group.title} className="reveal">
+                <p className="font-mono text-label text-muted-foreground mb-4 uppercase tracking-[0.18em] flex items-center gap-3">
+                  {group.title}
+                  <span className="h-px flex-1 bg-border" aria-hidden />
+                  <span className="tabular-nums">{group.items.length}</span>
                 </p>
-              </div>
-            </div>
-            <Carousel className="w-full" opts={{ align: "start" }}>
-              <CarouselContent className="-ml-4">
-                {upcomingEvents.map((event) => (
-                  <CarouselItem key={event.slug} className="pl-4 md:basis-1/2 lg:basis-1/3">
-                    <Link href={`/events/${event.slug}`} className="block h-full group">
-                      <Card className="h-full border-border hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 bg-panel">
-                        {event.image && (
-                          <div className="relative aspect-[16/10] w-full overflow-hidden">
-                            <Image
-                              src={event.image}
-                              alt={event.title}
-                              fill
-                              className="object-cover group-hover:scale-105 transition-transform duration-500"
-                              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                            />
-                          </div>
-                        )}
-                        <CardHeader className="pt-3">
-                          <div className="flex items-center gap-2 font-mono text-[10px] text-muted-foreground">
-                            <Calendar01Icon strokeWidth={2} className="size-3" />
-                            {event.displayDate}
-                          </div>
-                          <CardTitle className="text-sm group-hover:text-primary transition-colors line-clamp-2">
-                            {event.title}
-                          </CardTitle>
-                          <CardDescription className="text-xs line-clamp-2">
-                            {event.description}
-                          </CardDescription>
-                        </CardHeader>
-                        <CardFooter>
-                          <span className="text-xs text-primary flex items-center gap-1 group-hover:gap-2 transition-all">
-                            Learn more
-                            <ArrowRight01Icon strokeWidth={2} className="size-3" />
-                          </span>
-                        </CardFooter>
-                      </Card>
-                    </Link>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <CarouselPrevious className="hidden md:flex -left-4 border-border hover:border-primary/50" />
-              <CarouselNext className="hidden md:flex -right-4 border-border hover:border-primary/50" />
-            </Carousel>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="cv-auto relative min-h-svh flex items-center py-24 overflow-hidden">
-        <div className="container mx-auto px-4 lg:px-8 relative w-full">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center reveal">
-              <div className="inline-flex items-center justify-center w-12 h-12 bg-primary/10 text-primary mb-6">
-                <AnalyticsUpIcon strokeWidth={2} className="size-6" />
-              </div>
-              <h2 className="text-2xl sm:text-3xl font-medium mb-4 text-foreground tracking-tight">
-                Ready to Join Our Research Community?
-              </h2>
-              <p className="text-sm text-muted-foreground mb-10 max-w-lg mx-auto leading-relaxed">
-                Apply now to participate in cutting-edge research projects and collaborate with
-                industry leaders. Here is how it works:
-              </p>
-            </div>
-
-            {/* Application steps */}
-            <div className="grid sm:grid-cols-3 gap-4 mb-10 reveal">
-              {APPLY_STEPS.map((step) => (
-                <div
-                  key={step.index}
-                  className="group relative p-6 bg-background/60 dark:bg-white/5 border border-border hover:border-primary/30 transition-colors text-left"
-                >
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="flex h-9 w-9 items-center justify-center bg-primary/10 text-primary group-hover:bg-primary/20 transition-colors">
-                      <step.Icon strokeWidth={2} className="size-5" />
-                    </div>
-                    <span className="font-mono text-[10px] text-muted-foreground/60 tracking-widest">
-                      {step.index}
-                    </span>
-                  </div>
-                  <h3 className="text-sm font-medium text-foreground mb-1.5">{step.title}</h3>
-                  <p className="text-xs text-muted-foreground leading-relaxed">{step.body}</p>
+                <div className="grid grid-cols-3 gap-3">
+                  {group.items.map((item) => (
+                    <Bezel
+                      key={item.name}
+                      hover
+                      panelClassName="flex items-center justify-center h-24 p-5 group/logo"
+                    >
+                      {/* brightness-0 flattens the mark to black and invert lifts it
+                          to white — a predictable silhouette, unlike invert +
+                          hue-rotate, which shifts a coloured logo off brand. */}
+                      <Image
+                        src={item.logo}
+                        alt={item.name}
+                        width={80}
+                        height={40}
+                        className={`object-contain h-auto max-h-10 opacity-75 group-hover/logo:opacity-100 transition-opacity ${item.invertDark ? "dark:brightness-0 dark:invert dark:opacity-80" : ""}`}
+                      />
+                    </Bezel>
+                  ))}
                 </div>
-              ))}
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-3 justify-center reveal">
-              <Button asChild size="lg">
-                <Link href="/apply">
-                  Apply Now
-                  <ArrowRight01Icon strokeWidth={2} data-icon="inline-end" />
-                </Link>
-              </Button>
-              <Button variant="outline" asChild size="lg">
-                <Link href="/chairperson">Meet the Chair Professor</Link>
-              </Button>
-            </div>
+              </div>
+            ))}
           </div>
         </div>
-      </section>
+      </div>
+
+      {/* 06 Events */}
+      <Section index="06" id="events" className="cv-auto scroll-mt-16">
+        <SectionHeader
+          index="06"
+          label="Events"
+          title="Upcoming & Recent"
+          lede="Workshops, hackathons, CTFs, and panels that bring students and industry practitioners into the same room."
+          action={
+            <span className="inline-flex items-center gap-1.5 border border-border px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+              <span className="size-1.5 bg-primary" aria-hidden />
+              {upcomingEvents.length} events
+            </span>
+          }
+        />
+        <CardRail>
+          {upcomingEvents.map((event) => (
+            <CarouselItem key={event.slug} className="pl-4 md:basis-1/2 lg:basis-1/3">
+              <EventCard event={event} />
+            </CarouselItem>
+          ))}
+        </CardRail>
+      </Section>
+
+      {/* 07 Apply */}
+      <Section index="07" className="cv-auto">
+        <SectionHeader
+          index="07"
+          label="Join"
+          align="center"
+          title="Ready to Join Our Research Community?"
+          lede="Apply now to participate in cutting-edge research projects and collaborate with industry leaders. Here is how it works:"
+        />
+
+        <ol className="relative grid sm:grid-cols-3 gap-4 mb-10 reveal">
+          {/* Connector between steps */}
+          <span
+            className="absolute left-[16.6%] right-[16.6%] top-[2.1rem] hidden sm:block h-px bg-[repeating-linear-gradient(to_right,var(--primary)_0_4px,transparent_4px_8px)] opacity-50"
+            aria-hidden
+          />
+          {APPLY_STEPS.map((step) => (
+            <li key={step.index} className="relative">
+              <Bezel hover panelClassName="p-5 sm:p-6 text-left">
+                <div className="flex items-center justify-between mb-5">
+                  <span className="flex size-9 items-center justify-center bg-primary text-primary-foreground">
+                    <step.Icon strokeWidth={2} className="size-4" />
+                  </span>
+                  <span className="font-mono text-[10px] text-muted-foreground tracking-widest">
+                    Step {step.index}
+                  </span>
+                </div>
+                <h3 className="font-sans text-base font-medium text-foreground mb-1.5">
+                  {step.title}
+                </h3>
+                <p className="text-[13px] text-muted-foreground leading-relaxed">{step.body}</p>
+              </Bezel>
+            </li>
+          ))}
+        </ol>
+
+        <div className="flex flex-col sm:flex-row gap-3 justify-center reveal">
+          <Button asChild size="lg">
+            <Link href="/apply">
+              Apply Now
+              <ArrowRight01Icon strokeWidth={2} data-icon="inline-end" />
+            </Link>
+          </Button>
+          <Button variant="outline" asChild size="lg">
+            <Link href="/chairperson">Meet the Chair Professor</Link>
+          </Button>
+        </div>
+      </Section>
     </div>
   );
 }

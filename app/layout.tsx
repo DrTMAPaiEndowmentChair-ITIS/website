@@ -52,8 +52,11 @@ export default function RootLayout({
         <ThemeProvider>
           <SiteBackground />
           <Navbar />
-          <main>{children}</main>
-          <Footer />
+          <div className="relative">
+            <div className="rails" aria-hidden />
+            <main>{children}</main>
+            <Footer />
+          </div>
         </ThemeProvider>
       </body>
     </html>

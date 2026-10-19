@@ -3,6 +3,18 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Fluid type: display for page titles, title for section heads. */
+@theme {
+  --text-display: clamp(2.25rem, 1.25rem + 3.2vw, 4.25rem);
+  --text-display--line-height: 1.04;
+  --text-display--letter-spacing: -0.035em;
+  --text-title: clamp(1.625rem, 1.15rem + 1.6vw, 2.625rem);
+  --text-title--line-height: 1.08;
+  --text-title--letter-spacing: -0.025em;
+  --text-label: 0.6875rem;
+  --text-label--line-height: 1rem;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -135,6 +147,8 @@
   }
   body {
     @apply bg-background text-foreground;
+    /* Hidden chart tooltips near the right edge must not widen the page. */
+    overflow-x: clip;
   }
   /* DM Mono for headings, DM Sans for body copy */
   h1,
@@ -159,12 +173,249 @@
   background-color: transparent;
 }
 
-/* Subtle blueprint grid, used behind the hero */
+/* Blueprint paper: a major 56px grid over a faint 14px minor grid. */
 .bg-grid {
   background-image:
     linear-gradient(to right, var(--border) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--border) 1px, transparent 1px);
-  background-size: 56px 56px;
+    linear-gradient(to bottom, var(--border) 1px, transparent 1px),
+    linear-gradient(
+      to right,
+      color-mix(in oklab, var(--border) 45%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in oklab, var(--border) 45%, transparent) 1px,
+      transparent 1px
+    );
+  background-size:
+    56px 56px,
+    56px 56px,
+    14px 14px,
+    14px 14px;
+}
+
+/* ---------------------------------------------------------------------------
+   Lab layout system
+   The page sits in one measured column (.shell). Two hairline rails run the
+   full height of the document just outside it, and every section opens on a
+   full-bleed rule that crosses the rails with a registration mark — the
+   drawing-sheet frame the rest of the design hangs off.
+   --------------------------------------------------------------------------- */
+:root {
+  --shell: 74rem;
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+  /* Rails sit half a gutter outside the content column. */
+  --rail-span: min(100% - var(--gutter), var(--shell) + var(--gutter));
+  --rule: var(--border);
+  --mark: color-mix(in oklab, var(--foreground) 35%, transparent);
+}
+
+/* Component classes live in a layer so Tailwind utilities on the same
+   element (h-24, absolute, …) still win. */
+@layer components {
+  .shell {
+    width: min(100% - 2 * var(--gutter), var(--shell));
+    margin-inline: auto;
+  }
+
+  .rails {
+    position: absolute;
+    inset-block: 0;
+    left: 50%;
+    width: var(--rail-span);
+    translate: -50% 0;
+    border-inline: 1px solid var(--rule);
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  /* Measuring-tape ticks along the top edge: minor every 12px, major every 96px. */
+  .ruler {
+    position: relative;
+  }
+  .ruler::before,
+  .ruler::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    top: 0;
+    pointer-events: none;
+  }
+  .ruler::before {
+    height: 5px;
+    background-image: repeating-linear-gradient(
+      to right,
+      var(--border) 0 1px,
+      transparent 1px 12px
+    );
+  }
+  .ruler::after {
+    height: 9px;
+    background-image: repeating-linear-gradient(to right, var(--mark) 0 1px, transparent 1px 96px);
+  }
+
+  /* Full-bleed section rule with a crosshair where it meets each rail. */
+  .section-rule {
+    position: relative;
+    height: 1px;
+    background: var(--rule);
+  }
+  .section-rule > .rule-marks {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: var(--rail-span);
+    translate: -50% 0;
+  }
+  .rule-mark {
+    position: absolute;
+    top: 0;
+    width: 11px;
+    height: 11px;
+    translate: -50% -50%;
+    background:
+      linear-gradient(var(--mark), var(--mark)) center / 1px 100% no-repeat,
+      linear-gradient(var(--mark), var(--mark)) center / 100% 1px no-repeat;
+  }
+  .rule-mark:last-child {
+    left: 100%;
+  }
+
+  /* Bezel card: a tinted outer frame holding a hairline-ringed inner panel. */
+  .bezel {
+    padding: 5px;
+    background-color: color-mix(in oklab, var(--primary) 7%, transparent);
+    transition: background-color 200ms ease-out;
+  }
+  .bezel-panel {
+    position: relative;
+    height: 100%;
+    background-color: color-mix(in oklab, var(--card) 88%, transparent);
+    box-shadow: 0 0 0 1px color-mix(in oklab, var(--foreground) 9%, transparent);
+    transition: box-shadow 200ms ease-out;
+  }
+  .dark .bezel {
+    background-color: color-mix(in oklab, var(--primary) 9%, transparent);
+  }
+  .dark .bezel-panel {
+    background-color: color-mix(in oklab, var(--background) 82%, transparent);
+    box-shadow: 0 0 0 1px color-mix(in oklab, var(--foreground) 10%, transparent);
+  }
+  .group:hover > .bezel,
+  .bezel:is(:hover, :focus-within):where(.bezel-hover) {
+    background-color: color-mix(in oklab, var(--primary) 14%, transparent);
+  }
+  .group:hover > .bezel > .bezel-panel,
+  .bezel:is(:hover, :focus-within):where(.bezel-hover) > .bezel-panel {
+    box-shadow: 0 0 0 1px color-mix(in oklab, var(--primary) 45%, transparent);
+  }
+
+  /* Registration ticks on the four corners of a box. */
+  .ticks {
+    position: relative;
+  }
+  .ticks::after {
+    --t: 9px;
+    --c: var(--primary);
+    content: "";
+    position: absolute;
+    inset: -5px;
+    pointer-events: none;
+    background:
+      linear-gradient(var(--c), var(--c)) top left / var(--t) 1px no-repeat,
+      linear-gradient(var(--c), var(--c)) top left / 1px var(--t) no-repeat,
+      linear-gradient(var(--c), var(--c)) top right / var(--t) 1px no-repeat,
+      linear-gradient(var(--c), var(--c)) top right / 1px var(--t) no-repeat,
+      linear-gradient(var(--c), var(--c)) bottom left / var(--t) 1px no-repeat,
+      linear-gradient(var(--c), var(--c)) bottom left / 1px var(--t) no-repeat,
+      linear-gradient(var(--c), var(--c)) bottom right / var(--t) 1px no-repeat,
+      linear-gradient(var(--c), var(--c)) bottom right / 1px var(--t) no-repeat;
+  }
+
+  /* Hollow-dot well, the backdrop for dot-matrix figures and unit charts. */
+  .dot-field {
+    background-image: radial-gradient(
+      circle,
+      color-mix(in oklab, var(--primary) 22%, transparent) 1px,
+      transparent 1.5px
+    );
+    background-size: 8px 8px;
+    background-position: 4px 4px;
+  }
+
+  /* 45° hatch for in-progress marks (PhD scholars still enrolled, live projects). */
+  .hatch {
+    background-image: repeating-linear-gradient(
+      -45deg,
+      color-mix(in oklab, var(--primary) 55%, transparent) 0 1px,
+      transparent 1px 4px
+    );
+  }
+
+  /* ---------------------------------------------------------------------------
+     Charts
+     Marks are plain elements; hover and keyboard focus raise a tooltip with
+     the exact value, so nothing in a chart is pointer-only.
+     --------------------------------------------------------------------------- */
+  :root {
+    --viz-accent: var(--primary);
+    --viz-muted: oklch(0.72 0.012 60);
+    --viz-track: color-mix(in oklab, var(--primary) 9%, transparent);
+    --viz-grid: color-mix(in oklab, var(--foreground) 8%, transparent);
+  }
+  .dark {
+    --viz-muted: oklch(0.54 0.012 60);
+    --viz-grid: color-mix(in oklab, var(--foreground) 9%, transparent);
+  }
+
+  .viz-mark {
+    position: relative;
+    outline: none;
+  }
+  .viz-mark:focus-visible {
+    box-shadow:
+      0 0 0 2px var(--background),
+      0 0 0 3px var(--ring);
+  }
+  .viz-tip {
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 0;
+    z-index: 20;
+    min-width: 11rem;
+    max-width: 18rem;
+    padding: 0.5rem 0.625rem;
+    border: 1px solid var(--border);
+    background: var(--popover);
+    color: var(--popover-foreground);
+    box-shadow: 0 6px 24px -8px color-mix(in oklab, var(--foreground) 25%, transparent);
+    font-size: 0.6875rem;
+    line-height: 1.45;
+    text-align: left;
+    white-space: normal;
+    pointer-events: none;
+    opacity: 0;
+    translate: 0 4px;
+    transition:
+      opacity 120ms ease-out,
+      translate 120ms ease-out;
+  }
+  .viz-tip[data-align="right"] {
+    left: auto;
+    right: 0;
+  }
+  .viz-tip[data-align="center"] {
+    left: 50%;
+    translate: -50% 4px;
+  }
+  .viz-mark:is(:hover, :focus-visible) .viz-tip {
+    opacity: 1;
+    translate: 0 0;
+  }
+  .viz-mark:is(:hover, :focus-visible) .viz-tip[data-align="center"] {
+    translate: -50% 0;
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {

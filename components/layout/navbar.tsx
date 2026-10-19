@@ -15,13 +15,13 @@ const navLinks = [
 export function Navbar() {
   return (
     <nav className="site-nav fixed top-0 left-0 right-0 z-50 border-b border-transparent">
-      <div className="container mx-auto px-4 lg:px-8">
+      <div className="shell">
         <div className="flex items-center justify-between h-16">
-          <Link href="/" prefetch className="flex flex-col py-1 max-w-[55%] sm:max-w-none group">
-            <span className="font-mono text-sm sm:text-base font-medium text-foreground leading-tight group-hover:text-primary transition-colors">
+          <Link href="/" prefetch className="flex min-w-0 flex-col py-1 group">
+            <span className="font-mono text-[13px] sm:text-base font-medium text-foreground leading-tight whitespace-nowrap group-hover:text-primary transition-colors">
               Dr. TMA Pai Endowment Chair
             </span>
-            <span className="text-[10px] sm:text-xs text-muted-foreground font-normal leading-tight tracking-wide uppercase">
+            <span className="hidden sm:block text-xs text-muted-foreground font-normal leading-tight tracking-wide uppercase">
               Intelligent Technologies, Industry 4.0 & Sustainability
             </span>
           </Link>
