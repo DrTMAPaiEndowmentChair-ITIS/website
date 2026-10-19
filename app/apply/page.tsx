@@ -44,11 +44,11 @@ export default function ApplyPage() {
               <h2 className="font-sans text-base font-medium text-foreground">
                 Research Application Form
               </h2>
-              <p className="text-[13px] text-muted-foreground">
+              <p className="text-body-sm text-muted-foreground">
                 Please complete all required fields to submit your application.
               </p>
             </div>
-            <span className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
+            <span className="inline-flex items-center gap-2 font-mono text-micro uppercase tracking-[0.18em] text-muted-foreground">
               <span className="size-1.5 bg-primary animate-pulse" aria-hidden />
               Form 01 · Microsoft Forms
             </span>
@@ -94,7 +94,7 @@ export default function ApplyPage() {
                     className="absolute -left-6 top-1.5 size-[7px] bg-primary ring-2 ring-[var(--background)]"
                     aria-hidden
                   />
-                  <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
+                  <p className="font-mono text-micro uppercase tracking-[0.18em] text-muted-foreground">
                     Step {String(i + 1).padStart(2, "0")}
                   </p>
                   <p className="text-sm text-foreground">{step}</p>
@@ -108,7 +108,7 @@ export default function ApplyPage() {
               <HelpCircleIcon strokeWidth={2} className="size-5 text-primary" />
               <h3 className="font-sans text-base font-medium text-foreground">Need Help?</h3>
             </div>
-            <p className="text-[13px] text-muted-foreground mb-6 leading-relaxed">
+            <p className="text-body-sm text-muted-foreground mb-6 leading-relaxed">
               If you have questions about the application process or our research programs, please
               reach out to us.
             </p>

@@ -8,7 +8,7 @@ export function SectionRule({ label, className }: { label?: string; className?: 
       <div className="rule-marks">
         <span className="rule-mark left-0" />
         {label ? (
-          <span className="absolute right-4 -top-px -translate-y-full pb-1 font-mono text-[9px] uppercase tracking-[0.2em] text-muted-foreground/70">
+          <span className="absolute right-4 -top-px -translate-y-full pb-1 font-mono text-micro uppercase tracking-[0.2em] text-muted-foreground/70">
             {label}
           </span>
         ) : null}
@@ -51,7 +51,7 @@ export function Kicker({
   return (
     <p
       className={cn(
-        "font-mono text-label uppercase tracking-[0.2em] text-primary mb-3 flex items-center gap-2",
+        "font-mono text-kicker uppercase tracking-[0.2em] text-primary mb-3 flex items-center gap-2",
         className
       )}
     >
@@ -109,7 +109,7 @@ export function SectionHeader({
         {lede ? (
           <p
             className={cn(
-              "text-sm sm:text-base text-muted-foreground mt-4 leading-relaxed text-pretty",
+              "text-body text-muted-foreground mt-4 text-pretty",
               centered ? "mx-auto max-w-xl" : "max-w-xl"
             )}
           >

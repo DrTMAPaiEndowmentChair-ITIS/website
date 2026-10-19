@@ -51,7 +51,7 @@ export function Footer() {
                 <span className="font-mono text-sm font-medium text-foreground group-hover:text-primary transition-colors block">
                   Dr. TMA Pai Endowment Chair
                 </span>
-                <span className="font-mono text-[10px] text-muted-foreground uppercase tracking-wide">
+                <span className="font-mono text-micro text-muted-foreground uppercase tracking-wide">
                   MAHE, Manipal
                 </span>
               </Link>
@@ -77,7 +77,7 @@ export function Footer() {
 
             {/* Navigation */}
             <div>
-              <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground mb-4">
+              <p className="font-mono text-micro uppercase tracking-widest text-muted-foreground mb-4">
                 Navigation
               </p>
               <ul className="space-y-2">
@@ -96,7 +96,7 @@ export function Footer() {
 
             {/* Resources */}
             <div>
-              <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground mb-4">
+              <p className="font-mono text-micro uppercase tracking-widest text-muted-foreground mb-4">
                 Resources
               </p>
               <ul className="space-y-2">
@@ -121,7 +121,7 @@ export function Footer() {
 
             {/* Contact */}
             <div>
-              <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground mb-4">
+              <p className="font-mono text-micro uppercase tracking-widest text-muted-foreground mb-4">
                 Contact
               </p>
               <ul className="space-y-3">
@@ -150,7 +150,7 @@ export function Footer() {
         </div>
 
         {/* Title block, as on a drawing sheet */}
-        <dl className="grid grid-cols-2 md:grid-cols-4 border-l border-t border-border mb-10 text-[11px]">
+        <dl className="grid grid-cols-2 md:grid-cols-4 border-l border-t border-border mb-10 text-caption">
           {[
             {
               label: "Issued by",
@@ -168,7 +168,7 @@ export function Footer() {
             { label: "Sheet", value: "ITIS · MIT, MAHE, Manipal" },
           ].map((cell) => (
             <div key={cell.label} className="border-r border-b border-border px-3 py-2.5">
-              <dt className="font-mono text-[9px] uppercase tracking-[0.2em] text-muted-foreground/80">
+              <dt className="font-mono text-micro uppercase tracking-[0.2em] text-muted-foreground/80">
                 {cell.label}
               </dt>
               <dd className="mt-0.5 text-foreground tabular-nums">{cell.value}</dd>

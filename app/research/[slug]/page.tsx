@@ -50,17 +50,17 @@ const components = {
     ) {
       return <>{significantChildren[0]}</>;
     }
-    return <p className="text-[15px] leading-relaxed text-muted-foreground mb-4" {...props} />;
+    return <p className="text-body leading-relaxed text-muted-foreground mb-4" {...props} />;
   },
   ul: (props: React.ComponentPropsWithoutRef<"ul">) => (
     <ul
-      className="text-[15px] text-muted-foreground mb-4 list-[square] marker:text-primary pl-6 space-y-1.5"
+      className="text-body text-muted-foreground mb-4 list-[square] marker:text-primary pl-6 space-y-1.5"
       {...props}
     />
   ),
   ol: (props: React.ComponentPropsWithoutRef<"ol">) => (
     <ol
-      className="text-[15px] text-muted-foreground mb-4 list-decimal marker:font-mono marker:text-primary pl-6 space-y-1.5"
+      className="text-body text-muted-foreground mb-4 list-decimal marker:font-mono marker:text-primary pl-6 space-y-1.5"
       {...props}
     />
   ),
@@ -163,7 +163,7 @@ export default async function ResearchProjectPage({ params }: { params: Params }
               {project.tags.map((tag) => (
                 <li
                   key={tag}
-                  className="border border-border px-2 py-0.5 font-mono text-[10px] text-muted-foreground"
+                  className="border border-border px-2 py-0.5 font-mono text-micro text-muted-foreground"
                 >
                   {tag}
                 </li>
@@ -178,7 +178,7 @@ export default async function ResearchProjectPage({ params }: { params: Params }
                     key={m.label}
                     className={`px-4 py-3 border-border ${i % 2 === 1 ? "border-l" : ""} ${i === 2 ? "sm:border-l" : ""} ${i > 1 ? "max-sm:border-t" : ""}`}
                   >
-                    <dt className="font-mono text-[9px] uppercase tracking-[0.18em] text-muted-foreground">
+                    <dt className="font-mono text-micro uppercase tracking-[0.18em] text-muted-foreground">
                       {m.label}
                     </dt>
                     <dd className="mt-1 text-sm text-foreground flex items-center gap-1.5">
@@ -195,7 +195,7 @@ export default async function ResearchProjectPage({ params }: { params: Params }
               </dl>
               {/* Where this project sits in the chair's history */}
               <div className="border-t border-border px-4 pt-3 pb-4">
-                <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-muted-foreground mb-2">
+                <p className="font-mono text-micro uppercase tracking-[0.18em] text-muted-foreground mb-2">
                   Span within the chair&apos;s research, 1996 – today
                 </p>
                 <div
@@ -223,7 +223,7 @@ export default async function ResearchProjectPage({ params }: { params: Params }
                   {[2000, 2010, 2020].map((y) => (
                     <span
                       key={y}
-                      className="absolute -translate-x-1/2 font-mono text-[9px] text-muted-foreground tabular-nums"
+                      className="absolute -translate-x-1/2 font-mono text-micro text-muted-foreground tabular-nums"
                       style={{ left: pct(y, 1996, domainMax) }}
                     >
                       {y}
@@ -235,7 +235,7 @@ export default async function ResearchProjectPage({ params }: { params: Params }
 
             {project.companyDescription ? (
               <div className="mb-10 border-l-2 border-primary pl-4">
-                <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground mb-1">
+                <p className="font-mono text-micro uppercase tracking-[0.18em] text-muted-foreground mb-1">
                   About the partner
                 </p>
                 <p className="text-sm text-muted-foreground leading-relaxed">

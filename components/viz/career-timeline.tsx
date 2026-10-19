@@ -42,14 +42,14 @@ export function CareerTimeline({
 
   return (
     <div
-      className="max-md:-mx-4 max-md:overflow-x-auto max-md:px-4 pb-2"
+      className="max-xl:-mx-4 max-xl:overflow-x-auto max-xl:px-4 pb-2"
       role="group"
       aria-label={label}
     >
-      <p className="md:hidden mb-3 font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
+      <p className="xl:hidden mb-3 font-mono text-micro uppercase tracking-[0.16em] text-muted-foreground">
         Swipe to scroll the timeline →
       </p>
-      <div className="min-w-[760px]">
+      <div className="min-w-[1000px] xl:min-w-0">
         {/* Axis */}
         <div className="grid grid-cols-[8.5rem_1fr] gap-4">
           <span />
@@ -57,7 +57,7 @@ export function CareerTimeline({
             {ticks.map((t) => (
               <span
                 key={t}
-                className="absolute bottom-1 -translate-x-1/2 font-mono text-[10px] tabular-nums text-muted-foreground"
+                className="absolute bottom-1 -translate-x-1/2 font-mono text-micro tabular-nums text-muted-foreground"
                 style={{ left: pct(t, from, to) }}
               >
                 {t}
@@ -71,7 +71,7 @@ export function CareerTimeline({
             key={lane.label}
             className="grid grid-cols-[8.5rem_1fr] gap-4 border-b border-border/60"
           >
-            <p className="py-2.5 font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground self-center">
+            <p className="py-2.5 font-mono text-micro uppercase tracking-[0.16em] text-muted-foreground self-center">
               {lane.label}
             </p>
             <div className="relative py-1.5">
@@ -109,7 +109,7 @@ export function CareerTimeline({
                               item.current ? "bg-primary" : "bg-foreground/60"
                             )}
                           />
-                          <span className="font-mono text-[10px] text-foreground whitespace-nowrap">
+                          <span className="font-mono text-micro text-foreground whitespace-nowrap">
                             {item.label}
                           </span>
                           <span className="viz-tip" data-align={late ? "right" : "left"}>
@@ -139,7 +139,7 @@ export function CareerTimeline({
                           width: `calc(${(((end - item.start) / (to - from)) * 100).toFixed(3)}% - 2px)`,
                         }}
                       >
-                        <span className="font-mono text-[10px] text-foreground whitespace-nowrap">
+                        <span className="font-mono text-micro text-foreground whitespace-nowrap">
                           {item.label}
                         </span>
                         <span className="viz-tip" data-align={late ? "right" : "left"}>

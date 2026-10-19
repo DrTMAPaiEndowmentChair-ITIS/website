@@ -54,17 +54,17 @@ const components = {
     ) {
       return <>{significantChildren[0]}</>;
     }
-    return <p className="text-[15px] leading-relaxed text-muted-foreground mb-4" {...props} />;
+    return <p className="text-body leading-relaxed text-muted-foreground mb-4" {...props} />;
   },
   ul: (props: React.ComponentPropsWithoutRef<"ul">) => (
     <ul
-      className="text-[15px] text-muted-foreground mb-4 list-[square] marker:text-primary pl-6 space-y-1.5"
+      className="text-body text-muted-foreground mb-4 list-[square] marker:text-primary pl-6 space-y-1.5"
       {...props}
     />
   ),
   ol: (props: React.ComponentPropsWithoutRef<"ol">) => (
     <ol
-      className="text-[15px] text-muted-foreground mb-4 list-decimal marker:font-mono marker:text-primary pl-6 space-y-1.5"
+      className="text-body text-muted-foreground mb-4 list-decimal marker:font-mono marker:text-primary pl-6 space-y-1.5"
       {...props}
     />
   ),

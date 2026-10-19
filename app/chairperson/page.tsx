@@ -260,7 +260,7 @@ const careerLanes: TimelineLane[] = [
           period: "May 2001 – Jan 2008",
         },
         {
-          label: "Assoc. Director, Innovation",
+          label: "Assoc. Dir., Innovation",
           title: "Associate Director (Innovation Center), MIT, MAHE",
           start: 2008.17,
           end: 2016.92,
@@ -408,7 +408,7 @@ const outputs = [
 
 function Bullet({ children }: { children: ReactNode }) {
   return (
-    <li className="flex items-start gap-2.5 text-[13px] text-muted-foreground leading-relaxed">
+    <li className="flex items-start gap-2.5 text-body-sm text-muted-foreground leading-relaxed">
       <span className="mt-[0.55em] size-1 shrink-0 bg-primary" aria-hidden />
       <span>{children}</span>
     </li>
@@ -436,7 +436,7 @@ export default function ChairpersonPage() {
                     fetchPriority="high"
                   />
                 </Bezel>
-                <span className="absolute left-0 -bottom-6 font-mono text-[9px] uppercase tracking-[0.2em] text-muted-foreground">
+                <span className="absolute left-0 -bottom-6 font-mono text-micro uppercase tracking-[0.2em] text-muted-foreground">
                   Fig. 00 — Chair Professor
                 </span>
               </div>
@@ -481,7 +481,7 @@ export default function ChairpersonPage() {
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-block px-3 py-1.5 border border-border font-mono text-[11px] hover:border-primary/50 text-muted-foreground hover:text-primary transition-colors"
+                      className="inline-block px-3 py-1.5 border border-border font-mono text-caption hover:border-primary/50 text-muted-foreground hover:text-primary transition-colors"
                     >
                       {link.label} ↗
                     </a>
@@ -501,7 +501,7 @@ export default function ChairpersonPage() {
                 <dd className="font-mono text-3xl sm:text-4xl lg:text-5xl font-medium text-foreground tracking-tight">
                   {stat.value}
                 </dd>
-                <dt className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground mt-2">
+                <dt className="font-mono text-micro uppercase tracking-[0.18em] text-muted-foreground mt-2">
                   {stat.label}
                 </dt>
               </div>
@@ -514,7 +514,7 @@ export default function ChairpersonPage() {
       <Section index="01">
         <div className="grid lg:grid-cols-[1fr_1.4fr] gap-10 lg:gap-16">
           <SectionHeader index="01" label="About" title="Background" className="lg:mb-0" />
-          <div className="text-[15px] text-muted-foreground space-y-4 leading-relaxed reveal">
+          <div className="text-body text-muted-foreground space-y-4 leading-relaxed reveal">
             <p>
               Dr. Manohara Pai M.M. has 33 years of experience in administration, teaching,
               research, industrial collaborations, and consultancy at Manipal Institute of
@@ -558,7 +558,7 @@ export default function ChairpersonPage() {
           </Bezel>
         </figure>
 
-        <p className="mt-5 text-[13px] text-muted-foreground reveal">
+        <p className="mt-5 text-body-sm text-muted-foreground reveal">
           Also Professor in Charge, Centre for Advanced Scientific and Industrial Research at MIT,
           MAHE.
         </p>
@@ -582,7 +582,9 @@ export default function ChairpersonPage() {
                     <span className="block font-mono text-5xl sm:text-6xl font-medium text-foreground tracking-tight">
                       {o.value}
                     </span>
-                    <p className="mt-2 text-[11px] text-muted-foreground max-w-[14rem]">{o.note}</p>
+                    <p className="mt-2 text-caption text-muted-foreground max-w-[14rem]">
+                      {o.note}
+                    </p>
                   </div>
                   <UnitChart groups={o.groups} size={o.size} label={`${o.value} ${o.label}`} />
                 </div>
@@ -604,13 +606,11 @@ export default function ChairpersonPage() {
             },
           ].map((book, i) => (
             <Bezel key={book.title} panelClassName="p-5">
-              <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-primary mb-2">
+              <p className="font-mono text-micro uppercase tracking-[0.18em] text-primary mb-2">
                 Book {String(i + 1).padStart(2, "0")}
               </p>
-              <h3 className="font-sans text-[15px] font-medium text-foreground mb-1">
-                {book.title}
-              </h3>
-              <p className="text-[13px] text-muted-foreground">{book.body}</p>
+              <h3 className="font-sans text-body font-medium text-foreground mb-1">{book.title}</h3>
+              <p className="text-body-sm text-muted-foreground">{book.body}</p>
             </Bezel>
           ))}
         </div>
@@ -625,25 +625,23 @@ export default function ChairpersonPage() {
             <li key={award.title + award.year}>
               <Bezel hover className="h-full" panelClassName="p-5">
                 <p className="font-mono text-xs text-primary mb-2 tabular-nums">{award.year}</p>
-                <h3 className="font-sans text-[15px] font-medium text-foreground mb-1">
+                <h3 className="font-sans text-body font-medium text-foreground mb-1">
                   {award.title}
                 </h3>
-                <p className="text-[13px] text-muted-foreground">{award.subtitle}</p>
+                <p className="text-body-sm text-muted-foreground">{award.subtitle}</p>
               </Bezel>
             </li>
           ))}
         </ol>
 
         <Bezel className="mb-10 reveal" panelClassName="p-5 sm:p-6">
-          <h3 className="font-sans text-[15px] font-medium text-foreground mb-2">
-            Patent Portfolio
-          </h3>
-          <p className="text-[13px] text-muted-foreground mb-2 leading-relaxed">
+          <h3 className="font-sans text-body font-medium text-foreground mb-2">Patent Portfolio</h3>
+          <p className="text-body-sm text-muted-foreground mb-2 leading-relaxed">
             Holds <span className="text-foreground font-medium">10 granted patents</span>: 3 US
             Patents (US9616346B2, US9503511B2, US8295280B2), 1 Japanese Patent (JP5512889), and 6
             Indian Patents (including IN280657). Received a patenting award of $8,000.
           </p>
-          <p className="text-[13px] text-muted-foreground leading-relaxed">
+          <p className="text-body-sm text-muted-foreground leading-relaxed">
             Published <span className="text-foreground font-medium">156 papers</span> in
             national/international journals and conference proceedings, and authored 2 books.
           </p>
@@ -665,7 +663,7 @@ export default function ChairpersonPage() {
                     />
                   </Bezel>
                   <figcaption className="mt-2.5 flex gap-2 text-xs text-muted-foreground">
-                    <span className="font-mono text-[10px] text-primary tabular-nums pt-px">
+                    <span className="font-mono text-micro text-primary tabular-nums pt-px">
                       {String(index + 1).padStart(2, "0")}
                     </span>
                     {item.caption}
@@ -692,10 +690,10 @@ export default function ChairpersonPage() {
                     <pos.Icon strokeWidth={2} className="size-4 text-primary" />
                   </span>
                   <div className="flex-1 min-w-0">
-                    <p className="font-mono text-[10px] uppercase tracking-[0.15em] text-primary mb-1">
+                    <p className="font-mono text-micro uppercase tracking-[0.15em] text-primary mb-1">
                       {pos.period}
                     </p>
-                    <h3 className="font-sans text-[15px] font-medium text-foreground mb-3">
+                    <h3 className="font-sans text-body font-medium text-foreground mb-3">
                       {pos.title}
                     </h3>
                     <ul className="space-y-1.5">
@@ -709,7 +707,7 @@ export default function ChairpersonPage() {
                         role="img"
                         aria-label={`${pos.metric.label}: ${pos.metric.from} to ${pos.metric.to}`}
                       >
-                        <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-muted-foreground mb-2">
+                        <p className="font-mono text-micro uppercase tracking-[0.18em] text-muted-foreground mb-2">
                           {pos.metric.label}
                         </p>
                         {[
@@ -720,19 +718,19 @@ export default function ChairpersonPage() {
                             key={m.k}
                             className="grid grid-cols-[6.5rem_1fr_2.5rem] items-center gap-3 py-0.5"
                           >
-                            <span className="text-[11px] text-muted-foreground">{m.k}</span>
+                            <span className="text-caption text-muted-foreground">{m.k}</span>
                             <span className="h-2.5 bg-[var(--viz-track)]">
                               <span
                                 className={`block h-full ${m.accent ? "bg-[var(--viz-accent)]" : "bg-[var(--viz-muted)]"}`}
                                 style={{ width: `${(m.v / (pos.metric?.to ?? m.v)) * 100}%` }}
                               />
                             </span>
-                            <span className="font-mono text-[11px] text-foreground tabular-nums text-right">
+                            <span className="font-mono text-caption text-foreground tabular-nums text-right">
                               {m.v}
                             </span>
                           </div>
                         ))}
-                        <p className="mt-1.5 font-mono text-[10px] text-primary">
+                        <p className="mt-1.5 font-mono text-micro text-primary">
                           +{Math.round(((pos.metric.to - pos.metric.from) / pos.metric.from) * 100)}
                           % over the term
                         </p>
@@ -763,7 +761,7 @@ export default function ChairpersonPage() {
               className="group flex flex-col items-center gap-3 border-r border-b border-border px-2 py-5 text-center hover:bg-primary/[0.04] transition-colors"
             >
               <area.Icon strokeWidth={1.5} className="size-5 text-primary" />
-              <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-muted-foreground group-hover:text-foreground transition-colors">
+              <span className="font-mono text-micro uppercase tracking-[0.12em] text-muted-foreground group-hover:text-foreground transition-colors">
                 {area.name}
               </span>
             </li>
@@ -792,9 +790,7 @@ export default function ChairpersonPage() {
             },
           ].map((card) => (
             <Bezel key={card.title} panelClassName="p-5 sm:p-6">
-              <h3 className="font-sans text-[15px] font-medium mb-3 text-foreground">
-                {card.title}
-              </h3>
+              <h3 className="font-sans text-body font-medium mb-3 text-foreground">{card.title}</h3>
               <ul className="space-y-1.5">
                 {card.points.map((p) => (
                   <Bullet key={p}>{p}</Bullet>
@@ -840,7 +836,7 @@ export default function ChairpersonPage() {
             />
             <Bezel className="flex-1 reveal" panelClassName="p-5 sm:p-6">
               <UserGroupIcon strokeWidth={1.5} className="size-5 text-primary mb-4" />
-              <h4 className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground mb-2">
+              <h4 className="font-mono text-micro uppercase tracking-[0.18em] text-muted-foreground mb-2">
                 Memberships
               </h4>
               <ul className="space-y-1.5 mb-5">
@@ -849,7 +845,7 @@ export default function ChairpersonPage() {
                 <Bullet>Past Execom Member, IEEE Bangalore Section</Bullet>
                 <Bullet>Life Member, ISTE and Systems Society of India</Bullet>
               </ul>
-              <h4 className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground mb-2">
+              <h4 className="font-mono text-micro uppercase tracking-[0.18em] text-muted-foreground mb-2">
                 Advisory Roles
               </h4>
               <ul className="space-y-1.5">
@@ -872,7 +868,7 @@ export default function ChairpersonPage() {
               <DollarCircleIcon strokeWidth={2} className="size-5 text-primary" />
             </span>
             <div>
-              <p className="text-[15px] text-muted-foreground mb-4 leading-relaxed">
+              <p className="text-body text-muted-foreground mb-4 leading-relaxed">
                 Established the Technology Business Incubator at MIT, MAHE with a grant of{" "}
                 <span className="text-foreground font-medium">Rs.5 Crores</span> from DST, Govt. of
                 India, and MAHE. Secured multiple research grants from:
@@ -882,7 +878,7 @@ export default function ChairpersonPage() {
                   (org) => (
                     <li
                       key={org}
-                      className="border border-border px-2.5 py-1 font-mono text-[11px] text-muted-foreground"
+                      className="border border-border px-2.5 py-1 font-mono text-caption text-muted-foreground"
                     >
                       {org}
                     </li>

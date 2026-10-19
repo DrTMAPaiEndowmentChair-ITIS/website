@@ -1,4 +1,12 @@
-import { twMerge } from "tailwind-merge";
+import { extendTailwindMerge } from "tailwind-merge";
+
+// Teach tailwind-merge the custom type scale from globals.css; otherwise it
+// reads `text-micro` as a colour and drops it next to `text-muted-foreground`.
+const twMerge = extendTailwindMerge({
+  extend: {
+    theme: { text: ["micro", "caption", "label", "body-sm", "body", "kicker", "title", "display"] },
+  },
+});
 
 type ClassValue = string | false | null | undefined | 0 | ClassValue[];
 

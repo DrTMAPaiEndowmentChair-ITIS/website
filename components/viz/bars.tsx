@@ -38,7 +38,7 @@ function Axis({
         <span
           key={t}
           className={cn(
-            "absolute top-1 font-mono text-[10px] tabular-nums text-muted-foreground whitespace-nowrap",
+            "absolute top-1 font-mono text-micro tabular-nums text-muted-foreground whitespace-nowrap",
             i === 0 ? "" : i === ticks.length - 1 ? "-translate-x-full" : "-translate-x-1/2"
           )}
           style={{ left: share(t, max) }}
@@ -100,7 +100,7 @@ export function HBarChart({
                   style={{ width: share(row.value, max) }}
                 />
               ) : (
-                <span className="absolute left-2 top-1/2 -translate-y-1/2 font-mono text-[10px] uppercase tracking-widest text-muted-foreground/70">
+                <span className="absolute left-2 top-1/2 -translate-y-1/2 font-mono text-micro uppercase tracking-widest text-muted-foreground/70">
                   {emptyLabel}
                 </span>
               )}
@@ -117,7 +117,7 @@ export function HBarChart({
               {row.value > 0 ? row.display : "—"}
             </span>
             {row.note ? (
-              <span className="col-start-2 text-[11px] leading-relaxed text-muted-foreground">
+              <span className="col-start-2 text-caption leading-relaxed text-muted-foreground">
                 {row.note}
               </span>
             ) : null}
@@ -171,7 +171,7 @@ export function SegmentedBarChart({
                 <p className="min-w-0 text-xs text-foreground truncate">
                   {row.label}
                   {row.sub ? (
-                    <span className="ml-2 font-mono text-[10px] text-muted-foreground">
+                    <span className="ml-2 font-mono text-micro text-muted-foreground">
                       {row.sub}
                     </span>
                   ) : null}
@@ -233,10 +233,10 @@ export function Meter({
   return (
     <div>
       <div className="flex items-baseline justify-between gap-2 mb-1">
-        <span className="font-mono text-[9px] uppercase tracking-[0.18em] text-muted-foreground">
+        <span className="font-mono text-micro uppercase tracking-[0.18em] text-muted-foreground">
           {label}
         </span>
-        <span className="font-mono text-[10px] tabular-nums text-foreground">{display}</span>
+        <span className="font-mono text-micro tabular-nums text-foreground">{display}</span>
       </div>
       <div
         className="h-1 bg-[var(--viz-track)]"

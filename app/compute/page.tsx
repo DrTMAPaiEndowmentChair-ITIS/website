@@ -250,10 +250,10 @@ export default function ComputePage() {
             {/* Instrument panel */}
             <Bezel panelClassName="flex flex-col">
               <div className="flex items-center justify-between gap-4 border-b border-border px-4 py-2.5">
-                <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+                <span className="font-mono text-micro uppercase tracking-[0.2em] text-muted-foreground">
                   Fleet monitor
                 </span>
-                <span className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.18em] text-foreground">
+                <span className="inline-flex items-center gap-2 font-mono text-micro uppercase tracking-[0.18em] text-foreground">
                   <span className="size-1.5 bg-primary animate-pulse" aria-hidden />
                   {totalSpecs.systems} systems online
                 </span>
@@ -271,13 +271,13 @@ export default function ComputePage() {
                     key={r.label}
                     className={`px-4 py-3 border-border ${i % 2 === 1 ? "border-l" : ""} ${i > 1 ? "border-t sm:border-t-0" : ""} ${i === 2 ? "sm:border-l" : ""}`}
                   >
-                    <dt className="font-mono text-[9px] uppercase tracking-[0.18em] text-muted-foreground">
+                    <dt className="font-mono text-micro uppercase tracking-[0.18em] text-muted-foreground">
                       {r.label}
                     </dt>
                     <dd className="mt-1 font-mono text-lg sm:text-xl font-medium text-foreground">
                       {r.value}
                       {r.unit ? (
-                        <span className="ml-1 text-[10px] font-normal text-muted-foreground">
+                        <span className="ml-1 text-micro font-normal text-muted-foreground">
                           {r.unit}
                         </span>
                       ) : null}
@@ -330,7 +330,7 @@ export default function ComputePage() {
           <figure>
             <Bezel panelClassName="p-4 sm:p-6">
               <FigCaption fig="02" title="FP32 by system family" className="mb-1" />
-              <p className="text-[11px] text-muted-foreground mb-6">
+              <p className="text-caption text-muted-foreground mb-6">
                 Each segment is one machine. Fleet total ≈{totalSpecs.fp32Tflops.toFixed(1)} TFLOPS.
               </p>
               <SegmentedBarChart
@@ -350,7 +350,7 @@ export default function ComputePage() {
           <figure>
             <Bezel panelClassName="p-4 sm:p-6">
               <FigCaption fig="03" title="Accelerator memory by family" className="mb-1" />
-              <p className="text-[11px] text-muted-foreground mb-6">
+              <p className="text-caption text-muted-foreground mb-6">
                 Each segment is one machine. Mac Studio memory is unified with the CPU.
               </p>
               <SegmentedBarChart
@@ -369,7 +369,7 @@ export default function ComputePage() {
           </figure>
         </div>
 
-        <ul className="font-mono flex flex-wrap gap-x-5 gap-y-2 mt-5 text-[10px] uppercase tracking-[0.15em] text-muted-foreground">
+        <ul className="font-mono flex flex-wrap gap-x-5 gap-y-2 mt-5 text-micro uppercase tracking-[0.15em] text-muted-foreground">
           {[
             "Dense peak",
             "Sparsity off",
@@ -407,7 +407,7 @@ export default function ComputePage() {
                       <h3 className="font-sans text-base sm:text-lg font-medium text-foreground">
                         {ws.name}
                       </h3>
-                      <p className="font-mono text-[10px] text-muted-foreground uppercase tracking-[0.15em]">
+                      <p className="font-mono text-micro text-muted-foreground uppercase tracking-[0.15em]">
                         {ws.quantity}× available · {ws.tier}
                       </p>
                     </div>
@@ -416,11 +416,11 @@ export default function ComputePage() {
                     <p className="font-mono text-xl font-medium text-foreground">
                       {ws.fp32Estimated ? "≈" : ""}
                       {ws.fleetTflops.toFixed(1)}
-                      <span className="text-[10px] font-normal text-muted-foreground ml-1">
+                      <span className="text-micro font-normal text-muted-foreground ml-1">
                         TFLOPS
                       </span>
                     </p>
-                    <p className="text-[11px] text-muted-foreground">
+                    <p className="text-caption text-muted-foreground">
                       Fleet FP32 · {((ws.fleetTflops / totalSpecs.fp32Tflops) * 100).toFixed(1)}% of
                       lab
                     </p>
@@ -478,13 +478,13 @@ export default function ComputePage() {
                       key={spec.label}
                       className="flex flex-col bg-card dark:bg-background p-3 sm:p-4"
                     >
-                      <p className="font-mono text-[10px] text-primary uppercase tracking-[0.18em] mb-1.5">
+                      <p className="font-mono text-micro text-primary uppercase tracking-[0.18em] mb-1.5">
                         {spec.label}
                       </p>
-                      <p className="text-[13px] font-medium text-foreground leading-snug">
+                      <p className="text-body-sm font-medium text-foreground leading-snug">
                         {spec.value}
                       </p>
-                      <p className="text-[11px] text-muted-foreground mt-0.5 mb-4">{spec.sub}</p>
+                      <p className="text-caption text-muted-foreground mt-0.5 mb-4">{spec.sub}</p>
                       <div className="mt-auto">
                         <Meter
                           label={spec.meter.label}
@@ -519,7 +519,9 @@ export default function ComputePage() {
               <h3 className="font-sans text-base font-medium text-foreground mb-1.5">
                 {cap.title}
               </h3>
-              <p className="text-[13px] text-muted-foreground leading-relaxed">{cap.description}</p>
+              <p className="text-body-sm text-muted-foreground leading-relaxed">
+                {cap.description}
+              </p>
             </Bezel>
           ))}
         </div>

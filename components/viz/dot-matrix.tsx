@@ -20,7 +20,7 @@ type DotMatrixProps = {
   className?: string;
 };
 
-const FPS = 24;
+const FPS = 20;
 const MORPH_MS = 1100;
 
 function resolve(spec: SceneSpec): Scene {
@@ -84,41 +84,64 @@ export function DotMatrix({
       rows = Math.max(4, Math.floor(height / pitch));
     };
 
-    const draw = (now: number) => {
+    // Per-cell state: 0 off, 1 dim ring, 2 lit, 3 lit and popping. Frames are
+    // only rasterised when some cell changes, which is a fraction of ticks.
+    let state = new Uint8Array(0);
+    let prev = new Uint8Array(0);
+    let rimLayer: HTMLCanvasElement | null = null;
+
+    const geometry = () => {
       const w = canvas.width / dpr;
       const h = canvas.height / dpr;
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      ctx.clearRect(0, 0, w, h);
+      return {
+        ox: (w - cols * pitch) / 2 + pitch / 2,
+        oy: (h - rows * pitch) / 2 + pitch / 2,
+      };
+    };
 
-      // Centre the grid in the canvas.
-      const ox = (w - cols * pitch) / 2 + pitch / 2;
-      const oy = (h - rows * pitch) / 2 + pitch / 2;
+    // The frame band never changes, so paint it once per size or theme.
+    const paintRim = () => {
+      const layer = (rimLayer ??= document.createElement("canvas"));
+      layer.width = canvas.width;
+      layer.height = canvas.height;
+      const lctx = layer.getContext("2d");
+      if (!lctx) return;
+      const { ox, oy } = geometry();
+      const rRing = pitch * 0.26;
+      const rim = new Path2D();
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          if (c >= frame && r >= frame && c < cols - frame && r < rows - frame) continue;
+          const px = ox + c * pitch;
+          const py = oy + r * pitch;
+          rim.moveTo(px + rRing, py);
+          rim.arc(px, py, rRing, 0, Math.PI * 2);
+        }
+      }
+      lctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      lctx.strokeStyle = color;
+      lctx.lineWidth = 1;
+      lctx.globalAlpha = 0.22;
+      lctx.stroke(rim);
+    };
+
+    const draw = (now: number, force = false) => {
       const ic = cols - frame * 2;
       const ir = rows - frame * 2;
       const aspect = ic / ir;
-      const lit = new Path2D();
-      const pop = new Path2D();
-      const dim = new Path2D();
-      const rim = new Path2D();
-      const rLit = pitch * 0.32;
-      const rRing = pitch * 0.26;
-
       const morphing = morphStart >= 0;
       const k = morphing ? (now - morphStart) / MORPH_MS : 0;
       const next = (current + 1) % resolved.length;
 
-      for (let r = 0; r < rows; r++) {
-        for (let c = 0; c < cols; c++) {
-          const px = ox + c * pitch;
-          const py = oy + r * pitch;
-          const inFrame = c < frame || r < frame || c >= cols - frame || r >= rows - frame;
-          if (inFrame) {
-            rim.moveTo(px + rRing, py);
-            rim.arc(px, py, rRing, 0, Math.PI * 2);
-            continue;
-          }
-          const cc = c - frame;
-          const rr = r - frame;
+      if (state.length !== ic * ir) {
+        state = new Uint8Array(ic * ir);
+        prev = new Uint8Array(ic * ir);
+        force = true;
+      }
+
+      let changed = force;
+      for (let rr = 0; rr < ir; rr++) {
+        for (let cc = 0; cc < ic; cc++) {
           const cell = {
             x: (((cc + 0.5) / ic) * 2 - 1) * aspect,
             y: ((rr + 0.5) / ir) * 2 - 1,
@@ -139,23 +162,48 @@ export function DotMatrix({
             }
           }
           const v = scene(cell);
-          if (v >= 0.75) {
-            const target = popping ? pop : lit;
-            const radius = popping ? rLit * 1.35 : rLit;
-            target.moveTo(px + radius, py);
-            target.arc(px, py, radius, 0, Math.PI * 2);
-          } else if (v > 0.2) {
-            dim.moveTo(px + rRing, py);
-            dim.arc(px, py, rRing, 0, Math.PI * 2);
-          }
+          const code = v >= 0.75 ? (popping ? 3 : 2) : v > 0.2 ? 1 : 0;
+          const i = rr * ic + cc;
+          if (code !== prev[i]) changed = true;
+          state[i] = code;
         }
       }
 
+      if (morphing && k >= 1) {
+        current = next;
+        morphStart = -1;
+        sceneStart = now;
+      }
+      if (!changed) return;
+      [prev, state] = [state, prev];
+
+      const { ox, oy } = geometry();
+      const lit = new Path2D();
+      const pop = new Path2D();
+      const dim = new Path2D();
+      const rLit = pitch * 0.32;
+      const rPop = rLit * 1.35;
+      const rRing = pitch * 0.26;
+      for (let rr = 0; rr < ir; rr++) {
+        for (let cc = 0; cc < ic; cc++) {
+          const code = prev[rr * ic + cc];
+          if (!code) continue;
+          const px = ox + (cc + frame) * pitch;
+          const py = oy + (rr + frame) * pitch;
+          const radius = code === 1 ? rRing : code === 3 ? rPop : rLit;
+          const target = code === 1 ? dim : code === 3 ? pop : lit;
+          target.moveTo(px + radius, py);
+          target.arc(px, py, radius, 0, Math.PI * 2);
+        }
+      }
+
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      if (rimLayer) ctx.drawImage(rimLayer, 0, 0);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       ctx.fillStyle = color;
       ctx.strokeStyle = color;
       ctx.lineWidth = 1;
-      ctx.globalAlpha = 0.22;
-      ctx.stroke(rim);
       ctx.globalAlpha = 0.7;
       ctx.stroke(dim);
       ctx.globalAlpha = 1;
@@ -163,12 +211,6 @@ export function DotMatrix({
       ctx.globalAlpha = 0.85;
       ctx.fill(pop);
       ctx.globalAlpha = 1;
-
-      if (morphing && k >= 1) {
-        current = next;
-        morphStart = -1;
-        sceneStart = now;
-      }
     };
 
     const tick = (now: number) => {
@@ -182,8 +224,23 @@ export function DotMatrix({
       draw(now);
     };
 
+    // Hold the animation until the page has loaded and gone idle, so it never
+    // competes with first paint or hydration; the first frame is drawn now.
+    let ready = false;
+    let idleHandle = 0;
+    const begin = () => {
+      ready = true;
+      start();
+    };
+    const whenIdle = () => {
+      idleHandle =
+        typeof window.requestIdleCallback === "function"
+          ? window.requestIdleCallback(begin, { timeout: 2000 })
+          : window.setTimeout(begin, 800);
+    };
+
     const start = () => {
-      if (reduced || raf || !visible || document.hidden) return;
+      if (!ready || reduced || raf || !visible || document.hidden) return;
       last = 0;
       raf = requestAnimationFrame(tick);
     };
@@ -194,11 +251,13 @@ export function DotMatrix({
 
     readColor();
     resize();
-    draw(performance.now());
+    paintRim();
+    draw(performance.now(), true);
 
     const ro = new ResizeObserver(() => {
       resize();
-      draw(performance.now());
+      paintRim();
+      draw(performance.now(), true);
     });
     ro.observe(canvas);
 
@@ -212,11 +271,15 @@ export function DotMatrix({
     );
     io.observe(canvas);
 
+    if (document.readyState === "complete") whenIdle();
+    else window.addEventListener("load", whenIdle, { once: true });
+
     const onTheme = () => {
       // The class flips synchronously before the event; read on the next frame.
       requestAnimationFrame(() => {
         readColor();
-        draw(performance.now());
+        paintRim();
+        draw(performance.now(), true);
       });
     };
     const onVisibility = () => (document.hidden ? stop() : start());
@@ -225,6 +288,9 @@ export function DotMatrix({
 
     return () => {
       stop();
+      window.removeEventListener("load", whenIdle);
+      if (typeof window.cancelIdleCallback === "function") window.cancelIdleCallback(idleHandle);
+      window.clearTimeout(idleHandle);
       ro.disconnect();
       io.disconnect();
       window.removeEventListener("theme-change", onTheme);

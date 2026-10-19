@@ -1,68 +1,77 @@
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { MobileNav } from "@/components/layout/mobile-nav";
-import { ArrowUpRight01Icon } from "@/components/icons";
+import { NavLink, type NavItem } from "@/components/layout/nav-link";
+import { ArrowRight01Icon } from "@/components/icons";
 
-const navLinks = [
+const navLinks: NavItem[] = [
   { href: "/#research", label: "Research" },
   { href: "/#events", label: "Events" },
   { href: "/compute", label: "Compute" },
   { href: "/chairperson", label: "Chair Professor" },
   { href: "https://blog.ecitis.org", label: "Blog", external: true },
-] as const;
+];
 
+/**
+ * The sheet's title row rather than a bar laid over it: the page rails run
+ * through it, it closes on the same ruled line and registration marks as every
+ * section, and it only picks up a translucent fill once content scrolls under.
+ */
 export function Navbar() {
   return (
-    <nav className="site-nav fixed top-0 left-0 right-0 z-50 border-b border-transparent">
-      <div className="shell">
-        <div className="flex items-center justify-between h-16">
-          <Link href="/" prefetch className="flex min-w-0 flex-col py-1 group">
-            <span className="font-mono text-[13px] sm:text-base font-medium text-foreground leading-tight whitespace-nowrap group-hover:text-primary transition-colors">
-              Dr. TMA Pai Endowment Chair
+    <header className="site-nav fixed inset-x-0 top-0 z-50">
+      <div className="nav-frame">
+        <nav aria-label="Main" className="shell flex h-16 items-center justify-between gap-6">
+          <Link href="/" prefetch className="group flex min-w-0 items-center gap-3">
+            <span
+              aria-hidden
+              className="grid size-7 shrink-0 place-items-center border border-foreground/20 transition-colors group-hover:border-primary"
+            >
+              <span className="size-2 bg-primary" />
             </span>
-            <span className="hidden sm:block text-xs text-muted-foreground font-normal leading-tight tracking-wide uppercase">
-              Intelligent Technologies, Industry 4.0 & Sustainability
+            <span className="flex min-w-0 flex-col">
+              <span className="font-mono text-sm xl:text-[0.9375rem] font-medium leading-tight text-foreground whitespace-nowrap transition-colors group-hover:text-primary">
+                Dr. TMA Pai Endowment Chair
+              </span>
+              <span className="hidden xl:block mt-0.5 font-mono text-micro uppercase tracking-[0.14em] leading-tight text-muted-foreground whitespace-nowrap">
+                ITIS · MAHE, Manipal
+              </span>
             </span>
           </Link>
 
-          <div className="hidden lg:flex items-center gap-1">
+          <div className="hidden lg:flex shrink-0 items-center gap-4 xl:gap-7">
             {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                target={"external" in link && link.external ? "_blank" : undefined}
-                rel={"external" in link && link.external ? "noopener noreferrer" : undefined}
-                prefetch={!("external" in link && link.external)}
-                className="relative px-3 py-2 text-xs text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1 group"
-              >
-                {link.label}
-                {"external" in link && link.external ? (
-                  <ArrowUpRight01Icon
-                    strokeWidth={2}
-                    className="size-3 opacity-50 group-hover:opacity-100 transition-opacity"
-                  />
-                ) : null}
-              </Link>
+              <NavLink key={link.href} {...link} />
             ))}
-
-            <div className="w-px h-5 bg-border mx-2" />
-
-            <ThemeToggle />
-
-            <Button asChild size="sm" className="ml-2">
-              <Link href="/apply" prefetch>
-                Apply Now
-              </Link>
-            </Button>
+            <span aria-hidden className="hidden xl:block h-5 w-px bg-border" />
+            <div className="-mx-2 flex items-center">
+              <ThemeToggle />
+            </div>
+            <Link
+              href="/apply"
+              prefetch
+              className="group inline-flex h-8 items-center gap-2 border border-primary/50 px-3 font-mono text-micro uppercase tracking-[0.14em] text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
+            >
+              Apply
+              <ArrowRight01Icon
+                strokeWidth={2}
+                className="size-3.5 transition-transform group-hover:translate-x-0.5"
+              />
+            </Link>
           </div>
 
-          <div className="flex items-center gap-2 lg:hidden">
+          <div className="flex items-center gap-1 lg:hidden">
             <ThemeToggle />
-            <MobileNav links={[...navLinks]} />
+            <MobileNav links={navLinks} />
           </div>
+        </nav>
+      </div>
+      <div className="section-rule nav-rule" aria-hidden>
+        <div className="rule-marks">
+          <span className="rule-mark left-0" />
+          <span className="rule-mark" />
         </div>
       </div>
-    </nav>
+    </header>
   );
 }

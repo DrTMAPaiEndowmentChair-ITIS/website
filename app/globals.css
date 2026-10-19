@@ -11,8 +11,21 @@
   --text-title: clamp(1.625rem, 1.15rem + 1.6vw, 2.625rem);
   --text-title--line-height: 1.08;
   --text-title--letter-spacing: -0.025em;
-  --text-label: 0.6875rem;
-  --text-label--line-height: 1rem;
+  /* Small sizes floor at 11px and grow with the viewport so labels stay
+     legible on large displays. micro: tracked mono labels and chart ticks;
+     caption: notes and legends; body-sm: card copy. */
+  --text-micro: clamp(0.6875rem, 0.64rem + 0.12vw, 0.75rem);
+  --text-micro--line-height: 1.45;
+  --text-caption: clamp(0.75rem, 0.71rem + 0.12vw, 0.8125rem);
+  --text-caption--line-height: 1.5;
+  --text-label: clamp(0.75rem, 0.71rem + 0.12vw, 0.8125rem);
+  --text-label--line-height: 1.25rem;
+  --text-body-sm: clamp(0.875rem, 0.85rem + 0.1vw, 0.9375rem);
+  --text-body-sm--line-height: 1.6;
+  --text-kicker: clamp(0.8125rem, 0.76rem + 0.2vw, 0.9375rem);
+  --text-kicker--line-height: 1.4;
+  --text-body: clamp(0.9375rem, 0.88rem + 0.2vw, 1.0625rem);
+  --text-body--line-height: 1.65;
 }
 
 @theme inline {
@@ -390,7 +403,7 @@
     background: var(--popover);
     color: var(--popover-foreground);
     box-shadow: 0 6px 24px -8px color-mix(in oklab, var(--foreground) 25%, transparent);
-    font-size: 0.6875rem;
+    font-size: var(--text-caption);
     line-height: 1.45;
     text-align: left;
     white-space: normal;
@@ -475,32 +488,47 @@
 
 /* Scroll-driven nav chrome — no JS scroll listener; avoid animating
    backdrop-filter (forces expensive blur repaints every scroll frame). */
+/* The nav is the sheet's title row: transparent over the hero, then a
+   translucent fill (never an opaque bar) once content scrolls beneath it. The
+   rails continue through it via .nav-frame and it closes on a section rule. */
 .site-nav {
-  background-color: color-mix(in oklab, var(--background) 95%, transparent);
-  border-bottom-color: color-mix(in oklab, var(--border) 50%, transparent);
-  transition:
-    background-color 200ms ease-out,
-    border-color 200ms ease-out;
+  --nav-fill: color-mix(in oklab, var(--background) 82%, transparent);
+  background-color: var(--nav-fill);
+  -webkit-backdrop-filter: blur(10px) saturate(1.15);
+  backdrop-filter: blur(10px) saturate(1.15);
+}
+.nav-frame {
+  width: var(--rail-span);
+  margin-inline: auto;
+  border-inline: 1px solid var(--rule);
+}
+.nav-rule .rule-mark {
+  transition: opacity 200ms ease-out;
 }
 
 @supports (animation-timeline: scroll()) {
   .site-nav {
-    background-color: transparent;
-    border-bottom-color: transparent;
     animation: nav-scroll linear both;
     animation-timeline: scroll();
-    animation-range: 0 48px;
+    animation-range: 0 64px;
+  }
+  .nav-rule .rule-mark {
+    animation: nav-marks linear both;
+    animation-timeline: scroll();
+    animation-range: 0 64px;
   }
 }
 
 @keyframes nav-scroll {
   from {
     background-color: transparent;
-    border-bottom-color: transparent;
+    -webkit-backdrop-filter: blur(0) saturate(1);
+    backdrop-filter: blur(0) saturate(1);
   }
-  to {
-    background-color: color-mix(in oklab, var(--background) 95%, transparent);
-    border-bottom-color: color-mix(in oklab, var(--border) 50%, transparent);
+}
+@keyframes nav-marks {
+  from {
+    opacity: 0;
   }
 }
 
@@ -515,10 +543,9 @@
     scroll-behavior: auto;
   }
 
-  .site-nav {
+  .site-nav,
+  .nav-rule .rule-mark {
     animation: none;
-    background-color: color-mix(in oklab, var(--background) 95%, transparent);
-    border-bottom-color: color-mix(in oklab, var(--border) 50%, transparent);
   }
 
   ::view-transition-old(root),

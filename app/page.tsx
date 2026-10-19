@@ -125,30 +125,30 @@ function ProjectCard({ project }: { project: ProjectFrontmatter }) {
             <span className="flex size-8 shrink-0 items-center justify-center border border-primary/20 bg-primary/[0.06]">
               {getCompanyIcon(partner, project.companyLogo)}
             </span>
-            <span className="truncate font-mono text-[11px] text-foreground">{partner}</span>
+            <span className="truncate font-mono text-caption text-foreground">{partner}</span>
           </div>
           {completed ? (
-            <span className="shrink-0 font-mono text-[10px] tabular-nums text-muted-foreground">
+            <span className="shrink-0 font-mono text-micro tabular-nums text-muted-foreground">
               {yearOf(project.date)}–{yearOf(project.completionDate)}
             </span>
           ) : (
-            <span className="shrink-0 inline-flex items-center gap-1.5 font-mono text-[9px] uppercase tracking-[0.18em] text-primary">
+            <span className="shrink-0 inline-flex items-center gap-1.5 font-mono text-micro uppercase tracking-[0.18em] text-primary">
               <span className="size-1.5 bg-primary animate-pulse" aria-hidden />
               Active
             </span>
           )}
         </div>
-        <h3 className="font-sans text-[15px] font-medium leading-snug text-foreground group-hover:text-primary transition-colors line-clamp-2 mb-2">
+        <h3 className="font-sans text-body font-medium leading-snug text-foreground group-hover:text-primary transition-colors line-clamp-2 mb-2">
           {project.title}
         </h3>
-        <p className="text-[13px] text-muted-foreground line-clamp-3 leading-relaxed mb-4">
+        <p className="text-body-sm text-muted-foreground line-clamp-3 leading-relaxed mb-4">
           {project.description}
         </p>
         <div className="flex flex-wrap gap-1 mt-auto">
           {project.tags.slice(0, 3).map((tag) => (
             <span
               key={tag}
-              className="border border-border px-1.5 py-0.5 font-mono text-[10px] text-muted-foreground"
+              className="border border-border px-1.5 py-0.5 font-mono text-micro text-muted-foreground"
             >
               {tag}
             </span>
@@ -181,14 +181,14 @@ function EventCard({ event }: { event: EventFrontmatter }) {
           </div>
         )}
         <div className="flex flex-1 flex-col p-5">
-          <p className="flex items-center gap-2 font-mono text-[10px] text-muted-foreground mb-2">
+          <p className="flex items-center gap-2 font-mono text-micro text-muted-foreground mb-2">
             <Calendar01Icon strokeWidth={2} className="size-3" />
             {event.displayDate}
           </p>
-          <h3 className="font-sans text-[15px] font-medium leading-snug text-foreground group-hover:text-primary transition-colors line-clamp-2 mb-2">
+          <h3 className="font-sans text-body font-medium leading-snug text-foreground group-hover:text-primary transition-colors line-clamp-2 mb-2">
             {event.title}
           </h3>
-          <p className="text-[13px] text-muted-foreground line-clamp-2 leading-relaxed mb-4">
+          <p className="text-body-sm text-muted-foreground line-clamp-2 leading-relaxed mb-4">
             {event.description}
           </p>
           <span className="mt-auto text-xs text-primary flex items-center gap-1 group-hover:gap-2 transition-all">
@@ -254,7 +254,7 @@ export default function Home() {
                 {HERO_DOMAINS.map((domain) => (
                   <li
                     key={domain}
-                    className="border border-border/70 bg-background/50 dark:bg-white/5 px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-muted-foreground"
+                    className="border border-border/70 bg-background/50 dark:bg-white/5 px-2.5 py-1 font-mono text-micro uppercase tracking-widest text-muted-foreground"
                   >
                     {domain}
                   </li>
@@ -275,10 +275,10 @@ export default function Home() {
                   className="object-contain brightness-[1.021] mix-blend-multiply dark:invert dark:hue-rotate-180 dark:mix-blend-screen"
                   priority
                 />
-                <span className="absolute left-0 -top-6 font-mono text-[9px] uppercase tracking-[0.2em] text-muted-foreground">
+                <span className="absolute left-0 -top-6 font-mono text-micro uppercase tracking-[0.2em] text-muted-foreground">
                   Fig. 00 — Institution
                 </span>
-                <span className="absolute right-0 -bottom-6 font-mono text-[9px] tracking-[0.15em] text-muted-foreground tabular-nums">
+                <span className="absolute right-0 -bottom-6 font-mono text-micro tracking-[0.15em] text-muted-foreground tabular-nums">
                   13.3525° N · 74.7924° E
                 </span>
               </div>
@@ -298,7 +298,7 @@ export default function Home() {
                 <div className="font-mono text-3xl sm:text-4xl lg:text-5xl font-medium text-foreground tracking-tight group-hover:text-primary transition-colors">
                   {stat.value}
                 </div>
-                <div className="font-mono text-[9px] sm:text-[10px] text-muted-foreground uppercase tracking-[0.18em] mt-2">
+                <div className="font-mono text-micro sm:text-micro text-muted-foreground uppercase tracking-[0.18em] mt-2">
                   {stat.label}
                 </div>
               </Link>
@@ -321,11 +321,11 @@ export default function Home() {
             <Bezel key={pillar.title} hover panelClassName="flex flex-col p-5 sm:p-6">
               <div className="flex items-baseline justify-between mb-3">
                 <h3 className="font-sans text-lg font-medium text-foreground">{pillar.title}</h3>
-                <span className="font-mono text-[10px] text-muted-foreground/70 tracking-widest">
+                <span className="font-mono text-micro text-muted-foreground/70 tracking-widest">
                   {pillar.index}
                 </span>
               </div>
-              <p className="text-[13px] leading-relaxed text-muted-foreground mb-6">
+              <p className="text-body-sm leading-relaxed text-muted-foreground mb-6">
                 {pillar.body}
               </p>
               <div className="mt-auto h-44 border border-primary/15 bg-primary/[0.025]">
@@ -346,7 +346,7 @@ export default function Home() {
             { label: "Mandate", value: "Industry-collaborative research" },
           ].map((fact) => (
             <div key={fact.label} className="px-6 py-4 border-r border-b border-border">
-              <dt className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground mb-1">
+              <dt className="font-mono text-micro uppercase tracking-widest text-muted-foreground mb-1">
                 {fact.label}
               </dt>
               <dd className="text-sm text-foreground">
@@ -386,7 +386,7 @@ export default function Home() {
           index="03"
           label="Track record"
           title="Three decades of sponsored research"
-          lede="Every project the chair has run, from the first AICTE robotics grant to today's agentic security work. Hover or focus a bar for dates and the sponsor; select it to open the project."
+          lede="From the first AICTE robotics grant to today's agentic security work. Hover a bar for the project and sponsor; select it to open."
         />
         <ResearchTimeline projects={[...completedProjects, ...researchProjects]} />
       </Section>
@@ -511,7 +511,7 @@ export default function Home() {
           title="Upcoming & Recent"
           lede="Workshops, hackathons, CTFs, and panels that bring students and industry practitioners into the same room."
           action={
-            <span className="inline-flex items-center gap-1.5 border border-border px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+            <span className="inline-flex items-center gap-1.5 border border-border px-2.5 py-1 font-mono text-micro uppercase tracking-widest text-muted-foreground">
               <span className="size-1.5 bg-primary" aria-hidden />
               {upcomingEvents.length} events
             </span>
@@ -549,14 +549,14 @@ export default function Home() {
                   <span className="flex size-9 items-center justify-center bg-primary text-primary-foreground">
                     <step.Icon strokeWidth={2} className="size-4" />
                   </span>
-                  <span className="font-mono text-[10px] text-muted-foreground tracking-widest">
+                  <span className="font-mono text-micro text-muted-foreground tracking-widest">
                     Step {step.index}
                   </span>
                 </div>
                 <h3 className="font-sans text-base font-medium text-foreground mb-1.5">
                   {step.title}
                 </h3>
-                <p className="text-[13px] text-muted-foreground leading-relaxed">{step.body}</p>
+                <p className="text-body-sm text-muted-foreground leading-relaxed">{step.body}</p>
               </Bezel>
             </li>
           ))}
