@@ -140,17 +140,6 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
-/* Cheap same-document navigation morph where the browser supports it. */
-@view-transition {
-  navigation: auto;
-}
-
-::view-transition-old(root),
-::view-transition-new(root) {
-  animation-duration: 160ms;
-  animation-timing-function: ease-out;
-}
-
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -537,11 +526,6 @@
   .site-nav::before,
   .nav-rule .rule-mark {
     animation: none;
-  }
-
-  ::view-transition-old(root),
-  ::view-transition-new(root) {
-    animation: none !important;
   }
 }
 
